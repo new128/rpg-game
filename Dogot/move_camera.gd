@@ -1,0 +1,22 @@
+extends Camera
+
+var movement_speed = 10.0
+
+func _process(delta):
+	# Получаем вектор направления от клавиш WASD
+	var movement_vector = Vector3()
+
+	if Input.is_action_pressed("right"):
+		movement_vector.x += 1
+	if Input.is_action_pressed("left"):
+		movement_vector.x -= 1
+	if Input.is_action_pressed("forward"):
+		movement_vector.y += 1
+	if Input.is_action_pressed("back"):
+		movement_vector.y -= 1
+
+	# Нормализуем вектор, чтобы скорость была одинаковой во всех направлениях
+	movement_vector = movement_vector.normalized()
+
+	# Перемещаем камеру
+	translate(movement_vector * movement_speed * delta)
