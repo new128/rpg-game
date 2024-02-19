@@ -1,6 +1,6 @@
 extends Camera
 
-var movement_speed = 10.0
+var movement_speed = 8.0
 var is_mouse_dragging = false
 var prev_mouse_pos = Vector2()
 
@@ -21,7 +21,7 @@ func _process(delta):
 	movement_vector = movement_vector.normalized()
 
 	# Перемещаем камеру
-	translate(movement_vector * movement_speed * delta)
+	translate(movement_vector * (movement_speed+7) * delta)
 
 	# Обрабатываем движение мыши по зажатию средней кнопки
 	if Input.is_action_pressed("midle_mouse"):
