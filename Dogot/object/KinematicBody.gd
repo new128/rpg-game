@@ -14,6 +14,10 @@ func _process(delta):
 		var direction = (target_position - translation).normalized()
 		direction.y = 0
 		move_and_slide(direction * speed)
+		
+		if direction.length() > rotation_threshold:
+			var angle = atan2(direction.x, direction.z)
+			rotation_degrees.y = angle * 180 / PI
 
 func _input(event):
 	# Обработка ввода от игрока
