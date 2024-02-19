@@ -11,6 +11,7 @@
 """
 
 #var inventary = preload("res://inventary.gd")  создание объекта этого класса
+var Item = preload("res://item.gd") 
 
 var head = null
 
@@ -22,7 +23,11 @@ var torso = null
 
 var shoes = null # обувь
 
-func _init(head_, shoulders_, weapon_, torso_, shoes_):
+var consumables = [] # расходники по типу кларетки и фласки в доте. максимально 3 штуки
+
+
+
+func _init(head_, shoulders_, weapon_, torso_, shoes_, consumables_):
 	var head =  head_
 
 	var shoulders = shoulders_
@@ -32,3 +37,5 @@ func _init(head_, shoulders_, weapon_, torso_, shoes_):
 	var torso = torso_
 
 	var shoes = shoes_ # обувь
+	
+	var consumables = []

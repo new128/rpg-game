@@ -72,6 +72,7 @@ var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
 
 var inventary = null
+var money = null
 
 func _init(class_person, inventory_):
 	inventary = inventory_
@@ -110,3 +111,5 @@ func _init(class_person, inventory_):
 		speed = 4
 	mana = max_mana
 	hp = max_hp
+	
+	# потом добавить перебор всего в инвентаре для увеличения характеристик

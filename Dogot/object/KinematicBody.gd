@@ -4,8 +4,10 @@ var target_position = Vector3.ZERO
 var speed = 6
 var rotation_threshold = 0.1
 var rotation_speed = 5
-
-var person = preload("res://person.gd")
+# Загрузка класса
+var Person = preload("res://person.gd")
+var Item = preload("res://item.gd") 
+var person = Person.new("paladin", null)
 
 func _process(delta):
 	# Обработка движения персонажа
