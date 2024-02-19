@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var target_position = Vector3.ZERO
-var speed = 5.0
+var speed = 6
 
 func _process(delta):
 	# Обработка движения персонажа
@@ -16,13 +16,15 @@ func _input(event):
 	# Обработка ввода от игрока
 	if event is InputEventMouseButton and event.pressed:
 		# Получение позиции, на которую нажал игрок
-		var ray_origin = $"/root/Spatial/Camera".project_ray_origin(event.position)
-		var ray_direction = $"/root/Spatial/Camera".project_ray_normal(event.position)
-
-		var ray_cast = self.get_world().direct_space_state.intersect_ray(ray_origin, ray_origin + ray_direction * 1000)
-		print(ray_origin, ray_direction)
-		target_position = Vector3(1,1,1)
-		if ray_cast and ray_cast.collider == self:
-			target_position = ray_cast.position
+		var mouse_position = event.position
+		var clicked_point = get_viewport().get_camera().project_ray_origin(mouse_position)
+		var ray_end = get_viewport().get_camera().project_ray_normal(mouse_position) * 1000 + clicked_point
+		
+		var space_state = get_world().direct_space_state
+		var result = space_state.intersect_ray(clicked_point, ray_end)
+		print(result)
+		if result:
+			target_position = result.position
 			print(target_position)
+
 

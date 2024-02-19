@@ -2,35 +2,40 @@
 
 [ext_resource path="res://object/Pole_play.dae" type="PackedScene" id=1]
 [ext_resource path="res://move_camera.gd" type="Script" id=2]
-[ext_resource path="res://object/main++_person-.dae" type="PackedScene" id=3]
+[ext_resource path="res://main++_person-+.dae" type="PackedScene" id=3]
 [ext_resource path="res://object/KinematicBody.gd" type="Script" id=4]
-[ext_resource path="res://object/main_sceen.gd" type="Script" id=5]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 50.894, 1.48172, 91.2569 )
 
 [sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.55387, 7.30095, 1.18277 )
 
 [node name="Spatial" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.140556, -0.203613, -0.350903 )
-script = ExtResource( 5 )
 
 [node name="ProximityGroup" type="ProximityGroup" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="ProximityGroup"]
-transform = Transform( 65, 0, 0, 0, 2, 0, 0, 0, 100, 0, -0.749554, 0 )
-shape = SubResource( 2 )
+[node name="StaticBody" type="StaticBody" parent="ProximityGroup"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+shape = SubResource( 1 )
 
 [node name="Pole_play" parent="ProximityGroup" instance=ExtResource( 1 )]
-transform = Transform( 1.065, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 35, 15, 75 )
-script = ExtResource( 2 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
-transform = Transform( -1.55175e-08, 0, -0.355, 0, 0.355, 0, 0.355, 0, -1.55175e-08, 39.9357, 3.00114, 73.6221 )
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -40, 3.612, -80 )
 script = ExtResource( 4 )
 
-[node name="main++_person-" parent="KinematicBody" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[node name="main++_person-+" parent="KinematicBody" instance=ExtResource( 3 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-transform = Transform( 11, 0, 0, 0, 37.392, 0, 0, 0, 6.537, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -40, 15, -80 )
+script = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9333, 3.5433, 8.53896 )
+enabled = true
+cast_to = Vector3( 0, -100, 0 )
