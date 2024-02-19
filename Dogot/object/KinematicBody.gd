@@ -5,6 +5,8 @@ var speed = 6
 var rotation_threshold = 0.1
 var rotation_speed = 5
 
+var person = preload("res://person.gd")
+
 func _process(delta):
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
