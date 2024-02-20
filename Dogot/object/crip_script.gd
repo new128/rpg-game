@@ -7,6 +7,8 @@ var pers_type = "enemy"
 
 var target : Vector3 = Vector3.ZERO
 
+var target_person = null
+
 var die = false
 
 var last_attack = null
@@ -21,10 +23,19 @@ func _ready():
 
 func _process(delta):
 	
+	person.time += 1
+	
+	
+	
 	if target != Vector3.ZERO:
 			var direction = (target - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.speed)
+			
+			
+			
+	
+	person.attack(self, target_person)
 	
 	
 	

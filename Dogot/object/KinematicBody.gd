@@ -13,6 +13,10 @@ var is_move = false
 var type = "play_pers"
 var pers_type = "play_pers"
 
+var last_attack = null
+
+var giv_money = 300
+
 func _ready():
 	pass
 

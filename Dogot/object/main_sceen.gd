@@ -44,6 +44,8 @@ func _process(delta):
 					object_d = it
 		
 		item.target = object_d.global_transform.origin
+		item.target_person = object_d
+		print(object_d.name)
 	
 	
 	
