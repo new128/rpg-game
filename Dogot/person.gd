@@ -82,7 +82,7 @@ var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
 
 var inventary = null
-var money = null
+var money = 0
 
 var scills = [null]
 
@@ -171,5 +171,6 @@ func attack(attack_object, object):
 			object.person.taking_damage("phis", damage)
 			time = 0
 			print("at")
+			object.last_attack = self
 	else:
 		return 5

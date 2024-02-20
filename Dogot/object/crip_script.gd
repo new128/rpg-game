@@ -7,6 +7,10 @@ var pers_type = "enemy"
 
 var die = false
 
+var last_attack = null
+
+var giv_money = 50
+
 func _ready():
 	pass # Replace with function body.
 

@@ -180,7 +180,7 @@ margin_bottom = 843.0
 rect_scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Time" type="Label" parent="."]
 anchor_left = 0.409
 anchor_top = 0.003
 anchor_right = 0.527
@@ -193,3 +193,16 @@ rect_scale = Vector2( 2.75, 2.75 )
 text = "Hello"
 align = 1
 script = ExtResource( 4 )
+
+[node name="Money" type="Label" parent="."]
+modulate = Color( 0.835294, 1, 0, 1 )
+anchor_left = 0.016
+anchor_top = 0.918
+anchor_right = 0.2
+anchor_bottom = 0.979
+margin_left = -0.384001
+margin_top = 0.199951
+margin_right = -116.8
+margin_bottom = -22.4
+rect_scale = Vector2( 2.617, 2.617 )
+text = "1"

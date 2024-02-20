@@ -6,6 +6,8 @@ extends Spatial
 # var b = "text"
 var crips = []
 
+var time = 0
+
 func _ready():
 	var original_crip = $Crip
 	crips.append(original_crip)
@@ -24,7 +26,13 @@ func _ready():
 
 
 func _process(delta):
+	
+	time += 1
+	if time % 60 == 1:
+		$KinematicBody.person.money += 1.5
+	
 	for item in crips:
 		if item.die:
+			item.last_attack.money += item.giv_money
 			item.queue_free()
 			crips.erase(item)
