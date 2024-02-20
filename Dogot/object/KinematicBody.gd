@@ -9,6 +9,9 @@ var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
 var person = Person.new("paladin", null)
 
+func _ready():
+	pass
+
 func _process(delta):
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
@@ -29,8 +32,8 @@ func _process(delta):
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
 	
-	print(x_p)
-	print(y_p)
+	#print(x_p)
+	#print(y_p)
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
@@ -72,17 +75,17 @@ func _input(event):
 		
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(clicked_point, ray_end)
-		print(result)
+		#print(result)
 		if result:
 			target_position = result.position
-			print(target_position)
+			#print(target_position)
 			
 			
 func effects():
-	person.hp += person.regen_hp / 60
-	person.mana += person.regen_mana / 60
-	person.hp += - 0.3
-	person.mana += -0.1
+	person.hp += (person.regen_hp / 60.0)
+	person.mana += (person.regen_mana / 60.0)
+	#person.hp += - 0.3
+	#person.mana += -0.1
 	
 func die():
 	if person.hp <= 0:
@@ -91,4 +94,8 @@ func die():
 	if person.mana <= 0:
 		person.mana = 0
 		print("Dont mama")
+	if person.hp >= person.max_hp:
+		person.hp = person.max_hp
+	if person.mana >= person.max_mana:
+		person.mana = person.max_mana
 

@@ -126,6 +126,18 @@ func _init(class_person, inventory_):
 		attack_radius = null
 		speed = 4
 		max_scils = 5
+	if class_person == "crip":
+		max_hp = 500
+		max_mana = 0
+		regen_hp = 4
+		regen_mana = 0
+		armor = 3
+		mag_resist = 10
+		damage = 50
+		attack_speed = 2
+		attack_radius = null
+		speed = 7
+		max_scils = 0
 	mana = max_mana
 	hp = max_hp
 	
