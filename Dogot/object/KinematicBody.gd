@@ -86,7 +86,7 @@ func _input(event):
 		var result = space_state.intersect_ray(clicked_point, ray_end)
 		var object = result.collider
 		print(object.name)
-		if object.name == "Crip" or object.name == "@Crip@2":
+		if object.pers_type == "enemy":
 			back_object = object
 			is_move = false
 			print("Yes")

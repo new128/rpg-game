@@ -3,6 +3,10 @@ extends KinematicBody
 var Person = preload("res://person.gd")
 var person = Person.new("crip", null)
 
+var pers_type = "enemy"
+
+var die = false
+
 func _ready():
 	pass # Replace with function body.
 
@@ -32,6 +36,7 @@ func _process(delta):
 	
 	if person.hp <= 0:
 		person.hp = 0
+		die = true
 		print("die")
 	if person.hp >= person.max_hp:
 		person.hp = person.max_hp

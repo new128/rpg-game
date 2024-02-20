@@ -156,6 +156,8 @@ func taking_damage(type, damage):
 var attack_bool = false
 
 func attack(attack_object, object):
+	if not is_instance_valid(object):
+		return
 	
 	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
 	var obj2_position = Vector2(object.global_transform.origin.x, object.global_transform.origin.y)
