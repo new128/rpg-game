@@ -75,6 +75,11 @@ func _input(event):
 		
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(clicked_point, ray_end)
+		var object = result.collider
+		print(object.name)
+		if object.name == "Crip":
+			person.attack(object)
+			print("attack")
 		#print(result)
 		if result:
 			target_position = result.position
@@ -98,4 +103,7 @@ func die():
 		person.hp = person.max_hp
 	if person.mana >= person.max_mana:
 		person.mana = person.max_mana
+		
+		
+		
 

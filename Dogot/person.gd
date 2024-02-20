@@ -141,4 +141,15 @@ func _init(class_person, inventory_):
 	mana = max_mana
 	hp = max_hp
 	
-	# потом добавить перебор всего в инвентаре для увеличения характеристик и для записи скилов
+
+
+func taking_damage(type, damage):
+	if type == "mag":
+		hp -= damage - damage*mag_resist/100
+	if type == "phis":
+		hp -= damage - armor
+	if type == "clear":
+		hp -= damage
+		
+func attack(object):
+	object.person.taking_damage("phis", damage)

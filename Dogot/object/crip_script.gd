@@ -37,3 +37,6 @@ func _process(delta):
 		person.hp = person.max_hp
 	if person.mana >= person.max_mana:
 		person.mana = person.max_mana
+		
+		
+		
