@@ -23,6 +23,9 @@ func _ready():
 
 func _process(delta):
 	
+	
+	effect()
+	
 	person.time += 1
 	
 	
@@ -77,4 +80,5 @@ func _process(delta):
 		person.mana = person.max_mana
 		
 		
-		
+func effect():
+	person.hp += person.regen_hp/60.0

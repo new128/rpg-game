@@ -102,7 +102,7 @@ func _init(class_person_, inventory_):
 		class_person = "paladin"
 		max_hp = 1000
 		max_mana = 200
-		regen_hp = 10
+		regen_hp = 5
 		regen_mana = 1
 		armor = 10
 		mag_resist = 30
@@ -115,7 +115,7 @@ func _init(class_person_, inventory_):
 		class_person = "shooter"
 		max_hp = 600
 		max_mana = 500
-		regen_hp = 4
+		regen_hp = 2
 		regen_mana = 4
 		armor = 2
 		mag_resist = 15
@@ -128,7 +128,7 @@ func _init(class_person_, inventory_):
 		class_person = "magician"
 		max_hp = 400
 		max_mana = 700
-		regen_hp = 2
+		regen_hp = 1
 		regen_mana = 10
 		armor = 0
 		mag_resist = 50
@@ -141,7 +141,7 @@ func _init(class_person_, inventory_):
 		class_person = "crip"
 		max_hp = 500
 		max_mana = 0
-		regen_hp = 4
+		regen_hp = 2
 		regen_mana = 0
 		armor = 3
 		mag_resist = 10
