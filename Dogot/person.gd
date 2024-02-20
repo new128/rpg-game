@@ -17,6 +17,8 @@ var class_person = null # класс: ближник, дальник, маг и 
 			attack_speed = 2
 			attack_radius = хз в чём измерять но примерно вытянутая рука
 			speed = средняя скорость
+			
+			3 слота под скилы
 		Мб вы скажите что он сильный даже по рамкам доты но у него не будет очивидных обилок. Те если он будет покупать вещи дающие обилки он сможет колдаватьт
 		
 		
@@ -33,6 +35,10 @@ var class_person = null # класс: ближник, дальник, маг и 
 			attack_radius = в 3 раза больше чем у паладина
 			speed = быстрый
 			
+			4 слота под скилы
+			
+			1 дефолт скмл со старта. Которым можно будет изменить с помощью талантов
+			
 			
 	magician
 	Маг: пионист.
@@ -46,6 +52,10 @@ var class_person = null # класс: ближник, дальник, маг и 
 			attack_speed = 0,5
 			attack_radius = в 4 раза больше чем у паладина
 			speed = медленный
+			
+			5 слотов под скилы
+			
+			1 дефолт скил со старта но с помощью талантов можно получить ещё один и изменить старый
 
 """
 # null сдешний None
@@ -74,6 +84,10 @@ var lvl = 1 # думаю сделаем как в большинстве РПГ 
 var inventary = null
 var money = null
 
+var scills = [null]
+
+var max_scils = null
+
 func _init(class_person, inventory_):
 	inventary = inventory_
 	if class_person == "paladin":
@@ -87,6 +101,7 @@ func _init(class_person, inventory_):
 		attack_speed = 2
 		attack_radius = null
 		speed = 6
+		max_scils = 3
 	if class_person == "shooter":
 		max_hp = 600
 		max_mana = 500
@@ -98,6 +113,7 @@ func _init(class_person, inventory_):
 		attack_speed = 1.5
 		attack_radius = null
 		speed = 7
+		max_scils = 4
 	if class_person == "magician":
 		max_hp = 400
 		max_mana = 700
@@ -109,7 +125,8 @@ func _init(class_person, inventory_):
 		attack_speed = 0.5
 		attack_radius = null
 		speed = 4
+		max_scils = 5
 	mana = max_mana
 	hp = max_hp
 	
-	# потом добавить перебор всего в инвентаре для увеличения характеристик
+	# потом добавить перебор всего в инвентаре для увеличения характеристик и для записи скилов
