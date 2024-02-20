@@ -6,10 +6,16 @@ extends Spatial
 # var b = "text"
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var camera_path_str = get_node("Camera").get_path()
-	print("Путь к камере (в виде строки):", camera_path_str)
+	var original_crip = $Crip
+
+# Создайте копии кинематического тела и 3D-модели
+	var new_crip = original_crip.duplicate()
+
+# Поместите копии в сцену (замените parent_node на ваш узел, к которому вы хотите прикрепить копии)
+	add_child(new_crip)
+
+	new_crip.translation = Vector3(-30, 1.47, -50)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

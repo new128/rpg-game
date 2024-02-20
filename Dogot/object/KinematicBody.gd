@@ -86,9 +86,10 @@ func _input(event):
 		var result = space_state.intersect_ray(clicked_point, ray_end)
 		var object = result.collider
 		print(object.name)
-		if object.name == "Crip":
+		if object.name == "Crip" or object.name == "@Crip@2":
 			back_object = object
-			#is_move = false
+			is_move = false
+			print("Yes")
 			if person.attack(self ,object):
 
 				# Найти ближайшую точку на obj1 к obj2

@@ -113,7 +113,7 @@ func _init(class_person, inventory_):
 		mag_resist = 15
 		damage = 75
 		attack_speed = 1.5
-		attack_radius = 6
+		attack_radius = 7.5
 		speed = 7
 		max_scils = 4
 	if class_person == "magician":
@@ -125,7 +125,7 @@ func _init(class_person, inventory_):
 		mag_resist = 50
 		damage = 100
 		attack_speed = 0.5
-		attack_radius = 8
+		attack_radius = 10
 		speed = 4
 		max_scils = 5
 	if class_person == "crip":
