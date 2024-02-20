@@ -24,7 +24,7 @@ func _process(delta):
 	
 	
 	if person.attack_bool:
-		person.attack(back_object)
+		person.attack(self, back_object)
 	
 	
 	var cgp = global_transform.origin
@@ -84,7 +84,7 @@ func _input(event):
 		var object = result.collider
 		print(object.name)
 		if object.name == "Crip":
-			person.attack(object)
+			person.attack(self ,object)
 			back_object = object
 			return
 		#print(result)

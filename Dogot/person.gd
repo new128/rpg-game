@@ -101,7 +101,7 @@ func _init(class_person, inventory_):
 		mag_resist = 30
 		damage = 80
 		attack_speed = 2
-		attack_radius = null
+		attack_radius = 3
 		speed = 6
 		max_scils = 3
 	if class_person == "shooter":
@@ -155,10 +155,17 @@ func taking_damage(type, damage):
 		
 var attack_bool = false
 
-func attack(object):
-	print(time)
+func attack(attack_object, object):
+	
+	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
+	var obj2_position = Vector2(object.global_transform.origin.x, object.global_transform.origin.y)
+
+	var dist = obj1_position.distance_to(obj2_position)
+	
+	
 	attack_bool = true
-	if time / 60 >= attack_speed*4:
-		object.person.taking_damage("phis", damage)
-		time = 0
-		print("at")
+	if dist <= attack_radius:
+		if time / 60 >= attack_speed*4:
+			object.person.taking_damage("phis", damage)
+			time = 0
+			print("at")
