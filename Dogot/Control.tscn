@@ -79,52 +79,56 @@ margin_bottom = 2.0
 [node name="Button1" type="Button" parent="."]
 anchor_left = 0.349
 anchor_top = 0.823
-anchor_right = 0.404
-anchor_bottom = 0.918
+anchor_right = 0.406
+anchor_bottom = 0.925
 margin_left = -0.376007
 margin_top = 0.199982
-margin_right = 0.303986
-margin_bottom = 0.199951
+margin_right = 0.255981
+margin_bottom = -6.10352e-05
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="Button1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 843.0
-margin_bottom = 843.0
+anchor_right = 1.509
+anchor_bottom = 1.503
+margin_right = 812.969
+margin_bottom = 812.317
 rect_scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 3 )
 
 [node name="Button2" type="Button" parent="."]
 anchor_left = 0.408
 anchor_top = 0.823
-anchor_right = 0.464
-anchor_bottom = 0.918
+anchor_right = 0.465
+anchor_bottom = 0.922
 margin_left = 0.207977
 margin_top = 0.199982
-margin_right = -0.136017
-margin_bottom = 0.199951
+margin_right = -0.160034
+margin_bottom = -0.200012
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="Button2"]
+anchor_left = 0.212
+anchor_top = -0.752
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -12.296
+margin_top = 44.368
 margin_right = 843.0
 margin_bottom = 843.0
 rect_scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 3 )
 
 [node name="Button3" type="Button" parent="."]
-anchor_left = 0.408
-anchor_top = 0.823
-anchor_right = 0.464
-anchor_bottom = 0.918
-margin_left = 61.208
-margin_top = 0.199982
-margin_right = 61.072
-margin_bottom = 0.199951
+anchor_left = 0.468
+anchor_top = 0.842
+anchor_right = 0.526
+anchor_bottom = 0.922
+margin_left = -0.232025
+margin_top = -11.2
+margin_right = 0.375977
+margin_bottom = -0.200012
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
@@ -138,14 +142,14 @@ rect_scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 3 )
 
 [node name="Button4" type="Button" parent="."]
-anchor_left = 0.408
+anchor_left = 0.527
 anchor_top = 0.823
-anchor_right = 0.464
-anchor_bottom = 0.918
-margin_left = 122.208
+anchor_right = 0.585
+anchor_bottom = 0.922
+margin_left = 0.35199
 margin_top = 0.199982
-margin_right = 121.864
-margin_bottom = 0.199951
+margin_right = -0.0400391
+margin_bottom = -0.200012
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
@@ -158,14 +162,13 @@ rect_scale = Vector2( 0.063, 0.063 )
 texture = ExtResource( 3 )
 
 [node name="Button5" type="Button" parent="."]
-anchor_left = 0.408
+anchor_left = 0.587
 anchor_top = 0.823
-anchor_right = 0.464
-anchor_bottom = 0.918
-margin_left = 183.208
+anchor_right = 0.644
+anchor_bottom = 0.92
+margin_left = -0.0880127
 margin_top = 0.199982
-margin_right = 182.864
-margin_bottom = 0.199951
+margin_right = -0.456055
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
