@@ -8,6 +8,7 @@ var rotation_speed = 5
 var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
 var person = Person.new("paladin", null)
+var back_object = null
 
 func _ready():
 	pass
@@ -20,6 +21,11 @@ func _process(delta):
 	
 	
 	person.time+=1
+	
+	
+	if person.attack_bool:
+		person.attack(back_object)
+	
 	
 	var cgp = global_transform.origin
 	var screen_size = OS.get_screen_size()
@@ -79,10 +85,12 @@ func _input(event):
 		print(object.name)
 		if object.name == "Crip":
 			person.attack(object)
+			back_object = object
 			return
 		#print(result)
 		if result:
 			target_position = result.position
+			person.attack_bool = false
 			#print(target_position)
 			
 			

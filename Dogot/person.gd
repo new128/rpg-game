@@ -153,10 +153,11 @@ func taking_damage(type, damage):
 	if type == "clear":
 		hp -= damage
 		
-
+var attack_bool = false
 
 func attack(object):
 	print(time)
+	attack_bool = true
 	if time / 60 >= attack_speed*4:
 		object.person.taking_damage("phis", damage)
 		time = 0
