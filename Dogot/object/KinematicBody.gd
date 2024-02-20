@@ -9,6 +9,7 @@ var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
 var person = Person.new("paladin", null)
 var back_object = null
+var is_move = false
 
 func _ready():
 	pass
@@ -24,7 +25,8 @@ func _process(delta):
 	
 	
 	if person.attack_bool:
-		person.attack(self, back_object)
+		if not person.attack(self, back_object):
+			is_move = false
 	
 	
 	var cgp = global_transform.origin
@@ -60,14 +62,15 @@ func _process(delta):
 	die()
 
 	# Перемещение к целевой позиции
-	if target_position != Vector3.ZERO:
-		var direction = (target_position - translation).normalized()
-		direction.y = 0
-		move_and_slide(direction * speed)
-		
-		if direction.length() > rotation_threshold:
-			var angle = atan2(direction.x, direction.z)
-			rotation_degrees.y = angle * 180 / PI
+	if is_move:
+		if target_position != Vector3.ZERO:
+			var direction = (target_position - translation).normalized()
+			direction.y = 0
+			move_and_slide(direction * speed)
+			
+			if direction.length() > rotation_threshold:
+				var angle = atan2(direction.x, direction.z)
+				rotation_degrees.y = angle * 180 / PI
 
 func _input(event):
 	# Обработка ввода от игрока
@@ -84,13 +87,20 @@ func _input(event):
 		var object = result.collider
 		print(object.name)
 		if object.name == "Crip":
-			person.attack(self ,object)
 			back_object = object
+			#is_move = false
+			if person.attack(self ,object):
+
+				# Найти ближайшую точку на obj1 к obj2
+				target_position = object.global_transform.origin
+				is_move = true
+			
 			return
 		#print(result)
 		if result:
 			target_position = result.position
 			person.attack_bool = false
+			is_move = true
 			#print(target_position)
 			
 			
