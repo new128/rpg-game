@@ -5,17 +5,35 @@ var person = Person.new("crip", null)
 
 var pers_type = "enemy"
 
+var target : Vector3 = Vector3.ZERO
+
 var die = false
 
 var last_attack = null
 
 var giv_money = 50
 
+var type = "enemy"
+
 func _ready():
 	pass # Replace with function body.
 
 
 func _process(delta):
+	
+	if target != Vector3.ZERO:
+			var direction = (target - translation).normalized()
+			direction.y = 0
+			move_and_slide(direction * person.speed)
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	var cgp = global_transform.origin
 	var screen_size = OS.get_screen_size()
 	var cam = get_node("/root/Spatial/Play_camera")

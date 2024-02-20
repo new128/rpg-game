@@ -10,6 +10,8 @@ var Item = preload("res://item.gd")
 var person = Person.new("paladin", null)
 var back_object = null
 var is_move = false
+var type = "play_pers"
+var pers_type = "play_pers"
 
 func _ready():
 	pass

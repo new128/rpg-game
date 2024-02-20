@@ -58,6 +58,9 @@ var class_person = null # класс: ближник, дальник, маг и 
 			1 дефолт скил со старта но с помощью талантов можно получить ещё один и изменить старый
 
 """
+var pers_type = "play_pers"
+
+
 # null сдешний None
 var max_hp = null
 var hp = max_hp
@@ -90,9 +93,10 @@ var max_scils = null
 
 var time = null
 
-func _init(class_person, inventory_):
+func _init(class_person_, inventory_):
 	inventary = inventory_
-	if class_person == "paladin":
+	if class_person_ == "paladin":
+		class_person = "paladin"
 		max_hp = 1000
 		max_mana = 200
 		regen_hp = 10
@@ -104,7 +108,8 @@ func _init(class_person, inventory_):
 		attack_radius = 2.5
 		speed = 6
 		max_scils = 3
-	if class_person == "shooter":
+	if class_person_ == "shooter":
+		class_person = "shooter"
 		max_hp = 600
 		max_mana = 500
 		regen_hp = 4
@@ -116,7 +121,8 @@ func _init(class_person, inventory_):
 		attack_radius = 7.5
 		speed = 7
 		max_scils = 4
-	if class_person == "magician":
+	if class_person_ == "magician":
+		class_person = "magician"
 		max_hp = 400
 		max_mana = 700
 		regen_hp = 2
@@ -128,7 +134,8 @@ func _init(class_person, inventory_):
 		attack_radius = 10
 		speed = 4
 		max_scils = 5
-	if class_person == "crip":
+	if class_person_ == "crip":
+		class_person = "crip"
 		max_hp = 500
 		max_mana = 0
 		regen_hp = 4
@@ -138,7 +145,7 @@ func _init(class_person, inventory_):
 		damage = 50
 		attack_speed = 2
 		attack_radius = null
-		speed = 7
+		speed = 5
 		max_scils = 0
 	mana = max_mana
 	hp = max_hp
