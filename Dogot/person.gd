@@ -88,6 +88,8 @@ var scills = [null]
 
 var max_scils = null
 
+var time = null
+
 func _init(class_person, inventory_):
 	inventary = inventory_
 	if class_person == "paladin":
@@ -140,7 +142,7 @@ func _init(class_person, inventory_):
 		max_scils = 0
 	mana = max_mana
 	hp = max_hp
-	
+	time = attack_speed
 
 
 func taking_damage(type, damage):
@@ -151,5 +153,11 @@ func taking_damage(type, damage):
 	if type == "clear":
 		hp -= damage
 		
+
+
 func attack(object):
-	object.person.taking_damage("phis", damage)
+	print(time)
+	if time / 60 >= attack_speed*4:
+		object.person.taking_damage("phis", damage)
+		time = 0
+		print("at")

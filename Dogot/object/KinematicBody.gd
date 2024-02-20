@@ -19,7 +19,7 @@ func _process(delta):
 	OS.set_window_fullscreen(true)
 	
 	
-	
+	person.time+=1
 	
 	var cgp = global_transform.origin
 	var screen_size = OS.get_screen_size()
@@ -79,7 +79,7 @@ func _input(event):
 		print(object.name)
 		if object.name == "Crip":
 			person.attack(object)
-			print("attack")
+			return
 		#print(result)
 		if result:
 			target_position = result.position
