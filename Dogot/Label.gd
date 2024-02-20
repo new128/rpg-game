@@ -6,7 +6,6 @@ var running: bool = true
 func _process(delta):
 	if running:
 		elapsed_time += delta
-		print(delta)
 		update_label()
 
 func update_label():

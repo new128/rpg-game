@@ -12,6 +12,8 @@ var person = Person.new("paladin", null)
 func _process(delta):
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
+	
+	
 
 	# Перемещение к целевой позиции
 	if target_position != Vector3.ZERO:
