@@ -14,6 +14,8 @@ func _process(delta):
 	move_and_slide(Vector3.ZERO)
 	
 	
+	effects()
+	die()
 
 	# Перемещение к целевой позиции
 	if target_position != Vector3.ZERO:
@@ -39,4 +41,16 @@ func _input(event):
 		if result:
 			target_position = result.position
 			print(target_position)
+			
+			
+func effects():
+	person.hp += person.regen_hp / 60
+	person.mana += person.regen_mana / 60
+	person.hp += - 0.3
+	#person.mana += -0.1
+	
+func die():
+	if person.hp <= 0:
+		person.hp = 0
+		print("die")
 

@@ -12,3 +12,7 @@ func _process(delta):
 	$ProgressBar/max_hp.text = String(kin_bod.person.max_hp)
 	$ProgressBar2/mana.text = String(kin_bod.person.mana)
 	$ProgressBar2/max_mana.text = String(kin_bod.person.max_mana)
+	$ProgressBar.max_value = kin_bod.person.max_hp
+	$ProgressBar.value = kin_bod.person.hp
+	$ProgressBar2.max_value = kin_bod.person.max_mana
+	$ProgressBar2.value = kin_bod.person.mana
