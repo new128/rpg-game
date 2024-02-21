@@ -1,8 +1,12 @@
 extends Control
 
+var ac_d2 = true
+var ac_d3 = true
+var ac_d4 = true
+var ac_d5 = true
 
 func _ready():
-	pass
+	$AcceptDialog.popup()
 
 
 
@@ -18,3 +22,15 @@ func _process(delta):
 		$ProgressBar2.max_value = kin_bod.person.max_mana
 		$ProgressBar2.value = kin_bod.person.mana
 		$Money.text = String(int(kin_bod.person.money))
+	if not $AcceptDialog.visible and ac_d2:
+		$AcceptDialog2.popup()
+		ac_d2 =false
+	if not $AcceptDialog2.visible and ac_d3 and not ac_d2:
+		$AcceptDialog3.popup()
+		ac_d3 =false
+	if not $AcceptDialog3.visible and not ac_d3 and not ac_d2 and ac_d4:
+		$AcceptDialog4.popup()
+		ac_d4 =false
+	if not $AcceptDialog4.visible and not ac_d3 and not ac_d2 and not ac_d4 and ac_d5:
+		$AcceptDialog5.popup()
+		ac_d5 =false
