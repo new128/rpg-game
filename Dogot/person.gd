@@ -86,6 +86,7 @@ var speed = null # ещё хз в чём измерять
 var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
 var Inventary = preload("res://inventary.gd") 
+var Item = preload("res://item.gd") 
 var inventary = Inventary.new()
 var money = 500
 
@@ -99,7 +100,6 @@ var time = null
 
 
 func _init(class_person_, inventory_):
-	inventary = inventory_
 	if class_person_ == "paladin":
 		class_person = "paladin"
 		max_hp = 1000
@@ -113,6 +113,9 @@ func _init(class_person_, inventory_):
 		attack_radius = 2.5
 		speed = 6
 		max_scils = 3
+		inventary.weapon_r = Item.new("sword_is_rusty")
+		inventary.legs = Item.new("speed_boots")
+		inventary.body = Item.new("tattered_mail")
 	if class_person_ == "shooter":
 		class_person = "shooter"
 		max_hp = 600
@@ -205,3 +208,29 @@ func attack(attack_object, object):
 			object.last_attack = self
 	else:
 		return 5
+		
+		
+func count_stat():
+	print(inventary.body.characteristic)
+	for key in inventary.body.characteristic.keys():
+		if key == "hp":
+			if not inventary.body.dressed:
+				hp = hp*max_hp/inventary.body.characteristic[key] # Пропорцианальное добавление хп
+				max_hp += inventary.body.characteristic[key]
+		if key == "armor":
+			if not inventary.body.dressed:
+				armor += inventary.body.characteristic[key]
+	inventary.body.dressed = true
+	
+	
+	for key in inventary.legs.characteristic.keys():
+		if key == "damage":
+			if not inventary.legs.dressed:
+				damage += inventary.legs.characteristic[key]
+	inventary.legs.dressed = true
+	
+	for key in inventary.legs.characteristic.keys():
+		if key == "speed":
+			if not inventary.legs.dressed:
+				damage += inventary.legs.characteristic[key]
+	inventary.legs.dressed = true

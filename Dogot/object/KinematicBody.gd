@@ -7,7 +7,7 @@ var rotation_speed = 5
 # Загрузка класса
 var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
-var person = Person.new("paladin", null)
+var person = Person.new("paladin",null)
 var back_object = null
 var is_move = false
 var type = "play_pers"
@@ -28,6 +28,17 @@ func _ready():
 func _process(delta):
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
+	
+	
+	
+	
+	
+	
+	person.count_stat()
+	
+	
+	
+	
 	
 	OS.set_window_fullscreen(true)
 	
@@ -81,7 +92,7 @@ func _process(delta):
 	if is_move:
 		if target_position != Vector3.ZERO:
 			
-			move_and_slide(direction * speed)
+			move_and_slide(direction * person.speed)
 			
 			
 

@@ -21,25 +21,12 @@ var weapon_r = null
 
 var weapon_l = null
 
-var torso = null
+var body = null
 
-var shoes = null # обувь
+var legs = null # обувь
 
 var consumables = [] # расходники по типу кларетки и фласки в доте. максимально 3 штуки
 
 
 
-func _init(head_, shoulders_, weapon_r_, weapon_l_, torso_, shoes_, consumables_):
-	var head =  head_
 
-	var shoulders = shoulders_
-
-	var weapon_r = weapon_r_
-	
-	var weapon_l = weapon_l_
-
-	var torso = torso_
-
-	var shoes = shoes_ # обувь
-	
-	var consumables = []
