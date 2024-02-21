@@ -60,6 +60,8 @@ var class_person = null # класс: ближник, дальник, маг и 
 """
 var pers_type = "play_pers"
 
+var team = null
+
 
 # null сдешний None
 var max_hp = null
@@ -146,7 +148,7 @@ func _init(class_person_, inventory_):
 		armor = 3
 		mag_resist = 10
 		damage = 50
-		attack_speed = 0.1
+		attack_speed = 2
 		attack_radius = 2
 		speed = 5
 		max_scils = 0

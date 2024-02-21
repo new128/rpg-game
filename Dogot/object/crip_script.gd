@@ -18,7 +18,7 @@ var giv_money = 50
 var type = "enemy"
 
 func _ready():
-	pass # Replace with function body.
+	person.team = "right"
 
 
 func _process(delta):

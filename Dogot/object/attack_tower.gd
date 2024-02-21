@@ -21,11 +21,16 @@ var type = "tower_frend"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	person.team = "left"
 
 
 func _process(delta):
 	effect()
+	
+	
+	person.time += 1
+	
+	person.attack(self, target_person)
 	
 	
 	var cgp = global_transform.origin

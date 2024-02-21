@@ -20,7 +20,7 @@ var giv_money = 300
 var die = false
 
 func _ready():
-	pass
+	person.team = "left"
 
 func _process(delta):
 	# Обработка движения персонажа
