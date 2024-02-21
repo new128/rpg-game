@@ -20,8 +20,10 @@ func _ready():
 	crips_and_tawers.append(crip)
 	crips_and_tawers.append($Tower_f/LT1)
 	crips_and_tawers.append($Tower_r/RT1)
+	crips_and_tawers.append($Enemy)
 	all_person.append($KinematicBody)
 	all_person.append($Crip)
+	all_person.append($Enemy)
 	all_person.append($Tower_f/LT1)
 	all_person.append($Tower_r/RT1)
 	

@@ -1,7 +1,8 @@
 extends KinematicBody
 
+
 var Person = preload("res://person.gd")
-var person = Person.new("crip", null)
+var person = Person.new("paladin", null)
 
 var pers_type = "enemy"
 
@@ -13,7 +14,7 @@ var die = false
 
 var last_attack = null
 
-var giv_money = 50
+var giv_money = 500
 
 var type = "enemy"
 
@@ -99,3 +100,4 @@ func _process(delta):
 		
 func effect():
 	person.hp += person.regen_hp/60.0
+

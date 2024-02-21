@@ -194,7 +194,7 @@ margin_top = 0.2
 margin_right = -76.648
 margin_bottom = -24.2
 rect_scale = Vector2( 2.75, 2.75 )
-text = "Hello"
+text = "Time"
 align = 1
 script = ExtResource( 4 )
 
