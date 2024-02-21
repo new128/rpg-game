@@ -212,7 +212,6 @@ rect_scale = Vector2( 2.617, 2.617 )
 text = "1"
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
-visible = true
 anchor_left = 0.708
 anchor_top = 0.083
 anchor_right = 0.994
@@ -233,7 +232,6 @@ text = "Привет это обучение, мы рады что ты зашё
 его пройти и так ты готов?"
 
 [node name="AcceptDialog2" type="AcceptDialog" parent="."]
-visible = true
 anchor_left = 0.053
 anchor_top = 0.152
 anchor_right = 0.339
@@ -257,7 +255,6 @@ text = "Как ты видьшь твои союзники крипы уже
 проследить в левом нижнем экране"
 
 [node name="AcceptDialog3" type="AcceptDialog" parent="."]
-visible = true
 anchor_left = 0.01
 anchor_top = 0.537
 anchor_right = 0.299
@@ -279,7 +276,6 @@ text = "Деньги один из важных ресурсов в игре
 противника"
 
 [node name="AcceptDialog4" type="AcceptDialog" parent="."]
-visible = true
 margin_left = 714.0
 margin_top = 385.0
 margin_right = 1007.0
@@ -289,14 +285,13 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog4"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
+margin_right = 462.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 1 )
 text = "Внизу посеридине вся важная информация о твоём персонаже:
 количество жизни и маны также скилы которые ты можешь использовать"
 
 [node name="AcceptDialog5" type="AcceptDialog" parent="."]
-visible = true
 margin_left = 384.0
 margin_top = 167.0
 margin_right = 677.0
@@ -306,9 +301,69 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog5"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
+margin_right = 443.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 1 )
 text = "Теперь ты можешь идти бить крипов и зарабатывать деньги и запомни 
 самая главная цель это победить т е убить противника или
 рахрушить его башню"
+
+[node name="Head" type="Button" parent="."]
+anchor_left = 0.695
+anchor_top = 0.843
+anchor_right = 0.734
+anchor_bottom = 0.907
+margin_left = 0.319946
+margin_top = 0.199982
+margin_right = 0.383972
+margin_bottom = -0.200012
+
+[node name="Plechi" type="Button" parent="."]
+anchor_left = 0.741
+anchor_top = 0.843
+anchor_right = 0.78
+anchor_bottom = 0.907
+margin_left = 0.215942
+margin_top = 0.199982
+margin_right = 0.279968
+margin_bottom = -0.200012
+
+[node name="Body" type="Button" parent="."]
+anchor_left = 0.788
+anchor_top = 0.843
+anchor_right = 0.827
+anchor_bottom = 0.907
+margin_left = 0.0879517
+margin_top = 0.199982
+margin_right = 0.151978
+margin_bottom = -0.200012
+
+[node name="Weapon_r" type="Button" parent="."]
+anchor_left = 0.765
+anchor_top = 0.913
+anchor_right = 0.804
+anchor_bottom = 0.977
+margin_left = -0.360046
+margin_top = 0.199951
+margin_right = -0.296021
+margin_bottom = -0.200012
+
+[node name="Weapon_l" type="Button" parent="."]
+anchor_left = 0.695
+anchor_top = 0.843
+anchor_right = 0.734
+anchor_bottom = 0.907
+margin_left = 71.3199
+margin_top = -41.8
+margin_right = 71.384
+margin_bottom = -42.2
+
+[node name="Legs" type="Button" parent="."]
+anchor_left = 0.695
+anchor_top = 0.843
+anchor_right = 0.734
+anchor_bottom = 0.907
+margin_left = 141.32
+margin_top = 0.199982
+margin_right = 141.384
+margin_bottom = -0.200012
