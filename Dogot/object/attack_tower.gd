@@ -21,11 +21,19 @@ var type = "tower_frend"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	person.team = "left"
+	print(get_name())
+	if get_name() == "Tower_f":
+		person.team = "left"
+	if get_name() == "Tower_r":
+		person.team = "right"
 
 
 func _process(delta):
 	effect()
+	
+	
+	if get_name() == "Tower_r":
+		person = $StaticBody.person
 	
 	
 	person.time += 1
@@ -55,6 +63,8 @@ func _process(delta):
 	
 	$HUD/hp.max_value = person.max_hp
 	$HUD/hp.value = person.hp
+	print(get_name())
+	print(person.hp)
 	$HUD/mana.max_value = person.max_mana
 	$HUD/mana.value = person.mana
 

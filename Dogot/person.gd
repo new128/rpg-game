@@ -108,7 +108,7 @@ func _init(class_person_, inventory_):
 		regen_mana = 1
 		armor = 10
 		mag_resist = 30
-		damage = 80
+		damage = 2000
 		attack_speed = 2
 		attack_radius = 2.5
 		speed = 6
@@ -158,7 +158,7 @@ func _init(class_person_, inventory_):
 		max_mana = 0
 		regen_hp = 0
 		regen_mana = 0
-		armor = 10
+		armor = 25
 		mag_resist = 10
 		damage = 100
 		attack_speed = 1
@@ -193,14 +193,15 @@ func attack(attack_object, object):
 	
 	attack_bool = true
 	if object.person.class_person == "tower":
-		dist -= 2
+		dist -= 1
 		
 	if dist <= attack_radius:
 		print("aaaaaa")
+		print(object.person.hp)
 		if time / 60 >= attack_speed*4:
+			
 			object.person.taking_damage("phis", damage)
 			time = 0
-			print("at")
 			object.last_attack = self
 	else:
 		return 5

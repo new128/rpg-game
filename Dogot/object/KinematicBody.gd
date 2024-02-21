@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var target_position = Vector3.ZERO
-var speed = 6
+var speed = 10
 var rotation_threshold = 0.1
 var rotation_speed = 5
 # Загрузка класса
@@ -94,20 +94,22 @@ func _input(event):
 		
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(clicked_point, ray_end)
-		var object = result.collider
-		print(object.name)
-		target_position = result.position
-		if object.pers_type == "enemy":
-			back_object = object
-			is_move = false
-			print("Yes")
-			if person.attack(self ,object):
+		if result.has('collider'):
+			var object = result.collider
+			print(object.name)
+			target_position = result.position
+			if object.person != null:
+				if object.person.team != person.team:
+					back_object = object
+					is_move = false
+					print("Yes")
+					if person.attack(self ,object):
 
-				# Найти ближайшую точку на obj1 к obj2
-				target_position = object.global_transform.origin
-				is_move = true
-			
-			return
+					# Найти ближайшую точку на obj1 к obj2
+						target_position = object.global_transform.origin
+						is_move = true
+				
+					return
 		#print(result)
 		if result:
 			target_position = result.position

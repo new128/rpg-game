@@ -18,10 +18,12 @@ var back_el_t = 0
 func _ready():
 	crip = $Crip
 	crips_and_tawers.append(crip)
-	crips_and_tawers.append($Tower_f)
+	crips_and_tawers.append($Tower_f/StaticBody)
+	crips_and_tawers.append($Tower_r/StaticBody)
 	all_person.append($KinematicBody)
 	all_person.append($Crip)
-	all_person.append($Tower_f)
+	all_person.append($Tower_f/StaticBody)
+	all_person.append($Tower_r/StaticBody)
 	
 # Создайте копии кинематического тела и 3D-модели
 	var new_crip2 = crip.duplicate()
@@ -41,9 +43,9 @@ func _ready():
 	all_person.append(new_crip3)
 	crips_and_tawers.append(new_crip4)
 	all_person.append(new_crip4)
-	new_crip2.translation = Vector3(5, 1.47, -5)
-	new_crip3.translation = Vector3(10, 1.47, -10)
-	new_crip4.translation = Vector3(-5, 1.47, 5)
+	new_crip2.translation = Vector3(35, 1.47, 55)
+	new_crip3.translation = Vector3(40, 1.47, 50)
+	new_crip4.translation = Vector3(25, 1.47, 65)
 	
 	
 	
@@ -56,9 +58,7 @@ func _ready():
 func _process(delta):
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
-	print(el_t)
-	print(back_el_t)
-	if el_t % 5 == 0 and el_t - back_el_t > 1:
+	if el_t % 100 == 0 and el_t - back_el_t > 1:
 		var new_crip2 = crip.duplicate()
 		var new_crip1 = crip.duplicate()
 		var new_crip3 = crip.duplicate()
@@ -78,10 +78,10 @@ func _process(delta):
 		crips_and_tawers.append(new_crip4)
 		all_person.append(new_crip4)
 		
-		new_crip2.translation = Vector3(5, 1.47, -5)
-		new_crip1.translation = Vector3(0, 1.47, 0)
-		new_crip3.translation = Vector3(10, 1.47, -10)
-		new_crip4.translation = Vector3(-5, 1.47, 5)
+		new_crip2.translation = Vector3(35, 1.47, 55)
+		new_crip1.translation = Vector3(30, 1.47, 60)
+		new_crip3.translation = Vector3(40, 1.47, 50)
+		new_crip4.translation = Vector3(25, 1.47, 65)
 		back_el_t = el_t
 	
 	
@@ -104,8 +104,8 @@ func _process(delta):
 							min_dist = dist
 							object_d = it
 			if object_d != null:
-				item.target = object_d.global_transform.origin
-				item.target_person = object_d
+				#item.target = object_d.global_transform.origin
+				#item.target_person = object_d
 				print(object_d.name)
 	
 	
