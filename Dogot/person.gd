@@ -193,7 +193,7 @@ func attack(attack_object, object):
 	
 	attack_bool = true
 	if object.person.class_person == "tower":
-		dist -= 1
+		dist -= 2
 		
 	if dist <= attack_radius:
 		print("aaaaaa")

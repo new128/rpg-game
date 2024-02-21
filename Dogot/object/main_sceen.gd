@@ -19,14 +19,24 @@ func _ready():
 	all_person.append($Tower_f)
 	
 # Создайте копии кинематического тела и 3D-модели
-	var new_crip = original_crip.duplicate()
+	var new_crip2 = original_crip.duplicate()
+	var new_crip3 = original_crip.duplicate()
+	var new_crip4 = original_crip.duplicate()
 
 # Поместите копии в сцену (замените parent_node на ваш узел, к которому вы хотите прикрепить копии)
-	add_child(new_crip)
+	add_child(new_crip2)
+	add_child(new_crip3)
+	add_child(new_crip4)
 	
-	crips_and_tawers.append(new_crip)
-	all_person.append(new_crip)
-	new_crip.translation = Vector3(-30, 1.47, -50)
+	crips_and_tawers.append(new_crip2)
+	all_person.append(new_crip2)
+	crips_and_tawers.append(new_crip3)
+	all_person.append(new_crip3)
+	crips_and_tawers.append(new_crip4)
+	all_person.append(new_crip4)
+	new_crip2.translation = Vector3(5, 1.47, -5)
+	new_crip3.translation = Vector3(10, 1.47, -10)
+	new_crip4.translation = Vector3(-5, 1.47, 5)
 	
 	
 
