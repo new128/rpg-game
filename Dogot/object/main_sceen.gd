@@ -35,31 +35,33 @@ func _process(delta):
 	print(crips)
 	print(all_person)
 	for item in crips:
-		var min_dist = INF
-		var object_d = null
-		
-		for it in all_person:
-			if it != null:
-				if it != item and it.pers_type != "enemy":
-					var dist = item.global_transform.origin.distance_to(it.global_transform.origin)
-					if dist <= min_dist:
-						min_dist = dist
-						object_d = it
-		
-		item.target = object_d.global_transform.origin
-		item.target_person = object_d
-		print(object_d.name)
+		if item != null:
+			var min_dist = INF
+			var object_d = null
+			
+			for it in all_person:
+				if it != null:
+					if it != item and it.pers_type != "enemy":
+						var dist = item.global_transform.origin.distance_to(it.global_transform.origin)
+						if dist <= min_dist:
+							min_dist = dist
+							object_d = it
+			
+			item.target = object_d.global_transform.origin
+			item.target_person = object_d
+			print(object_d.name)
 	
 	
 	
 	
 	time += 1
-	if time % 60 == 1:
+	if time % 60 == 1 and get_node("/root/Spatial").has_node("KinematicBody"):
+		
 		$KinematicBody.person.money += 1.5
 	
-	for item in crips:
+	for item in all_person:
 		if item.die:
 			item.last_attack.money += item.giv_money
 			item.queue_free()
-			crips.erase(item)
+			if item in crips: crips.erase(item)
 			all_person.erase(item)

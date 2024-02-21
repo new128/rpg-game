@@ -17,6 +17,8 @@ var last_attack = null
 
 var giv_money = 300
 
+var die = false
+
 func _ready():
 	pass
 
@@ -124,6 +126,7 @@ func die():
 	if person.hp <= 0:
 		person.hp = 0
 		print("die")
+		die = true
 	if person.mana <= 0:
 		person.mana = 0
 		print("Dont mama")

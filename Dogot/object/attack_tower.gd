@@ -25,6 +25,9 @@ func _ready():
 
 
 func _process(delta):
+	effect()
+	
+	
 	var cgp = global_transform.origin
 	var screen_size = OS.get_screen_size()
 	var cam = get_node("/root/Spatial/Play_camera")
@@ -36,6 +39,11 @@ func _process(delta):
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
 	
+	if person.hp <= 0:
+		person.hp = 0
+		die = true
+		print("die")
+	
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
@@ -44,3 +52,7 @@ func _process(delta):
 	$HUD/hp.value = person.hp
 	$HUD/mana.max_value = person.max_mana
 	$HUD/mana.value = person.mana
+
+
+func effect():
+	person.hp += person.regen_hp/60.0
