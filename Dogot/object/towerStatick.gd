@@ -56,6 +56,10 @@ func _process(delta):
 		print("die")
 	
 	
+	if get_node("/root/Spatial/KinematicBody").person.team != person.team:
+		$HUD/hp.modulate = Color(1, 0, 0)
+	
+	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
 	
@@ -63,8 +67,7 @@ func _process(delta):
 	$HUD/hp.value = person.hp
 	print(get_name())
 	print(person.hp)
-	$HUD/mana.max_value = person.max_mana
-	$HUD/mana.value = person.mana
+	$HUD/mana.visible = false
 
 
 func effect():

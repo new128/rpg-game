@@ -72,14 +72,15 @@ func _process(delta):
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
 	
+	if get_node("/root/Spatial/KinematicBody").person.team != person.team:
+		$HUD/hp.modulate = Color(1, 0, 0)
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
 	
 	$HUD/hp.max_value = person.max_hp
 	$HUD/hp.value = person.hp
-	$HUD/mana.max_value = person.max_mana
-	$HUD/mana.value = person.mana
+	$HUD/mana.visible  = false
 	
 	
 	

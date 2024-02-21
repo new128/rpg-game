@@ -93,7 +93,7 @@ func _ready():
 func _process(delta):
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
-	if el_t % 30 == 0 and el_t - back_el_t > 1:
+	if el_t % 60 == 0 and el_t - back_el_t > 1:
 		var new_crip2 = crip.duplicate()
 		var new_crip1 = crip.duplicate()
 		var new_crip3 = crip.duplicate()
