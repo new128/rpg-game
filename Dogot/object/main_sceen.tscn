@@ -20,7 +20,7 @@ extents = Vector3( 50.894, 1.48172, 91.2569 )
 extents = Vector3( 2.55387, 7.30095, 1.18277 )
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.56256, 0.669101, 0.602358 )
+extents = Vector3( 1.11728, 0.669101, 0.602358 )
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 3.16727, 10.5811, 4.19002 )
@@ -67,7 +67,7 @@ script = ExtResource( 8 )
 [node name="crip" parent="Crip" instance=ExtResource( 6 )]
 
 [node name="CollisionShape" type="CollisionShape" parent="Crip"]
-transform = Transform( 1, 0, 0, 0, 2.313, 0, 0, 0, 1, -0.0432835, 0.78203, -0.105347 )
+transform = Transform( 1, 0, 0, 0, 2.313, 0, 0, 0, 1, 0.0654163, 0.78203, 0.0742264 )
 shape = SubResource( 3 )
 
 [node name="HUD" parent="Crip" instance=ExtResource( 7 )]

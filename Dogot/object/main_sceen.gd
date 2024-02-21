@@ -93,16 +93,26 @@ func _ready():
 func _process(delta):
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
-	if el_t % 100 == 0 and el_t - back_el_t > 1:
+	if el_t % 30 == 0 and el_t - back_el_t > 1:
 		var new_crip2 = crip.duplicate()
 		var new_crip1 = crip.duplicate()
 		var new_crip3 = crip.duplicate()
 		var new_crip4 = crip.duplicate()
 		
+		var new_crip5 = crip.duplicate()
+		var new_crip6 = crip.duplicate()
+		var new_crip7 = crip.duplicate()
+		var new_crip8 = crip.duplicate()
+		
 		add_child(new_crip2)
 		add_child(new_crip1)
 		add_child(new_crip3)
 		add_child(new_crip4)
+		
+		add_child(new_crip5)
+		add_child(new_crip6)
+		add_child(new_crip7)
+		add_child(new_crip8)
 		
 		crips_and_tawers.append(new_crip2)
 		all_person.append(new_crip2)
@@ -113,11 +123,43 @@ func _process(delta):
 		crips_and_tawers.append(new_crip4)
 		all_person.append(new_crip4)
 		
+		crips_and_tawers.append(new_crip5)
+		all_person.append(new_crip5)
+		crips_and_tawers.append(new_crip6)
+		all_person.append(new_crip6)
+		crips_and_tawers.append(new_crip7)
+		all_person.append(new_crip7)
+		crips_and_tawers.append(new_crip8)
+		all_person.append(new_crip8)
+		
 		new_crip2.translation = Vector3(35, 1.47, 55)
 		new_crip1.translation = Vector3(30, 1.47, 60)
 		new_crip3.translation = Vector3(40, 1.47, 50)
 		new_crip4.translation = Vector3(25, 1.47, 65)
+		
+		
+		new_crip5.translation = Vector3(-30, 1.47, -60)
+		new_crip5.rotation_degrees.y = 25
+		new_crip6.translation = Vector3(-25, 1.47, -65)
+		new_crip6.rotation_degrees.y = 25
+		new_crip7.translation = Vector3(-20, 1.47, -70)
+		new_crip7.rotation_degrees.y = 25
+		new_crip8.translation = Vector3(-35, 1.47, -55)
+		new_crip8.rotation_degrees.y = 25
+		
+		
+		new_crip5.person.team = "left"
+		new_crip6.person.team = "left"
+		new_crip7.person.team = "left"
+		new_crip8.person.team = "left"
+		
+		
+		
+		
+		
+		
 		back_el_t = el_t
+	
 	
 	
 	
