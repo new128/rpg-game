@@ -85,7 +85,7 @@ var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
 
 var inventary = null
-var money = 0
+var money = 500
 
 var scills = [null]
 
@@ -150,6 +150,19 @@ func _init(class_person_, inventory_):
 		attack_radius = 2
 		speed = 5
 		max_scils = 0
+	if class_person_ == "tower":
+		class_person = "tower"
+		max_hp = 2000
+		max_mana = 0
+		regen_hp = 0
+		regen_mana = 0
+		armor = 10
+		mag_resist = 10
+		damage = 100
+		attack_speed = 1
+		attack_radius = 6
+		speed = 0
+		max_scils = 0
 	mana = max_mana
 	hp = max_hp
 	time = attack_speed
@@ -177,6 +190,9 @@ func attack(attack_object, object):
 	var dist = obj1_position.distance_to(obj2_position)
 	
 	attack_bool = true
+	if object.person.class_person == "tower":
+		dist -= 1
+		
 	if dist <= attack_radius:
 		print("aaaaaa")
 		if time / 60 >= attack_speed*4:

@@ -15,6 +15,7 @@ func _ready():
 	crips.append(original_crip)
 	all_person.append($KinematicBody)
 	all_person.append($Crip)
+	all_person.append($Tower_f)
 	
 # Создайте копии кинематического тела и 3D-модели
 	var new_crip = original_crip.duplicate()
