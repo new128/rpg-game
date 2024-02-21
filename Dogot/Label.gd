@@ -23,3 +23,5 @@ func stop_timer():
 func reset_timer():
 	elapsed_time = 0
 	update_label()
+	
+	
