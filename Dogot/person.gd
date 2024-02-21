@@ -85,8 +85,8 @@ var speed = null # ещё хз в чём измерять
 
 var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
-
-var inventary = null
+var Inventary = preload("res://inventary.gd") 
+var inventary = Inventary.new()
 var money = 500
 
 var scills = [null]

@@ -14,3 +14,7 @@ func _init(characteristic_, name_, description_):
 	characteristic = characteristic_
 	name = name_
 	description = description_
+
+
+func _init(name):
+	pass
