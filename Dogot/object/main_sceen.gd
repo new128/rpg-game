@@ -15,6 +15,8 @@ var crip = null
 var el_t = null
 var back_el_t = 0
 
+var end_game = false
+
 func _ready():
 	crip = $Crip
 	crips_and_tawers.append(crip)
