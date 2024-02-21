@@ -17,6 +17,8 @@ var giv_money = 50
 
 var type = "enemy"
 
+
+
 func _ready():
 	person.team = "right"
 
@@ -27,6 +29,17 @@ func _process(delta):
 	effect()
 	
 	person.time += 1
+	
+	
+	
+	
+	var direction_ = (target - translation).normalized()
+	direction_.y = 0
+	
+	if direction_.length() > 0.1:
+		var angle = atan2(direction_.x, direction_.z)
+		rotation_degrees.y = angle * 180 / PI
+	
 	
 	
 	

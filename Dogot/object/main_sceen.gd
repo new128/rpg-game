@@ -30,6 +30,8 @@ func _ready():
 	var new_crip3 = crip.duplicate()
 	var new_crip4 = crip.duplicate()
 	
+	var new_crip5 = crip.duplicate()
+	
 	crip = crip.duplicate()
 
 # Поместите копии в сцену (замените parent_node на ваш узел, к которому вы хотите прикрепить копии)
@@ -37,16 +39,28 @@ func _ready():
 	add_child(new_crip3)
 	add_child(new_crip4)
 	
+	add_child(new_crip5)
+	
 	crips_and_tawers.append(new_crip2)
 	all_person.append(new_crip2)
 	crips_and_tawers.append(new_crip3)
 	all_person.append(new_crip3)
 	crips_and_tawers.append(new_crip4)
 	all_person.append(new_crip4)
+	
+	crips_and_tawers.append(new_crip5)
+	all_person.append(new_crip5)
+	
+	
 	new_crip2.translation = Vector3(35, 1.47, 55)
 	new_crip3.translation = Vector3(40, 1.47, 50)
 	new_crip4.translation = Vector3(25, 1.47, 65)
 	
+	new_crip5.translation = Vector3(-30, 1.47, -60)
+	new_crip5.rotation_degrees.y = 25
+	
+	
+	new_crip5.person.team = "left"
 	
 	
 	var el_t = int($Control/Time.elapsed_time)
