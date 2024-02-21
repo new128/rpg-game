@@ -223,14 +223,14 @@ func count_stat():
 	inventary.body.dressed = true
 	
 	
-	for key in inventary.legs.characteristic.keys():
+	for key in inventary.weapon_r.characteristic.keys():
 		if key == "damage":
-			if not inventary.legs.dressed:
-				damage += inventary.legs.characteristic[key]
-	inventary.legs.dressed = true
+			if not inventary.weapon_r.dressed:
+				damage += inventary.weapon_r.characteristic[key]
+	inventary.weapon_r.dressed = true
 	
 	for key in inventary.legs.characteristic.keys():
 		if key == "speed":
 			if not inventary.legs.dressed:
-				damage += inventary.legs.characteristic[key]
+				speed += inventary.legs.characteristic[key]
 	inventary.legs.dressed = true

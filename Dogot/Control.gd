@@ -22,6 +22,13 @@ func _process(delta):
 		$ProgressBar2.max_value = kin_bod.person.max_mana
 		$ProgressBar2.value = kin_bod.person.mana
 		$Money.text = String(int(kin_bod.person.money))
+		
+		
+		$Damage.text = "damage: "+ String(kin_bod.person.damage)
+		$Armor.text = "armor: "+ String(kin_bod.person.armor)
+		$Speed.text = "speed: "+ String(kin_bod.person.speed)
+		
+		
 	if not $AcceptDialog.visible and ac_d2:
 		$AcceptDialog2.popup()
 		ac_d2 =false
