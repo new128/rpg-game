@@ -108,7 +108,7 @@ func _init(class_person_, inventory_):
 		regen_mana = 1
 		armor = 10
 		mag_resist = 30
-		damage = 2000
+		damage = 80
 		attack_speed = 2
 		attack_radius = 2.5
 		speed = 6

@@ -22,9 +22,9 @@ var type = "tower_frend"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(get_name())
-	if get_name() == "Tower_f":
+	if get_name() == "LT1":
 		person.team = "left"
-	if get_name() == "Tower_r":
+	if get_name() == "RT1":
 		person.team = "right"
 
 

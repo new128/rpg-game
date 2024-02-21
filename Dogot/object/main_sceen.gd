@@ -18,12 +18,12 @@ var back_el_t = 0
 func _ready():
 	crip = $Crip
 	crips_and_tawers.append(crip)
-	crips_and_tawers.append($Tower_f/StaticBody)
-	crips_and_tawers.append($Tower_r/StaticBody)
+	crips_and_tawers.append($Tower_f/LT1)
+	crips_and_tawers.append($Tower_r/RT1)
 	all_person.append($KinematicBody)
 	all_person.append($Crip)
-	all_person.append($Tower_f/StaticBody)
-	all_person.append($Tower_r/StaticBody)
+	all_person.append($Tower_f/LT1)
+	all_person.append($Tower_r/RT1)
 	
 # Создайте копии кинематического тела и 3D-модели
 	var new_crip2 = crip.duplicate()
@@ -104,8 +104,8 @@ func _process(delta):
 							min_dist = dist
 							object_d = it
 			if object_d != null:
-				#item.target = object_d.global_transform.origin
-				#item.target_person = object_d
+				item.target = object_d.global_transform.origin
+				item.target_person = object_d
 				print(object_d.name)
 	
 	
