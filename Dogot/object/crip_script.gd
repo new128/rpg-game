@@ -17,6 +17,8 @@ var giv_money = 50
 
 var type = "enemy"
 
+var is_move = false
+
 
 
 func _ready():
@@ -43,15 +45,16 @@ func _process(delta):
 	
 	
 	
-	if target != Vector3.ZERO:
+	if target != Vector3.ZERO and is_move:
 			var direction = (target - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.speed)
 			
 			
 			
-	
-	person.attack(self, target_person)
+	is_move = false
+	if person.attack(self, target_person):
+		is_move = true
 	
 	
 	

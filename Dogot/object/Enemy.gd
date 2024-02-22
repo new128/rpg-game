@@ -18,6 +18,8 @@ var giv_money = 500
 
 var type = "enemy"
 
+var is_move = false
+
 
 
 func _ready():
@@ -45,7 +47,7 @@ func _process(delta):
 	
 	
 	
-	if target != Vector3.ZERO:
+	if target != Vector3.ZERO and is_move:
 			var direction = (target - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.speed)
@@ -53,7 +55,9 @@ func _process(delta):
 			
 			
 	
-	person.attack(self, target_person)
+	is_move = false
+	if person.attack(self, target_person):
+		is_move = true
 	
 	
 	
@@ -86,6 +90,9 @@ func _process(delta):
 	
 	$HUD/mana.max_value = person.max_mana
 	$HUD/mana.value = person.mana
+	
+	
+	
 	
 	
 	

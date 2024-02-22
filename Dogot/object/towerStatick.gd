@@ -71,5 +71,4 @@ func _process(delta):
 
 
 func effect():
-	person.hp -= 15/60.0
 	person.hp += person.regen_hp/60.0
