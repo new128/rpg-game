@@ -169,10 +169,11 @@ func _init(class_person_, inventory_):
 		attack_radius = 6
 		speed = 0
 		max_scils = 0
+		pers_type = "tower"
 	mana = max_mana
 	hp = max_hp
 	time = attack_speed
-	pers_type = "tower"
+	
 
 
 func taking_damage(type, damage):

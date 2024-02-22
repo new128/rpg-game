@@ -208,7 +208,7 @@ func _process(delta):
 	
 	for item in all_person:
 		if item.die:
-			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy":
+			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
 				end_game = true
 			item.last_attack.money += item.giv_money
 			item.queue_free()
