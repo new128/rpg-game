@@ -5,6 +5,9 @@ extends Control
 # var a = 2
 # var b = "text"
 
+var loser = "right"
+var game = null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,5 +35,20 @@ func new_win(team):
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	
+	var file = File.new()
+	var file_path = "user://win.txt"  # Путь к файлу (user:// используется для чтения из пользовательской директории)
+
+	if file.open(file_path, File.READ) == OK:
+		# Читаем текст из файла
+		loser = file.get_as_text()
+		# Закрываем файл после чтения
+		file.close()
+		
+		# Выводим прочитанный текст
+		print("Прочитанный текст из файла:", loser)
+	else:
+		print("Не удалось открыть файл для чтения.")
+	
+	$Win.text = "Победа Сил " + loser

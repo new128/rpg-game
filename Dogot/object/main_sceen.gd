@@ -17,7 +17,33 @@ var back_el_t = 0
 
 var end_game = false
 
+var loser = null
+
 func _ready():
+	
+	
+	
+	
+	
+	
+	
+	var file = File.new()
+	var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
+
+	if file.open(file_path, File.WRITE) == OK:
+		# Записываем текст в файл
+		var text_to_write = "win"
+		file.store_string(text_to_write)
+
+		# Закрываем файл после записи
+		file.close()
+		print("Текст успешно записан в файл.")
+	
+	
+	
+	
+	
+	
 	crip = $Crip
 	crips_and_tawers.append(crip)
 	crips_and_tawers.append($Tower_f/LT1)
@@ -209,9 +235,17 @@ func _process(delta):
 	for item in all_person:
 		if item.die:
 			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
-				var game_end = preload("res://object/Game_end.tscn")
-				var game_end_instance = game_end.instance()
-				game_end_instance.new_win(item.person.team)
+				var file = File.new()
+				var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
+
+				if file.open(file_path, File.WRITE) == OK:
+					# Записываем текст в файл
+					var text_to_write = item.person.team
+					file.store_string(text_to_write)
+
+					# Закрываем файл после записи
+					file.close()
+					print("Текст успешно записан в файл.")
 				end_game = true
 			item.last_attack.money += item.giv_money
 			item.queue_free()
