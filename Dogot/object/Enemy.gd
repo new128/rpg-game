@@ -77,14 +77,11 @@ func _process(delta):
 		$HUD/hp.modulate = Color(1, 0, 0)
 	
 	
-	$HUD.anchor_left = y_p-0.04
-	$HUD.anchor_top = x_p#-0.1
+	$HUD.anchor_left = y_p-0.05
+	$HUD.anchor_top = x_p-0.1
 	
 	$HUD/hp.max_value = person.max_hp
 	$HUD/hp.value = person.hp
-	$HUD/hp.rect_size.y = 20
-	$HUD/hp.rect_size.x = 140
-	$HUD/mana.visible  = false
 	
 	
 	
