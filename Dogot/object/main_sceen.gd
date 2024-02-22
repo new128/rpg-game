@@ -95,6 +95,15 @@ func _ready():
 
 
 func _process(delta):
+	
+	
+	if end_game:
+		get_tree().change_scene("res://object/menu.tscn")
+	
+	
+	
+	
+	
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
@@ -199,6 +208,8 @@ func _process(delta):
 	
 	for item in all_person:
 		if item.die:
+			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy":
+				end_game = true
 			item.last_attack.money += item.giv_money
 			item.queue_free()
 			if item in crips_and_tawers: crips_and_tawers.erase(item)

@@ -155,6 +155,7 @@ func _init(class_person_, inventory_):
 		attack_radius = 2
 		speed = 5
 		max_scils = 0
+		pers_type = "crip"
 	if class_person_ == "tower":
 		class_person = "tower"
 		max_hp = 2000
@@ -171,6 +172,7 @@ func _init(class_person_, inventory_):
 	mana = max_mana
 	hp = max_hp
 	time = attack_speed
+	pers_type = "tower"
 
 
 func taking_damage(type, damage):

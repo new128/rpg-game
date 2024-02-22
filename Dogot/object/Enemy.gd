@@ -22,6 +22,7 @@ var type = "enemy"
 
 func _ready():
 	person.team = "right"
+	person.pers_type = "enemy"
 
 
 func _process(delta):
@@ -83,6 +84,9 @@ func _process(delta):
 	$HUD/hp.max_value = person.max_hp
 	$HUD/hp.value = person.hp
 	
+	$HUD/mana.max_value = person.max_mana
+	$HUD/mana.value = person.mana
+	
 	
 	
 	if person.hp <= 0:
@@ -96,5 +100,6 @@ func _process(delta):
 		
 		
 func effect():
+	person.hp -= 10/60.0
 	person.hp += person.regen_hp/60.0
 
