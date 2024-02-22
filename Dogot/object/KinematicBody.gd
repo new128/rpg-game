@@ -35,7 +35,12 @@ func _process(delta):
 	if person.inventary.body.name:
 		var new_texture_path = "res://item_img/" + person.inventary.body.name + ".png"
 		get_node("/root/Spatial/Control/Body/TextureRect").texture = load(new_texture_path)
-		print("BODYYYYYYYY")
+	if person.inventary.weapon_r.name:
+		var new_texture_path = "res://item_img/" + person.inventary.weapon_r.name + ".png"
+		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
+	if person.inventary.legs.name:
+		var new_texture_path = "res://item_img/" + person.inventary.legs.name + ".png"
+		get_node("/root/Spatial/Control/Legs/TextureRect").texture = load(new_texture_path)
 	
 	
 	
