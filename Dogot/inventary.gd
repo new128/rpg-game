@@ -25,7 +25,7 @@ var body = null
 
 var legs = null # обувь
 
-var consumables = [] # расходники по типу кларетки и фласки в доте. максимально 3 штуки
+var consumables = [null,null,null] # расходники по типу кларетки и фласки в доте. максимально 3 штуки
 
 
 

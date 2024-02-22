@@ -118,9 +118,9 @@ func _init(class_person_, inventory_):
 		inventary.weapon_r = Item.new("sword_is_rusty")
 		inventary.legs = Item.new("speed_boots")
 		inventary.body = Item.new("tattered_mail")
-		inventary.consumables.append(Item.new("falakaxa"))
-		inventary.consumables.append(Item.new("pigeon"))
-		inventary.consumables.append(Item.new("fufarik"))
+		inventary.consumables[0] = Item.new("falakaxa")
+		inventary.consumables[1] = Item.new("pigeon")
+		inventary.consumables[2] = Item.new("fufarik")
 	if class_person_ == "shooter":
 		class_person = "shooter"
 		max_hp = 600

@@ -19,13 +19,19 @@ var giv_money = 300
 
 var die = false
 
+var effects_p = []
+var effects_time = []
+var el_t = null
+
 func _ready():
-	
 	
 	
 	person.team = "left"
 
 func _process(delta):
+	var kin_bod = get_node("/root/Spatial/Control/Time")
+	el_t = int(kin_bod.elapsed_time)
+	
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
 	
@@ -35,34 +41,43 @@ func _process(delta):
 	if person.inventary.body:
 		var new_texture_path = "res://item_img/" + person.inventary.body.name + ".png"
 		get_node("/root/Spatial/Control/Body/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Body/TextureRect").texture = null
 	if person.inventary.weapon_r:
 		var new_texture_path = "res://item_img/" + person.inventary.weapon_r.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = null
 	if person.inventary.legs:
 		var new_texture_path = "res://item_img/" + person.inventary.legs.name + ".png"
 		get_node("/root/Spatial/Control/Legs/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Legs/TextureRect").texture = null
 		
 	if person.inventary.weapon_l:
 		var new_texture_path = "res://item_img/" + person.inventary.weapon_l.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_l/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Weapon_l/TextureRect").texture = null
 		
 	if person.inventary.head:
 		var new_texture_path = "res://item_img/" + person.inventary.head.name + ".png"
 		get_node("/root/Spatial/Control/Head/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Head/TextureRect").texture = null
 		
 	if person.inventary.shoulders:
 		var new_texture_path = "res://item_img/" + person.inventary.shoulders.name + ".png"
 		get_node("/root/Spatial/Control/Plechi/TextureRect").texture = load(new_texture_path)
+	else:get_node("/root/Spatial/Control/Plechi/TextureRect").texture = null
 	if person.inventary.consumables.size() > 0:
 		if person.inventary.consumables[0]:
 			var new_texture_path = "res://item_img/" + person.inventary.consumables[0].name + ".png"
 			get_node("/root/Spatial/Control/consumable1/TextureRect").texture = load(new_texture_path)
+		else:get_node("/root/Spatial/Control/consumable1/TextureRect").texture = null
 		if person.inventary.consumables[1]:
 			var new_texture_path = "res://item_img/" + person.inventary.consumables[1].name + ".png"
 			get_node("/root/Spatial/Control/consumable2/TextureRect").texture = load(new_texture_path)
+		else:get_node("/root/Spatial/Control/consumable2/TextureRect").texture = null
 		if person.inventary.consumables[2]:
 			var new_texture_path = "res://item_img/" + person.inventary.consumables[2].name + ".png"
 			get_node("/root/Spatial/Control/consumable3/TextureRect").texture = load(new_texture_path)
+		else:get_node("/root/Spatial/Control/consumable3/TextureRect").texture = null
 	
 	
 	
@@ -136,6 +151,17 @@ func _process(delta):
 
 func _input(event):
 	# Обработка ввода от игрока
+	var control_node = get_node("/root/Spatial/Control")
+	control_node.connect("button_Z_pressed", self, "_on_button_Z_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("Z"):
+		_on_button_Z_pressed()
+	control_node.connect("button_X_pressed", self, "_on_button_X_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("X"):
+		_on_button_X_pressed()
+	control_node.connect("button_C_pressed", self, "_on_button_C_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("C"):
+		_on_button_C_pressed()
+	
 	
 	
 	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("right_click"):
@@ -173,8 +199,14 @@ func _input(event):
 func effects():
 	person.hp += (person.regen_hp / 60.0)
 	person.mana += (person.regen_mana / 60.0)
-	#person.hp += - 0.3
-	#person.mana += -0.1
+	for it in effects_p:
+		if it.name == "flask" and effects_time[effects_p.find(it)]+10 <= el_t:
+			person.regen_hp -= 30
+			effects_p.erase(it)
+			effects_time.erase(it)
+			
+			
+
 	
 func die():
 	if person.hp <= 0:
@@ -189,6 +221,21 @@ func die():
 	if person.mana >= person.max_mana:
 		person.mana = person.max_mana
 		
-		
-		
 
+func _on_button_Z_pressed():
+	effects_p.append(person.inventary.consumables[0].scil)
+	effects_time.append(el_t)
+	person.regen_hp += 30
+	
+	
+	person.inventary.consumables[0] = null
+func _on_button_X_pressed():
+	effects_p.append(person.inventary.consumables[1].scil)
+	effects_time.append(el_t)
+	
+	person.inventary.consumables[1] = null
+func _on_button_C_pressed():
+	effects_p.append(person.inventary.consumables[2].scil)
+	effects_time.append(el_t)
+	
+	person.inventary.consumables[2] = null

@@ -38,7 +38,8 @@ var price = null
 var slot = null
 var double_hends = null # двуручность т е нельзя во 2-ом слоте руки ничего держать\
 var rarity = null #редкость
-
+var Scil = preload("res://ability.gd")
+var scil = null
 var dressed = false
 
 
@@ -75,6 +76,7 @@ func _init(name_):
 		slot = "consumables"
 		double_hends = false
 		rarity = "regular"
+		scil = Scil.new("flask")
 	if name_ == "pigeon": 
 		name = name_
 		description = "Claret from dota" # Если что это всё переводчик
@@ -82,6 +84,7 @@ func _init(name_):
 		slot = "consumables"
 		double_hends = false
 		rarity = "regular"
+		scil = Scil.new("clarety")
 	if name_ == "fufarik":
 		name = name_
 		description = "fireman from dota" # Если что это всё переводчик
@@ -89,5 +92,6 @@ func _init(name_):
 		slot = "consumables"
 		double_hends = false
 		rarity = "regular"
+		scil = Scil.new("fairik")
 	
 

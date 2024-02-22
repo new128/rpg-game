@@ -5,19 +5,38 @@ var ac_d3 = true
 var ac_d4 = true
 var ac_d5 = true
 
+signal button_Z_pressed
+signal button_X_pressed
+signal button_C_pressed
+
 
 func _ready():
+	
+	OS.set_window_fullscreen(true)
+	rect_min_size = OS.get_window_size()
+	rect_position = Vector2(0, 0)
+	
+	
+	
+	$consumable1.connect("pressed", self, "_on_button_Z_pressed")
+	$consumable2.connect("pressed", self, "_on_button_X_pressed")
+	$consumable3.connect("pressed", self, "_on_button_C_pressed")
+	
+	
 	$AcceptDialog.popup()
 
 
 
 func _process(delta):
+
 	if get_node("/root/Spatial").has_node("KinematicBody"):
 		var kin_bod = get_node("/root/Spatial/KinematicBody")
 		$ProgressBar/hp.text = String(int(kin_bod.person.hp))
 		$ProgressBar/max_hp.text = String(int(kin_bod.person.max_hp))
+		$ProgressBar/regen_hp.text = String(int(kin_bod.person.regen_hp))
 		$ProgressBar2/mana.text = String(int(kin_bod.person.mana))
 		$ProgressBar2/max_mana.text = String(int(kin_bod.person.max_mana))
+		$ProgressBar2/regen_mana.text = String(int(kin_bod.person.regen_mana))
 		$ProgressBar.max_value = kin_bod.person.max_hp
 		$ProgressBar.value = kin_bod.person.hp
 		$ProgressBar2.max_value = kin_bod.person.max_mana
@@ -46,3 +65,17 @@ func _process(delta):
 func _input(event):
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("f4"):
 		$Shop.visible = not $Shop.visible 
+
+func _on_button_Z_pressed():
+	# Излучаем сигнал при нажатии кнопки
+	$Shop.visible = not $Shop.visible 
+	print("ZZZZZZZZZZZZZZZZZZZZZZZZZ")
+	emit_signal("button_Z_pressed")
+func _on_button_X_pressed():
+	# Излучаем сигнал при нажатии кнопки
+	$Shop.visible = not $Shop.visible 
+	print("XXXXXXXXXXXXXXXXXXXXXXXXXX")
+func _on_button_C_pressed():
+	# Излучаем сигнал при нажатии кнопки
+	$Shop.visible = not $Shop.visible 
+	print("CCCCCCCCCCCCCCCCCCCCCCCCCCCC")
