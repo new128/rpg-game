@@ -81,6 +81,8 @@ var attack_speed = null # Измеряется в за сколько секун
 var attack_radius = null
 var speed = null # ещё хз в чём измерять
 
+var skils = []
+
 # Все вышеперечисленные характеристики это те что могут меняться и будут изменены в начале игры при выборе класса и оружия
 
 var xp = 0
@@ -116,6 +118,9 @@ func _init(class_person_, inventory_):
 		inventary.weapon_r = Item.new("sword_is_rusty")
 		inventary.legs = Item.new("speed_boots")
 		inventary.body = Item.new("tattered_mail")
+		inventary.consumables.append(Item.new("falakaxa"))
+		inventary.consumables.append(Item.new("pigeon"))
+		inventary.consumables.append(Item.new("fufarik"))
 	if class_person_ == "shooter":
 		class_person = "shooter"
 		max_hp = 600

@@ -68,5 +68,26 @@ func _init(name_):
 		double_hends = false
 		characteristic["speed"] = +1.5
 		rarity = "regular"
+	if name_ == "falakaxa": 
+		name = name_
+		description = "Flask from dota" # Если что это всё переводчик
+		price = 120
+		slot = "consumables"
+		double_hends = false
+		rarity = "regular"
+	if name_ == "pigeon": 
+		name = name_
+		description = "Claret from dota" # Если что это всё переводчик
+		price = 90
+		slot = "consumables"
+		double_hends = false
+		rarity = "regular"
+	if name_ == "fufarik":
+		name = name_
+		description = "fireman from dota" # Если что это всё переводчик
+		price = 80
+		slot = "consumables"
+		double_hends = false
+		rarity = "regular"
 	
 
