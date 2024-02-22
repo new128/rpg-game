@@ -98,7 +98,7 @@ func _process(delta):
 	
 	
 	if end_game:
-		get_tree().change_scene("res://object/menu.tscn")
+		get_tree().change_scene("res://object/Game_end.tscn")
 	
 	
 	
@@ -209,6 +209,9 @@ func _process(delta):
 	for item in all_person:
 		if item.die:
 			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
+				var game_end = preload("res://object/Game_end.tscn")
+				var game_end_instance = game_end.instance()
+				game_end_instance.new_win(item.person.team)
 				end_game = true
 			item.last_attack.money += item.giv_money
 			item.queue_free()
