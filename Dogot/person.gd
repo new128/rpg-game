@@ -214,6 +214,15 @@ func attack(attack_object, object):
 		
 		
 func count_stat():
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	print(inventary.body.characteristic)
 	for key in inventary.body.characteristic.keys():
 		if key == "hp":

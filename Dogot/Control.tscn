@@ -318,6 +318,12 @@ margin_top = 0.199982
 margin_right = 0.383972
 margin_bottom = -0.200012
 
+[node name="TextureRect" type="TextureRect" parent="Head"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -3.05176e-05
+
 [node name="Plechi" type="Button" parent="."]
 anchor_left = 0.741
 anchor_top = 0.843
@@ -327,6 +333,11 @@ margin_left = 0.215942
 margin_top = 0.199982
 margin_right = 0.279968
 margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="Plechi"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -3.05176e-05
 
 [node name="Body" type="Button" parent="."]
 anchor_left = 0.788
@@ -338,6 +349,12 @@ margin_top = 0.199982
 margin_right = 0.151978
 margin_bottom = -0.200012
 
+[node name="TextureRect" type="TextureRect" parent="Body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -3.05176e-05
+
 [node name="Weapon_r" type="Button" parent="."]
 anchor_left = 0.765
 anchor_top = 0.913
@@ -347,6 +364,12 @@ margin_left = -0.360046
 margin_top = 0.199951
 margin_right = -0.296021
 margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="Weapon_r"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -6.10352e-05
 
 [node name="Weapon_l" type="Button" parent="."]
 anchor_left = 0.765
@@ -358,6 +381,12 @@ margin_top = 0.199951
 margin_right = -0.296021
 margin_bottom = -0.200012
 
+[node name="TextureRect" type="TextureRect" parent="Weapon_l"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.000183105
+margin_bottom = -6.10352e-05
+
 [node name="Legs" type="Button" parent="."]
 anchor_left = 0.833
 anchor_top = 0.843
@@ -367,6 +396,11 @@ margin_left = 0.00793457
 margin_top = 0.199982
 margin_right = 0.0719604
 margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="Legs"]
+anchor_right = 1.0
+anchor_bottom = 0.974
+margin_bottom = -0.0120316
 
 [node name="Damage" type="Label" parent="."]
 anchor_left = 0.237
