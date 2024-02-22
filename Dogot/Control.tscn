@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Control.gd" type="Script" id=5]
 [ext_resource path="res://Shrift/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://shop/fon.jpg" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
 
 [node name="Control" type="Control"]
@@ -433,3 +437,29 @@ margin_top = 0.199982
 margin_right = -0.128021
 margin_bottom = -0.200043
 text = "speed:"
+
+[node name="Shop" type="Control" parent="."]
+anchor_left = 0.771
+anchor_top = 0.047
+anchor_right = 1.0
+anchor_bottom = 0.705
+margin_left = -0.504028
+margin_top = -0.200001
+margin_bottom = -3.05176e-05
+
+[node name="Label" type="Label" parent="Shop"]
+anchor_right = 1.0
+anchor_bottom = 0.051
+margin_bottom = -0.145
+custom_fonts/font = SubResource( 2 )
+text = "Магазин"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Shop"]
+anchor_top = 0.073
+anchor_right = 1.928
+anchor_bottom = 1.694
+margin_top = 0.164997
+margin_right = -218.08
+margin_bottom = -275.13
+texture = ExtResource( 7 )
