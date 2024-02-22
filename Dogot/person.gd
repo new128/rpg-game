@@ -232,6 +232,32 @@ func count_stat():
 		if key == "armor":
 			if not inventary.body.dressed:
 				armor += inventary.body.characteristic[key]
+		if key == "speed":
+			if not inventary.body.dressed:
+				speed += inventary.body.characteristic[key]
+		if key == "damage":
+			if not inventary.body.dressed:
+				damage += inventary.body.characteristic[key]
+		if key == "mana":
+			if not inventary.body.dressed:
+				mana = mana*max_mana/inventary.body.characteristic[key] # Пропорцианальное добавление хп
+				max_mana += inventary.body.characteristic[key]
+		if key == "reg_hp":
+			if not inventary.body.dressed:
+				regen_hp += inventary.body.characteristic[key]
+		if key == "reg_mana":
+			if not inventary.body.dressed:
+				regen_mana += inventary.body.characteristic[key]
+		if key == "mag_resist":
+			if not inventary.body.dressed:
+				mag_resist += inventary.body.characteristic[key]
+		if key == "attack_speed":
+			if not inventary.body.dressed:
+				attack_speed += inventary.body.characteristic[key]
+		if key == "attack_radius":
+			if not inventary.body.dressed:
+				attack_radius += inventary.body.characteristic[key]
+		
 	inventary.body.dressed = true
 	
 	
@@ -239,10 +265,176 @@ func count_stat():
 		if key == "damage":
 			if not inventary.weapon_r.dressed:
 				damage += inventary.weapon_r.characteristic[key]
+		if key == "hp":
+			if not inventary.weapon_r.dressed:
+				hp = hp*max_hp/inventary.weapon_r.characteristic[key] # Пропорцианальное добавление хп
+				max_hp += inventary.weapon_r.characteristic[key]
+		if key == "armor":
+			if not inventary.weapon_r.dressed:
+				armor += inventary.weapon_r.characteristic[key]
+		if key == "speed":
+			if not inventary.weapon_r.dressed:
+				speed += inventary.weapon_r.characteristic[key]
+		if key == "mana":
+			if not inventary.weapon_r.dressed:
+				mana = mana*max_mana/inventary.weapon_r.characteristic[key] # Пропорцианальное добавление хп
+				max_mana += inventary.weapon_r.characteristic[key]
+		if key == "reg_hp":
+			if not inventary.weapon_r.dressed:
+				regen_hp += inventary.weapon_r.characteristic[key]
+		if key == "reg_mana":
+			if not inventary.weapon_r.dressed:
+				regen_mana += inventary.weapon_r.characteristic[key]
+		if key == "mag_resist":
+			if not inventary.weapon_r.dressed:
+				mag_resist += inventary.weapon_r.characteristic[key]
+		if key == "attack_speed":
+			if not inventary.weapon_r.dressed:
+				attack_speed += inventary.weapon_r.characteristic[key]
+		if key == "attack_radius":
+			if not inventary.weapon_r.dressed:
+				attack_radius += inventary.weapon_r.characteristic[key]
 	inventary.weapon_r.dressed = true
 	
 	for key in inventary.legs.characteristic.keys():
 		if key == "speed":
 			if not inventary.legs.dressed:
 				speed += inventary.legs.characteristic[key]
+		if key == "hp":
+			if not inventary.legs.dressed:
+				hp = hp*max_hp/inventary.legs.characteristic[key] # Пропорцианальное добавление хп
+				max_hp += inventary.legs.characteristic[key]
+		if key == "armor":
+			if not inventary.legs.dressed:
+				armor += inventary.legs.characteristic[key]
+		if key == "damage":
+			if not inventary.legs.dressed:
+				damage += inventary.legs.characteristic[key]
+		if key == "mana":
+			if not inventary.legs.dressed:
+				mana = mana*max_mana/inventary.legs.characteristic[key] # Пропорцианальное добавление хп
+				max_mana += inventary.legs.characteristic[key]
+		if key == "reg_hp":
+			if not inventary.legs.dressed:
+				regen_hp += inventary.legs.characteristic[key]
+		if key == "reg_mana":
+			if not inventary.legs.dressed:
+				regen_mana += inventary.legs.characteristic[key]
+		if key == "mag_resist":
+			if not inventary.legs.dressed:
+				mag_resist += inventary.legs.characteristic[key]
+		if key == "attack_speed":
+			if not inventary.legs.dressed:
+				attack_speed += inventary.legs.characteristic[key]
+		if key == "attack_radius":
+			if not inventary.legs.dressed:
+				attack_radius += inventary.legs.characteristic[key]
 	inventary.legs.dressed = true
+	
+	if inventary.head:
+		for key in inventary.head.characteristic.keys():
+			if key == "speed":
+				if not inventary.head.dressed:
+					speed += inventary.head.characteristic[key]
+			if key == "hp":
+				if not inventary.head.dressed:
+					hp = hp*max_hp/inventary.head.characteristic[key] # Пропорцианальное добавление хп
+					max_hp += inventary.head.characteristic[key]
+			if key == "armor":
+				if not inventary.head.dressed:
+					armor += inventary.head.characteristic[key]
+			if key == "damage":
+				if not inventary.head.dressed:
+					damage += inventary.head.characteristic[key]
+			if key == "mana":
+				if not inventary.head.dressed:
+					mana = mana*max_mana/inventary.head.characteristic[key] # Пропорцианальное добавление хп
+					max_mana += inventary.head.characteristic[key]
+			if key == "reg_hp":
+				if not inventary.head.dressed:
+					regen_hp += inventary.head.characteristic[key]
+			if key == "reg_mana":
+				if not inventary.head.dressed:
+					regen_mana += inventary.head.characteristic[key]
+			if key == "mag_resist":
+				if not inventary.head.dressed:
+					mag_resist += inventary.head.characteristic[key]
+			if key == "attack_speed":
+				if not inventary.head.dressed:
+					attack_speed += inventary.head.characteristic[key]
+			if key == "attack_radius":
+				if not inventary.head.dressed:
+					attack_radius += inventary.head.characteristic[key]
+		inventary.head.dressed = true
+	
+	if inventary.shoulders:
+		for key in inventary.shoulders.characteristic.keys():
+			if key == "speed":
+				if not inventary.shoulders.dressed:
+					speed += inventary.shoulders.characteristic[key]
+			if key == "hp":
+				if not inventary.shoulders.dressed:
+					hp = hp*max_hp/inventary.shoulders.characteristic[key] # Пропорцианальное добавление хп
+					max_hp += inventary.shoulders.characteristic[key]
+			if key == "armor":
+				if not inventary.shoulders.dressed:
+					armor += inventary.shoulders.characteristic[key]
+			if key == "damage":
+				if not inventary.shoulders.dressed:
+					damage += inventary.shoulders.characteristic[key]
+			if key == "mana":
+				if not inventary.shoulders.dressed:
+					mana = mana*max_mana/inventary.shoulders.characteristic[key] # Пропорцианальное добавление хп
+					max_mana += inventary.shoulders.characteristic[key]
+			if key == "reg_hp":
+				if not inventary.shoulders.dressed:
+					regen_hp += inventary.shoulders.characteristic[key]
+			if key == "reg_mana":
+				if not inventary.shoulders.dressed:
+					regen_mana += inventary.shoulders.characteristic[key]
+			if key == "mag_resist":
+				if not inventary.shoulders.dressed:
+					mag_resist += inventary.shoulders.characteristic[key]
+			if key == "attack_speed":
+				if not inventary.shoulders.dressed:
+					attack_speed += inventary.shoulders.characteristic[key]
+			if key == "attack_radius":
+				if not inventary.shoulders.dressed:
+					attack_radius += inventary.shoulders.characteristic[key]
+		inventary.shoulders.dressed = true
+	
+	if inventary.weapon_l:
+		for key in inventary.weapon_l.characteristic.keys():
+			if key == "speed":
+				if not inventary.weapon_l.dressed:
+					speed += inventary.weapon_l.characteristic[key]
+			if key == "hp":
+				if not inventary.weapon_l.dressed:
+					hp = hp*max_hp/inventary.weapon_l.characteristic[key] # Пропорцианальное добавление хп
+					max_hp += inventary.weapon_l.characteristic[key]
+			if key == "armor":
+				if not inventary.weapon_l.dressed:
+					armor += inventary.weapon_l.characteristic[key]
+			if key == "damage":
+				if not inventary.weapon_l.dressed:
+					damage += inventary.weapon_l.characteristic[key]
+			if key == "mana":
+				if not inventary.weapon_l.dressed:
+					mana = mana*max_mana/inventary.weapon_l.characteristic[key] # Пропорцианальное добавление хп
+					max_mana += inventary.weapon_l.characteristic[key]
+			if key == "reg_hp":
+				if not inventary.weapon_l.dressed:
+					regen_hp += inventary.weapon_l.characteristic[key]
+			if key == "reg_mana":
+				if not inventary.weapon_l.dressed:
+					regen_mana += inventary.weapon_l.characteristic[key]
+			if key == "mag_resist":
+				if not inventary.weapon_l.dressed:
+					mag_resist += inventary.weapon_l.characteristic[key]
+			if key == "attack_speed":
+				if not inventary.weapon_l.dressed:
+					attack_speed += inventary.weapon_l.characteristic[key]
+			if key == "attack_radius":
+				if not inventary.weapon_l.dressed:
+					attack_radius += inventary.weapon_l.characteristic[key]
+		inventary.weapon_l.dressed = true

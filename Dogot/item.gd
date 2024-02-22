@@ -11,6 +11,26 @@
 
 """
 
+
+
+"""
+Ключи статов:
+	
+	damage
+	armor
+	hp
+	speed
+	mana
+	reg_hp
+	reg_mana
+	mag_resist
+	attack_speed
+	attack_radius
+
+
+
+"""
+
 var characteristic = {} #  в словаре будет характеристика типо макс хп и значение изменения её
 var name = null
 var description = null

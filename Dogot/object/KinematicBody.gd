@@ -32,25 +32,25 @@ func _process(delta):
 	
 	
 	
-	if person.inventary.body.name:
+	if person.inventary.body:
 		var new_texture_path = "res://item_img/" + person.inventary.body.name + ".png"
 		get_node("/root/Spatial/Control/Body/TextureRect").texture = load(new_texture_path)
-	if person.inventary.weapon_r.name:
+	if person.inventary.weapon_r:
 		var new_texture_path = "res://item_img/" + person.inventary.weapon_r.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
-	if person.inventary.legs.name:
+	if person.inventary.legs:
 		var new_texture_path = "res://item_img/" + person.inventary.legs.name + ".png"
 		get_node("/root/Spatial/Control/Legs/TextureRect").texture = load(new_texture_path)
 		
-	if person.inventary.weapon_l.name:
+	if person.inventary.weapon_l:
 		var new_texture_path = "res://item_img/" + person.inventary.weapon_l.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
 		
-	if person.inventary.shoulders.name:
+	if person.inventary.shoulders:
 		var new_texture_path = "res://item_img/" + person.inventary.shoulders.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
 		
-	if person.inventary.shoulders.name:
+	if person.inventary.shoulders:
 		var new_texture_path = "res://item_img/" + person.inventary.shoulders.name + ".png"
 		get_node("/root/Spatial/Control/Weapon_r/TextureRect").texture = load(new_texture_path)
 	
