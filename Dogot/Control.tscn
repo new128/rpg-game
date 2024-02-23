@@ -122,7 +122,7 @@ anchor_right = 1.509
 anchor_bottom = 1.503
 margin_right = 812.969
 margin_bottom = 812.317
-rect_scale = Vector2( 0.063, 0.063 )
+rect_scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 3 )
 
 [node name="Button2" type="Button" parent="."]
@@ -138,15 +138,14 @@ rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="Button2"]
-anchor_left = 0.212
-anchor_top = -0.752
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -12.296
-margin_top = 44.368
-margin_right = 843.0
-margin_bottom = 843.0
-rect_scale = Vector2( 0.063, 0.063 )
+anchor_left = 0.013
+anchor_right = 1.023
+anchor_bottom = 1.082
+margin_left = 0.0137043
+margin_top = -0.0400391
+margin_right = 831.096
+margin_bottom = 869.96
+rect_scale = Vector2( 0.117, 0.117 )
 texture = ExtResource( 3 )
 
 [node name="Button3" type="Button" parent="."]
@@ -167,7 +166,7 @@ anchor_bottom = 1.0
 margin_left = 1.0
 margin_right = 844.0
 margin_bottom = 843.0
-rect_scale = Vector2( 0.063, 0.063 )
+rect_scale = Vector2( 0.111, 0.111 )
 texture = ExtResource( 3 )
 
 [node name="Button4" type="Button" parent="."]
@@ -187,7 +186,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 843.0
 margin_bottom = 843.0
-rect_scale = Vector2( 0.063, 0.063 )
+rect_scale = Vector2( 0.117, 0.117 )
 texture = ExtResource( 3 )
 
 [node name="Button5" type="Button" parent="."]
@@ -206,18 +205,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 843.0
 margin_bottom = 843.0
-rect_scale = Vector2( 0.063, 0.063 )
+rect_scale = Vector2( 0.119, 0.119 )
 texture = ExtResource( 3 )
 
 [node name="Time" type="Label" parent="."]
-anchor_left = 0.409
+anchor_left = 0.396
 anchor_top = 0.003
-anchor_right = 0.527
-anchor_bottom = 0.067
-margin_left = 0.184021
-margin_top = 0.2
-margin_right = -76.648
-margin_bottom = -24.2
+anchor_right = 0.611
+anchor_bottom = 0.117
+margin_left = 0.679993
+margin_top = -0.24
+margin_right = -262.392
+margin_bottom = -78.64
 rect_scale = Vector2( 2.75, 2.75 )
 text = "Time"
 align = 1
@@ -250,8 +249,8 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
-margin_bottom = 175.0
+margin_right = 524.256
+margin_bottom = 343.96
 custom_fonts/font = SubResource( 1 )
 text = "Привет это обучение, мы рады что ты зашёл 
 его пройти и так ты готов?"
@@ -270,8 +269,8 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog2"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
-margin_bottom = 175.0
+margin_right = 541.256
+margin_bottom = 342.04
 custom_fonts/font = SubResource( 1 )
 text = "Как ты видьшь твои союзники крипы уже
 побежали атаковать крипов пративник
@@ -293,8 +292,8 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog3"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 288.0
-margin_bottom = 175.0
+margin_right = 546.944
+margin_bottom = 343.48
 custom_fonts/font = SubResource( 1 )
 text = "Деньги один из важных ресурсов в игре
 чем больше денег тем ьольше шанс победить
@@ -432,10 +431,10 @@ anchor_left = 0.905
 anchor_top = 0.912
 anchor_right = 0.944
 anchor_bottom = 0.975
-margin_left = -473.72
-margin_top = -181.2
-margin_right = -473.656
-margin_bottom = -181.0
+margin_left = -29.6001
+margin_top = -28.36
+margin_right = -29.5361
+margin_bottom = -28.1599
 
 [node name="TextureRect" type="TextureRect" parent="consumable1"]
 anchor_right = 1.0
@@ -456,10 +455,10 @@ anchor_left = 0.949
 anchor_top = 0.912
 anchor_right = 0.988
 anchor_bottom = 0.975
-margin_left = -473.776
-margin_top = -181.2
-margin_right = -473.712
-margin_bottom = -181.0
+margin_left = -29.656
+margin_top = -28.36
+margin_right = -29.592
+margin_bottom = -28.1599
 
 [node name="TextureRect" type="TextureRect" parent="consumable2"]
 anchor_right = 1.0
@@ -480,10 +479,10 @@ anchor_left = 0.927
 anchor_top = 0.842
 anchor_right = 0.966
 anchor_bottom = 0.905
-margin_left = -474.248
-margin_top = -181.2
-margin_right = -474.184
-margin_bottom = -181.0
+margin_left = -30.1279
+margin_top = -28.36
+margin_right = -30.064
+margin_bottom = -28.16
 
 [node name="TextureRect" type="TextureRect" parent="consumable3"]
 anchor_right = 1.0
@@ -533,7 +532,6 @@ margin_bottom = -0.200043
 text = "speed:"
 
 [node name="Shop" type="Control" parent="."]
-visible = false
 anchor_left = 0.771
 anchor_top = 0.047
 anchor_right = 1.0
@@ -554,7 +552,7 @@ align = 1
 anchor_top = 0.073
 anchor_right = 1.928
 anchor_bottom = 1.694
-margin_top = 0.164997
-margin_right = -218.08
-margin_bottom = -275.13
+margin_top = 0.108688
+margin_right = -389.675
+margin_bottom = -512.163
 texture = ExtResource( 7 )

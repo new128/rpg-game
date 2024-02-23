@@ -93,5 +93,13 @@ func _init(name_):
 		double_hends = false
 		rarity = "regular"
 		scil = Scil.new("fairik")
+	if name_ == "magago":
+		name = name_
+		description = "mango from dota" # Если что это всё переводчик
+		price = 70
+		slot = "consumables"
+		double_hends = false
+		rarity = "regular"
+		scil = Scil.new("mango")
 	
 

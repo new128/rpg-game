@@ -213,6 +213,8 @@ func die():
 		person.hp = 0
 		print("die")
 		die = true
+	if person.hp == person.max_hp:
+		person.hp = person.max_hp
 	if person.mana <= 0:
 		person.mana = 0
 		print("Dont mama")

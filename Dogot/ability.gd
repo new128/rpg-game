@@ -21,4 +21,8 @@ func _init(name_):
 		scil["time"] = "instantly"
 		scil["target"] = "self"
 		scil["hp"] = +100
+	if name_ == "mango":
+		scil["time"] = "instantly"
+		scil["target"] = "self"
+		scil["mana"] = +100
 		
