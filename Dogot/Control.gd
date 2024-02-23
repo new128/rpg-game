@@ -23,7 +23,7 @@ func _ready():
 	$consumable3.connect("pressed", self, "_on_button_C_pressed")
 	
 	
-	$AcceptDialog.popup()
+	#$AcceptDialog.popup()
 
 
 

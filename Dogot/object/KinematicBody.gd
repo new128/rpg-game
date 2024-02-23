@@ -161,6 +161,9 @@ func _input(event):
 	control_node.connect("button_C_pressed", self, "_on_button_C_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("C"):
 		_on_button_C_pressed()
+		
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("Q"):
+		_on_button_Q_pressed()
 	
 	
 	
@@ -225,42 +228,61 @@ func die():
 		
 
 func _on_button_Z_pressed():
-	if person.inventary.consumables[0].scil.name == "flask":
-		person.regen_hp += 30
-	if person.inventary.consumables[0].scil.name == "clarety":
-		person.regen_mana += 20
-	if person.inventary.consumables[0].scil.name == "fairik":
-		person.hp += 100
-	
-	if String(person.inventary.consumables[0].scil.scil["time"]) != "instantly":
-		effects_p.append(person.inventary.consumables[0].scil)
-		effects_time.append(el_t)
+	if person.inventary.consumables[3]:
+		if person.inventary.consumables[0].scil.name == "flask":
+			person.regen_hp += 30
+		if person.inventary.consumables[0].scil.name == "clarety":
+			person.regen_mana += 20
+		if person.inventary.consumables[0].scil.name == "fairik":
+			person.hp += 100
+		
+		if String(person.inventary.consumables[0].scil.scil["time"]) != "instantly":
+			effects_p.append(person.inventary.consumables[0].scil)
+			effects_time.append(el_t)
 	
 	
 	
 	person.inventary.consumables[0] = null
 func _on_button_X_pressed():
-	if person.inventary.consumables[1].scil.name == "flask":
-		person.regen_hp += 30
-	if person.inventary.consumables[1].scil.name == "clarety":
-		person.regen_mana += 20
-	if person.inventary.consumables[1].scil.name == "fairik":
-		person.hp += 100
-	
-	if String(person.inventary.consumables[1].scil.scil["time"]) != "instantly":
-		effects_p.append(person.inventary.consumables[1].scil)
-		effects_time.append(el_t)
-	
-	person.inventary.consumables[1] = null
+	if person.inventary.consumables[1]:
+		if person.inventary.consumables[1].scil.name == "flask":
+			person.regen_hp += 30
+		if person.inventary.consumables[1].scil.name == "clarety":
+			person.regen_mana += 20
+		if person.inventary.consumables[1].scil.name == "fairik":
+			person.hp += 100
+		
+		if String(person.inventary.consumables[1].scil.scil["time"]) != "instantly":
+			effects_p.append(person.inventary.consumables[1].scil)
+			effects_time.append(el_t)
+		
+		person.inventary.consumables[1] = null
 func _on_button_C_pressed():
-	if person.inventary.consumables[2].scil.name == "flask":
-		person.regen_hp += 30
-	if person.inventary.consumables[2].scil.name == "clarety":
-		person.regen_mana += 20
-	if person.inventary.consumables[2].scil.name == "fairik":
-		person.hp += 100
+	if person.inventary.consumables[2]:
+		if person.inventary.consumables[2].scil.name == "flask":
+			person.regen_hp += 30
+		if person.inventary.consumables[2].scil.name == "clarety":
+			person.regen_mana += 20
+		if person.inventary.consumables[2].scil.name == "fairik":
+			person.hp += 100
+		
+		if String(person.inventary.consumables[2].scil.scil["time"]) != "instantly":
+			effects_p.append(person.inventary.consumables[2].scil)
+			effects_time.append(el_t)
+		person.inventary.consumables[2] = null
 	
-	if String(person.inventary.consumables[2].scil.scil["time"]) != "instantly":
-		effects_p.append(person.inventary.consumables[2].scil)
-		effects_time.append(el_t)
-	person.inventary.consumables[2] = null
+	
+	
+func _on_button_Q_pressed():
+	if person.money >= 120:
+		if person.inventary.consumables[0] == null:
+			person.money -= 120
+			person.inventary.consumables[0] = Item.new("falakaxa")
+		elif person.inventary.consumables[1] == null:
+			person.money -= 120
+			person.inventary.consumables[1] = Item.new("falakaxa")
+		elif person.inventary.consumables[2] == null:
+			person.money -= 120
+			person.inventary.consumables[2] = Item.new("falakaxa")
+		else:
+			print("No slote")
