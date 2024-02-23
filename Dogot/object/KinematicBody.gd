@@ -223,19 +223,42 @@ func die():
 		
 
 func _on_button_Z_pressed():
-	effects_p.append(person.inventary.consumables[0].scil)
-	effects_time.append(el_t)
-	person.regen_hp += 30
+	if person.inventary.consumables[0].scil.name == "flask":
+		person.regen_hp += 30
+	if person.inventary.consumables[0].scil.name == "clarety":
+		person.regen_mana += 20
+	if person.inventary.consumables[0].scil.name == "fairik":
+		person.hp += 100
+	
+	if String(person.inventary.consumables[0].scil.scil["time"]) != "instantly":
+		effects_p.append(person.inventary.consumables[0].scil)
+		effects_time.append(el_t)
+	
 	
 	
 	person.inventary.consumables[0] = null
 func _on_button_X_pressed():
-	effects_p.append(person.inventary.consumables[1].scil)
-	effects_time.append(el_t)
+	if person.inventary.consumables[1].scil.name == "flask":
+		person.regen_hp += 30
+	if person.inventary.consumables[1].scil.name == "clarety":
+		person.regen_mana += 20
+	if person.inventary.consumables[1].scil.name == "fairik":
+		person.hp += 100
+	
+	if String(person.inventary.consumables[1].scil.scil["time"]) != "instantly":
+		effects_p.append(person.inventary.consumables[1].scil)
+		effects_time.append(el_t)
 	
 	person.inventary.consumables[1] = null
 func _on_button_C_pressed():
-	effects_p.append(person.inventary.consumables[2].scil)
-	effects_time.append(el_t)
+	if person.inventary.consumables[2].scil.name == "flask":
+		person.regen_hp += 30
+	if person.inventary.consumables[2].scil.name == "clarety":
+		person.regen_mana += 20
+	if person.inventary.consumables[2].scil.name == "fairik":
+		person.hp += 100
 	
+	if String(person.inventary.consumables[2].scil.scil["time"]) != "instantly":
+		effects_p.append(person.inventary.consumables[2].scil)
+		effects_time.append(el_t)
 	person.inventary.consumables[2] = null
