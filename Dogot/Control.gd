@@ -8,6 +8,8 @@ var ac_d5 = true
 signal button_Z_pressed
 signal button_X_pressed
 signal button_C_pressed
+signal button_buy_falakaxa_pressed
+signal button_buy_pigeon_pressed
 
 
 func _ready():
@@ -21,6 +23,8 @@ func _ready():
 	$consumable1.connect("pressed", self, "_on_button_Z_pressed")
 	$consumable2.connect("pressed", self, "_on_button_X_pressed")
 	$consumable3.connect("pressed", self, "_on_button_C_pressed")
+	$Shop/falakaxa.connect("pressed", self, "_on_button_buy_falakaxa_pressed")
+	$Shop/pigeon.connect("pressed", self, "_on_button_buy_pigeon_pressed")
 	
 	
 	#$AcceptDialog.popup()
@@ -75,7 +79,14 @@ func _on_button_X_pressed():
 	# Излучаем сигнал при нажатии кнопки
 	$Shop.visible = not $Shop.visible 
 	print("XXXXXXXXXXXXXXXXXXXXXXXXXX")
+	emit_signal("button_X_pressed")
 func _on_button_C_pressed():
 	# Излучаем сигнал при нажатии кнопки
 	$Shop.visible = not $Shop.visible 
 	print("CCCCCCCCCCCCCCCCCCCCCCCCCCCC")
+	emit_signal("button_C_pressed")
+	
+func _on_button_buy_falakaxa_pressed():
+	emit_signal("button_buy_falakaxa_pressed")
+func _on_button_buy_pigeon_pressed():
+	emit_signal("button_buy_pigeon_pressed")

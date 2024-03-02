@@ -473,7 +473,7 @@ margin_right = -17.8912
 margin_bottom = -14.957
 icon = ExtResource( 8 )
 
-[node name="Button2" type="Button" parent="Shop"]
+[node name="pigeon" type="Button" parent="Shop"]
 anchor_left = 0.219
 anchor_top = 0.098
 anchor_right = 0.35

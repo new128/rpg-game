@@ -164,6 +164,9 @@ func _input(event):
 		
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("Q"):
 		_on_button_Q_pressed()
+		
+	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
+	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
 	
 	
 	
@@ -228,7 +231,7 @@ func die():
 		
 
 func _on_button_Z_pressed():
-	if person.inventary.consumables[3]:
+	if person.inventary.consumables[0]:
 		if person.inventary.consumables[0].scil.name == "flask":
 			person.regen_hp += 30
 		if person.inventary.consumables[0].scil.name == "clarety":
@@ -284,5 +287,32 @@ func _on_button_Q_pressed():
 		elif person.inventary.consumables[2] == null:
 			person.money -= 120
 			person.inventary.consumables[2] = Item.new("falakaxa")
+		else:
+			print("No slote")
+			
+func _on_button_buy_falakaxa_pressed():
+	if person.money >= 120:
+		if person.inventary.consumables[0] == null:
+			person.money -= 120
+			person.inventary.consumables[0] = Item.new("falakaxa")
+		elif person.inventary.consumables[1] == null:
+			person.money -= 120
+			person.inventary.consumables[1] = Item.new("falakaxa")
+		elif person.inventary.consumables[2] == null:
+			person.money -= 120
+			person.inventary.consumables[2] = Item.new("falakaxa")
+		else:
+			print("No slote")
+func _on_button_buy_pigeon_pressed():
+	if person.money >= 90:
+		if person.inventary.consumables[0] == null:
+			person.money -= 90
+			person.inventary.consumables[0] = Item.new("pigeon")
+		elif person.inventary.consumables[1] == null:
+			person.money -= 90
+			person.inventary.consumables[1] = Item.new("pigeon")
+		elif person.inventary.consumables[2] == null:
+			person.money -= 90
+			person.inventary.consumables[2] = Item.new("pigeon")
 		else:
 			print("No slote")
