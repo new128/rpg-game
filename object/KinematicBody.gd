@@ -1,5 +1,6 @@
 extends KinematicBody
 
+onready var navigation = $"../Navigation"
 var target_position = Vector3.ZERO
 var speed = 10
 var rotation_threshold = 0.1
@@ -22,6 +23,9 @@ var die = false
 var effects_p = []
 var effects_time = []
 var el_t = null
+
+var path = []
+var path_index = 0
 
 func _ready():
 	
@@ -130,12 +134,12 @@ func _process(delta):
 	$HUD/mana.value = person.mana
 	
 	
-	var direction = (target_position - translation).normalized()
-	direction.y = 0
+	#var direction = (target_position - translation).normalized()
+	#direction.y = 0
 	
-	if direction.length() > rotation_threshold:
-		var angle = atan2(direction.x, direction.z)
-		rotation_degrees.y = angle * 180 / PI
+	#if direction.length() > rotation_threshold:
+		#var angle = atan2(direction.x, direction.z)
+		#rotation_degrees.y = angle * 180 / PI
 	
 	
 	effects()
@@ -143,9 +147,12 @@ func _process(delta):
 
 	# Перемещение к целевой позиции
 	if is_move:
-		if target_position != Vector3.ZERO:
-			
-			move_and_slide(direction * person.speed)
+		if path_index < path.size():
+			var direction = path[path_index] - global_transform.origin
+			if direction.length () < 1:
+				path_index += 1
+			else:
+				move_and_slide(direction.normalized() * person.speed)
 			
 			
 
@@ -190,12 +197,16 @@ func _input(event):
 					if person.attack(self ,object):
 
 					# Найти ближайшую точку на obj1 к obj2
+						path = navigation.get_simple_path(global_transform.origin, result.position)
+						path_index = 0
 						target_position = object.global_transform.origin
 						is_move = true
 				
 					return
 		#print(result)
 		if result:
+			#path = navigation.get_simple_path(global_transform.origin, result.position)
+			#path_index = 0
 			target_position = result.position
 			person.attack_bool = false
 			is_move = true
