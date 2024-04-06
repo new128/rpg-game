@@ -84,9 +84,11 @@ var speed = null # ещё хз в чём измерять
 var skils = []
 
 # Все вышеперечисленные характеристики это те что могут меняться и будут изменены в начале игры при выборе класса и оружия
-
 var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
+var levels = null
+
+
 var Inventary = preload("res://inventary.gd") 
 var Item = preload("res://item.gd") 
 var inventary = Inventary.new()
@@ -102,6 +104,39 @@ var time = null
 
 
 func _init(class_person_, inventory_):
+	
+	var file = File.new()
+	var file_path = "res://lvl/lvl.json"
+
+	# Попытка открыть файл
+	if file.open(file_path, File.READ) == OK:
+		# Считать данные из файла
+		var file_contents = file.get_as_text()
+		# Закрыть файл после использования
+		file.close()
+
+		# Разбор JSON-строки в словарь
+		levels = JSON.parse(file_contents)
+		print(levels)
+		
+	levels = {
+  "1": 300,
+  "2": 600,
+  "3": 1000,
+  "4": 1500,
+  "5": 2000,
+  "6": 2500,
+  "7": 3000,
+  "8": 4000,
+  "9": 5000,
+  "10": 6000,
+}
+	
+	
+	
+	
+	
+	
 	if class_person_ == "paladin":
 		class_person = "paladin"
 		max_hp = 1000
@@ -219,6 +254,13 @@ func attack(attack_object, object):
 		
 		
 func count_stat():
+	
+	for l in levels:
+		if xp >= levels[l]:
+			lvl == int(l)
+	
+	
+	
 	
 	
 	
