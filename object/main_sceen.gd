@@ -10,6 +10,8 @@ var time = 0
 
 var all_person = []
 
+var player = []
+
 var crip = null
 
 var el_t = null
@@ -54,6 +56,9 @@ func _ready():
 	all_person.append($Enemy)
 	all_person.append($Tower_f/LT1)
 	all_person.append($Tower_r/RT1)
+	
+	player.append($KinematicBody)
+	player.append($Enemy)
 	
 # Создайте копии кинематического тела и 3D-модели
 	var new_crip2 = crip.duplicate()
@@ -248,6 +253,13 @@ func _process(delta):
 					print("Текст успешно записан в файл.")
 				end_game = true
 			item.last_attack.money += item.giv_money
+			for pl in player:
+				if pl.person.team != item.person.team:
+					var x_distance = item.translation.x - pl.translation.x
+					var z_distance = item.translation.z - pl.translation.z
+					var dist = sqrt(x_distance * x_distance + z_distance * z_distance)
+					if dist <= 30:
+						pl.person.xp+=400
 			item.queue_free()
 			if item in crips_and_tawers: crips_and_tawers.erase(item)
 			all_person.erase(item)

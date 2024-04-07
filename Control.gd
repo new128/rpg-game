@@ -46,6 +46,8 @@ func _process(delta):
 		$ProgressBar2.max_value = kin_bod.person.max_mana
 		$ProgressBar2.value = kin_bod.person.mana
 		$Money.text = String(int(kin_bod.person.money))
+		$Lvl.text = String(kin_bod.person.lvl)
+		$Xp.text = String(kin_bod.person.xp)
 		
 		
 		$Damage.text = "damage: "+ String(kin_bod.person.damage)
