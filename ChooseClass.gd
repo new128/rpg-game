@@ -12,7 +12,7 @@ func _on_button1_pressed():
 	fileSave.open("res://static/class.json", File.WRITE)
 	fileSave.store_string(to_json(class_data))
 	fileSave.close()
-	get_tree().change_scene("res://object/main_sceen.tscn")
+	get_tree().change_scene("res://object/Menu.tscn")
 	
 func _on_button2_pressed():
 	var class_data = {"class":"shooter"}
@@ -20,7 +20,7 @@ func _on_button2_pressed():
 	fileSave.open("res://static/class.json",File.WRITE)
 	fileSave.store_string(to_json(class_data))
 	fileSave.close()
-	get_tree().change_scene("res://object/main_sceen.tscn")
+	get_tree().change_scene("res://object/Menu.tscn")
 	
 func _on_button3_pressed():
 	var class_data = {"class":"magician"}
@@ -28,4 +28,4 @@ func _on_button3_pressed():
 	fileSave.open("res://static/class.json",File.WRITE)
 	fileSave.store_string(to_json(class_data))
 	fileSave.close()
-	get_tree().change_scene("res://object/main_sceen.tscn")
+	get_tree().change_scene("res://object/Menu.tscn")
