@@ -12,6 +12,10 @@ font_data = ExtResource( 2 )
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 264.0
+margin_right = 15.0
+margin_bottom = 264.0
 script = ExtResource( 1 )
 
 [node name="Button_Education" type="Button" parent="."]
