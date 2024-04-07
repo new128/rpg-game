@@ -89,6 +89,20 @@ var lvl = 1 # думаю сделаем как в большинстве РПГ 
 var levels = null
 
 
+var up_max_hp = null
+var up_max_mana = null
+var up_regen_hp = null
+var up_regen_mana = null
+var up_armor = null 
+var up_mag_resist = null  
+
+var up_damage = null
+var up_attack_speed = null 
+var up_speed = null 
+
+
+
+
 var Inventary = preload("res://inventary.gd") 
 var Item = preload("res://item.gd") 
 var inventary = Inventary.new()
@@ -150,6 +164,19 @@ func _init(class_person_, inventory_):
 		attack_speed = 2
 		attack_radius = 2.5
 		speed = 6
+		
+		up_max_hp = 50
+		up_max_mana = 10
+		up_regen_hp = 2.5
+		up_regen_mana = 0.5
+		up_armor = 2
+		up_mag_resist = 1
+		up_damage = 5
+		up_attack_speed = -0.05
+		up_speed = 0.1
+		
+		
+		
 		max_scils = 3
 		inventary.weapon_r = Item.new("sword_is_rusty")
 		inventary.legs = Item.new("speed_boots")
@@ -256,9 +283,17 @@ func attack(attack_object, object):
 		
 func count_stat():
 	
-	for l in levels:
-		if xp >= levels[l]:
-			lvl = int(l)
+	if levels[String(lvl+1)] <= xp:
+		lvl +=1
+		max_hp += up_max_hp
+		max_mana += up_max_mana
+		regen_hp += up_regen_hp
+		regen_mana += up_regen_mana
+		armor += up_armor
+		mag_resist += up_mag_resist
+		damage += up_damage
+		attack_speed += up_attack_speed
+		speed += up_speed
 	
 	
 	
