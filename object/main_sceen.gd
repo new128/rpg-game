@@ -253,13 +253,18 @@ func _process(delta):
 					print("Текст успешно записан в файл.")
 				end_game = true
 			item.last_attack.money += item.giv_money
+			var con = 0
 			for pl in player:
 				if pl.person.team != item.person.team:
 					var x_distance = item.translation.x - pl.translation.x
 					var z_distance = item.translation.z - pl.translation.z
 					var dist = sqrt(x_distance * x_distance + z_distance * z_distance)
 					if dist <= 30:
-						pl.person.xp+=400
+						con += 1
+			for pl in player:
+				if pl.person.team != item.person.team:
+					pl.person.xp+=item.person.giv_xp/con
+			con = 0
 			item.queue_free()
 			if item in crips_and_tawers: crips_and_tawers.erase(item)
 			all_person.erase(item)

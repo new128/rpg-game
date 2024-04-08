@@ -88,6 +88,8 @@ var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
 var levels = null
 
+var giv_xp = null
+
 
 var up_max_hp = null
 var up_max_mana = null
@@ -241,6 +243,8 @@ func _init(class_person_, inventory_):
 		speed = 5
 		max_scils = 0
 		pers_type = "crip"
+		
+		giv_xp = 200
 	if class_person_ == "tower":
 		class_person = "tower"
 		max_hp = 2000
@@ -255,6 +259,7 @@ func _init(class_person_, inventory_):
 		speed = 0
 		max_scils = 0
 		pers_type = "tower"
+		giv_xp = 400
 	mana = max_mana
 	hp = max_hp
 	time = attack_speed
