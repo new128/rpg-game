@@ -338,6 +338,7 @@ func attack(attack_object, object, sceen):
 				var sheel = load("res://shells/strela/Strela.tscn") 
 				sheel = sheel.instance()
 				sheel.translation = attack_object.translation
+				sheel.self_ = attack_object
 				sheel.target = object
 				sceen.add_child(sheel)
 				time = 0

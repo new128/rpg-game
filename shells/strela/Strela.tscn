@@ -4,15 +4,16 @@
 [ext_resource path="res://shells/strela/Strela.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.40498, 0.264877, 2.2347 )
+extents = Vector3( 0.0633728, 0.0599333, 1.70806 )
 
 [node name="Spatial" type="KinematicBody"]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="strela" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, -1.92535 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.104256, 0.00701052, -0.0515103 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00383556, 0.00701052, -0.0515103 )
 shape = SubResource( 1 )
+disabled = true

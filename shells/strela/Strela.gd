@@ -5,6 +5,7 @@ extends KinematicBody
 # var a = 2
 var target = null
 var target_position = null
+var self_ = null
 
 
 
@@ -16,14 +17,29 @@ func _ready():
 		self.queue_free()
 
 func _process(delta):
+	
+	
+	
 	if target != null and is_instance_valid(target):
+		
+		
 		target_position = target.global_transform.origin
 		var direction = (target_position - translation).normalized()
 		direction.y = 0
 		if direction.length() > 0.1:
 			var angle = atan2(direction.x, direction.z)
 			rotation_degrees.y = angle * 180 / PI
-		move_and_slide(direction * 1)
+		global_translate(direction * 7.5 * delta)
+		$CollisionShape.disabled = false
+		move_and_slide(direction * 7.5)
+		for i in get_slide_count():
+			if get_slide_collision(i).collider == target:
+				target.person.taking_damage("phis", self_.person.damage)
+				self.queue_free()
+				target.last_attack = self_.person
+		$CollisionShape.disabled = true
+		
 	else:
 		self.queue_free()
+	
 
