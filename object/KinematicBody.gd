@@ -1,6 +1,7 @@
 extends KinematicBody
 
 var target_position = Vector3.ZERO
+var target_ = null
 var speed = 10
 var rotation_threshold = 0.1
 var rotation_speed = 5
@@ -37,6 +38,8 @@ func _ready():
 func _process(delta):
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
+	
+	person.time += delta
 	
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
@@ -102,11 +105,11 @@ func _process(delta):
 	OS.set_window_fullscreen(true)
 	
 	
-	person.time+=1
 	
 	
 	if person.attack_bool:
-		if not person.attack(self, back_object):
+		var sceen = get_node("/root/Spatial")
+		if not person.attack(self, back_object, sceen):
 			is_move = false
 	
 	
@@ -193,13 +196,17 @@ func _input(event):
 					back_object = object
 					is_move = false
 					print("Yes")
-					if person.attack(self ,object):
+					var sceen = get_node("/root/Spatial")
+					if person.attack(self ,object, sceen):
 
 					# Найти ближайшую точку на obj1 к obj2
+						target_ = object
 						target_position = object.global_transform.origin
 						is_move = true
 				
 					return
+			else:
+				target_ = null
 		#print(result)
 		if result:
 			target_position = result.position

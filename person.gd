@@ -83,6 +83,8 @@ var speed = null # ещё хз в чём измерять
 
 var skils = []
 
+var type_attack = null
+
 # Все вышеперечисленные характеристики это те что могут меняться и будут изменены в начале игры при выборе класса и оружия
 var xp = 0
 var lvl = 1 # думаю сделаем как в большинстве РПГ игр xp впрогрессии увеличивается, только надо найти золотую серидину
@@ -186,6 +188,8 @@ func _init(class_person_, inventory_):
 		inventary.consumables[0] = Item.new("falakaxa")
 		inventary.consumables[1] = Item.new("pigeon")
 		inventary.consumables[2] = Item.new("fufarik")
+		
+		type_attack = "melee"
 	if class_person_ == "shooter":
 		class_person = "shooter"
 		max_hp = 600
@@ -218,6 +222,8 @@ func _init(class_person_, inventory_):
 		inventary.consumables[0] = Item.new("falakaxa")
 		inventary.consumables[1] = Item.new("pigeon")
 		inventary.consumables[2] = Item.new("fufarik")
+		
+		type_attack = "range"
 	if class_person_ == "magician":
 		class_person = "magician"
 		max_hp = 400
@@ -227,7 +233,7 @@ func _init(class_person_, inventory_):
 		armor = 0
 		mag_resist = 50
 		damage = 100
-		attack_speed = 0.5
+		attack_speed = 2
 		attack_radius = 10
 		speed = 4
 		max_scils = 5
@@ -253,6 +259,7 @@ func _init(class_person_, inventory_):
 		inventary.consumables[0] = Item.new("falakaxa")
 		inventary.consumables[1] = Item.new("pigeon")
 		inventary.consumables[2] = Item.new("fufarik")
+		type_attack = "range"
 	if class_person_ == "crip":
 		class_person = "crip"
 		max_hp = 500
@@ -269,6 +276,8 @@ func _init(class_person_, inventory_):
 		pers_type = "crip"
 		
 		giv_xp = 200
+		
+		type_attack = "melee"
 	if class_person_ == "tower":
 		class_person = "tower"
 		max_hp = 2000
@@ -284,6 +293,8 @@ func _init(class_person_, inventory_):
 		max_scils = 0
 		pers_type = "tower"
 		giv_xp = 400
+		
+		type_attack = "range"
 	mana = max_mana
 	hp = max_hp
 	time = attack_speed
@@ -300,7 +311,7 @@ func taking_damage(type, damage):
 		
 var attack_bool = false
 
-func attack(attack_object, object):
+func attack(attack_object, object, sceen):
 	
 	
 	if not is_instance_valid(object):
@@ -318,11 +329,18 @@ func attack(attack_object, object):
 	if dist <= attack_radius:
 		print("aaaaaa")
 		print(object.person.hp)
-		if time / 60 >= attack_speed*4:
-			
-			object.person.taking_damage("phis", damage)
-			time = 0
-			object.last_attack = self
+		if time >= attack_speed:
+			if type_attack == "melee":
+				object.person.taking_damage("phis", damage)
+				time = 0
+				object.last_attack = self
+			if type_attack == "range":
+				var sheel = load("res://shells/strela/Strela.tscn") 
+				sheel = sheel.instance()
+				sheel.translation = attack_object.translation
+				sheel.target = object
+				sceen.add_child(sheel)
+				time = 0
 	else:
 		return 5
 		

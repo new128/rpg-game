@@ -74,7 +74,7 @@ shape = SubResource( 3 )
 [node name="HUD" parent="Crip" instance=ExtResource( 7 )]
 
 [node name="Tower_f" type="ProximityGroup" parent="."]
-transform = Transform( 0.476718, 0, 0.222297, 0, 0.526, 0, -0.222297, 0, 0.476718, -37.7515, 0.872882, -72.8264 )
+transform = Transform( 0.476718, 0, 0.222297, 0, 0.526, 0, -0.222297, 0, 0.476718, -37.0187, 0.872882, -72.8264 )
 
 [node name="LT1" type="StaticBody" parent="Tower_f"]
 script = ExtResource( 13 )

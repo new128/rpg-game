@@ -18,6 +18,8 @@ var giv_money = 300
 
 var type = "tower_frend"
 
+var target_
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,9 +36,10 @@ func _process(delta):
 	
 	
 	
-	person.time += 1
-	
-	person.attack(self, target_person)
+	person.time += delta
+	var sceen = get_node("/root/Spatial")
+	if person.attack(self, target_person, sceen):
+		target_ = target_person
 	
 	
 	var cgp = global_transform.origin

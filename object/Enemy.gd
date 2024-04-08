@@ -14,6 +14,8 @@ var die = false
 
 var last_attack = null
 
+var target_ = null
+
 var giv_money = 500
 
 var type = "enemy"
@@ -32,7 +34,7 @@ func _process(delta):
 	
 	effect()
 	
-	person.time += 1
+	person.time += delta
 	
 	
 	
@@ -56,8 +58,10 @@ func _process(delta):
 			
 	
 	is_move = false
-	if person.attack(self, target_person):
+	var sceen = get_node("/root/Spatial")
+	if person.attack(self, target_person, sceen):
 		is_move = true
+		target_ = target_person
 	
 	
 	

@@ -263,8 +263,8 @@ func _process(delta):
 						con += 1
 			for pl in player:
 				if pl.person.team != item.person.team:
-					pl.person.xp+=item.person.giv_xp/con
-			con = 0
+					if con > 0:
+						pl.person.xp+=item.person.giv_xp/con
 			item.queue_free()
 			if item in crips_and_tawers: crips_and_tawers.erase(item)
 			all_person.erase(item)
