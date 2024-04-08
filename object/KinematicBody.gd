@@ -7,7 +7,8 @@ var rotation_speed = 5
 # Загрузка класса
 var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
-var person = Person.new("paladin",null)
+#var person = Person.new("paladin",null)
+var person = null
 var back_object = null
 var is_move = false
 var type = "play_pers"
@@ -24,7 +25,12 @@ var effects_time = []
 var el_t = null
 
 func _ready():
-	
+	var loadFile = File.new()
+	loadFile.open('res://static/class.json',File.READ)
+	var temp = parse_json(loadFile.get_as_text())
+	loadFile.close()
+	person = Person.new(temp["class"],null)
+
 	
 	person.team = "left"
 

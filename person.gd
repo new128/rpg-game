@@ -197,6 +197,14 @@ func _init(class_person_, inventory_):
 		attack_radius = 7.5
 		speed = 7
 		max_scils = 4
+		
+		
+		inventary.weapon_r = Item.new("sword_is_rusty")
+		inventary.legs = Item.new("speed_boots")
+		inventary.body = Item.new("tattered_mail")
+		inventary.consumables[0] = Item.new("falakaxa")
+		inventary.consumables[1] = Item.new("pigeon")
+		inventary.consumables[2] = Item.new("fufarik")
 	if class_person_ == "magician":
 		class_person = "magician"
 		max_hp = 400
@@ -210,6 +218,15 @@ func _init(class_person_, inventory_):
 		attack_radius = 10
 		speed = 4
 		max_scils = 5
+		
+		
+		
+		inventary.weapon_r = Item.new("sword_is_rusty")
+		inventary.legs = Item.new("speed_boots")
+		inventary.body = Item.new("tattered_mail")
+		inventary.consumables[0] = Item.new("falakaxa")
+		inventary.consumables[1] = Item.new("pigeon")
+		inventary.consumables[2] = Item.new("fufarik")
 	if class_person_ == "crip":
 		class_person = "crip"
 		max_hp = 500
@@ -306,7 +323,6 @@ func count_stat():
 	
 	
 	
-	print(inventary.body.characteristic)
 	for key in inventary.body.characteristic.keys():
 		if key == "hp":
 			if not inventary.body.dressed:

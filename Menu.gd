@@ -7,7 +7,7 @@ func _ready():
 
 func _on_button_pressed():
 	# Загрузка второй сцены
-	get_tree().change_scene("res://object/main_sceen.tscn")
+	get_tree().change_scene("res://ChooseClass.tscn")
 	
 func _on_button_exit_pressed():
 	get_tree().quit()
