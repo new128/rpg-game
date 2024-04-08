@@ -166,7 +166,7 @@ func _init(class_person_, inventory_):
 		mag_resist = 30
 		damage = 80
 		attack_speed = 2
-		attack_radius = 2.5
+		attack_radius = 1
 		speed = 6
 		
 		up_max_hp = 50
@@ -179,7 +179,7 @@ func _init(class_person_, inventory_):
 		up_attack_speed = -0.05
 		up_speed = 0.1
 		
-		
+		giv_xp = 200
 		
 		max_scils = 3
 		inventary.weapon_r = Item.new("sword_is_rusty")
@@ -214,6 +214,8 @@ func _init(class_person_, inventory_):
 		up_damage = 7
 		up_attack_speed = -0.08
 		up_speed = 0.2
+		
+		giv_xp = 200
 		
 		
 		inventary.weapon_r = Item.new("sword_is_rusty")
@@ -251,7 +253,7 @@ func _init(class_person_, inventory_):
 		up_speed = 0.1
 		
 		
-		
+		giv_xp = 200
 		
 		inventary.weapon_r = Item.new("sword_is_rusty")
 		inventary.legs = Item.new("speed_boots")
@@ -270,7 +272,7 @@ func _init(class_person_, inventory_):
 		mag_resist = 10
 		damage = 50
 		attack_speed = 2
-		attack_radius = 2
+		attack_radius = 1.5
 		speed = 5
 		max_scils = 0
 		pers_type = "crip"

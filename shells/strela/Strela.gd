@@ -29,15 +29,13 @@ func _process(delta):
 		if direction.length() > 0.1:
 			var angle = atan2(direction.x, direction.z)
 			rotation_degrees.y = angle * 180 / PI
-		global_translate(direction * 7.5 * delta)
-		$CollisionShape.disabled = false
-		move_and_slide(direction * 7.5)
-		for i in get_slide_count():
-			if get_slide_collision(i).collider == target:
-				target.person.taking_damage("phis", self_.person.damage)
-				self.queue_free()
-				target.last_attack = self_.person
-		$CollisionShape.disabled = true
+		global_translate(direction * 30 * delta)
+		var dist = sqrt((translation.x-target.translation.x)*(translation.x-target.translation.x)+(translation.z-target.translation.z)*(translation.z-target.translation.z))
+		print("Distance>> " + String(dist))
+		if dist <= 1:
+			target.person.taking_damage("phis", self_.person.damage)
+			self.queue_free()
+			target.last_attack = self_.person
 		
 	else:
 		self.queue_free()
