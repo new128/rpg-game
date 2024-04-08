@@ -201,6 +201,17 @@ func _init(class_person_, inventory_):
 		max_scils = 4
 		
 		
+		up_max_hp = 10
+		up_max_mana = 20
+		up_regen_hp = 1
+		up_regen_mana = 1
+		up_armor = 0.5
+		up_mag_resist = 2
+		up_damage = 7
+		up_attack_speed = -0.08
+		up_speed = 0.2
+		
+		
 		inventary.weapon_r = Item.new("sword_is_rusty")
 		inventary.legs = Item.new("speed_boots")
 		inventary.body = Item.new("tattered_mail")
@@ -220,6 +231,19 @@ func _init(class_person_, inventory_):
 		attack_radius = 10
 		speed = 4
 		max_scils = 5
+		
+		
+		
+		up_max_hp = 5
+		up_max_mana = 100
+		up_regen_hp = 0.2
+		up_regen_mana = 2
+		up_armor = 0.2
+		up_mag_resist = 2.2
+		up_damage = 5
+		up_attack_speed = -0.04
+		up_speed = 0.1
+		
 		
 		
 		
