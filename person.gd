@@ -407,7 +407,6 @@ func sell_item(name_item, slot):
 		if key == "attack_radius":
 			if inventary.weapon_r.dressed:
 				attack_radius -= inventary.weapon_r.characteristic[key]
-	inventary.weapon_r.dressed = false
 	inventary.weapon_r = Item.new(name_item)
 		
 		
