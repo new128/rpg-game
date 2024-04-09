@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
-[ext_resource path="res://scill_previy/ogra.jpg" type="Texture" id=3]
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Control.gd" type="Script" id=5]
 [ext_resource path="res://Shrift/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=6]
@@ -111,108 +110,23 @@ margin_top = 0.00499988
 margin_right = 0.0660095
 margin_bottom = 0.0019989
 
-[node name="Button1" type="Button" parent="."]
-anchor_left = 0.349
-anchor_top = 0.823
-anchor_right = 0.406
-anchor_bottom = 0.925
-margin_left = -0.376007
-margin_top = 0.199982
-margin_right = 0.255981
-margin_bottom = -6.10352e-05
+[node name="Skill1" type="Button" parent="."]
+anchor_left = 0.392
+anchor_top = 0.856
+anchor_right = 0.429
+anchor_bottom = 0.921
+margin_left = 0.359985
+margin_top = 0.519958
+margin_right = -0.680054
+margin_bottom = 0.319946
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
-[node name="TextureRect" type="TextureRect" parent="Button1"]
-anchor_right = 1.509
-anchor_bottom = 1.503
-margin_right = 812.969
-margin_bottom = 812.317
-rect_scale = Vector2( 0.12, 0.12 )
-texture = ExtResource( 3 )
-
-[node name="Button2" type="Button" parent="."]
-anchor_left = 0.408
-anchor_top = 0.823
-anchor_right = 0.465
-anchor_bottom = 0.922
-margin_left = 0.207977
-margin_top = 0.199982
-margin_right = -0.160034
-margin_bottom = -0.200012
-rect_pivot_offset = Vector2( 57, 50 )
-script = ExtResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="Button2"]
-anchor_left = 0.013
-anchor_right = 1.023
-anchor_bottom = 1.082
-margin_left = 0.0137043
-margin_top = -0.0400391
-margin_right = 831.096
-margin_bottom = 869.96
-rect_scale = Vector2( 0.117, 0.117 )
-texture = ExtResource( 3 )
-
-[node name="Button3" type="Button" parent="."]
-anchor_left = 0.468
-anchor_top = 0.842
-anchor_right = 0.526
-anchor_bottom = 0.922
-margin_left = -0.232025
-margin_top = -11.2
-margin_right = 0.375977
-margin_bottom = -0.200012
-rect_pivot_offset = Vector2( 57, 50 )
-script = ExtResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="Button3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_right = 844.0
-margin_bottom = 843.0
-rect_scale = Vector2( 0.111, 0.111 )
-texture = ExtResource( 3 )
-
-[node name="Button4" type="Button" parent="."]
-anchor_left = 0.527
-anchor_top = 0.823
-anchor_right = 0.585
-anchor_bottom = 0.922
-margin_left = 0.35199
-margin_top = 0.199982
-margin_right = -0.0400391
-margin_bottom = -0.200012
-rect_pivot_offset = Vector2( 57, 50 )
-script = ExtResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="Button4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 843.0
-margin_bottom = 843.0
-rect_scale = Vector2( 0.117, 0.117 )
-texture = ExtResource( 3 )
-
-[node name="Button5" type="Button" parent="."]
-anchor_left = 0.587
-anchor_top = 0.823
-anchor_right = 0.644
-anchor_bottom = 0.92
-margin_left = -0.0880127
-margin_top = 0.199982
-margin_right = -0.456055
-rect_pivot_offset = Vector2( 57, 50 )
-script = ExtResource( 2 )
-
-[node name="TextureRect" type="TextureRect" parent="Button5"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 843.0
-margin_bottom = 843.0
-rect_scale = Vector2( 0.119, 0.119 )
-texture = ExtResource( 3 )
+[node name="Label" type="Label" parent="Skill1"]
+anchor_right = 0.171
+anchor_bottom = 0.2
+margin_right = 0.0299997
+text = "Q"
 
 [node name="Time" type="Label" parent="."]
 anchor_left = 0.396
@@ -351,12 +265,14 @@ anchor_bottom = 0.974
 margin_bottom = -0.0120316
 
 [node name="Label" type="Label" parent="consumable1"]
-anchor_left = 0.75
-anchor_top = 0.658
-anchor_right = 0.95
-anchor_bottom = 1.026
-margin_top = -0.00400162
-margin_bottom = 0.012001
+anchor_left = 0.013
+anchor_top = 0.021
+anchor_right = 0.12
+anchor_bottom = 0.226
+margin_left = 0.0259709
+margin_top = -0.033018
+margin_right = 0.00695324
+margin_bottom = -0.0222416
 text = "Z"
 
 [node name="consumable2" type="Button" parent="."]
@@ -375,12 +291,14 @@ anchor_bottom = 0.974
 margin_bottom = -0.0120316
 
 [node name="Label" type="Label" parent="consumable2"]
-anchor_left = 0.75
-anchor_top = 0.684
-anchor_right = 0.975
-anchor_bottom = 1.053
-margin_top = 0.00799942
-margin_bottom = -0.0140038
+anchor_left = 0.008
+anchor_top = 0.021
+anchor_right = 0.114
+anchor_bottom = 0.226
+margin_left = -0.023501
+margin_top = -0.033018
+margin_right = 0.0324507
+margin_bottom = -0.0222416
 text = "X"
 
 [node name="consumable3" type="Button" parent="."]
@@ -399,13 +317,14 @@ anchor_bottom = 0.974
 margin_bottom = -0.0120316
 
 [node name="Label" type="Label" parent="consumable3"]
-anchor_left = 0.775
-anchor_top = 0.658
-anchor_right = 1.0
-anchor_bottom = 1.026
-margin_top = -0.00400162
-margin_right = -1.0
-margin_bottom = 0.012001
+anchor_left = 0.017
+anchor_top = 0.015
+anchor_right = 0.124
+anchor_bottom = 0.22
+margin_left = 0.0140363
+margin_top = -0.0235388
+margin_right = -0.00498199
+margin_bottom = -0.0127382
 text = "C"
 
 [node name="Damage" type="Label" parent="."]
@@ -441,6 +360,7 @@ margin_bottom = -0.200043
 text = "speed:"
 
 [node name="Shop" type="Control" parent="."]
+visible = false
 anchor_left = 0.771
 anchor_top = 0.047
 anchor_right = 1.0
@@ -665,3 +585,74 @@ margin_right = -18.6
 margin_bottom = -27.5601
 rect_scale = Vector2( 2.991, 2.991 )
 text = "0"
+
+[node name="Skill2" type="Button" parent="."]
+anchor_left = 0.431
+anchor_top = 0.856
+anchor_right = 0.467
+anchor_bottom = 0.921
+margin_left = -0.52002
+margin_top = 0.519958
+margin_right = 0.359985
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Skill2"]
+anchor_right = 0.186
+anchor_bottom = 0.2
+margin_right = -7.02
+text = "W"
+
+[node name="Skill3" type="Button" parent="."]
+anchor_left = 0.469
+anchor_top = 0.856
+anchor_right = 0.506
+anchor_bottom = 0.921
+margin_left = 0.519958
+margin_top = 0.519958
+margin_right = -0.520081
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Skill3"]
+anchor_right = 0.114
+anchor_bottom = 0.2
+margin_right = 0.0199995
+text = "E"
+
+[node name="Skill4" type="Button" parent="."]
+anchor_left = 0.508
+anchor_top = 0.856
+anchor_right = 0.544
+anchor_bottom = 0.921
+margin_left = -0.360046
+margin_top = 0.519958
+margin_right = 0.519897
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Skill4"]
+anchor_right = 0.143
+anchor_bottom = 0.2
+margin_right = -0.0100002
+text = "D"
+
+[node name="Skill5" type="Button" parent="."]
+anchor_left = 0.546
+anchor_top = 0.856
+anchor_right = 0.583
+anchor_bottom = 0.921
+margin_left = 0.679932
+margin_top = 0.519958
+margin_right = -0.359985
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Skill5"]
+anchor_right = 0.1
+anchor_bottom = 0.2
+text = "F"
