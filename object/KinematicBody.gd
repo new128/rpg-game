@@ -170,9 +170,21 @@ func _input(event):
 	control_node.connect("button_C_pressed", self, "_on_button_C_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("C"):
 		_on_button_C_pressed()
-		
+	control_node.connect("button_Q_pressed", self, "_on_button_Q_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("Q"):
 		_on_button_Q_pressed()
+	control_node.connect("button_W_pressed", self, "_on_button_W_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("W"):
+		_on_button_W_pressed()
+	control_node.connect("button_E_pressed", self, "_on_button_E_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("E"):
+		_on_button_E_pressed()
+	control_node.connect("button_D_pressed", self, "_on_button_D_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("D"):
+		_on_button_D_pressed()
+	control_node.connect("button_F_pressed", self, "_on_button_F_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("F"):
+		_on_button_F_pressed()
 		
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
@@ -291,18 +303,15 @@ func _on_button_C_pressed():
 	
 	
 func _on_button_Q_pressed():
-	if person.money >= 120:
-		if person.inventary.consumables[0] == null:
-			person.money -= 120
-			person.inventary.consumables[0] = Item.new("falakaxa")
-		elif person.inventary.consumables[1] == null:
-			person.money -= 120
-			person.inventary.consumables[1] = Item.new("falakaxa")
-		elif person.inventary.consumables[2] == null:
-			person.money -= 120
-			person.inventary.consumables[2] = Item.new("falakaxa")
-		else:
-			print("No slote")
+	pass
+func _on_button_W_pressed():
+	pass
+func _on_button_E_pressed():
+	pass
+func _on_button_D_pressed():
+	pass
+func _on_button_F_pressed():
+	pass
 			
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:

@@ -8,6 +8,11 @@ var ac_d5 = true
 signal button_Z_pressed
 signal button_X_pressed
 signal button_C_pressed
+signal button_Q_pressed
+signal button_W_pressed
+signal button_E_pressed
+signal button_D_pressed
+signal button_F_pressed
 signal button_buy_falakaxa_pressed
 signal button_buy_pigeon_pressed
 signal button_buy_weapon
@@ -24,6 +29,11 @@ func _ready():
 	$consumable1.connect("pressed", self, "_on_button_Z_pressed")
 	$consumable2.connect("pressed", self, "_on_button_X_pressed")
 	$consumable3.connect("pressed", self, "_on_button_C_pressed")
+	$Skill1.connect("pressed", self, "_on_button_Q_pressed")
+	$Skill2.connect("pressed", self, "_on_button_W_pressed")
+	$Skill3.connect("pressed", self, "_on_button_E_pressed")
+	$Skill4.connect("pressed", self, "_on_button_R_pressed")
+	$Skill5.connect("pressed", self, "_on_button_T_pressed")
 	$Shop/falakaxa.connect("pressed", self, "_on_button_buy_falakaxa_pressed")
 	$Shop/pigeon.connect("pressed", self, "_on_button_buy_pigeon_pressed")
 	$Shop/sword_is_rusty.connect("pressed", self, "_on_button_buy_sword_is_rusty")
@@ -92,6 +102,20 @@ func _on_button_C_pressed():
 	$Shop.visible = not $Shop.visible 
 	print("CCCCCCCCCCCCCCCCCCCCCCCCCCCC")
 	emit_signal("button_C_pressed")
+	
+	
+func _on_button_Q_pressed():
+	emit_signal("button_Q_pressed")
+func _on_button_W_pressed():
+	emit_signal("button_W_pressed")
+func _on_button_E_pressed():
+	emit_signal("button_E_pressed")
+func _on_button_D_pressed():
+	emit_signal("button_D_pressed")
+func _on_button_F_pressed():
+	emit_signal("button_F_pressed")
+	
+
 	
 func _on_button_buy_falakaxa_pressed():
 	emit_signal("button_buy_falakaxa_pressed")
