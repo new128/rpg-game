@@ -333,7 +333,7 @@ func _on_button_buy_pigeon_pressed():
 func _on_button_buy_weapon(name):
 	person.money += person.inventary.weapon_r.price * 0.8
 	print("You Sell >> "+name)
-	if person.money >= 500:
+	if person.money >= Item.new(name).price:
 		person.sell_item(name,"weapon_r")
 		person.money -= 500
 	else:

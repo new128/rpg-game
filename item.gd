@@ -56,6 +56,16 @@ func _init(name_):
 		rarity = "regular"
 		type_attack = "melee"
 		attack_radius = 1.5
+	if name_ == "steel_sword":  
+		name = name_
+		description = "steel sword" # Если что это всё переводчик
+		price = 1000
+		slot = "hand"
+		double_hends = false
+		characteristic["damage"] = +20
+		rarity = "unusual"
+		type_attack = "melee"
+		attack_radius = 2
 	if name_ == "wooden_bow":
 		name = name_
 		description = "An ordinary bow"

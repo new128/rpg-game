@@ -29,6 +29,7 @@ func _ready():
 	$Shop/sword_is_rusty.connect("pressed", self, "_on_button_buy_sword_is_rusty")
 	$Shop/wooden_bow.connect("pressed", self, "_on_button_buy_wooden_bow")
 	$Shop/regular_staff.connect("pressed", self, "_on_button_buy_regular_staff")
+	$Shop/steel_sword.connect("pressed", self, "_on_button_buy_steel_sword")
 	
 	
 	#$AcceptDialog.popup()
@@ -106,3 +107,5 @@ func _on_button_buy_wooden_bow():
 
 func _on_button_buy_regular_staff():
 	emit_signal("button_buy_weapon", "regular_staff")
+func _on_button_buy_steel_sword():
+	emit_signal("button_buy_weapon", "steel_sword")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://item_img/regular_staff.png" type="Texture" id=10]
 [ext_resource path="res://item_img/wooden_bow.png" type="Texture" id=11]
 [ext_resource path="res://item_img/sword_is_rusty.png" type="Texture" id=12]
+[ext_resource path="res://item_img/steel_sword.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
@@ -532,6 +533,17 @@ margin_top = 0.321106
 margin_right = 0.202393
 margin_bottom = 0.164734
 icon = ExtResource( 10 )
+
+[node name="steel_sword" type="Button" parent="Shop"]
+anchor_left = 0.107
+anchor_top = 0.548
+anchor_right = 0.248
+anchor_bottom = 0.627
+margin_left = 0.0842743
+margin_top = -0.100281
+margin_right = 0.0183334
+margin_bottom = -0.256653
+icon = ExtResource( 13 )
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 anchor_left = 0.708
