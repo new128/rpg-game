@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://shop/fon.jpg" type="Texture" id=7]
 [ext_resource path="res://item_img/falakaxa.png" type="Texture" id=8]
 [ext_resource path="res://item_img/pigeon.png" type="Texture" id=9]
+[ext_resource path="res://item_img/regular_staff.png" type="Texture" id=10]
+[ext_resource path="res://item_img/wooden_bow.png" type="Texture" id=11]
+[ext_resource path="res://item_img/sword_is_rusty.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
@@ -483,6 +486,52 @@ margin_top = -0.222313
 margin_right = 0.119568
 margin_bottom = -0.246147
 icon = ExtResource( 9 )
+
+[node name="Weapon" type="Label" parent="Shop"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_top = 0.385
+anchor_right = 1.003
+anchor_bottom = 0.435
+margin_left = 1.18396
+margin_top = -0.233368
+margin_right = -0.136597
+margin_bottom = 0.332458
+custom_fonts/font = SubResource( 2 )
+text = "Оружие"
+align = 1
+
+[node name="sword_is_rusty" type="Button" parent="Shop"]
+anchor_left = 0.107
+anchor_top = 0.462
+anchor_right = 0.248
+anchor_bottom = 0.541
+margin_left = 0.0842743
+margin_top = 0.0319519
+margin_right = -21.9817
+margin_bottom = -21.1244
+icon = ExtResource( 12 )
+
+[node name="wooden_bow" type="Button" parent="Shop"]
+anchor_left = 0.259
+anchor_top = 0.462
+anchor_right = 0.4
+anchor_bottom = 0.541
+margin_left = 0.176315
+margin_top = 0.0319519
+margin_right = 0.110367
+margin_bottom = -0.12439
+icon = ExtResource( 11 )
+
+[node name="regular_staff" type="Button" parent="Shop"]
+anchor_left = 0.412
+anchor_top = 0.463
+anchor_right = 0.552
+anchor_bottom = 0.542
+margin_left = -0.171844
+margin_top = 0.321106
+margin_right = 0.202393
+margin_bottom = 0.164734
+icon = ExtResource( 10 )
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 anchor_left = 0.708

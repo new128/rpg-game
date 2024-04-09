@@ -176,6 +176,7 @@ func _input(event):
 		
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
+	control_node.connect("button_buy_sword_is_rusty", self, "_on_button_buy_sword_is_rusty")
 	
 	
 	
@@ -329,3 +330,10 @@ func _on_button_buy_pigeon_pressed():
 			person.inventary.consumables[2] = Item.new("pigeon")
 		else:
 			print("No slote")
+func _on_button_buy_sword_is_rusty():
+	person.money += person.inventary.weapon_r.price * 0.8
+	if person.money >= 500:
+		person.sell_item("sword_is_rusty","weapon_r")
+		person.money -= 500
+	else:
+		person.money -= person.inventary.weapon_r.price * 0.8

@@ -373,6 +373,44 @@ func attack(attack_object, object, sceen):
 		return 5
 		
 		
+func sell_item(name_item, slot):
+	for key in inventary.weapon_r.characteristic.keys():
+		if key == "damage":
+			if inventary.weapon_r.dressed:
+				damage -= inventary.weapon_r.characteristic[key]
+		if key == "hp":
+			if inventary.weapon_r.dressed:
+				hp = hp*max_hp/inventary.weapon_r.characteristic[key] # Пропорцианальное добавление хп
+				max_hp -= inventary.weapon_r.characteristic[key]
+		if key == "armor":
+			if inventary.weapon_r.dressed:
+				armor -= inventary.weapon_r.characteristic[key]
+		if key == "speed":
+			if inventary.weapon_r.dressed:
+				speed -= inventary.weapon_r.characteristic[key]
+		if key == "mana":
+			if inventary.weapon_r.dressed:
+				mana = mana*max_mana/inventary.weapon_r.characteristic[key] # Пропорцианальное добавление хп
+				max_mana -= inventary.weapon_r.characteristic[key]
+		if key == "reg_hp":
+			if inventary.weapon_r.dressed:
+				regen_hp -= inventary.weapon_r.characteristic[key]
+		if key == "reg_mana":
+			if inventary.weapon_r.dressed:
+				regen_mana -= inventary.weapon_r.characteristic[key]
+		if key == "mag_resist":
+			if inventary.weapon_r.dressed:
+				mag_resist -= inventary.weapon_r.characteristic[key]
+		if key == "attack_speed":
+			if inventary.weapon_r.dressed:
+				attack_speed -= inventary.weapon_r.characteristic[key]
+		if key == "attack_radius":
+			if inventary.weapon_r.dressed:
+				attack_radius -= inventary.weapon_r.characteristic[key]
+	inventary.weapon_r.dressed = false
+	inventary.weapon_r = Item.new(name_item)
+		
+		
 func count_stat():
 	
 	if levels[String(lvl+1)] <= xp:
