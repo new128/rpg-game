@@ -29,14 +29,12 @@ func _process(delta):
 		if direction.length() > 0.1:
 			var angle = atan2(direction.x, direction.z)
 			rotation_degrees.y = angle * 180 / PI
-		global_translate(direction * 30 * delta)
+		global_translate(direction * 10 * delta)
 		var dist = sqrt((translation.x-target.translation.x)*(translation.x-target.translation.x)+(translation.z-target.translation.z)*(translation.z-target.translation.z))
-		if dist <= 1:
-			target.person.taking_damage("phis", self_.person.damage)
+		if dist <= 1.5:
+			target.person.taking_damage("mag", self_.person.damage)
 			self.queue_free()
 			target.last_attack = self_.person
 		
 	else:
 		self.queue_free()
-	
-

@@ -5,10 +5,25 @@ var description = null
 var scil = {"time":null,"target":null}
 var start = false
 var end = false
-
+var type = null
+var damage = null
+var type_damage = null
+var dist = null
+var cd = null
 
 func _init(name_):
 	name = name_
+	damage = 200
+	
+	if name_ == "fire_ball":
+		type = "shell"
+		type_damage = "mag"
+		damage = 400
+		dist = 10
+		cd = 30
+	
+	
+	
 	if name_ == "flask":
 		scil["time"] = 10
 		scil["target"] = "self"

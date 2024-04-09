@@ -8,6 +8,7 @@ var rotation_speed = 5
 # Загрузка класса
 var Person = preload("res://person.gd")
 var Item = preload("res://item.gd") 
+var Scill = preload("res://ability.gd")
 #var person = Person.new("paladin",null)
 var person = null
 var back_object = null
@@ -20,6 +21,8 @@ var last_attack = null
 var giv_money = 300
 
 var die = false
+
+var use_scill = null
 
 var effects_p = []
 var effects_time = []
@@ -206,6 +209,7 @@ func _input(event):
 			target_position = result.position
 			if object.person != null:
 				if object.person.team != person.team:
+					use_scill = null
 					back_object = object
 					is_move = false
 					print("Yes")
@@ -227,6 +231,24 @@ func _input(event):
 			is_move = true
 			#print(target_position)
 			
+			
+	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("left_click"):
+		if use_scill != null:
+			var mouse_position = event.position
+			var clicked_point = get_viewport().get_camera().project_ray_origin(mouse_position)
+			var ray_end = get_viewport().get_camera().project_ray_normal(mouse_position) * 1000 + clicked_point
+			
+			var space_state = get_world().direct_space_state
+			var result = space_state.intersect_ray(clicked_point, ray_end)
+			if result.has('collider'):
+				var object = result.collider
+				if object.person != null:
+					if object.person.team != person.team:
+						back_object = object
+						is_move = false
+						var sceen = get_node("/root/Spatial")
+						person.attack(self ,object, sceen, use_scill)
+						use_scill = null
 			
 func effects():
 	person.hp += (person.regen_hp / 60.0)
@@ -257,6 +279,13 @@ func die():
 		
 
 func _on_button_Z_pressed():
+	var sphere = MeshInstance.new()
+	var sphere_mesh = TorusMesh.new()
+	sphere_mesh.outer_radius = 10
+	sphere_mesh.inner_radius = 10-0.05
+	sphere.mesh = sphere_mesh
+	get_node("/root/Spatial").add_child(sphere)
+	sphere.translation = self.translation
 	if person.inventary.consumables[0]:
 		if person.inventary.consumables[0].scil.name == "flask":
 			person.regen_hp += 30
@@ -303,7 +332,25 @@ func _on_button_C_pressed():
 	
 	
 func _on_button_Q_pressed():
-	pass
+	
+	if use_scill == null:
+		
+		
+		
+		
+		print("Название скида >> "+person.skills[0].name)
+		if person.skills[0] != null:
+			use_scill = person.skills[0]
+			var sphere = MeshInstance.new()
+			var sphere_mesh = TorusMesh.new()
+			sphere_mesh.outer_radius = 10
+			sphere_mesh.inner_radius = 10-0.05
+			sphere.mesh = sphere_mesh
+			get_node("/root/Spatial").add_child(sphere)
+			sphere.translation = self.translation
+			
+			
+	else:use_scill = null
 func _on_button_W_pressed():
 	pass
 func _on_button_E_pressed():

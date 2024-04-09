@@ -97,7 +97,6 @@ var stat = {
 var cloths = null
 
 
-var skils = []
 
 var type_attack = null
 
@@ -125,10 +124,11 @@ var up_speed = null
 
 var Inventary = preload("res://inventary.gd") 
 var Item = preload("res://item.gd") 
+var Scill = preload("res://ability.gd")
 var inventary = Inventary.new()
 var money = 500
 
-var scills = [null]
+var skills = [null,null,null,null,null]
 
 var max_scils = null
 
@@ -278,6 +278,8 @@ func _init(class_person_, inventory_):
 		inventary.consumables[1] = Item.new("pigeon")
 		inventary.consumables[2] = Item.new("fufarik")
 		type_attack = "range"
+		
+		skills[0] = (Scill.new("fire_ball"))
 	if class_person_ == "crip":
 		class_person = "crip"
 		max_hp = 500
@@ -338,7 +340,7 @@ func taking_damage(type, damage):
 		
 var attack_bool = false
 
-func attack(attack_object, object, sceen):
+func attack(attack_object, object, sceen, skill = null):
 	
 	
 	if not is_instance_valid(object):
@@ -348,6 +350,18 @@ func attack(attack_object, object, sceen):
 	var obj2_position = Vector2(object.global_transform.origin.x, object.global_transform.origin.y)
 
 	var dist = obj1_position.distance_to(obj2_position)
+	
+	
+	if skill != null:
+		if dist <= skill.dist:
+			var sheel = load("res://skills/"+skill.name+"/"+skill.name+".tscn") 
+			sheel = sheel.instance()
+			sheel.translation = attack_object.translation
+			sheel.self_ = attack_object
+			sheel.target = object
+			sceen.add_child(sheel)
+	
+	
 	
 	attack_bool = true
 	if object.person.class_person == "tower":
