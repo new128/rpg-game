@@ -6,6 +6,7 @@ extends KinematicBody
 var target = null
 var target_position = null
 var self_ = null
+var damage = null
 
 
 
@@ -32,7 +33,7 @@ func _process(delta):
 		global_translate(direction * 10 * delta)
 		var dist = sqrt((translation.x-target.translation.x)*(translation.x-target.translation.x)+(translation.z-target.translation.z)*(translation.z-target.translation.z))
 		if dist <= 1.5:
-			target.person.taking_damage("mag", self_.person.damage)
+			target.person.taking_damage("mag", damage)
 			self.queue_free()
 			target.last_attack = self_.person
 		

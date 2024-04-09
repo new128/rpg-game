@@ -128,7 +128,7 @@ var Scill = preload("res://ability.gd")
 var inventary = Inventary.new()
 var money = 500
 
-var skills = [null,null,null,null,null]
+var skills = [null,null,null,null,null,null]
 
 var max_scils = null
 
@@ -359,6 +359,7 @@ func attack(attack_object, object, sceen, skill = null):
 			sheel.translation = attack_object.translation
 			sheel.self_ = attack_object
 			sheel.target = object
+			sheel.damage = skill.damage
 			sceen.add_child(sheel)
 	
 	

@@ -28,7 +28,15 @@ var effects_p = []
 var effects_time = []
 var el_t = null
 
+
+var sphere = MeshInstance.new()
+var sphere_mesh = TorusMesh.new()
+
 func _ready():
+	
+	
+	
+	
 	var loadFile = File.new()
 	loadFile.open('res://static/class.json',File.READ)
 	var temp = parse_json(loadFile.get_as_text())
@@ -39,6 +47,8 @@ func _ready():
 	person.team = "left"
 
 func _process(delta):
+	
+	sphere.translation = self.translation
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
 	
@@ -46,6 +56,15 @@ func _process(delta):
 	
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
+	for i in range(6):
+		if person.skills[i]:
+			var new_texture_path = "res://skills/" + person.skills[i].name + "/"+ person.skills[i].name + ".png"
+			get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = load(new_texture_path)
+		else:get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = null
+	
+	
+	
+	
 	
 	
 	
@@ -188,6 +207,9 @@ func _input(event):
 	control_node.connect("button_F_pressed", self, "_on_button_F_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("F"):
 		_on_button_F_pressed()
+	control_node.connect("button_R_pressed", self, "_on_button_R_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("R"):
+		_on_button_R_pressed()
 		
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
@@ -254,6 +276,7 @@ func _input(event):
 							rotation_degrees.y = angle * 180 / PI
 						person.attack(self ,object, sceen, use_scill)
 						use_scill = null
+						sphere.visible = false
 			
 func effects():
 	person.hp += (person.regen_hp / 60.0)
@@ -339,23 +362,19 @@ func _on_button_C_pressed():
 func _on_button_Q_pressed():
 	
 	if use_scill == null:
-		
-		
-		
-		
-		print("Название скида >> "+person.skills[0].name)
 		if person.skills[0] != null:
 			use_scill = person.skills[0]
-			var sphere = MeshInstance.new()
-			var sphere_mesh = TorusMesh.new()
-			sphere_mesh.outer_radius = 10
-			sphere_mesh.inner_radius = 10-0.05
+			sphere_mesh.outer_radius = person.skills[0].dist
+			sphere_mesh.inner_radius = person.skills[0].dist-0.05
 			sphere.mesh = sphere_mesh
 			get_node("/root/Spatial").add_child(sphere)
 			sphere.translation = self.translation
+			sphere.visible = true
 			
 			
-	else:use_scill = null
+	else:
+		sphere.visible = false
+		use_scill = null
 func _on_button_W_pressed():
 	pass
 func _on_button_E_pressed():
@@ -363,6 +382,8 @@ func _on_button_E_pressed():
 func _on_button_D_pressed():
 	pass
 func _on_button_F_pressed():
+	pass
+func _on_button_R_pressed():
 	pass
 			
 func _on_button_buy_falakaxa_pressed():
