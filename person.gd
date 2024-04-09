@@ -271,7 +271,7 @@ func _init(class_person_, inventory_):
 		
 		giv_xp = 200
 		
-		inventary.weapon_r = Item.new("sword_is_rusty")
+		inventary.weapon_r = Item.new("regular_staff")
 		inventary.legs = Item.new("speed_boots")
 		inventary.body = Item.new("tattered_mail")
 		inventary.consumables[0] = Item.new("falakaxa")

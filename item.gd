@@ -66,6 +66,16 @@ func _init(name_):
 		rarity = "regular"
 		type_attack = "range"
 		attack_radius = 7
+	if name_ == "regular_staff":
+		name = name_
+		description = "An ordinary staff"
+		price = 500
+		slot = "hand"
+		double_hends = false
+		characteristic["damage"] = +10
+		rarity = "regular"
+		type_attack = "range"
+		attack_radius = 10
 	if name_ == "tattered_mail": 
 		name = name_
 		description = "Regular armor for suckers" # Если что это всё переводчик
