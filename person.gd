@@ -362,29 +362,29 @@ func attack(attack_object, object, sceen, skill = null):
 			sceen.add_child(sheel)
 	
 	
-	
-	attack_bool = true
-	if object.person.class_person == "tower":
-		dist -= 1
-		
-	if dist <= attack_radius:
-		print("aaaaaa")
-		print(object.person.hp)
-		if time >= attack_speed:
-			if type_attack == "melee":
-				object.person.taking_damage("phis", damage)
-				time = 0
-				object.last_attack = self
-			if type_attack == "range":
-				var sheel = load("res://shells/strela/Strela.tscn") 
-				sheel = sheel.instance()
-				sheel.translation = attack_object.translation
-				sheel.self_ = attack_object
-				sheel.target = object
-				sceen.add_child(sheel)
-				time = 0
 	else:
-		return 5
+		attack_bool = true
+		if object.person.class_person == "tower":
+			dist -= 1
+			
+		if dist <= attack_radius:
+			print("aaaaaa")
+			print(object.person.hp)
+			if time >= attack_speed:
+				if type_attack == "melee":
+					object.person.taking_damage("phis", damage)
+					time = 0
+					object.last_attack = self
+				if type_attack == "range":
+					var sheel = load("res://shells/strela/Strela.tscn") 
+					sheel = sheel.instance()
+					sheel.translation = attack_object.translation
+					sheel.self_ = attack_object
+					sheel.target = object
+					sceen.add_child(sheel)
+					time = 0
+		else:
+			return 5
 		
 		
 func sell_item(name_item, slot):

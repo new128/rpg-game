@@ -247,6 +247,11 @@ func _input(event):
 						back_object = object
 						is_move = false
 						var sceen = get_node("/root/Spatial")
+						var direction = (object.translation - translation).normalized()
+						direction.y = 0
+						if direction.length() > rotation_threshold:
+							var angle = atan2(direction.x, direction.z)
+							rotation_degrees.y = angle * 180 / PI
 						person.attack(self ,object, sceen, use_scill)
 						use_scill = null
 			
