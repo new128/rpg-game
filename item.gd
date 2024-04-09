@@ -18,11 +18,11 @@
 	
 	damage
 	armor
-	hp
+	max_hp
 	speed
-	mana
-	reg_hp
-	reg_mana
+	max_mana
+	regen_hp
+	regen_mana
 	mag_resist
 	attack_speed
 	attack_radius
@@ -37,10 +37,12 @@ var description = null
 var price = null
 var slot = null
 var double_hends = null # двуручность т е нельзя во 2-ом слоте руки ничего держать\
+var type_attack = null
 var rarity = null #редкость
 var Scil = preload("res://ability.gd")
 var scil = null
 var dressed = false
+var attack_radius = null
 
 
 func _init(name_):
@@ -52,6 +54,18 @@ func _init(name_):
 		double_hends = false
 		characteristic["damage"] = +10
 		rarity = "regular"
+		type_attack = "melee"
+		attack_radius = 1.5
+	if name_ == "wooden_bow":
+		name = name_
+		description = "An ordinary bow"
+		price = 500
+		slot = "hand"
+		double_hends = false
+		characteristic["damage"] = +10
+		rarity = "regular"
+		type_attack = "range"
+		attack_radius = 7
 	if name_ == "tattered_mail": 
 		name = name_
 		description = "Regular armor for suckers" # Если что это всё переводчик
@@ -59,7 +73,7 @@ func _init(name_):
 		slot = "body"
 		double_hends = false
 		characteristic["armor"] = +5
-		characteristic["hp"] = +100
+		characteristic["max_hp"] = +100
 		rarity = "regular"
 	if name_ == "speed_boots": 
 		name = name_
@@ -69,6 +83,10 @@ func _init(name_):
 		double_hends = false
 		characteristic["speed"] = +1.5
 		rarity = "regular"
+		
+		
+		
+	
 	if name_ == "falakaxa": 
 		name = name_
 		description = "Flask from dota" # Если что это всё переводчик

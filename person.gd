@@ -81,6 +81,22 @@ var attack_speed = null # Измеряется в за сколько секун
 var attack_radius = null
 var speed = null # ещё хз в чём измерять
 
+var stat = {
+	"max_hp" : max_hp,
+	"max_mana" : max_mana,
+	"regen_hp" : regen_hp,
+	"regen_mana" : regen_mana,
+	"armor" : armor,
+	"mag_resist" : mag_resist,
+	"damage" : damage,
+	"attack_speed" : attack_speed,
+	"attack_radius" : attack_radius,
+	"speed" : speed,
+}
+
+var cloths = null
+
+
 var skils = []
 
 var type_attack = null
@@ -166,7 +182,7 @@ func _init(class_person_, inventory_):
 		mag_resist = 30
 		damage = 80
 		attack_speed = 2
-		attack_radius = 1
+		attack_radius = 1.5
 		speed = 6
 		
 		up_max_hp = 50
@@ -218,7 +234,7 @@ func _init(class_person_, inventory_):
 		giv_xp = 200
 		
 		
-		inventary.weapon_r = Item.new("sword_is_rusty")
+		inventary.weapon_r = Item.new("wooden_bow")
 		inventary.legs = Item.new("speed_boots")
 		inventary.body = Item.new("tattered_mail")
 		inventary.consumables[0] = Item.new("falakaxa")
@@ -301,6 +317,15 @@ func _init(class_person_, inventory_):
 	hp = max_hp
 	time = attack_speed
 	
+	cloths = {
+		"head" : inventary.head,
+		"shoulders" : inventary.shoulders,
+		"weapon_r" : inventary.weapon_r,
+		"weapon_l" : inventary.weapon_l,
+		"body" : inventary.body,
+		"legs" : inventary.legs ,
+	}
+	
 
 
 func taking_damage(type, damage):
@@ -374,7 +399,7 @@ func count_stat():
 	
 	
 	for key in inventary.body.characteristic.keys():
-		if key == "hp":
+		if key == "max_hp":
 			if not inventary.body.dressed:
 				hp = hp*max_hp/inventary.body.characteristic[key] # Пропорцианальное добавление хп
 				max_hp += inventary.body.characteristic[key]
@@ -443,6 +468,8 @@ func count_stat():
 		if key == "attack_radius":
 			if not inventary.weapon_r.dressed:
 				attack_radius += inventary.weapon_r.characteristic[key]
+	type_attack = inventary.weapon_r.type_attack
+	attack_radius = inventary.weapon_r.attack_radius
 	inventary.weapon_r.dressed = true
 	
 	for key in inventary.legs.characteristic.keys():
