@@ -308,7 +308,7 @@ func _init(class_person_, inventory_):
 		mag_resist = 10
 		damage = 100
 		attack_speed = 1
-		attack_radius = 6
+		attack_radius = 4
 		speed = 0
 		max_scils = 0
 		pers_type = "tower"
