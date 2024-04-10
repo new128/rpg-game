@@ -24,7 +24,7 @@ extents = Vector3( 2.55387, 7.30095, 1.18277 )
 extents = Vector3( 1.11728, 0.669101, 0.602358 )
 
 [sub_resource type="BoxShape" id=4]
-extents = Vector3( 3.16727, 10.5811, 4.19002 )
+extents = Vector3( 3.16727, 10.5099, 4.19002 )
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 9 )
@@ -73,36 +73,6 @@ shape = SubResource( 3 )
 
 [node name="HUD" parent="Crip" instance=ExtResource( 7 )]
 
-[node name="Tower_f" type="ProximityGroup" parent="."]
-transform = Transform( 0.476718, 0, 0.222297, 0, 0.526, 0, -0.222297, 0, 0.476718, -37.0187, 0.872882, -72.8264 )
-
-[node name="LT1" type="StaticBody" parent="Tower_f"]
-script = ExtResource( 13 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Tower_f/LT1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.87675, 0 )
-shape = SubResource( 4 )
-
-[node name="tower" parent="Tower_f/LT1" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.0557858, 0 )
-
-[node name="HUD" parent="Tower_f/LT1" instance=ExtResource( 7 )]
-
-[node name="Tower_r" type="ProximityGroup" parent="."]
-transform = Transform( -0.476718, 0, -0.222297, 0, 0.526, 0, 0.222297, 0, -0.476718, 37.751, 0.873, 72.826 )
-
-[node name="RT1" type="StaticBody" parent="Tower_r"]
-script = ExtResource( 13 )
-
-[node name="HUD" parent="Tower_r/RT1" instance=ExtResource( 7 )]
-
-[node name="CollisionShape" type="CollisionShape" parent="Tower_r/RT1"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.87675, 0 )
-shape = SubResource( 4 )
-
-[node name="tower" parent="Tower_r/RT1" instance=ExtResource( 11 )]
-transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.0557858, 0 )
-
 [node name="Enemy" type="KinematicBody" parent="."]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 40, 3.612, 80 )
 script = ExtResource( 12 )
@@ -113,3 +83,29 @@ script = ExtResource( 12 )
 shape = SubResource( 2 )
 
 [node name="HUD" parent="Enemy" instance=ExtResource( 7 )]
+
+[node name="LT1" type="StaticBody" parent="."]
+transform = Transform( 0.6, 0, -5.36442e-08, 0, 0.6, 0, 5.36442e-08, 0, 0.6, -35, 5.5, -66 )
+script = ExtResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LT1"]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -0.658795, 0 )
+shape = SubResource( 4 )
+
+[node name="tower" parent="LT1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, -8.06496, 0 )
+
+[node name="HUD" parent="LT1" instance=ExtResource( 7 )]
+
+[node name="RT1" type="StaticBody" parent="."]
+transform = Transform( -0.563816, 0, -0.205212, 0, 0.6, 0, 0.205212, 0, -0.563816, 35, 0, 66 )
+script = ExtResource( 13 )
+
+[node name="HUD" parent="RT1" instance=ExtResource( 7 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="RT1"]
+transform = Transform( 1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 12.5655, 0 )
+shape = SubResource( 4 )
+
+[node name="tower" parent="RT1" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.0557858, 0 )

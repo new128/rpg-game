@@ -382,6 +382,8 @@ func attack(attack_object, object, sceen, skill = null):
 					var sheel = load("res://shells/strela/Strela.tscn") 
 					sheel = sheel.instance()
 					sheel.translation = attack_object.translation
+					if class_person == "tower":
+						sheel.translation.y += 3
 					sheel.self_ = attack_object
 					sheel.target = object
 					sceen.add_child(sheel)
