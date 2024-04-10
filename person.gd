@@ -361,6 +361,8 @@ func attack(attack_object, object, sceen, skill = null):
 			sheel.target = object
 			sheel.damage = skill.damage
 			sceen.add_child(sheel)
+			return 5
+
 	
 	
 	else:

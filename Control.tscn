@@ -111,13 +111,13 @@ margin_right = 0.0660095
 margin_bottom = 0.0019989
 
 [node name="Skill1" type="Button" parent="."]
-anchor_left = 0.392
+anchor_left = 0.375
 anchor_top = 0.856
-anchor_right = 0.429
+anchor_right = 0.411
 anchor_bottom = 0.921
-margin_left = -32.64
+margin_left = -6.10352e-05
 margin_top = 0.519958
-margin_right = -33.6801
+margin_right = 0.880005
 margin_bottom = 0.319946
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
@@ -127,6 +127,15 @@ anchor_right = 0.171
 anchor_bottom = 0.2
 margin_right = 0.0299997
 text = "Q"
+
+[node name="Label2" type="Label" parent="Skill1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
 
 [node name="Time" type="Label" parent="."]
 anchor_left = 0.396

@@ -32,6 +32,13 @@ var el_t = null
 var sphere = MeshInstance.new()
 var sphere_mesh = TorusMesh.new()
 
+var time_skill1 = [false,0]
+var time_skill2 = [false,0]
+var time_skill3 = [false,0]
+var time_skill4 = [false,0]
+var time_skill5 = [false,0]
+var time_skill6 = [false,0]
+
 func _ready():
 	
 	
@@ -48,6 +55,17 @@ func _ready():
 
 func _process(delta):
 	
+	if time_skill1[0]:
+		if time_skill1[1] <= 0:
+			time_skill1[1] = 0
+			time_skill1[0] = false
+			get_node("/root/Spatial/Control/Skill1/Label2").visible = false
+		get_node("/root/Spatial/Control/Skill1/Label2").text = String(int(time_skill1[1]))
+		
+		
+		time_skill1[1]-=delta
+	
+	
 	sphere.translation = self.translation
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
@@ -61,7 +79,6 @@ func _process(delta):
 			var new_texture_path = "res://skills/" + person.skills[i].name + "/"+ person.skills[i].name + ".png"
 			get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = load(new_texture_path)
 		else:get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = null
-	
 	
 	
 	
@@ -274,7 +291,11 @@ func _input(event):
 						if direction.length() > rotation_threshold:
 							var angle = atan2(direction.x, direction.z)
 							rotation_degrees.y = angle * 180 / PI
-						person.attack(self ,object, sceen, use_scill)
+						if person.attack(self ,object, sceen, use_scill):
+							time_skill1[0] = true
+							#time_skill1[1] = use_scill.cd
+							time_skill1[1] = 5
+							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
 						use_scill = null
 						sphere.visible = false
 			
@@ -360,21 +381,21 @@ func _on_button_C_pressed():
 	
 	
 func _on_button_Q_pressed():
-	
-	if use_scill == null:
-		if person.skills[0] != null:
-			use_scill = person.skills[0]
-			sphere_mesh.outer_radius = person.skills[0].dist
-			sphere_mesh.inner_radius = person.skills[0].dist-0.05
-			sphere.mesh = sphere_mesh
-			get_node("/root/Spatial").add_child(sphere)
-			sphere.translation = self.translation
-			sphere.visible = true
-			
-			
-	else:
-		sphere.visible = false
-		use_scill = null
+	if time_skill1[1] <= 0:
+		if use_scill == null:
+			if person.skills[0] != null:
+				use_scill = person.skills[0]
+				sphere_mesh.outer_radius = person.skills[0].dist
+				sphere_mesh.inner_radius = person.skills[0].dist-0.05
+				sphere.mesh = sphere_mesh
+				get_node("/root/Spatial").add_child(sphere)
+				sphere.translation = self.translation
+				sphere.visible = true
+				
+				
+		else:
+			sphere.visible = false
+			use_scill = null
 func _on_button_W_pressed():
 	pass
 func _on_button_E_pressed():
