@@ -360,6 +360,7 @@ func attack(attack_object, object, sceen, skill = null):
 			sheel.self_ = attack_object
 			sheel.target = object
 			sheel.damage = skill.damage
+			sheel.sceen = sceen
 			sceen.add_child(sheel)
 			return 5
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://skills/piercing_shot/piercing_shot.dae" type="PackedScene" id=1]
+[ext_resource path="res://skills/piercing_shot/piercing_shot.gd" type="Script" id=2]
+
+[node name="Spatial" type="KinematicBody"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="piercing_shot" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168496, 1.19209e-07, -0.271924 )

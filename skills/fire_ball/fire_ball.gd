@@ -8,6 +8,8 @@ var target_position = null
 var self_ = null
 var damage = null
 
+var sceen = null
+
 
 
 # Called when the node enters the scene tree for the first time.
