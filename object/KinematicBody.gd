@@ -39,6 +39,8 @@ var time_skill4 = [false,0]
 var time_skill5 = [false,0]
 var time_skill6 = [false,0]
 
+var data_time_skill = [time_skill1,time_skill2,time_skill3,time_skill4,time_skill5,time_skill6]
+
 func _ready():
 	
 	
@@ -54,16 +56,16 @@ func _ready():
 	person.team = "left"
 
 func _process(delta):
-	
-	if time_skill1[0]:
-		if time_skill1[1] <= 0:
-			time_skill1[1] = 0
-			time_skill1[0] = false
-			get_node("/root/Spatial/Control/Skill1/Label2").visible = false
-		get_node("/root/Spatial/Control/Skill1/Label2").text = String(int(time_skill1[1]))
-		
-		
-		time_skill1[1]-=delta
+	var j = 0
+	for t_s in data_time_skill:
+		if t_s[0]:
+			if t_s[1] <= 0:
+				t_s[1] = 0
+				t_s[0] = false
+				get_node("/root/Spatial/Control/Skill"+String(j+1)+"/Label2").visible = false
+			get_node("/root/Spatial/Control/Skill"+String(j+1)+"/Label2").text = String(int(t_s[1]))
+			t_s[1]-=delta
+		j+=1
 	
 	
 	sphere.translation = self.translation
@@ -293,8 +295,7 @@ func _input(event):
 							rotation_degrees.y = angle * 180 / PI
 						if person.attack(self ,object, sceen, use_scill):
 							time_skill1[0] = true
-							#time_skill1[1] = use_scill.cd
-							time_skill1[1] = 5
+							time_skill1[1] = use_scill.cd
 							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
 						use_scill = null
 						sphere.visible = false
