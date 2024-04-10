@@ -294,6 +294,7 @@ func _input(event):
 							var angle = atan2(direction.x, direction.z)
 							rotation_degrees.y = angle * 180 / PI
 						if person.attack(self ,object, sceen, use_scill):
+							person.mana -= use_scill.mana
 							time_skill1[0] = true
 							time_skill1[1] = use_scill.cd
 							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
@@ -385,13 +386,14 @@ func _on_button_Q_pressed():
 	if time_skill1[1] <= 0:
 		if use_scill == null:
 			if person.skills[0] != null:
-				use_scill = person.skills[0]
-				sphere_mesh.outer_radius = person.skills[0].dist
-				sphere_mesh.inner_radius = person.skills[0].dist-0.05
-				sphere.mesh = sphere_mesh
-				get_node("/root/Spatial").add_child(sphere)
-				sphere.translation = self.translation
-				sphere.visible = true
+				if person.skills[0].mana <= person.mana:
+					use_scill = person.skills[0]
+					sphere_mesh.outer_radius = person.skills[0].dist
+					sphere_mesh.inner_radius = person.skills[0].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
 				
 				
 		else:

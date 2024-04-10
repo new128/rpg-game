@@ -10,6 +10,7 @@ var damage = null
 var type_damage = null
 var dist = null
 var cd = null
+var mana = null
 
 func _init(name_):
 	name = name_
@@ -21,6 +22,7 @@ func _init(name_):
 		damage = 400
 		dist = 10
 		cd = 30
+		mana = 300
 	
 	
 	
