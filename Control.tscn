@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
+[ext_resource path="res://item_img/slicing_bow.png" type="Texture" id=3]
 [ext_resource path="res://Label.gd" type="Script" id=4]
 [ext_resource path="res://Control.gd" type="Script" id=5]
 [ext_resource path="res://Shrift/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=6]
@@ -369,7 +370,6 @@ margin_bottom = -0.200043
 text = "speed:"
 
 [node name="Shop" type="Control" parent="."]
-visible = false
 anchor_left = 0.771
 anchor_top = 0.047
 anchor_right = 1.0
@@ -473,6 +473,17 @@ margin_top = -0.100281
 margin_right = 0.0183334
 margin_bottom = -0.256653
 icon = ExtResource( 13 )
+
+[node name="slicing_bow" type="Button" parent="Shop"]
+anchor_left = 0.259
+anchor_top = 0.548
+anchor_right = 0.4
+anchor_bottom = 0.625
+margin_left = 0.176315
+margin_top = -1.10028
+margin_right = 0.110367
+margin_bottom = 0.16507
+icon = ExtResource( 3 )
 
 [node name="AcceptDialog" type="AcceptDialog" parent="."]
 anchor_left = 0.708

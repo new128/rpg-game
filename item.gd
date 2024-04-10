@@ -76,6 +76,16 @@ func _init(name_):
 		rarity = "regular"
 		type_attack = "range"
 		attack_radius = 7
+	if name_ == "slicing_bow":
+		name = name_
+		description = "slicing bow"
+		price = 200
+		slot = "hand"
+		double_hends = false
+		characteristic["damage"] = +20
+		rarity = "unusual"
+		type_attack = "range"
+		attack_radius = 10
 	if name_ == "regular_staff":
 		name = name_
 		description = "An ordinary staff"
