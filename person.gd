@@ -393,6 +393,8 @@ func attack(attack_object, object, sceen, skill = null):
 		
 		
 func sell_item(name_item, slot):
+	if inventary.weapon_r.scil:
+		skills[skills.find(inventary.weapon_r.scil)] == null
 	for key in inventary.weapon_r.characteristic.keys():
 		if key == "damage":
 			if inventary.weapon_r.dressed:
@@ -427,6 +429,7 @@ func sell_item(name_item, slot):
 			if inventary.weapon_r.dressed:
 				attack_radius -= inventary.weapon_r.characteristic[key]
 	inventary.weapon_r = Item.new(name_item)
+	
 		
 		
 func count_stat():
@@ -442,17 +445,6 @@ func count_stat():
 		damage += up_damage
 		attack_speed += up_attack_speed
 		speed += up_speed
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	for key in inventary.body.characteristic.keys():
 		if key == "max_hp":
@@ -487,7 +479,9 @@ func count_stat():
 		if key == "attack_radius":
 			if not inventary.body.dressed:
 				attack_radius += inventary.body.characteristic[key]
-		
+	
+	
+	
 	inventary.body.dressed = true
 	
 	
@@ -526,6 +520,14 @@ func count_stat():
 				attack_radius += inventary.weapon_r.characteristic[key]
 	type_attack = inventary.weapon_r.type_attack
 	attack_radius = inventary.weapon_r.attack_radius
+	
+	if not inventary.weapon_r.dressed:
+		for i in range(6):
+			if skills[i] == null:
+				skills[i] = inventary.weapon_r.scil
+				break
+	
+	
 	inventary.weapon_r.dressed = true
 	
 	for key in inventary.legs.characteristic.keys():

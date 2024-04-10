@@ -86,6 +86,7 @@ func _init(name_):
 		rarity = "unusual"
 		type_attack = "range"
 		attack_radius = 10
+		scil = Scil.new("piercing_shot")
 	if name_ == "regular_staff":
 		name = name_
 		description = "An ordinary staff"

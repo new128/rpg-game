@@ -23,6 +23,14 @@ func _init(name_):
 		dist = 10
 		cd = 30
 		mana = 300
+		
+	if name_ == "piercing_shot":
+		type = "shell"
+		type_damage = "mag"
+		damage = 200
+		dist = 15
+		cd = 40
+		mana = 200
 	
 	
 	
