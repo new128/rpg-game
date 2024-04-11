@@ -79,7 +79,7 @@ func _init(name_):
 	if name_ == "slicing_bow":
 		name = name_
 		description = "slicing bow"
-		price = 200
+		price = 1000
 		slot = "hand"
 		double_hends = false
 		characteristic["damage"] = +20

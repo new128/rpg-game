@@ -261,6 +261,7 @@ func _input(event):
 						target_ = object
 						target_position = object.global_transform.origin
 						is_move = true
+					else:get_node("/root/Spatial/Control").change_notice("Не в радиусе действия")
 				
 					return
 			else:
@@ -394,21 +395,109 @@ func _on_button_Q_pressed():
 					get_node("/root/Spatial").add_child(sphere)
 					sphere.translation = self.translation
 					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
 				
 				
 		else:
 			sphere.visible = false
 			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 func _on_button_W_pressed():
-	pass
+	if time_skill2[1] <= 0:
+		if use_scill == null:
+			if person.skills[1] != null:
+				if person.skills[1].mana <= person.mana:
+					use_scill = person.skills[1]
+					sphere_mesh.outer_radius = person.skills[1].dist
+					sphere_mesh.inner_radius = person.skills[1].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 func _on_button_E_pressed():
-	pass
+	if time_skill3[1] <= 0:
+		if use_scill == null:
+			if person.skills[2] != null:
+				if person.skills[2].mana <= person.mana:
+					use_scill = person.skills[2]
+					sphere_mesh.outer_radius = person.skills[2].dist
+					sphere_mesh.inner_radius = person.skills[2].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 func _on_button_D_pressed():
-	pass
+	if time_skill4[1] <= 0:
+		if use_scill == null:
+			if person.skills[3] != null:
+				if person.skills[3].mana <= person.mana:
+					use_scill = person.skills[3]
+					sphere_mesh.outer_radius = person.skills[3].dist
+					sphere_mesh.inner_radius = person.skills[3].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 func _on_button_F_pressed():
-	pass
+	if time_skill5[1] <= 0:
+		if use_scill == null:
+			if person.skills[4] != null:
+				if person.skills[4].mana <= person.mana:
+					use_scill = person.skills[4]
+					sphere_mesh.outer_radius = person.skills[4].dist
+					sphere_mesh.inner_radius = person.skills[4].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 func _on_button_R_pressed():
-	pass
+	if time_skill6[1] <= 0:
+		if use_scill == null:
+			if person.skills[5] != null:
+				if person.skills[5].mana <= person.mana:
+					use_scill = person.skills[5]
+					sphere_mesh.outer_radius = person.skills[5].dist
+					sphere_mesh.inner_radius = person.skills[5].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
 			
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:

@@ -5,6 +5,10 @@ var ac_d3 = true
 var ac_d4 = true
 var ac_d5 = true
 
+var notice = false
+
+var time = 0
+
 signal button_Z_pressed
 signal button_X_pressed
 signal button_C_pressed
@@ -20,6 +24,9 @@ signal button_buy_weapon
 
 
 func _ready():
+
+	
+	
 	
 	OS.set_window_fullscreen(true)
 	rect_min_size = OS.get_window_size()
@@ -50,6 +57,15 @@ func _ready():
 
 
 func _process(delta):
+	
+	
+	if notice:
+		time+=delta
+		if time >= 3: 
+			notice = false
+			time = 0
+	else:
+		$Notice.visible = false
 
 	if get_node("/root/Spatial").has_node("KinematicBody"):
 		var kin_bod = get_node("/root/Spatial/KinematicBody")
@@ -85,7 +101,15 @@ func _process(delta):
 	if not $AcceptDialog4.visible and not ac_d3 and not ac_d2 and not ac_d4 and ac_d5:
 		$AcceptDialog5.popup()
 		ac_d5 =false
-		
+
+
+func change_notice(text):
+	$Notice/Label.text = text
+	$Notice.visible = true
+	notice = true
+
+
+
 func _input(event):
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("f4"):
 		$Shop.visible = not $Shop.visible 
