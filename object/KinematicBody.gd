@@ -74,6 +74,15 @@ func _process(delta):
 	
 	person.time += delta
 	
+	
+	if not is_move:
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
+	if is_move:
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]001")
+	
+	
+	
+	
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
 	for i in range(6):
@@ -261,7 +270,7 @@ func _input(event):
 						target_ = object
 						target_position = object.global_transform.origin
 						is_move = true
-					else:get_node("/root/Spatial/Control").change_notice("Не в радиусе действия")
+					
 				
 					return
 			else:
@@ -299,6 +308,7 @@ func _input(event):
 							time_skill1[0] = true
 							time_skill1[1] = use_scill.cd
 							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
+						else:get_node("/root/Spatial/Control").change_notice("Не в радиусе действия")
 						use_scill = null
 						sphere.visible = false
 			
