@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://Shrift/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Button_Education" type="Button" parent="."]
+anchor_left = 0.402
+anchor_top = 0.272
+anchor_right = 0.524
+anchor_bottom = 0.323
+margin_left = 0.35199
+margin_top = -0.200012
+margin_right = 0.42395
+margin_bottom = -4.8
+custom_fonts/font = SubResource( 1 )
+text = "Обучение"
+
+[node name="Button_Exit" type="Button" parent="."]
+anchor_left = 0.402
+anchor_top = 0.6
+anchor_right = 0.524
+anchor_bottom = 0.652
+margin_left = 0.35199
+margin_right = 0.42395
+margin_bottom = -0.200012
+custom_fonts/font = SubResource( 2 )
+text = "Выход"

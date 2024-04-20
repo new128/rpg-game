@@ -1,0 +1,582 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://ProgressBar.gd" type="Script" id=1]
+[ext_resource path="res://Button.gd" type="Script" id=2]
+[ext_resource path="res://scill_previy/ogra.jpg" type="Texture" id=3]
+[ext_resource path="res://Label.gd" type="Script" id=4]
+[ext_resource path="res://Control.gd" type="Script" id=5]
+[ext_resource path="res://Shrift/Oswald-VariableFont_wght.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://shop/fon.jpg" type="Texture" id=7]
+[ext_resource path="res://item_img/falakaxa.png" type="Texture" id=8]
+[ext_resource path="res://item_img/pigeon.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 6 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color( 0.196078, 1, 0, 1 )
+self_modulate = Color( 0.266667, 1, 0, 1 )
+anchor_left = 0.374
+anchor_top = 0.925
+anchor_right = 0.604
+anchor_bottom = 0.96
+margin_left = 0.0239868
+margin_top = -0.440063
+margin_right = 2.50403
+margin_bottom = -0.239868
+custom_colors/font_color = Color( 0.0862745, 0.694118, 0, 1 )
+value = 100.0
+script = ExtResource( 1 )
+
+[node name="hp" type="Label" parent="ProgressBar"]
+anchor_left = 0.225
+anchor_top = 0.267
+anchor_right = 0.405
+anchor_bottom = 0.873
+margin_left = 0.0820084
+margin_top = -0.0110617
+margin_right = 0.147598
+margin_bottom = -0.00246048
+
+[node name="max_hp" type="Label" parent="ProgressBar"]
+anchor_left = 0.811
+anchor_top = 0.242
+anchor_right = 0.991
+anchor_bottom = 0.849
+margin_left = -0.148834
+margin_top = 0.938971
+margin_right = -0.0832214
+margin_bottom = 2.8729
+
+[node name="regen_hp" type="Label" parent="ProgressBar"]
+anchor_left = 0.014
+anchor_top = 0.267
+anchor_right = 0.18
+anchor_bottom = 0.873
+margin_left = -0.21712
+margin_top = -0.0110617
+margin_right = 0.0656052
+margin_bottom = -0.00246048
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+modulate = Color( 0, 0.788235, 1, 1 )
+self_modulate = Color( 0, 1, 0.976471, 1 )
+anchor_left = 0.374
+anchor_top = 0.96
+anchor_right = 0.604
+anchor_bottom = 0.992
+margin_left = 0.0239868
+margin_right = 2.50397
+margin_bottom = -0.200012
+custom_colors/font_color = Color( 0, 0.627451, 1, 1 )
+value = 100.0
+
+[node name="mana" type="Label" parent="ProgressBar2"]
+anchor_left = 0.225
+anchor_top = 0.146
+anchor_right = 0.405
+anchor_bottom = 0.873
+margin_left = 0.0820084
+margin_top = -0.0165763
+margin_right = 0.147598
+margin_bottom = 0.00362587
+
+[node name="max_mana" type="Label" parent="ProgressBar2"]
+anchor_left = 0.811
+anchor_top = 0.146
+anchor_right = 0.991
+anchor_bottom = 0.873
+margin_left = -0.148895
+margin_top = -0.0165763
+margin_right = -0.083252
+margin_bottom = 0.00362396
+
+[node name="regen_mana" type="Label" parent="ProgressBar2"]
+anchor_left = 0.014
+anchor_top = 0.146
+anchor_right = 0.18
+anchor_bottom = 0.873
+margin_left = -0.21712
+margin_top = -0.0165763
+margin_right = 0.0656052
+margin_bottom = 0.00362587
+
+[node name="Button1" type="Button" parent="."]
+anchor_left = 0.349
+anchor_top = 0.819
+anchor_right = 0.407
+anchor_bottom = 0.921
+margin_left = 0.623962
+margin_top = 0.479919
+margin_right = -0.664124
+margin_bottom = 0.279846
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Button1"]
+anchor_right = 1.0
+anchor_bottom = 0.991
+margin_right = 789.928
+margin_bottom = 791.03
+rect_scale = Vector2( 0.121, 0.121 )
+texture = ExtResource( 3 )
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.407
+anchor_top = 0.819
+anchor_right = 0.465
+anchor_bottom = 0.921
+margin_left = 0.559998
+margin_top = 0.479919
+margin_right = 0.199951
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Button2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 789.0
+margin_bottom = 790.0
+rect_scale = Vector2( 0.121, 0.121 )
+texture = ExtResource( 3 )
+
+[node name="Button3" type="Button" parent="."]
+anchor_left = 0.466
+anchor_top = 0.819
+anchor_right = 0.524
+anchor_bottom = 0.921
+margin_left = 0.279968
+margin_top = 0.479919
+margin_right = -0.0800781
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Button3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 789.0
+margin_bottom = 790.0
+rect_scale = Vector2( 0.121, 0.121 )
+texture = ExtResource( 3 )
+
+[node name="Button4" type="Button" parent="."]
+anchor_left = 0.527
+anchor_top = 0.819
+anchor_right = 0.586
+anchor_bottom = 0.921
+margin_left = -3.84003
+margin_top = 0.479919
+margin_right = -6.12
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Button4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 789.0
+margin_bottom = 790.0
+rect_scale = Vector2( 0.121, 0.121 )
+texture = ExtResource( 3 )
+
+[node name="Button5" type="Button" parent="."]
+anchor_left = 0.584
+anchor_top = 0.819
+anchor_right = 0.642
+anchor_bottom = 0.921
+margin_left = -0.280151
+margin_top = 0.479919
+margin_right = -0.640015
+margin_bottom = 0.319946
+rect_pivot_offset = Vector2( 57, 50 )
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="Button5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 794.0
+margin_bottom = 795.0
+rect_scale = Vector2( 0.121, 0.121 )
+texture = ExtResource( 3 )
+
+[node name="Time" type="Label" parent="."]
+anchor_left = 0.396
+anchor_top = 0.003
+anchor_right = 0.611
+anchor_bottom = 0.117
+margin_left = 0.679993
+margin_top = -0.24
+margin_right = -262.392
+margin_bottom = -78.64
+rect_scale = Vector2( 2.75, 2.75 )
+text = "Time"
+align = 1
+script = ExtResource( 4 )
+
+[node name="Money" type="Label" parent="."]
+modulate = Color( 0.835294, 1, 0, 1 )
+anchor_left = 0.016
+anchor_top = 0.919
+anchor_right = 0.141
+anchor_bottom = 0.982
+margin_left = -0.720001
+margin_top = -0.52002
+margin_right = -148.72
+margin_bottom = -42.5601
+rect_scale = Vector2( 2.617, 2.617 )
+text = "1"
+
+[node name="head" type="Button" parent="."]
+anchor_left = 0.695
+anchor_top = 0.843
+anchor_right = 0.734
+anchor_bottom = 0.907
+margin_left = 0.319946
+margin_top = 0.199982
+margin_right = 0.383972
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="head"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -3.05176e-05
+
+[node name="shoulders" type="Button" parent="."]
+anchor_left = 0.741
+anchor_top = 0.843
+anchor_right = 0.78
+anchor_bottom = 0.907
+margin_left = 0.215942
+margin_top = 0.199982
+margin_right = 0.279968
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="shoulders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -3.05176e-05
+
+[node name="body" type="Button" parent="."]
+anchor_left = 0.788
+anchor_top = 0.843
+anchor_right = 0.827
+anchor_bottom = 0.907
+margin_left = 0.0879517
+margin_top = 0.199982
+margin_right = 0.151978
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -3.05176e-05
+
+[node name="right_hand" type="Button" parent="."]
+anchor_left = 0.765
+anchor_top = 0.913
+anchor_right = 0.804
+anchor_bottom = 0.977
+margin_left = -0.360046
+margin_top = 0.199951
+margin_right = -0.296021
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="right_hand"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -6.10352e-05
+margin_bottom = -6.10352e-05
+
+[node name="left_hand" type="Button" parent="."]
+anchor_left = 0.765
+anchor_top = 0.773
+anchor_right = 0.804
+anchor_bottom = 0.837
+margin_left = -0.360168
+margin_top = 0.199951
+margin_right = -0.296021
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="left_hand"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.000183105
+margin_bottom = -6.10352e-05
+
+[node name="legs" type="Button" parent="."]
+anchor_left = 0.833
+anchor_top = 0.843
+anchor_right = 0.872
+anchor_bottom = 0.907
+margin_left = 0.00793457
+margin_top = 0.199982
+margin_right = 0.0719604
+margin_bottom = -0.200012
+
+[node name="TextureRect" type="TextureRect" parent="legs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.05176e-05
+margin_bottom = 3.05176e-05
+
+[node name="consumable1" type="Button" parent="."]
+anchor_left = 0.89
+anchor_top = 0.886
+anchor_right = 0.929
+anchor_bottom = 0.949
+margin_left = -0.800171
+margin_top = -0.280029
+margin_right = -0.736206
+margin_bottom = -0.0799561
+
+[node name="TextureRect" type="TextureRect" parent="consumable1"]
+anchor_right = 1.0
+anchor_bottom = 0.974
+margin_bottom = -0.0120316
+
+[node name="Label" type="Label" parent="consumable1"]
+anchor_left = 0.75
+anchor_top = 0.658
+anchor_right = 0.95
+anchor_bottom = 1.026
+margin_top = -0.00400162
+margin_bottom = 0.012001
+text = "Z"
+
+[node name="consumable2" type="Button" parent="."]
+anchor_left = 0.934
+anchor_top = 0.886
+anchor_right = 0.973
+anchor_bottom = 0.949
+margin_left = -0.856079
+margin_top = -0.280029
+margin_right = -0.792236
+margin_bottom = -0.0799561
+
+[node name="TextureRect" type="TextureRect" parent="consumable2"]
+anchor_right = 1.0
+anchor_bottom = 0.974
+margin_bottom = -0.0120316
+
+[node name="Label" type="Label" parent="consumable2"]
+anchor_left = 0.75
+anchor_top = 0.684
+anchor_right = 0.975
+anchor_bottom = 1.053
+margin_top = 0.00799942
+margin_bottom = -0.0140038
+text = "X"
+
+[node name="consumable3" type="Button" parent="."]
+anchor_left = 0.911
+anchor_top = 0.816
+anchor_right = 0.95
+anchor_bottom = 0.879
+margin_left = 0.591919
+margin_top = -0.280029
+margin_right = 0.656006
+margin_bottom = -0.0800781
+
+[node name="TextureRect" type="TextureRect" parent="consumable3"]
+anchor_right = 1.0
+anchor_bottom = 0.974
+margin_bottom = -0.0120316
+
+[node name="Label" type="Label" parent="consumable3"]
+anchor_left = 0.775
+anchor_top = 0.658
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_top = -0.00400162
+margin_right = -1.0
+margin_bottom = 0.012001
+text = "C"
+
+[node name="Damage" type="Label" parent="."]
+anchor_left = 0.237
+anchor_top = 0.897
+anchor_right = 0.299
+anchor_bottom = 0.92
+margin_left = 0.311981
+margin_top = -0.200012
+margin_right = -0.176025
+text = "damage:"
+
+[node name="Armor" type="Label" parent="."]
+anchor_left = 0.237
+anchor_top = 0.863
+anchor_right = 0.298
+anchor_bottom = 0.887
+margin_left = 0.311951
+margin_top = 0.199951
+margin_right = -0.151978
+margin_bottom = -0.199951
+text = "armor:"
+
+[node name="Speed" type="Label" parent="."]
+anchor_left = 0.237
+anchor_top = 0.823
+anchor_right = 0.3
+anchor_bottom = 0.847
+margin_left = 0.311951
+margin_top = 0.199951
+margin_right = -0.199951
+margin_bottom = -0.200134
+text = "speed:"
+
+[node name="Shop" type="Control" parent="."]
+anchor_left = 0.771
+anchor_top = 0.047
+anchor_right = 1.0
+anchor_bottom = 0.705
+margin_left = -0.504028
+margin_top = -0.200001
+margin_bottom = -3.05176e-05
+
+[node name="Label" type="Label" parent="Shop"]
+anchor_right = 1.0
+anchor_bottom = 0.051
+margin_bottom = -0.145
+custom_fonts/font = SubResource( 2 )
+text = "Магазин"
+align = 1
+
+[node name="TextureRect" type="TextureRect" parent="Shop"]
+anchor_top = 0.073
+anchor_right = 1.029
+anchor_bottom = 0.973
+margin_top = 0.108681
+margin_right = 0.0506897
+margin_bottom = 0.352722
+texture = ExtResource( 7 )
+
+[node name="falakaxa" type="Button" parent="Shop"]
+anchor_left = 0.05
+anchor_top = 0.096
+anchor_right = 0.191
+anchor_bottom = 0.175
+margin_left = 0.174761
+margin_top = 0.199371
+margin_right = -17.8912
+margin_bottom = -14.957
+icon = ExtResource( 8 )
+
+[node name="pigeon" type="Button" parent="Shop"]
+anchor_left = 0.218
+anchor_top = 0.097
+anchor_right = 0.359
+anchor_bottom = 0.176
+margin_left = 0.0398941
+margin_top = 0.0485306
+margin_right = -0.0260468
+margin_bottom = -0.107834
+icon = ExtResource( 9 )
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.708
+anchor_top = 0.083
+anchor_right = 0.994
+anchor_bottom = 0.435
+margin_left = -961.36
+margin_top = 383.36
+margin_right = -1217.48
+margin_bottom = 111.2
+window_title = "HI!"
+
+[node name="Label2" type="Label" parent="AcceptDialog"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 285.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 3 )
+text = "Привет это обучение, мы рады что ты зашёл 
+его пройти и так ты готов?"
+
+[node name="AcceptDialog2" type="AcceptDialog" parent="."]
+anchor_left = 0.053
+anchor_top = 0.152
+anchor_right = 0.339
+anchor_bottom = 0.5
+margin_left = -89.76
+margin_top = 331.84
+margin_right = -343.88
+margin_bottom = 139.0
+window_title = "HI!"
+
+[node name="Label2" type="Label" parent="AcceptDialog2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 287.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 3 )
+text = "Как ты видьшь твои союзники крипы уже
+побежали атаковать крипов пративник
+кстати за добивание крипов тебе даётся
+30 единиц монет. Колличество денег можно
+проследить в левом нижнем экране"
+
+[node name="AcceptDialog3" type="AcceptDialog" parent="."]
+anchor_left = 0.01
+anchor_top = 0.537
+anchor_right = 0.299
+anchor_bottom = 0.888
+margin_left = 24.8
+margin_top = 219.04
+margin_right = -225.08
+margin_bottom = -7.04004
+window_title = "HI!"
+
+[node name="Label2" type="Label" parent="AcceptDialog3"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 297.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 3 )
+text = "Деньги один из важных ресурсов в игре
+чем больше денег тем ьольше шанс победить
+противника"
+
+[node name="AcceptDialog4" type="AcceptDialog" parent="."]
+margin_left = 383.0
+margin_top = 642.0
+margin_right = 853.0
+margin_bottom = 853.0
+window_title = "HI!"
+
+[node name="Label2" type="Label" parent="AcceptDialog4"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 462.0
+margin_bottom = 175.0
+custom_fonts/font = SubResource( 3 )
+text = "Внизу посеридине вся важная информация о твоём персонаже:
+количество жизни и маны также скилы которые ты можешь использовать"
+
+[node name="AcceptDialog5" type="AcceptDialog" parent="."]
+margin_left = 578.0
+margin_top = 376.0
+margin_right = 1029.0
+margin_bottom = 587.0
+window_title = "HI!"
+
+[node name="Label2" type="Label" parent="AcceptDialog5"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 443.0
+margin_bottom = 175.0
+custom_fonts/font = SubResource( 3 )
+text = "Теперь ты можешь идти бить крипов и зарабатывать деньги и запомни 
+самая главная цель это победить т е убить противника или
+рахрушить его башню"
