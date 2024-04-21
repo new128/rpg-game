@@ -79,6 +79,7 @@ func _process(delta):
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
 	if is_move:
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]001")
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").set_speed_scale(2)
 	
 	
 	
