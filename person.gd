@@ -69,21 +69,20 @@ func count_stat():
 					person_stats[key_2] += inventory.body.characteristic[key_2]
 			inventory.weapons[key_1].item_stats["dressed"] = true
 
-func die(person, die):
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		print("die")
-		die = true
-	if person.person_stats["hp"] == person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] <= 0:
-		person.person_stats["mana"] = 0
+func is_die():
+	if person_stats["hp"] <= 0:
+		person_stats["hp"] = 0
+		print("is_die")
+		return true
+
+func is_valid_stats():
+	if person_stats["mana"] < 0:
+		person_stats["mana"] = 0
 		print("Dont mana")
-	if person.person_stats["hp"] >= person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] >= person.person_stats["max_mana"]:
-		person.person_stats["mana"] = person.person_stats["max_mana"]
-	pass
+	if person_stats["hp"] > person_stats["max_hp"]:
+		person_stats["hp"] = person_stats["max_hp"]
+	if person_stats["mana"] > person_stats["max_mana"]:
+		person_stats["mana"] = person_stats["max_mana"]
 
 func effect():
 	person_stats["hp"] += (person_stats["regen_hp"] / 60.0)

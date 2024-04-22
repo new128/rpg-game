@@ -15,7 +15,7 @@ var back_object = null
 var is_move = false
 var last_attack = null
 var giv_money = 300
-var die = false
+var is_die = false
 var effects_p = []
 var effects_time = []
 var el_t = 0
@@ -94,7 +94,8 @@ func _process(delta):
 	
 	
 	effects()
-	die()
+	is_die = person.is_die()
+	person.is_valid_stats()
 
 	# Перемещение к целевой позиции
 	if is_move:
@@ -167,24 +168,6 @@ func effects():
 			effects_time.erase(it)
 		
 	
-
-
-func die():
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		print("die")
-		die = true
-	if person.person_stats["hp"] == person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] <= 0:
-		person.person_stats["mana"] = 0
-		print("Dont mana")
-	if person.person_stats["hp"] >= person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] >= person.person_stats["max_mana"]:
-		person.person_stats["mana"] = person.person_stats["max_mana"]
-
-
 func _on_button_Z_pressed():
 	if person.inventory.consumables[0]:
 		if String(person.inventory.consumables[0].skill.skill["time"]) != "instantly":

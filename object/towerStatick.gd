@@ -7,7 +7,7 @@ var person = Person.new("tower", "tower_friend","team_hz",
 [], null, 0)
 var target : Vector3 = Vector3.ZERO
 var target_person = null
-var die = false
+var is_die = false
 var last_attack = null
 var giv_money = 300
 
@@ -23,10 +23,6 @@ func _ready():
 
 func _process(delta):
 	effect()
-	
-	
-	
-	
 	person.person_stats["time"] += 1
 	
 	person.attack(self, target_person)
@@ -43,11 +39,7 @@ func _process(delta):
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
 	
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		die = true
-		print("die")
-	
+	person.is_die()
 	
 	if get_node("/root/Spatial/KinematicBody").person.team != person.team:
 		$HUD/hp.modulate = Color(1, 0, 0)

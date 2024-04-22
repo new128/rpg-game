@@ -8,7 +8,7 @@ var person = Person.new("crip", "crip", "team_hz",
 
 var target : Vector3 = Vector3.ZERO
 var target_person = null
-var die = false
+var is_die = false
 var last_attack = null
 var giv_money = 50
 var is_move = false
@@ -65,13 +65,5 @@ func _process(delta):
 	$HUD/hp.rect_size.x = 140
 	$HUD/mana.visible  = false
 	
-	
-	
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		die = true
-		print("die")
-	if person.person_stats["hp"] >= person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] >= person.person_stats["max_mana"]:
-		person.person_stats["mana"] = person.person_stats["max_mana"]
+	is_die = person.is_die()
+	person.is_valid_stats()

@@ -9,7 +9,7 @@ var person = Person.new("tower", "tower_friend","team_hz",
 
 var target : Vector3 = Vector3.ZERO
 var target_tower = null
-var die = false
+var is_die = false
 var last_attack = null
 var giv_money = 300
 
@@ -32,7 +32,6 @@ func _process(delta):
 	
 	
 	person.person_stats["time"] += 1
-	
 	person.attack(self, target_tower)
 	
 	
@@ -47,11 +46,7 @@ func _process(delta):
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
 	
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		die = true
-		print("die")
-	
+	is_die = person.is_die()
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1

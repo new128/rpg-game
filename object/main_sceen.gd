@@ -212,7 +212,7 @@ func _process(delta):
 		$KinematicBody.person.money += 1.5
 	
 	for item in all_person:
-		if item.die:
+		if item.is_die:
 			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
 				var file = File.new()
 				var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)

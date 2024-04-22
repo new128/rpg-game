@@ -33,3 +33,7 @@ func _use_ability(num_of_slote, person):
 	person.person_stats["regen_hp"] += consumables[num_of_slote].characteristic["regen_hp"]
 	person.person_stats["regen_mana"] += consumables[num_of_slote].characteristic["regen_mana"]
 	consumables[num_of_slote] = 0
+
+func _wear_the_weapon(weapon):
+	weapons[weapon.item_stats["slote"]] = weapon
+	pass

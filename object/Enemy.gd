@@ -8,7 +8,7 @@ var person = Person.new("paladin", "enemy","team_hz",
 null, null, 500)
 var target : Vector3 = Vector3.ZERO
 var target_person = null
-var die = false
+var is_die = false
 var last_attack = null
 var giv_money = 500
 var is_move = false
@@ -76,11 +76,5 @@ func _process(delta):
 	$HUD/mana.value = person.person_stats["mana"]
 	
 	
-	if person.person_stats["hp"] <= 0:
-		person.person_stats["hp"] = 0
-		die = true
-		print("die")
-	if person.person_stats["hp"] >= person.person_stats["max_hp"]:
-		person.person_stats["hp"] = person.person_stats["max_hp"]
-	if person.person_stats["mana"] >= person.person_stats["max_mana"]:
-		person.person_stats["mana"] = person.person_stats["max_mana"]
+	is_die = person.is_die()
+	person.is_valid_stats()
