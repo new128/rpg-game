@@ -44,46 +44,29 @@ func _process(delta):
 				get_node("/root/Spatial/Control/consumable" + str(i+1) + "/TextureRect").texture = load(new_texture_path)
 			else:get_node("/root/Spatial/Control/consumable" + str(i+1) + "/TextureRect").texture = null
 	
-	
 	person.count_stat()
-	
 	
 	OS.set_window_fullscreen(true)
 	
-	
 	person.person_stats["time"] += 1
-	
 	
 	if person.attack_bool:
 		if not person.attack(self, back_object):
 			is_move = false
 	
-	
 	var cgp = global_transform.origin
-	var screen_size = OS.get_screen_size()
 	var cam = get_node("/root/Spatial/Play_camera")
 	var pos = cam.position
-
-	var x_pos = pos.x + 9.5 - cgp.x
-	var y_pos = 33.62 - (pos.z + 16.81 - cgp.z)
-	
-	var x_p = 1*x_pos/18.91
-	var y_p = 1*y_pos/33.62
-	
-	#print(x_p)
-	#print(y_p)
+	var x_p = (pos.x + 9.5 - cgp.x)/18.91
+	var y_p = (33.62 - (pos.z + 16.81 - cgp.z))/33.62
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
-	
-	
-	
 	
 	$HUD/hp.max_value = person.person_stats["max_hp"]
 	$HUD/hp.value = person.person_stats["hp"]
 	$HUD/mana.max_value = person.person_stats["max_mana"]
 	$HUD/mana.value = person.person_stats["mana"]
-	
 	
 	var direction = (target_position - translation).normalized()
 	direction.y = 0
@@ -91,7 +74,6 @@ func _process(delta):
 	if direction.length() > rotation_threshold:
 		var angle = atan2(direction.x, direction.z)
 		rotation_degrees.y = angle * 180 / PI
-	
 	
 	effects()
 	is_die = person.is_die()

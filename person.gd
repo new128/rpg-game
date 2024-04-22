@@ -1,6 +1,5 @@
 class_name PersonClass
 
-
 var class_person = "" # класс: ближник, дальник, маг и тд 
 var pers_type = ""
 var team = ""
@@ -12,16 +11,14 @@ var inventory = Inventory.new({"head" : null, "shoulders" : null, "left_hand" : 
 var money = 500
 
 func _init(class_person_, pers_type_, team_, person_stats_, skills_, inventory_, money_):
-		class_person = class_person_
-		pers_type = pers_type_
-		team = team_
-		person_stats = person_stats_
-		skills = skills_
-		inventory = inventory_
-		money = money_
+	class_person = class_person_
+	pers_type = pers_type_
+	team = team_
+	person_stats = person_stats_
+	skills = skills_
+	inventory = inventory_
+	money = money_
 
-#func add_ability(ability_):
-#	inventory.add(ability_)
 
 func taking_damage(type, damage):
 	if type == "mag":
