@@ -63,10 +63,10 @@ func count_stat():
 	for key_1 in inventory.weapons:
 		if inventory.weapons[key_1] != null:
 			print(inventory.weapons[key_1].characteristic)
-			for key_2 in inventory.weapons[key_1]:
-				if not inventory.weapons[key_1].item_stats["dressed"]:
-					person_stats[key_2] += inventory.body.characteristic[key_2]
-			inventory.weapons[key_1].item_stats["dressed"] = true
+			for key_2 in inventory.weapons[key_1].characteristic:
+				if inventory.weapons[key_1].item_stats["dressed"] == false:
+					person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
+					inventory.weapons[key_1].item_stats["dressed"] = true
 
 func is_die():
 	if person_stats["hp"] <= 0:

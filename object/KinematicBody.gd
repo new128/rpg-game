@@ -18,6 +18,12 @@ var el_t = 0
 
 func _ready():
 	person.team = "left"
+	person.inventory._wear_the_weapon(Item.new({"name" : "sword_is_rusty","description" : "An ordinary sword for suckers", "price" : 500, "slote" : "right_hand", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"damage" : 10}, null))
+	person.inventory._wear_the_weapon(Item.new({"name" : "tattered_mail","description" : "Regular armor for suckers", "price" : 500,"slote" : "body", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"armor" : 5, "hp" : 100}, null))
+	person.inventory._wear_the_weapon(Item.new({"name" : "speed_boots","description" : "Regular armor for suckers", "price" : 500,"slote" : "legs", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"speed" : 1}, null))
+	person.inventory.consumables[0] = Item.new({"name" : "falakaxa", "description" : "Flask from dota", "price" : 120,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_hp":30}, Skill.new("falakaxa", {"time":10,"target":"self","regen_hp":30}))
+	person.inventory.consumables[1] = Item.new({"name" : "pigeon", "description" : "Claret from dota", "price" : 90,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_mana":20}, Skill.new("pigeon", {"time":10,"target":"self","regen_mana":20}))
+	person.inventory.consumables[2] = Item.new({"name" : "fufarik", "description" : "fireman from dota", "price" : 80,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"hp":100}, Skill.new("fufarik", {"time":"instantly","target":"self", "hp":100}))
 
 func _process(delta):
 	var kin_bod = get_node("/root/Spatial/Control/Time")
@@ -25,7 +31,6 @@ func _process(delta):
 	
 	# Обработка движения персонажа
 	move_and_slide(Vector3.ZERO)
-	
 	
 	for key in person.inventory.weapons:
 		if person.inventory.weapons[key]:
@@ -138,9 +143,9 @@ func _input(event):
 func effects():
 	person.effect()
 	for it in effects_p:
-		if effects_time[effects_p.find(it.skill)]+10 <= el_t:
-			person.person_stats["regen_hp"] -= it.skill["regen_hp"]
-			person.person_stats["regen_mana"] -= it.skill["regen_mana"]
+		if effects_time[effects_p.find(it.skill.skill)]+10 <= el_t:
+			for key in it.characteristic:
+				person.person_stats[key] -= it.characteristic[key]
 			effects_p.erase(it)
 			effects_time.erase(it)
 		
@@ -148,41 +153,38 @@ func effects():
 func _on_button_Z_pressed():
 	if person.inventory.consumables[0]:
 		if String(person.inventory.consumables[0].skill.skill["time"]) != "instantly":
-			effects_p.append(person.inventory.consumables[0].skill)
+			effects_p.append(person.inventory.consumables[0])
 			effects_time.append(el_t)
 		person.inventory._use_ability(0, person)
 
 func _on_button_X_pressed():
 	if person.inventory.consumables[1]:
 		if String(person.inventory.consumables[1].skill.skill["time"]) != "instantly":
-			effects_p.append(person.inventory.consumables[1].skill)
+			effects_p.append(person.inventory.consumables[1])
 			effects_time.append(el_t)
 		person.inventory._use_ability(1, person)
 
 func _on_button_C_pressed():
 	if person.inventory.consumables[2]:
 		if String(person.inventory.consumables[2].skill.skill["time"]) != "instantly":
-			effects_p.append(person.inventory.consumables[2].skill)
+			effects_p.append(person.inventory.consumables[2])
 			effects_time.append(el_t)
 		person.inventory._use_ability(2, person)
 
 func _on_button_Q_pressed():
 	if person.money >= 120:
-		person.inventory._add_ability("falakaxa")
-		person.money -= 120
+		person.inventory._add_ability("falakaxa", person)
 	else:
 		print("NO MONEY")
 
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:
-		person.inventory._add_ability("falakaxa")
-		person.money -= 120
+		person.inventory._add_ability("falakaxa", person)
 	else:
 		print("NO MONEY")
 
 func _on_button_buy_pigeon_pressed():
 	if person.money >= 90:
-		person.inventory._add_ability("pigeon")
-		person.money -= 90
+		person.inventory._add_ability("pigeon", person)
 	else:
 		print("NO MONEY")

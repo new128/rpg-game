@@ -23,11 +23,11 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
+margin_right = 288.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
-text = "Привет это обучение, мы рады что ты зашёл 
-его пройти и так ты готов?"
+text = "Привет это обучение, мы рады, что ты зашёл 
+его пройти. Итак, ты готов?"
 
 [node name="AcceptDialog2" type="AcceptDialog" parent="."]
 anchor_left = 0.053
@@ -69,8 +69,8 @@ margin_top = 8.0
 margin_right = 297.0
 margin_bottom = 117.0
 custom_fonts/font = SubResource( 1 )
-text = "Деньги один из важных ресурсов в игре
-чем больше денег тем ьольше шанс победить
+text = "Деньги - один из важных ресурсов в игре:
+чем больше денег, тем больше шанс победить
 противника"
 
 [node name="AcceptDialog4" type="AcceptDialog" parent="."]
@@ -83,11 +83,11 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog4"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 462.0
+margin_right = 468.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 1 )
 text = "Внизу посеридине вся важная информация о твоём персонаже:
-количество жизни и маны также скилы которые ты можешь использовать"
+количество жизни и маны, также скилы, которые ты можешь использовать"
 
 [node name="AcceptDialog5" type="AcceptDialog" parent="."]
 margin_left = 578.0
@@ -102,6 +102,6 @@ margin_top = 8.0
 margin_right = 443.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 1 )
-text = "Теперь ты можешь идти бить крипов и зарабатывать деньги и запомни 
-самая главная цель это победить т е убить противника или
-рахрушить его башню"
+text = "Теперь ты можешь идти бить крипов и зарабатывать деньги. Запомни, 
+самая главная цель - победить:  убить противника или
+разрушить его башню"

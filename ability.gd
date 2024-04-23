@@ -1,7 +1,7 @@
 class_name Ability
 
 var name = ""
-var skill = {}       #{"time":null,"target":null,"regen_hp":null,"regen_mana":null}
+var skill = {"time":10,"target":"self"}
 
 func _init(name_, skill_):
 	name = name_

@@ -518,14 +518,14 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog2"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 287.0
+margin_right = 333.0
 margin_bottom = 147.0
 custom_fonts/font = SubResource( 3 )
-text = "Как ты видьшь твои союзники крипы уже
-побежали атаковать крипов пративник
-кстати за добивание крипов тебе даётся
-30 единиц монет. Колличество денег можно
-проследить в левом нижнем экране"
+text = "Как ты видишь,твои крипы уже
+побежали атаковать крипов противника.
+Кстати, за добивание крипов противника тебе даётся
+30 монет. Количество денег можно
+проследить в левом нижнем углу  экрана"
 
 [node name="AcceptDialog3" type="AcceptDialog" parent="."]
 anchor_left = 0.01
@@ -544,8 +544,8 @@ margin_top = 8.0
 margin_right = 297.0
 margin_bottom = 117.0
 custom_fonts/font = SubResource( 3 )
-text = "Деньги один из важных ресурсов в игре
-чем больше денег тем ьольше шанс победить
+text = "Деньги - один из важных ресурсов в игре:
+чем больше денег, тем больше шанс победить
 противника"
 
 [node name="AcceptDialog4" type="AcceptDialog" parent="."]
@@ -558,11 +558,11 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog4"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 462.0
+margin_right = 468.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 3 )
 text = "Внизу посеридине вся важная информация о твоём персонаже:
-количество жизни и маны также скилы которые ты можешь использовать"
+количество жизни и маны, также скилы, которые ты можешь использовать"
 
 [node name="AcceptDialog5" type="AcceptDialog" parent="."]
 margin_left = 578.0
@@ -577,6 +577,6 @@ margin_top = 8.0
 margin_right = 443.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 3 )
-text = "Теперь ты можешь идти бить крипов и зарабатывать деньги и запомни 
-самая главная цель это победить т е убить противника или
-рахрушить его башню"
+text = "Теперь ты можешь идти бить крипов и зарабатывать деньги. Запомни, 
+самая главная цель - победить:  убить противника или
+разрушить его башню"
