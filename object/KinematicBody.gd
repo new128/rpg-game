@@ -1,21 +1,17 @@
 extends KinematicBody
 
-var target_position = Vector3.ZERO
 var rotation_threshold = 0.1
 var rotation_speed = 5
-# Загрузка класса
 var Person = preload("res://person.gd")
 var Item = preload("res://item.gd")
 var Inventory = preload("res://inventory.gd")
 var Skill = preload("res://ability.gd")
 var person = Person.new("paladin", "play_pers","left",
 {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 2.5, "speed" : 6,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0},
-null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]), 500)
-var back_object = null
+null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),500)
 var is_move = false
 var last_attack = null
 var giv_money = 300
-var is_die = false
 var effects_p = []
 var effects_time = []
 var el_t = 0
@@ -51,7 +47,7 @@ func _process(delta):
 	person.person_stats["time"] += 1
 	
 	if person.attack_bool:
-		if not person.attack(self, back_object):
+		if not person.attack(self, person.target["target_person"]):
 			is_move = false
 	
 	var cgp = global_transform.origin
@@ -68,7 +64,7 @@ func _process(delta):
 	$HUD/mana.max_value = person.person_stats["max_mana"]
 	$HUD/mana.value = person.person_stats["mana"]
 	
-	var direction = (target_position - translation).normalized()
+	var direction = (person.target["target"] - translation).normalized()
 	direction.y = 0
 	
 	if direction.length() > rotation_threshold:
@@ -76,12 +72,12 @@ func _process(delta):
 		rotation_degrees.y = angle * 180 / PI
 	
 	effects()
-	is_die = person.is_die()
+	person.is_die()
 	person.is_valid_stats()
 
 	# Перемещение к целевой позиции
 	if is_move:
-		if target_position != Vector3.ZERO:
+		if person.target["target"] != Vector3.ZERO:
 			
 			move_and_slide(direction * person.person_stats["speed"])
 			
@@ -119,25 +115,24 @@ func _input(event):
 		if result.has('collider'):
 			var object = result.collider
 			print(object.name)
-			target_position = result.position
+			person.target["target"] = result.position
 			if object.person != null:
 				if object.person.team != person.team:
-					back_object = object
+					person.target["target_person"] = object
 					is_move = false
 					print("Yes")
 					if person.attack(self ,object):
 
 					# Найти ближайшую точку на obj1 к obj2
-						target_position = object.global_transform.origin
+						person.target["target"] = object.global_transform.origin
 						is_move = true
 				
 					return
 		#print(result)
 		if result:
-			target_position = result.position
+			person.target["target"] = result.position
 			person.attack_bool = false
 			is_move = true
-			#print(target_position)
 		
 	
 func effects():

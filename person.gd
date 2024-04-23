@@ -1,13 +1,15 @@
 class_name PersonClass
 
+var Inventory = preload("res://inventory.gd") 
+var Item = preload("res://item.gd") 
 var class_person = "" # класс: ближник, дальник, маг и тд 
 var pers_type = ""
 var team = ""
 var person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 10, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 2.5, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0}
 var skills = []
-var Inventory = preload("res://inventory.gd") 
-var Item = preload("res://item.gd") 
 var inventory = Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [null,null,null])
+var target = {"target" : Vector3.ZERO, "target_person" : null}
+var is_die = false
 var money = 500
 
 func _init(class_person_, pers_type_, team_, person_stats_, skills_, inventory_, money_):
@@ -70,7 +72,7 @@ func is_die():
 	if person_stats["hp"] <= 0:
 		person_stats["hp"] = 0
 		print("is_die")
-		return true
+		is_die = true
 
 func is_valid_stats():
 	if person_stats["mana"] < 0:

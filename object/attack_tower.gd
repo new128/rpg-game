@@ -6,10 +6,6 @@ var Person = preload("res://person.gd")
 var person = Person.new("tower", "tower_friend","team_hz",
 {"max_hp" : 2000, "hp": 2000, "max_mana": 0, "mana": 0, "regen_hp": 0, "regen_mana" : 0, "armor":25, "magic_damage_resist" : 10, "damage": 80, "attack_speed" : 1, "attack_radius" : 6, "speed" : 0,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0},
 [], null, 0)
-
-var target : Vector3 = Vector3.ZERO
-var target_tower = null
-var is_die = false
 var last_attack = null
 var giv_money = 300
 
@@ -32,7 +28,7 @@ func _process(delta):
 	
 	
 	person.person_stats["time"] += 1
-	person.attack(self, target_tower)
+	person.attack(self, person.target["target_person"])
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")
@@ -40,7 +36,7 @@ func _process(delta):
 	var x_p = (pos.x + 9.5 - cgp.x)/18.91
 	var y_p = (33.62 - (pos.z + 16.81 - cgp.z))/33.62
 	
-	is_die = person.is_die()
+	person.is_die()
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1

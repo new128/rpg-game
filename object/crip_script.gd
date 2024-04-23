@@ -5,10 +5,6 @@ var Person = preload("res://person.gd")
 var person = Person.new("crip", "crip", "team_hz",
 {"max_hp" : 500, "hp": 500, "max_mana": 0, "mana": 0, "regen_hp": 2, "regen_mana" : 0, "armor":3, "magic_damage_resist" : 10, "damage": 50, "attack_speed" : 2, "attack_radius" : 2, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0},
 [], null, 0)
-
-var target : Vector3 = Vector3.ZERO
-var target_person = null
-var is_die = false
 var last_attack = null
 var giv_money = 50
 var is_move = false
@@ -20,24 +16,26 @@ func _ready():
 
 func _process(delta):
 	person.effect()
+	person.is_die()
+	person.is_valid_stats()
 	person.person_stats["time"] += 1
 	
 	
-	var direction_ = (target - translation).normalized()
+	var direction_ = (person.target["target"] - translation).normalized()
 	direction_.y = 0
 	
 	if direction_.length() > 0.1:
 		var angle = atan2(direction_.x, direction_.z)
 		rotation_degrees.y = angle * 180 / PI
 	
-	if target != Vector3.ZERO and is_move:
-			var direction = (target - translation).normalized()
+	if person.target["target"] != Vector3.ZERO and is_move:
+			var direction = (person.target["target"] - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.person_stats["speed"])
 		
 	
 	is_move = false
-	if person.attack(self, target_person):
+	if person.attack(self, person.target["target_person"]):
 		is_move = true
 	
 	var cgp = global_transform.origin
@@ -49,7 +47,6 @@ func _process(delta):
 	if get_node("/root/Spatial/KinematicBody").person.team != person.team:
 		$HUD/hp.modulate = Color(1, 0, 0)
 	
-	
 	$HUD.anchor_left = y_p-0.04
 	$HUD.anchor_top = x_p#-0.1
 	
@@ -58,6 +55,3 @@ func _process(delta):
 	$HUD/hp.rect_size.y = 20
 	$HUD/hp.rect_size.x = 140
 	$HUD/mana.visible  = false
-	
-	is_die = person.is_die()
-	person.is_valid_stats()

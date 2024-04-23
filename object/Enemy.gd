@@ -6,9 +6,6 @@ var Person = preload("res://person.gd")
 var person = Person.new("paladin", "enemy","team_hz",
 {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 2.5, "speed" : 6,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0},
 null, null, 500)
-var target : Vector3 = Vector3.ZERO
-var target_person = null
-var is_die = false
 var last_attack = null
 var giv_money = 500
 var is_move = false
@@ -22,13 +19,12 @@ func _ready():
 
 func _process(delta):
 	person.effect()
+	person.is_die()
+	person.is_valid_stats()
 	
 	person.person_stats["time"] += 1
 	
-	
-	
-	
-	var direction_ = (target - translation).normalized()
+	var direction_ = (person.target["target"] - translation).normalized()
 	direction_.y = 0
 	
 	if direction_.length() > 0.1:
@@ -38,8 +34,8 @@ func _process(delta):
 	
 	
 	
-	if target != Vector3.ZERO and is_move:
-			var direction = (target - translation).normalized()
+	if person.target["target"] != Vector3.ZERO and is_move:
+			var direction = (person.target["target"] - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.person_stats["speed"])
 			
@@ -47,7 +43,7 @@ func _process(delta):
 			
 	
 	is_move = false
-	if person.attack(self, target_person):
+	if person.attack(self, person.target["target_person"]):
 		is_move = true
 	
 	var cgp = global_transform.origin
@@ -67,7 +63,3 @@ func _process(delta):
 	
 	$HUD/mana.max_value = person.person_stats["max_mana"]
 	$HUD/mana.value = person.person_stats["mana"]
-	
-	
-	is_die = person.is_die()
-	person.is_valid_stats()

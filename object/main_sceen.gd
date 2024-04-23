@@ -199,8 +199,8 @@ func _process(delta):
 							min_dist = dist
 							object_d = it
 			if object_d != null:
-				item.target = object_d.global_transform.origin
-				item.target_person = object_d
+				item.person.target["target"] = object_d.global_transform.origin
+				item.person.target["target_person"] = object_d
 				print(object_d.name)
 	
 	
@@ -212,7 +212,7 @@ func _process(delta):
 		$KinematicBody.person.money += 1.5
 	
 	for item in all_person:
-		if item.is_die:
+		if item.person.is_die:
 			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
 				var file = File.new()
 				var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
