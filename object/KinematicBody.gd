@@ -49,7 +49,7 @@ func _process(delta):
 	
 	OS.set_window_fullscreen(true)
 	
-	person.person_stats["time"] += delta
+	person.person_stats["time"] += 1
 	
 	if person.attack_bool:
 		if not person.attack(self, person.target["target_person"]):
@@ -79,17 +79,12 @@ func _process(delta):
 	effects()
 	person.is_die()
 	person.is_valid_stats()
-
-	# Перемещение к целевой позиции
+	
 	if is_move:
 		if person.target["target"] != Vector3.ZERO:
-			
 			move_and_slide(direction * person.person_stats["speed"])
-			
-			
 
 func _input(event):
-	# Обработка ввода от игрока
 	var control_node = get_node("/root/Spatial/Control")
 	control_node.connect("button_Z_pressed", self, "_on_button_Z_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("Z"):
@@ -107,14 +102,10 @@ func _input(event):
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
 	
-	
-	
 	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("right_click"):
-		# Получение позиции, на которую нажал игрок
 		var mouse_position = event.position
 		var clicked_point = get_viewport().get_camera().project_ray_origin(mouse_position)
 		var ray_end = get_viewport().get_camera().project_ray_normal(mouse_position) * 1000 + clicked_point
-		
 		var space_state = get_world().direct_space_state
 		var result = space_state.intersect_ray(clicked_point, ray_end)
 		if result.has('collider'):
@@ -127,13 +118,9 @@ func _input(event):
 					is_move = false
 					print("Yes")
 					if person.attack(self ,object):
-
-					# Найти ближайшую точку на obj1 к obj2
 						person.target["target"] = object.global_transform.origin
 						is_move = true
-				
 					return
-		#print(result)
 		if result:
 			person.target["target"] = result.position
 			person.attack_bool = false
