@@ -49,7 +49,7 @@ func _process(delta):
 	
 	OS.set_window_fullscreen(true)
 	
-	person.person_stats["time"] += 1
+	person.person_stats["time"] += delta
 	
 	if person.attack_bool:
 		if not person.attack(self, person.target["target_person"]):
