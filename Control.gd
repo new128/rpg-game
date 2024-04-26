@@ -50,6 +50,8 @@ func _process(delta):
 		$Damage.text = "damage: "+ String(kin_bod.person.person_stats["damage"])
 		$Armor.text = "armor: "+ String(kin_bod.person.person_stats["armor"])
 		$Speed.text = "speed: "+ String(kin_bod.person.person_stats["speed"])
+		$lvl.text = "lvl: "+ String(kin_bod.person.person_stats["lvl"])
+		$xp.text = "xp: "+ String(kin_bod.person.person_stats["xp"])
 		
 		
 	if not $AcceptDialog.visible and ac_d2:
