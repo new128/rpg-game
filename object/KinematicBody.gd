@@ -26,6 +26,7 @@ func _ready():
 	person.inventory.consumables[2] = Item.new({"name" : "fufarik", "description" : "fireman from dota", "price" : 80,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"hp":100}, Skill.new("fufarik", {"time":"instantly","target":"self", "hp":100}))
 
 func _process(delta):
+	var crip = get_node("res://object/crip_script.gd").person
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
 	
@@ -79,6 +80,9 @@ func _process(delta):
 	person.is_die()
 	person.is_valid_stats()
 	
+	if crip.team == "right" and crip.person.is_die == true:
+		person.money += crip.giv_money
+		person.person_stats["xp"] += 50
 	if is_move:
 		if person.target["target"] != Vector3.ZERO:
 			move_and_slide(direction * person.person_stats["speed"])

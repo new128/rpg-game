@@ -24,37 +24,34 @@ func _init(class_person_, pers_type_, team_, person_stats_, skills_, inventory_,
 
 func taking_damage(type, damage):
 	if type == "mag":
-		person_stats["hp"] -= person_stats["damage"] - person_stats["damage"]*person_stats["magic_damage_resist"]/100
+		person_stats["hp"] -= person_stats["damage"] - person_stats["damage"] * person_stats["magic_damage_resist"] / 100
 	if type == "phis":
-		person_stats["hp"] -= person_stats["damage"] -person_stats["armor"]
+		person_stats["hp"] -= person_stats["damage"] - person_stats["armor"]
 	if type == "clear":
 		person_stats["hp"] -= person_stats["damage"]
 		
 var attack_bool = false
 
-func attack(attack_object, object):
-	
-	
-	if not is_instance_valid(object):
+func attack(attack_object, target):
+	if not is_instance_valid(target):
 		return
 	print("attack")
 	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
-	var obj2_position = Vector2(object.global_transform.origin.x, object.global_transform.origin.y)
+	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.y)
 
 	var dist = obj1_position.distance_to(obj2_position)
 	
 	attack_bool = true
-	if object.person.class_person == "tower":
+	if target.person.class_person == "tower":  # У башни меньше радиус
 		dist -= 1
 		
 	if dist <= person_stats["attack_radius"]:
 		print("aaaaaa")
-		print(object.person.person_stats["hp"])
-		if person_stats["time"] / 60 >= person_stats["attack_speed"]*4:
-			
-			object.person.taking_damage("phis", person_stats["damage"])
+		print(target.person.person_stats["hp"])
+		if person_stats["time"] / 60 >= person_stats["attack_speed"] * 4:
+			target.person.taking_damage("phis", person_stats["damage"])
 			person_stats["time"] = 0
-			object.last_attack = self
+			target.last_attack = self
 	else:
 		return 5
 		
@@ -73,6 +70,7 @@ func is_die():
 		person_stats["hp"] = 0
 		print("is_die")
 		is_die = true
+	return is_die
 
 func is_valid_stats():
 	if person_stats["mana"] < 0:
@@ -88,4 +86,10 @@ func effect():
 	person_stats["mana"] += (person_stats["regen_mana"] / 60.0)
 
 func level_up():
+	if person_stats["xp"] == 100 + (person_stats["lvl"]^2)*100:
+		person_stats["lvl"] += 1
+		person_stats["max_hp"] += (person_stats["lvl"]-1)*50
+		person_stats["max_mana"] += (person_stats["lvl"]-1)*10
+		person_stats["damage"] += (person_stats["lvl"]-1)*5
+		person_stats["xp"] = 0
 	pass
