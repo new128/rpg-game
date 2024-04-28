@@ -9,19 +9,18 @@ func _process(delta):
 	var movement_vector = Vector3()
 
 	if Input.is_action_pressed("right"):
-		movement_vector.x += 1
+		movement_vector.z += 1
 	if Input.is_action_pressed("left"):
-		movement_vector.x -= 1
+		movement_vector.z -= 1
 	if Input.is_action_pressed("forward"):
-		movement_vector.y += 1
+		movement_vector.x += 1
 	if Input.is_action_pressed("back"):
-		movement_vector.y -= 1
+		movement_vector.x -= 1
 
 	# Нормализуем вектор, чтобы скорость была одинаковой во всех направлениях
 	movement_vector = movement_vector.normalized()
-
 	# Перемещаем камеру
-	translate(movement_vector * (movement_speed+7) * delta)
+	transform.origin += movement_vector * (movement_speed+7) * delta
 
 	# Обрабатываем движение мыши по зажатию средней кнопки
 	if Input.is_action_pressed("midle_mouse"):

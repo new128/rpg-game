@@ -53,7 +53,7 @@ shape = SubResource( 2 )
 [node name="HUD" parent="KinematicBody" instance=ExtResource( 7 )]
 
 [node name="Play_camera" type="Camera" parent="."]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -40, 20, -80 )
+transform = Transform( -3.31147e-08, 0.757576, -0.652746, -2.85325e-08, 0.652746, 0.757576, 1, 4.37114e-08, 1.77636e-15, -40, 20, -80 )
 script = ExtResource( 2 )
 
 [node name="RayCast" type="RayCast" parent="."]
