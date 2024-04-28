@@ -34,135 +34,43 @@ func _ready():
 	all_person.append($Tower_f/LT1)
 	all_person.append($Tower_r/RT1)
 	
-# Создайте копии кинематического тела и 3D-модели
-	var new_crip2 = crip.duplicate()
-	var new_crip3 = crip.duplicate()
-	var new_crip4 = crip.duplicate()
-	
-	var new_crip5 = crip.duplicate()
-	var new_crip6 = crip.duplicate()
-	var new_crip7 = crip.duplicate()
-	var new_crip8 = crip.duplicate()
-	
-	crip = crip.duplicate()
-
-# Поместите копии в сцену (замените parent_node на ваш узел, к которому вы хотите прикрепить копии)
-	add_child(new_crip2)
-	add_child(new_crip3)
-	add_child(new_crip4)
-	
-	add_child(new_crip5)
-	add_child(new_crip6)
-	add_child(new_crip7)
-	add_child(new_crip8)
-	
-	crips_and_towers.append(new_crip2)
-	all_person.append(new_crip2)
-	crips_and_towers.append(new_crip3)
-	all_person.append(new_crip3)
-	crips_and_towers.append(new_crip4)
-	all_person.append(new_crip4)
-	
-	crips_and_towers.append(new_crip5)
-	all_person.append(new_crip5)
-	crips_and_towers.append(new_crip6)
-	all_person.append(new_crip6)
-	crips_and_towers.append(new_crip7)
-	all_person.append(new_crip7)
-	crips_and_towers.append(new_crip8)
-	all_person.append(new_crip8)
-	
-	
-	new_crip2.translation = Vector3(35, 1.47, 55)
-	new_crip3.translation = Vector3(40, 1.47, 50)
-	new_crip4.translation = Vector3(25, 1.47, 65)
-	
-	new_crip5.translation = Vector3(-30, 1.47, -60)
-	new_crip5.rotation_degrees.y = 25
-	new_crip6.translation = Vector3(-25, 1.47, -65)
-	new_crip6.rotation_degrees.y = 25
-	new_crip7.translation = Vector3(-20, 1.47, -70)
-	new_crip7.rotation_degrees.y = 25
-	new_crip8.translation = Vector3(-35, 1.47, -55)
-	new_crip8.rotation_degrees.y = 25
-	
-	
-	new_crip5.person.team = "left"
-	new_crip6.person.team = "left"
-	new_crip7.person.team = "left"
-	new_crip8.person.team = "left"
-	
-	
+	for i in range(3):
+		var new_crip = crip.duplicate()
+		add_child(new_crip)
+		crips_and_towers.append(new_crip)
+		all_person.append(new_crip)
+		new_crip.person.team = "right"
+		new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
+	for j in range(4):
+		var new_crip = crip.duplicate()
+		add_child(new_crip)
+		crips_and_towers.append(new_crip)
+		all_person.append(new_crip)
+		new_crip.person.team = "left"
+		new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 	var el_t = int($Control/Time.elapsed_time)
 	var back_el_t = el_t
 
-
-
-
 func _process(delta):
+	crip = $Crip
 	if end_game:
 		get_tree().change_scene("res://object/Game_end.tscn")
-	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
-		var new_crip2 = crip.duplicate()
-		var new_crip1 = crip.duplicate()
-		var new_crip3 = crip.duplicate()
-		var new_crip4 = crip.duplicate()
-		
-		var new_crip5 = crip.duplicate()
-		var new_crip6 = crip.duplicate()
-		var new_crip7 = crip.duplicate()
-		var new_crip8 = crip.duplicate()
-		
-		add_child(new_crip2)
-		add_child(new_crip1)
-		add_child(new_crip3)
-		add_child(new_crip4)
-		
-		add_child(new_crip5)
-		add_child(new_crip6)
-		add_child(new_crip7)
-		add_child(new_crip8)
-		
-		crips_and_towers.append(new_crip2)
-		all_person.append(new_crip2)
-		crips_and_towers.append(new_crip1)
-		all_person.append(new_crip1)
-		crips_and_towers.append(new_crip3)
-		all_person.append(new_crip3)
-		crips_and_towers.append(new_crip4)
-		all_person.append(new_crip4)
-		
-		crips_and_towers.append(new_crip5)
-		all_person.append(new_crip5)
-		crips_and_towers.append(new_crip6)
-		all_person.append(new_crip6)
-		crips_and_towers.append(new_crip7)
-		all_person.append(new_crip7)
-		crips_and_towers.append(new_crip8)
-		all_person.append(new_crip8)
-		
-		new_crip2.translation = Vector3(35, 1.47, 55)
-		new_crip1.translation = Vector3(30, 1.47, 60)
-		new_crip3.translation = Vector3(40, 1.47, 50)
-		new_crip4.translation = Vector3(25, 1.47, 65)
-		
-		
-		new_crip5.translation = Vector3(-30, 1.47, -60)
-		new_crip5.rotation_degrees.y = 25
-		new_crip6.translation = Vector3(-25, 1.47, -65)
-		new_crip6.rotation_degrees.y = 25
-		new_crip7.translation = Vector3(-20, 1.47, -70)
-		new_crip7.rotation_degrees.y = 25
-		new_crip8.translation = Vector3(-35, 1.47, -55)
-		new_crip8.rotation_degrees.y = 25
-		
-		
-		new_crip5.person.team = "left"
-		new_crip6.person.team = "left"
-		new_crip7.person.team = "left"
-		new_crip8.person.team = "left"
+		for i in range(4):
+			var new_crip = crip.duplicate()
+			add_child(new_crip)
+			crips_and_towers.append(new_crip)
+			all_person.append(new_crip)
+			new_crip.person.team = "right"
+			new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
+		for j in range(4):
+			var new_crip = crip.duplicate()
+			add_child(new_crip)
+			crips_and_towers.append(new_crip)
+			all_person.append(new_crip)
+			new_crip.person.team = "left"
+			new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 		
 		back_el_t = el_t
 	

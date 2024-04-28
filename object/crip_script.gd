@@ -47,6 +47,8 @@ func _process(delta):
 	
 	if for_win_def != person.team:
 		$HUD/hp.modulate = Color(1, 0, 0)
+	else:
+		$HUD/hp.modulate = Color(0, 1, 0)
 	
 	$HUD.anchor_left = y_p-0.04
 	$HUD.anchor_top = x_p#-0.1
