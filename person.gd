@@ -86,3 +86,6 @@ func is_valid_stats():
 func effect():
 	person_stats["hp"] += (person_stats["regen_hp"] / 60.0)
 	person_stats["mana"] += (person_stats["regen_mana"] / 60.0)
+
+func level_up():
+	pass

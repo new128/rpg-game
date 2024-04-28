@@ -7,10 +7,10 @@ var person = Person.new("tower", "tower_friend","team_hz",
 [], null, 0)
 var last_attack = null
 var giv_money = 300
+var for_win_def = null
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	for_win_def = get_node("/root/Spatial/KinematicBody").person.team
 	print(get_name())
 	if get_name() == "LT1":
 		person.team = "left"
@@ -26,11 +26,10 @@ func _process(delta):
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")
-	var pos = cam.position
-	var x_p = (pos.x + 9.5 - cgp.x)/18.91
-	var y_p = (33.62 - (pos.z + 16.81 - cgp.z))/33.62
+	var x_p = (cam.position.x + 9.5 - cgp.x)/18.91
+	var y_p = (33.62 - (cam.position.z + 16.81 - cgp.z))/33.62
 	
-	if get_node("/root/Spatial/KinematicBody").person.team != person.team:
+	if for_win_def != person.team:
 		$HUD/hp.modulate = Color(1, 0, 0)
 	
 	$HUD.anchor_left = y_p-0.04

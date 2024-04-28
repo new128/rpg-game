@@ -21,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	person.effect()
-	
+	person.is_die()
 	
 	if get_name() == "Tower_r":
 		person = $StaticBody.person
@@ -32,11 +32,8 @@ func _process(delta):
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")
-	var pos = cam.position
-	var x_p = (pos.x + 9.5 - cgp.x)/18.91
-	var y_p = (33.62 - (pos.z + 16.81 - cgp.z))/33.62
-	
-	person.is_die()
+	var x_p = (cam.position.x + 9.5 - cgp.x)/18.91
+	var y_p = (33.62 - (cam.position.z + 16.81 - cgp.z))/33.62
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1
