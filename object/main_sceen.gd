@@ -100,15 +100,8 @@ func _ready():
 
 
 func _process(delta):
-	
-	
 	if end_game:
 		get_tree().change_scene("res://object/Game_end.tscn")
-	
-	
-	
-	
-	
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
@@ -171,18 +164,7 @@ func _process(delta):
 		new_crip7.person.team = "left"
 		new_crip8.person.team = "left"
 		
-		
-		
-		
-		
-		
 		back_el_t = el_t
-	
-	
-	
-	
-	
-	
 	
 	#print(crips_and_towers)
 	#print(all_person)
@@ -190,7 +172,9 @@ func _process(delta):
 		if item != null:
 			var min_dist = INF
 			var object_d = null
-			
+			if item.person.is_die() and item.person.team == "right":
+				all_person[0].person.money += 50
+				all_person[0].person.person_stats["xp"] += 100
 			for it in all_person:
 				if it != null:
 					if it != item and item.person.team != it.person.team:
@@ -202,9 +186,6 @@ func _process(delta):
 				item.person.target["target"] = object_d.global_transform.origin
 				item.person.target["target_person"] = object_d
 				print(object_d.name)
-	
-	
-	
 	
 	time += 1
 	if time % 60 == 1 and get_node("/root/Spatial").has_node("KinematicBody"):
@@ -226,7 +207,6 @@ func _process(delta):
 					file.close()
 					print("Текст успешно записан в файл.")
 				end_game = true
-			item.person.money += item.giv_money
 			item.queue_free()
 			if item in crips_and_towers: crips_and_towers.erase(item)
 			all_person.erase(item)

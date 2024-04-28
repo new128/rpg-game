@@ -51,6 +51,7 @@ func attack(attack_object, target):
 		if person_stats["time"] / 60 >= person_stats["attack_speed"] * 4:
 			target.person.taking_damage("phis", person_stats["damage"])
 			person_stats["time"] = 0
+#			if target.person.is_die() and target.person.team == "right": начисление денег и опыта
 			target.last_attack = self
 	else:
 		return 5
@@ -86,10 +87,9 @@ func effect():
 	person_stats["mana"] += (person_stats["regen_mana"] / 60.0)
 
 func level_up():
-	if person_stats["xp"] == 100 + (person_stats["lvl"]^2)*100:
+	if person_stats["xp"] >= pow(person_stats["lvl"],2)*100:
 		person_stats["lvl"] += 1
 		person_stats["max_hp"] += (person_stats["lvl"]-1)*50
 		person_stats["max_mana"] += (person_stats["lvl"]-1)*10
 		person_stats["damage"] += (person_stats["lvl"]-1)*5
 		person_stats["xp"] = 0
-	pass
