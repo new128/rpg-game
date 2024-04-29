@@ -1,8 +1,7 @@
 extends KinematicBody
 
 var Person = preload("res://person.gd")
-#func _init(class_person_, pers_type_, max_hp_, hp_, max_mana_, mana_, regen_hp_, regen_mana_, armor_, magic_damage_resist_, damage_, attack_speed_, attack_radius_, speed_, skills_, xp_, lvl_, inventory_, money_ , max_skills_, time_):
-var person = Person.new("crip", "crip", "team_hz",
+var person = Person.new({"class" : "crip", "pers_type" : "crip", "team" : "left"},
 {"max_hp" : 500, "hp": 500, "max_mana": 0, "mana": 0, "regen_hp": 2, "regen_mana" : 0, "armor":3, "magic_damage_resist" : 10, "damage": 50, "attack_speed" : 2, "attack_radius" : 2, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0},
 [], null, 0)
 var last_attack = null
@@ -10,19 +9,15 @@ var giv_money = 50
 var is_move = false
 var for_win_def = null
 
-
 func _ready():
-	person.team = "right"
-	for_win_def = get_node("/root/Spatial/KinematicBody").person.team
-
+	person.person_const["team"] = "right"
+	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
 	person.effect()
 	person.is_die()
 	person.is_valid_stats()
 	person.person_stats["time"] += 1
-	
-	
 	var direction_ = (person.target["target"] - translation).normalized()
 	direction_.y = 0
 	
@@ -34,7 +29,6 @@ func _process(delta):
 			var direction = (person.target["target"] - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.person_stats["speed"])
-		
 	
 	is_move = false
 	if person.attack(self, person.target["target_person"]):
@@ -45,14 +39,13 @@ func _process(delta):
 	var x_p = (cam.position.x + 9.5 - cgp.x)/18.91
 	var y_p = (33.62 - (cam.position.z + 16.81 - cgp.z))/33.62
 	
-	if for_win_def != person.team:
+	if for_win_def != person.person_const["team"]:
 		$HUD/hp.modulate = Color(1, 0, 0)
 	else:
 		$HUD/hp.modulate = Color(0, 1, 0)
 	
 	$HUD.anchor_left = y_p-0.04
 	$HUD.anchor_top = x_p#-0.1
-	
 	$HUD/hp.max_value = person.person_stats["max_hp"]
 	$HUD/hp.value = person.person_stats["hp"]
 	$HUD/hp.rect_size.y = 20

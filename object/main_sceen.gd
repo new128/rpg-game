@@ -13,63 +13,58 @@ var loser = null
 func _ready():
 	var file = File.new()
 	var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
-
 	if file.open(file_path, File.WRITE) == OK:
-		# Записываем текст в файл
 		var text_to_write = "win"
 		file.store_string(text_to_write)
-
-		# Закрываем файл после записи
 		file.close()
 		print("Текст успешно записан в файл.")
 	
 	crip = $Crip
-	crips_and_towers.append(crip)
 	crips_and_towers.append($Tower_f/LT1)
 	crips_and_towers.append($Tower_r/RT1)
 	crips_and_towers.append($Enemy)
+	crips_and_towers.append(crip)
 	all_person.append($KinematicBody)
-	all_person.append($Crip)
 	all_person.append($Enemy)
 	all_person.append($Tower_f/LT1)
 	all_person.append($Tower_r/RT1)
+	all_person.append(crip)
 	
 	for i in range(3):
 		var new_crip = crip.duplicate()
 		add_child(new_crip)
 		crips_and_towers.append(new_crip)
 		all_person.append(new_crip)
-		new_crip.person.team = "right"
+		new_crip.person.person_const["team"] = "right"
 		new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
 	for j in range(4):
 		var new_crip = crip.duplicate()
 		add_child(new_crip)
 		crips_and_towers.append(new_crip)
 		all_person.append(new_crip)
-		new_crip.person.team = "left"
+		new_crip.person.person_const["team"] = "left"
 		new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 	var el_t = int($Control/Time.elapsed_time)
 	var back_el_t = el_t
 
 func _process(delta):
-	crip = $Crip
 	if end_game:
 		get_tree().change_scene("res://object/Game_end.tscn")
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
 		for i in range(4):
-			var new_crip = crip.duplicate()
+			var new_crip = crips_and_towers[3].duplicate()
 			add_child(new_crip)
 			crips_and_towers.append(new_crip)
 			all_person.append(new_crip)
-			new_crip.person.team = "right"
+			new_crip.person.person_const["team"] = "right"
 			new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
 		for j in range(4):
-			var new_crip = crip.duplicate()
+			var new_crip = crips_and_towers[3].duplicate()
 			add_child(new_crip)
 			crips_and_towers.append(new_crip)
 			all_person.append(new_crip)
-			new_crip.person.team = "left"
+			new_crip.person.person_const["team"] = "left"
 			new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 		
 		back_el_t = el_t
@@ -80,12 +75,12 @@ func _process(delta):
 		if item != null:
 			var min_dist = INF
 			var object_d = null
-			if item.person.is_die() and item.person.team == "right":
+			if item.person.is_die() and item.person.person_const["team"] == "right":
 				all_person[0].person.money += 50
 				all_person[0].person.person_stats["xp"] += 100
 			for it in all_person:
 				if it != null:
-					if it != item and item.person.team != it.person.team:
+					if it != item and item.person.person_const["team"] != it.person.person_const["team"]:
 						var dist = item.global_transform.origin.distance_to(it.global_transform.origin)
 						if dist <= min_dist:
 							min_dist = dist
@@ -102,16 +97,12 @@ func _process(delta):
 	
 	for item in all_person:
 		if item.person.is_die:
-			if item.person.pers_type == "play_pers" or item.person.pers_type == "enemy" or item.person.pers_type == "tower":
+			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower":
 				var file = File.new()
 				var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
-
 				if file.open(file_path, File.WRITE) == OK:
-					# Записываем текст в файл
-					var text_to_write = item.person.team
+					var text_to_write = item.person.person_const["team"]
 					file.store_string(text_to_write)
-
-					# Закрываем файл после записи
 					file.close()
 					print("Текст успешно записан в файл.")
 				end_game = true
