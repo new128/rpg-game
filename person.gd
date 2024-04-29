@@ -24,11 +24,11 @@ func _init(class_person_, pers_type_, team_, person_stats_, skills_, inventory_,
 
 func taking_damage(type, damage):
 	if type == "mag":
-		person_stats["hp"] -= person_stats["damage"] - person_stats["damage"] * person_stats["magic_damage_resist"] / 100
+		person_stats["hp"] -= damage - person_stats["damage"] * person_stats["magic_damage_resist"] / 100
 	if type == "phis":
-		person_stats["hp"] -= person_stats["damage"] - person_stats["armor"]
+		person_stats["hp"] -= damage - person_stats["armor"]
 	if type == "clear":
-		person_stats["hp"] -= person_stats["damage"]
+		person_stats["hp"] -= damage
 		
 var attack_bool = false
 
@@ -46,16 +46,13 @@ func attack(attack_object, target):
 		dist -= 1
 		
 	if dist <= person_stats["attack_radius"]:
-		print("aaaaaa")
 		print(target.person.person_stats["hp"])
 		if person_stats["time"] / 60 >= person_stats["attack_speed"] * 4:
 			target.person.taking_damage("phis", person_stats["damage"])
 			person_stats["time"] = 0
-#			if target.person.is_die() and target.person.team == "right": начисление денег и опыта
 			target.last_attack = self
 	else:
 		return 5
-		
 		
 func count_stat():
 	for key_1 in inventory.weapons:

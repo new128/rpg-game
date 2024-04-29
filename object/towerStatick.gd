@@ -22,7 +22,7 @@ func _process(delta):
 	person.effect()
 	person.person_stats["time"] += 1
 	person.is_die()
-	person.attack(self, person.target["target"])
+	person.attack(self, person.target["target_person"])
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")

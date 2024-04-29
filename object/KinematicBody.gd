@@ -117,7 +117,7 @@ func _input(event):
 					person.target["target_person"] = object
 					is_move = false
 					print("Yes")
-					if person.attack(self ,object):
+					if person.attack(self, object):
 						person.target["target"] = object.global_transform.origin
 						is_move = true
 					return
