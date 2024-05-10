@@ -13,25 +13,17 @@ signal button_buy_pigeon_pressed
 
 
 func _ready():
-	
 	OS.set_window_fullscreen(true)
 	rect_min_size = OS.get_window_size()
 	rect_position = Vector2(0, 0)
-	
 	
 	$consumable1.connect("pressed", self, "_on_button_Z_pressed")
 	$consumable2.connect("pressed", self, "_on_button_X_pressed")
 	$consumable3.connect("pressed", self, "_on_button_C_pressed")
 	$Shop/falakaxa.connect("pressed", self, "_on_button_buy_falakaxa_pressed")
 	$Shop/pigeon.connect("pressed", self, "_on_button_buy_pigeon_pressed")
-	
-	
-	#$AcceptDialog.popup()
-
-
 
 func _process(delta):
-
 	if get_node("/root/Spatial").has_node("KinematicBody"):
 		var kin_bod = get_node("/root/Spatial/KinematicBody")
 		$ProgressBar/hp.text = String(int(kin_bod.person.person_stats["hp"]))
@@ -45,15 +37,12 @@ func _process(delta):
 		$ProgressBar2.max_value = kin_bod.person.person_stats["max_mana"]
 		$ProgressBar2.value = kin_bod.person.person_stats["mana"]
 		$Money.text = String(int(kin_bod.person.money))
-		
-		
 		$Damage.text = "damage: "+ String(kin_bod.person.person_stats["damage"])
 		$Armor.text = "armor: "+ String(kin_bod.person.person_stats["armor"])
 		$Speed.text = "speed: "+ String(kin_bod.person.person_stats["speed"])
 		$lvl.text = "lvl: "+ String(kin_bod.person.person_stats["lvl"])
 		$xp.text = "xp: "+ String(kin_bod.person.person_stats["xp"])
-		
-		
+	
 	if not $AcceptDialog.visible and ac_d2:
 		$AcceptDialog2.popup()
 		ac_d2 =false
@@ -66,27 +55,24 @@ func _process(delta):
 	if not $AcceptDialog4.visible and not ac_d3 and not ac_d2 and not ac_d4 and ac_d5:
 		$AcceptDialog5.popup()
 		ac_d5 =false
-		
+
 func _input(event):
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("f4"):
 		$Shop.visible = not $Shop.visible 
 
 func _on_button_Z_pressed():
-	# Излучаем сигнал при нажатии кнопки
 	$Shop.visible = not $Shop.visible 
-	print("ZZZZZZZZZZZZZZZZZZZZZZZZZ")
+	print("Z")
 	emit_signal("button_Z_pressed")
 func _on_button_X_pressed():
-	# Излучаем сигнал при нажатии кнопки
 	$Shop.visible = not $Shop.visible 
-	print("XXXXXXXXXXXXXXXXXXXXXXXXXX")
+	print("X")
 	emit_signal("button_X_pressed")
 func _on_button_C_pressed():
-	# Излучаем сигнал при нажатии кнопки
 	$Shop.visible = not $Shop.visible 
-	print("CCCCCCCCCCCCCCCCCCCCCCCCCCCC")
+	print("C")
 	emit_signal("button_C_pressed")
-	
+
 func _on_button_buy_falakaxa_pressed():
 	emit_signal("button_buy_falakaxa_pressed")
 func _on_button_buy_pigeon_pressed():

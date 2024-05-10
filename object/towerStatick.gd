@@ -11,7 +11,6 @@ var for_win_def = null
 
 func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
-	print(get_name())
 	if get_name() == "LT1":
 		person.person_const["team"] = "left"
 	if get_name() == "RT1":

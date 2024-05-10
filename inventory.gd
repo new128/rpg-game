@@ -1,10 +1,4 @@
 class_name Inventory
-""" 
-				head
-				shoulders
-	left hand	body	right hand
-				legs
-"""
 
 var Item = preload("res://item.gd")
 var Skill = preload("res://ability.gd")
@@ -26,8 +20,6 @@ func _add_ability(name, person):
 		if name == "fufarik":
 			consumables[consumables.find(0,0)] = Item.new({"name" : "fufarik", "description" : "fireman from dota", "price" : 80,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"hp":100}, Skill.new("fufarik", {"time":"instantly","target":"self"}))
 			person.money -= 80
-	else:
-		print("NO SLOTE")
 
 func _use_ability(num_of_slote, person):
 	for key in consumables[num_of_slote].characteristic:

@@ -9,7 +9,6 @@ var last_attack = null
 var giv_money = 300
 
 func _ready():
-	print(get_name())
 	if get_name() == "Tower_f":
 		person.person_const["team"] = "left"
 	if get_name() == "Tower_r":
@@ -33,7 +32,5 @@ func _process(delta):
 	$HUD.anchor_top = x_p-0.1
 	$HUD/hp.max_value = person.person_stats["max_hp"]
 	$HUD/hp.value = person.person_stats["hp"]
-	print(get_name())
-	print(person.person_stats["hp"])
 	$HUD/mana.max_value = person.person_stats["max_mana"]
 	$HUD/mana.value = person.person_stats["mana"]

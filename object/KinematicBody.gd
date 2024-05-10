@@ -17,14 +17,12 @@ var effects_time = []
 var el_t = 0
 
 func _ready():
-	person.person_const["team"] = "left"
 	person.inventory._wear_the_weapon(Item.new({"name" : "sword_is_rusty","description" : "An ordinary sword for suckers", "price" : 500, "slote" : "right_hand", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"damage" : 10}, null))
 	person.inventory._wear_the_weapon(Item.new({"name" : "tattered_mail","description" : "Regular armor for suckers", "price" : 500,"slote" : "body", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"armor" : 5, "hp" : 100}, null))
 	person.inventory._wear_the_weapon(Item.new({"name" : "speed_boots","description" : "Regular armor for suckers", "price" : 500,"slote" : "legs", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"speed" : 1}, null))
 	person.inventory.consumables[0] = Item.new({"name" : "falakaxa", "description" : "Flask from dota", "price" : 120,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_hp":30}, Skill.new("falakaxa", {"time":10,"target":"self","regen_hp":30}))
 	person.inventory.consumables[1] = Item.new({"name" : "pigeon", "description" : "Claret from dota", "price" : 90,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_mana":20}, Skill.new("pigeon", {"time":10,"target":"self","regen_mana":20}))
 	person.inventory.consumables[2] = Item.new({"name" : "fufarik", "description" : "fireman from dota", "price" : 80,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"hp":100}, Skill.new("fufarik", {"time":"instantly","target":"self", "hp":100}))
-
 func _process(delta):
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
@@ -104,13 +102,11 @@ func _input(event):
 		var result = space_state.intersect_ray(clicked_point, ray_end)
 		if result.has('collider'):
 			var object = result.collider
-			print(object.name)
 			person.target["target"] = result.position
 			if object.person != null:
 				if object.person.person_const["team"] != person.person_const["team"]:
 					person.target["target_person"] = object
 					is_move = false
-					print("Yes")
 					if person.attack(self, object):
 						person.target["target"] = object.global_transform.origin
 						is_move = true
@@ -153,17 +149,11 @@ func _on_button_C_pressed():
 func _on_button_Q_pressed():
 	if person.money >= 120:
 		person.inventory._add_ability("falakaxa", person)
-	else:
-		print("NO MONEY")
 
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:
 		person.inventory._add_ability("falakaxa", person)
-	else:
-		print("NO MONEY")
 
 func _on_button_buy_pigeon_pressed():
 	if person.money >= 90:
 		person.inventory._add_ability("pigeon", person)
-	else:
-		print("NO MONEY")

@@ -69,8 +69,6 @@ func _process(delta):
 		
 		back_el_t = el_t
 	
-	#print(crips_and_towers)
-	#print(all_person)
 	for item in crips_and_towers:
 		if item != null:
 			var min_dist = INF
@@ -88,11 +86,9 @@ func _process(delta):
 			if object_d != null:
 				item.person.target["target"] = object_d.global_transform.origin
 				item.person.target["target_person"] = object_d
-				print(object_d.name)
 	
 	time += 1
 	if time % 60 == 1 and get_node("/root/Spatial").has_node("KinematicBody"):
-		
 		$KinematicBody.person.money += 1.5
 	
 	for item in all_person:
