@@ -67,7 +67,7 @@ func _process(delta):
 	var cgp = global_transform.origin
 	var screen_size = OS.get_screen_size()
 	var cam = get_node("/root/Spatial/Play_camera")
-	var pos = cam.position
+	var pos = cam.transform.origin
 
 	var x_pos = pos.x + 9.5 - cgp.x
 	var y_pos = 33.62 - (pos.z + 16.81 - cgp.z)

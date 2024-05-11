@@ -20,13 +20,6 @@ var end_game = false
 var loser = null
 
 func _ready():
-	
-	
-	
-	
-	
-	
-	
 	var file = File.new()
 	var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
 
@@ -38,10 +31,6 @@ func _ready():
 		# Закрываем файл после записи
 		file.close()
 		print("Текст успешно записан в файл.")
-	
-	
-	
-	
 	
 	
 	crip = $Crip
@@ -68,6 +57,7 @@ func _ready():
 	crip = crip.duplicate()
 
 # Поместите копии в сцену (замените parent_node на ваш узел, к которому вы хотите прикрепить копии)
+# От препа: Возможно, сделать это циклом?
 	add_child(new_crip2)
 	add_child(new_crip3)
 	add_child(new_crip4)
@@ -121,18 +111,12 @@ func _ready():
 
 
 func _process(delta):
-	
-	
 	if end_game:
 		get_tree().change_scene("res://object/Game_end.tscn")
-	
-	
-	
-	
-	
 	# Новая волна крипов
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
+		# От препа: список из крипов?
 		var new_crip2 = crip.duplicate()
 		var new_crip1 = crip.duplicate()
 		var new_crip3 = crip.duplicate()
