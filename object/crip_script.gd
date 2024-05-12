@@ -17,7 +17,7 @@ func _process(delta):
 	person.effect()
 	person.is_die()
 	person.is_valid_stats()
-	person.person_stats["time"] += 1
+	person.person_stats["time"] += delta
 	var direction_ = (person.target["target"] - translation).normalized()
 	direction_.y = 0
 	
@@ -31,7 +31,7 @@ func _process(delta):
 			move_and_slide(direction * person.person_stats["speed"])
 	
 	is_move = false
-	if person.attack(self, person.target["target_person"]):
+	if person.attack(self, person.target["target_person"], "simple"):
 		is_move = true
 	
 	var cgp = global_transform.origin

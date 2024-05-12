@@ -12,7 +12,7 @@ var loser = null
 
 func _ready():
 	var file = File.new()
-	var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
+	var file_path = "user://win.txt"
 	if file.open(file_path, File.WRITE) == OK:
 		var text_to_write = "win"
 		file.store_string(text_to_write)
@@ -73,9 +73,12 @@ func _process(delta):
 		if item != null:
 			var min_dist = INF
 			var object_d = null
-			if item.person.is_die() and item.person.person_const["team"] == "right":
+			if item.person.is_die() and item.person.person_const["team"] == "right" and item.person.person_const["class"] == "crip":
 				all_person[0].person.money += 50
 				all_person[0].person.person_stats["xp"] += 100
+			elif item.person.is_die() and item.person.person_const["team"] == "right" and item.person.person_const["class"] == "tower":
+				all_person[0].person.money += 500
+				all_person[0].person.person_stats["xp"] += 1000
 			for it in all_person:
 				if it != null:
 					if it != item and item.person.person_const["team"] != it.person.person_const["team"]:

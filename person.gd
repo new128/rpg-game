@@ -3,7 +3,7 @@ class_name PersonClass
 var Inventory = preload("res://inventory.gd") 
 var Item = preload("res://item.gd")
 var person_const = {"class" : "paladin", "pers_type" : "play_pers", "team" : "left"}
-var person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 10, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 2.5, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0}
+var person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 10, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 1, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0}
 var skills = []
 var inventory = Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0])
 var target = {"target" : Vector3.ZERO, "target_person" : null}
@@ -27,7 +27,7 @@ func taking_damage(type, damage):
 		
 var attack_bool = false
 
-func attack(attack_object, target):
+func attack(attack_object, target, type_attack):
 	if not is_instance_valid(target):
 		return
 	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
@@ -35,11 +35,9 @@ func attack(attack_object, target):
 	var dist = obj1_position.distance_to(obj2_position)
 	
 	attack_bool = true
-	if target.person.person_const["class"] == "tower":  # У башни меньше радиус
-		dist -= 1
 	
 	if dist <= person_stats["attack_radius"]:
-		if person_stats["time"] / 60 >= person_stats["attack_speed"] * 4:
+		if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
 			target.person.taking_damage("phis", person_stats["damage"])
 			person_stats["time"] = 0
 			target.last_attack = self
@@ -75,7 +73,13 @@ func effect():
 func level_up():
 	if person_stats["xp"] >= pow(person_stats["lvl"],2)*100:
 		person_stats["lvl"] += 1
-		person_stats["max_hp"] += (person_stats["lvl"]-1)*50
-		person_stats["max_mana"] += (person_stats["lvl"]-1)*10
-		person_stats["damage"] += (person_stats["lvl"]-1)*5
+		person_stats["max_hp"] += 50
+		person_stats["max_mana"] += 10
+		person_stats["regen_hp"] += 2.5
+		person_stats["regen_mana"] += 1
+		person_stats["armor"] += 1
+		person_stats["magic_damage_resist"] += 1
+		person_stats["damage"] += 5
+		person_stats["attack_speed"] -= 0.05
+		person_stats["speed"] += 0.5
 		person_stats["xp"] = 0
