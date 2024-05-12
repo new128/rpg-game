@@ -1,7 +1,6 @@
 extends Control
 
 var loser = "right"
-var game = null
 
 func _ready():
 	$Replay.connect("pressed", self, "_on_button_pressed")
@@ -10,17 +9,17 @@ func _ready():
 
 func _on_button_pressed():
 	get_tree().change_scene("res://object/main_sceen.tscn")
-	
+
 func _on_button_menu_pressed():
 	get_tree().change_scene("res://object/Menu.tscn")
 
 func new_win(team):
 	if team == "left":
 		$Win.text = "Победа Сил Правых"
-		$Der.text = "Вы не прошли обучени. Можете попробовать заново"
+		$Der.text = "Вы не прошли обучение. Можете попробовать заново"
 	if team == "right":
 		$Win.text = "Победа Сил Левых"
-		$Der.text = "Вы прошли обучени"
+		$Der.text = "Вы прошли обучение"
 
 func _process(delta):
 	var file = File.new()

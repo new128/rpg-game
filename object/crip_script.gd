@@ -36,8 +36,8 @@ func _process(delta):
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")
-	var x_p = (cam.position.x + 9.5 - cgp.x)/18.91
-	var y_p = (33.62 - (cam.position.z + 16.81 - cgp.z))/33.62
+	var x_p = (cam.transform.origin.x + 9.5 - cgp.x)/18.91
+	var y_p = (33.62 - (cam.transform.origin.z + 16.81 - cgp.z))/33.62
 	
 	if for_win_def != person.person_const["team"]:
 		$HUD/hp.modulate = Color(1, 0, 0)
