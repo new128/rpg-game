@@ -95,7 +95,7 @@ func _process(delta):
 		if item.person.is_die:
 			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower":
 				var file = File.new()
-				var file_path = "user://win.txt"  # Путь к файлу (user:// используется для записи в пользовательскую директорию)
+				var file_path = "user://win.txt"
 				if file.open(file_path, File.WRITE) == OK:
 					var text_to_write = item.person.person_const["team"]
 					file.store_string(text_to_write)
