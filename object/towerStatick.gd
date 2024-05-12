@@ -47,8 +47,8 @@ func _process(delta):
 	var cam = get_node("/root/Spatial/Play_camera")
 	var pos = cam.position
 
-	var x_pos = pos.x + 9.5 - cgp.x
-	var y_pos = 33.62 - (pos.z + 16.81 - cgp.z)
+	var x_pos = pos.x + 18 - cgp.x
+	var y_pos = 31.62 - (pos.z + 16.81 - cgp.z)
 	
 	var x_p = 1*x_pos/18.91
 	var y_p = 1*y_pos/33.62
