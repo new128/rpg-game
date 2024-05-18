@@ -112,6 +112,12 @@ func _process(delta):
 	if is_move:
 		if person.target["target"] != Vector3.ZERO:
 			move_and_slide(direction * person.person_stats["speed"])
+			
+	var target_position = Vector2(person.target["target"].x, person.target["target"].z)
+	var global_pos = Vector2(global_position.x, global_position.z)
+	var distance = target_position.distance_to(global_pos)
+	if distance <= 0.1:
+		is_move = false
 
 func _input(event):
 	var control_node = get_node("/root/Spatial/Control")
