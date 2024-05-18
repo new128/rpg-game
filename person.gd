@@ -25,6 +25,49 @@ func _init(name):
 		person_stats["attack_speed"] = 2
 		person_stats["attack_radius"] = 1.5
 		person_stats["speed"] = 6
+		person_stats["t_a"] = "melee"
+		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
+		inventory.weapons["legs"] = Item.new("speed_boots")
+		inventory.weapons["body"] = Item.new("tattered_mail")
+		inventory.consumables[0] = Item.new("falakaxa")
+		inventory.consumables[1] = Item.new("pigeon")
+		inventory.consumables[2] = Item.new("fufarik")
+	if name == "shooter":
+		person_const["class"] = "shooter"
+		person_const["pers_type"] = "play_pers"
+		person_const["team"] = "left"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 80
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 7
+		person_stats["speed"] = 10
+		person_stats["t_a"] = "range"
+		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
+		inventory.weapons["legs"] = Item.new("speed_boots")
+		inventory.weapons["body"] = Item.new("tattered_mail")
+		inventory.consumables[0] = Item.new("falakaxa")
+		inventory.consumables[1] = Item.new("pigeon")
+		inventory.consumables[2] = Item.new("fufarik")
+	if name == "wizard":
+		person_const["class"] = "wizard"
+		person_const["pers_type"] = "play_pers"
+		person_const["team"] = "left"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 80
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 10
+		person_stats["speed"] = 6
+		person_stats["t_a"] = "range"
 		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
 		inventory.weapons["legs"] = Item.new("speed_boots")
 		inventory.weapons["body"] = Item.new("tattered_mail")
@@ -75,8 +118,9 @@ func _init(name):
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 200
 		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 8
+		person_stats["attack_radius"] = 5
 		person_stats["speed"] = 6
+		person_stats["t_a"] = "range"
 
 func taking_damage(type, damage):
 	if type == "mag":
