@@ -12,6 +12,13 @@ func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
+	if is_move:
+		$melee_crip/AnimationPlayer.play("Размещённое действие]")
+		$melee_crip/AnimationPlayer.set_speed_scale(2)
+		
+	
+	
+	
 	person.effect()
 	person.is_die()
 	person.is_valid_stats()

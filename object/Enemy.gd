@@ -13,6 +13,17 @@ func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
+	if not is_move:
+		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]")
+	if is_move:
+		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]001")
+		get_node("/root/Spatial/Enemy/person/AnimationPlayer").set_speed_scale(2)
+	var target_position = Vector2(person.target["target"].x, person.target["target"].z)
+	var global_pos = Vector2(global_position.x, global_position.z)
+	var distance = target_position.distance_to(global_pos)
+	if distance <= 0.1:
+		is_move = false
+	
 	person.effect()
 	person.is_die()
 	person.is_valid_stats()
