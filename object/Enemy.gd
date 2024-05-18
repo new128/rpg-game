@@ -8,17 +8,30 @@ var giv_money = 500
 var is_move = false
 var for_win_def = null
 var is_attack = false
+var tim_at = 0
 
 func _ready():
 	person.person_const["team"] = "right"
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
-	if not is_move:
+	if not is_move and not person.attack_bool:
 		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]")
 	if is_move:
 		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]001")
 		get_node("/root/Spatial/Enemy/person/AnimationPlayer").set_speed_scale(2)
+	if person.attack_bool:
+		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]003")
+		get_node("/root/Spatial/Enemy/person/AnimationPlayer").set_speed_scale(person.person_stats["attack_speed"]/1.55)
+		var sceen = get_node("/root/Spatial")
+		tim_at+=delta
+		if not person.attack(self, person.target["target_person"], "simple", sceen):
+			is_move = false
+	if tim_at >= person.person_stats["attack_speed"]/2:
+		is_attack = true
+		
+		
+	
 	var target_position = Vector2(person.target["target"].x, person.target["target"].z)
 	var global_pos = Vector2(global_position.x, global_position.z)
 	var distance = target_position.distance_to(global_pos)
@@ -41,6 +54,7 @@ func _process(delta):
 			var direction = (person.target["target"] - translation).normalized()
 			direction.y = 0
 			move_and_slide(direction * person.person_stats["speed"])
+			tim_at = 0
 	
 	is_move = false
 	if person.attack(self, person.target["target_person"], "simple"):
