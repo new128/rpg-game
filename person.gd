@@ -2,9 +2,10 @@ class_name PersonClass
 
 var Inventory = preload("res://inventory.gd") 
 var Item = preload("res://item.gd")
+var Skill = preload("res://ability.gd")
 var person_const = {"class" : "paladin", "pers_type" : "play_pers", "team" : "left"}
 var person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 10, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 1, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
-var skills = []
+var skills = [null,null,null,null,null,null]
 var inventory = Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0])
 var target = {"target" : Vector3.ZERO, "target_person" : null}
 var is_die = false
@@ -58,7 +59,8 @@ func _init(name):
 		person_const["pers_type"] = "play_pers"
 		person_const["team"] = "left"
 		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
+		person_stats["max_mana"] = 1000
+		person_stats["mana"] = 1000
 		person_stats["regen_hp"] = 5
 		person_stats["regen_mana"] = 1
 		person_stats["armor"] = 10
@@ -66,7 +68,7 @@ func _init(name):
 		person_stats["damage"] = 80
 		person_stats["attack_speed"] = 2
 		person_stats["attack_radius"] = 10
-		person_stats["speed"] = 6
+		person_stats["speed"] = 10
 		person_stats["t_a"] = "range"
 		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
 		inventory.weapons["legs"] = Item.new("speed_boots")
@@ -74,6 +76,7 @@ func _init(name):
 		inventory.consumables[0] = Item.new("falakaxa")
 		inventory.consumables[1] = Item.new("pigeon")
 		inventory.consumables[2] = Item.new("fufarik")
+		skills[0] = Skill.new("fire_ball")
 		
 	if name == "enemy":
 		person_const["class"] = "paladin"
@@ -132,7 +135,7 @@ func taking_damage(type, damage):
 		
 var attack_bool = false
 
-func attack(attack_object, target, type_attack, sceen = null):
+func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	if not is_instance_valid(target):
 		return
 	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
@@ -141,29 +144,36 @@ func attack(attack_object, target, type_attack, sceen = null):
 	
 	attack_bool = true
 	
-	
-	
-	
-	
-	
-	if dist <= person_stats["attack_radius"]:
-		if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
-			if person_stats["t_a"] == "melee":
-				target.person.taking_damage("phis", person_stats["damage"])
-				person_stats["time"] = 0
-				target.last_attack = self
-			if person_stats["t_a"] == "range":
-				var sheel = load("res://shells/strela/Strela.tscn") 
-				sheel = sheel.instance()
-				sheel.translation = attack_object.translation
-				if person_const["class"] == "tower":
-					sheel.translation.y += 3
-				sheel.self_ = attack_object
-				sheel.target = target
-				sceen.add_child(sheel)
-				person_stats["time"] = 0
+	if skill != null:
+		if dist <= skill.dist:
+			var sheel = load("res://skills/"+skill.name+"/"+skill.name+".tscn") 
+			sheel = sheel.instance()
+			sheel.translation = attack_object.translation
+			sheel.self_ = attack_object
+			sheel.target = target
+			sheel.damage = skill.damage
+			sheel.sceen = sceen
+			sceen.add_child(sheel)
+			return 5
 	else:
-		return 5
+		if dist <= person_stats["attack_radius"]:
+			if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
+				if person_stats["t_a"] == "melee":
+					target.person.taking_damage("phis", person_stats["damage"])
+					person_stats["time"] = 0
+					target.last_attack = self
+				if person_stats["t_a"] == "range":
+					var sheel = load("res://shells/strela/Strela.tscn") 
+					sheel = sheel.instance()
+					sheel.translation = attack_object.translation
+					if person_const["class"] == "tower":
+						sheel.translation.y += 3
+					sheel.self_ = attack_object
+					sheel.target = target
+					sceen.add_child(sheel)
+					person_stats["time"] = 0
+		else:
+			return 5
 
 func count_stat():
 	for key_1 in inventory.weapons:

@@ -14,6 +14,16 @@ var giv_money = 300
 var effects_p = []
 var effects_time = []
 var el_t = 0
+var use_scill = null
+var time_skill1 = [false,0]
+var time_skill2 = [false,0]
+var time_skill3 = [false,0]
+var time_skill4 = [false,0]
+var time_skill5 = [false,0]
+var time_skill6 = [false,0]
+var sphere = MeshInstance.new()
+var sphere_mesh = TorusMesh.new()
+var data_time_skill = [time_skill1,time_skill2,time_skill3,time_skill4,time_skill5,time_skill6]
 
 func _ready():
 	file.open("res://class.txt", File.READ)
@@ -21,9 +31,28 @@ func _ready():
 	file.close()
 	person = Person.new(info)
 func _process(delta):
+	var j = 0
+	for t_s in data_time_skill:
+		if t_s[0]:
+			if t_s[1] <= 0:
+				t_s[1] = 0
+				t_s[0] = false
+				get_node("/root/Spatial/Control/Skill"+String(j+1)+"/Label2").visible = false
+			get_node("/root/Spatial/Control/Skill"+String(j+1)+"/Label2").text = String(int(t_s[1]))
+			t_s[1]-=delta
+		j+=1
+	
+	
+	
+	sphere.translation = self.translation
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
 	move_and_slide(Vector3.ZERO)
+	for i in range(6):
+		if person.skills[i]:
+			var new_texture_path = "res://skills/" + person.skills[i].name + "/"+ person.skills[i].name + ".png"
+			get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = load(new_texture_path)
+		else:get_node("/root/Spatial/Control/Skill"+String(i+1)).icon = null
 	
 	for key in person.inventory.weapons:
 		if person.inventory.weapons[key]:
@@ -85,9 +114,24 @@ func _input(event):
 	control_node.connect("button_C_pressed", self, "_on_button_C_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("C"):
 		_on_button_C_pressed()
-		
+	control_node.connect("button_Q_pressed", self, "_on_button_Q_pressed")
 	if event is InputEventKey and event.pressed and Input.is_action_pressed("Q"):
 		_on_button_Q_pressed()
+	control_node.connect("button_W_pressed", self, "_on_button_W_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("W"):
+		_on_button_W_pressed()
+	control_node.connect("button_E_pressed", self, "_on_button_E_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("E"):
+		_on_button_E_pressed()
+	control_node.connect("button_D_pressed", self, "_on_button_D_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("D"):
+		_on_button_D_pressed()
+	control_node.connect("button_F_pressed", self, "_on_button_F_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("F"):
+		_on_button_F_pressed()
+	control_node.connect("button_R_pressed", self, "_on_button_R_pressed")
+	if event is InputEventKey and event.pressed and Input.is_action_pressed("R"):
+		_on_button_R_pressed()
 	
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
@@ -115,6 +159,37 @@ func _input(event):
 			person.target["target"] = result.position
 			person.attack_bool = false
 			is_move = true
+			
+			
+			
+	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("left_click"):
+		if use_scill != null:
+			var mouse_position = event.position
+			var clicked_point = get_viewport().get_camera().project_ray_origin(mouse_position)
+			var ray_end = get_viewport().get_camera().project_ray_normal(mouse_position) * 1000 + clicked_point
+			
+			var space_state = get_world().direct_space_state
+			var result = space_state.intersect_ray(clicked_point, ray_end)
+			if result.has('collider'):
+				var object = result.collider
+				if object.person != null:
+					if object.person.person_const["team"] != person.person_const["team"]:
+						person.target["target_person"] = object
+						is_move = false
+						var sceen = get_node("/root/Spatial")
+						var direction = (object.translation - translation).normalized()
+						direction.y = 0
+						if direction.length() > rotation_threshold:
+							var angle = atan2(direction.x, direction.z)
+							rotation_degrees.y = angle * 180 / PI
+						if person.attack(self ,object, "skill",sceen, use_scill):
+							person.person_stats["mana"] -= use_scill.mana
+							time_skill1[0] = true
+							time_skill1[1] = use_scill.cd
+							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
+						else:get_node("/root/Spatial/Control").change_notice("Не в радиусе действия")
+						use_scill = null
+						sphere.visible = false
 
 func effects():
 	person.effect()
@@ -147,8 +222,121 @@ func _on_button_C_pressed():
 		person.inventory._use_ability(2, person)
 
 func _on_button_Q_pressed():
-	if person.money >= 120:
-		person.inventory.consumables[person.inventory.consumables.find(0,0)] = Item.new("falakaxa")
+	if time_skill1[1] <= 0:
+		if use_scill == null:
+			if person.skills[0] != null:
+				if person.skills[0].mana <= person.person_stats["mana"]:
+					use_scill = person.skills[0]
+					sphere_mesh.outer_radius = person.skills[0].dist
+					sphere_mesh.inner_radius = person.skills[0].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+func _on_button_W_pressed():
+	if time_skill2[1] <= 0:
+		if use_scill == null:
+			if person.skills[1] != null:
+				if person.skills[1].mana <= person.mana:
+					use_scill = person.skills[1]
+					sphere_mesh.outer_radius = person.skills[1].dist
+					sphere_mesh.inner_radius = person.skills[1].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+func _on_button_E_pressed():
+	if time_skill3[1] <= 0:
+		if use_scill == null:
+			if person.skills[2] != null:
+				if person.skills[2].mana <= person.mana:
+					use_scill = person.skills[2]
+					sphere_mesh.outer_radius = person.skills[2].dist
+					sphere_mesh.inner_radius = person.skills[2].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+func _on_button_D_pressed():
+	if time_skill4[1] <= 0:
+		if use_scill == null:
+			if person.skills[3] != null:
+				if person.skills[3].mana <= person.mana:
+					use_scill = person.skills[3]
+					sphere_mesh.outer_radius = person.skills[3].dist
+					sphere_mesh.inner_radius = person.skills[3].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+func _on_button_F_pressed():
+	if time_skill5[1] <= 0:
+		if use_scill == null:
+			if person.skills[4] != null:
+				if person.skills[4].mana <= person.mana:
+					use_scill = person.skills[4]
+					sphere_mesh.outer_radius = person.skills[4].dist
+					sphere_mesh.inner_radius = person.skills[4].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+func _on_button_R_pressed():
+	if time_skill6[1] <= 0:
+		if use_scill == null:
+			if person.skills[5] != null:
+				if person.skills[5].mana <= person.mana:
+					use_scill = person.skills[5]
+					sphere_mesh.outer_radius = person.skills[5].dist
+					sphere_mesh.inner_radius = person.skills[5].dist-0.05
+					sphere.mesh = sphere_mesh
+					get_node("/root/Spatial").add_child(sphere)
+					sphere.translation = self.translation
+					sphere.visible = true
+				else:get_node("/root/Spatial/Control").change_notice("Нет маны")
+			else:get_node("/root/Spatial/Control").change_notice("Нет скила")
+				
+		else:
+			sphere.visible = false
+			use_scill = null
+	else:get_node("/root/Spatial/Control").change_notice("Перезарядка")
+
 
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:
