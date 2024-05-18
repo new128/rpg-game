@@ -20,14 +20,14 @@ func _ready():
 		print("Текст успешно записан в файл.")
 	
 	crip = $Crip
-	crips_and_towers.append($Tower_f/LT1)
-	crips_and_towers.append($Tower_r/RT1)
+	crips_and_towers.append($LT1)
+	crips_and_towers.append($RT1)
 	crips_and_towers.append($Enemy)
 	crips_and_towers.append(crip)
 	all_person.append($KinematicBody)
 	all_person.append($Enemy)
-	all_person.append($Tower_f/LT1)
-	all_person.append($Tower_r/RT1)
+	all_person.append($LT1)
+	all_person.append($RT1)
 	all_person.append(crip)
 	
 	for i in range(3):

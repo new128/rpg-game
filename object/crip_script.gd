@@ -2,7 +2,7 @@ extends KinematicBody
 
 var Person = preload("res://person.gd")
 var person = Person.new({"class" : "crip", "pers_type" : "crip", "team" : "left"},
-{"max_hp" : 500, "hp": 500, "max_mana": 0, "mana": 0, "regen_hp": 2, "regen_mana" : 0, "armor":3, "magic_damage_resist" : 10, "damage": 50, "attack_speed" : 2, "attack_radius" : 2, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0},
+{"max_hp" : 500, "hp": 500, "max_mana": 0, "mana": 0, "regen_hp": 2, "regen_mana" : 0, "armor":3, "magic_damage_resist" : 10, "damage": 50, "attack_speed" : 2, "attack_radius" : 2, "speed" : 6,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"},
 [], null, 0)
 var last_attack = null
 var giv_money = 50

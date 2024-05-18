@@ -3,7 +3,7 @@ extends StaticBody
 
 var Person = preload("res://person.gd")
 var person = Person.new({"class" : "tower", "pers_type" : "tower_friend", "team" : "left"},
-{"max_hp" : 2000, "hp": 2000, "max_mana": 0, "mana": 0, "regen_hp": 0, "regen_mana" : 0, "armor":25, "magic_damage_resist" : 10, "damage": 80, "attack_speed" : 1, "attack_radius" : 5, "speed" : 0,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0},
+{"max_hp" : 2000, "hp": 2000, "max_mana": 0, "mana": 0, "regen_hp": 0, "regen_mana" : 0, "armor":25, "magic_damage_resist" : 10, "damage": 80, "attack_speed" : 1, "attack_radius" : 5, "speed" : 0,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a":"range"},
 [], null, 0)
 var last_attack = null
 var giv_money = 300
@@ -19,8 +19,14 @@ func _ready():
 func _process(delta):
 	person.effect()
 	person.person_stats["time"] += delta
+	
+	if person.person_const["team"] == "right":
+		person.person_stats["hp"] -= delta
+	
+	
 	person.is_die()
-	person.attack(self, person.target["target_person"], "simple")
+	var sceen = get_node("/root/Spatial")
+	person.attack(self, person.target["target_person"], "simple", sceen)
 	
 	var cgp = global_transform.origin
 	var cam = get_node("/root/Spatial/Play_camera")

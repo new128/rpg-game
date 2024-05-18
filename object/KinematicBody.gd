@@ -23,11 +23,11 @@ func _ready():
 	file.close()
 	if info == "shooter":
 		person = Person.new({"class" : "shooter", "pers_type" : "play_pers", "team" : "left"},
-{"max_hp" : 600, "hp": 600, "max_mana": 500, "mana": 500, "regen_hp": 4, "regen_mana" : 4, "armor":2, "magic_damage_resist" : 15, "damage": 75, "attack_speed" : 1.5, "attack_radius" : 5, "speed" : 9,"max_skills" : 4, "lvl" : 1, "xp" : 0, "time" : 0},
+{"max_hp" : 600, "hp": 600, "max_mana": 500, "mana": 500, "regen_hp": 4, "regen_mana" : 4, "armor":2, "magic_damage_resist" : 15, "damage": 75, "attack_speed" : 1.5, "attack_radius" : 5, "speed" : 9,"max_skills" : 4, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"},
 null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),700)
 	elif info == "wizard":
 		person = Person.new({"class" : "wizard", "pers_type" : "play_pers", "team" : "left"},
-{"max_hp" : 400, "hp": 400, "max_mana": 700, "mana": 700, "regen_hp": 5, "regen_mana" : 1, "armor": 10, "magic_damage_resist" : 30, "damage": 90, "attack_speed" : 1, "attack_radius" : 8, "speed" : 4,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0},
+{"max_hp" : 400, "hp": 400, "max_mana": 700, "mana": 700, "regen_hp": 5, "regen_mana" : 1, "armor": 10, "magic_damage_resist" : 30, "damage": 90, "attack_speed" : 1, "attack_radius" : 8, "speed" : 4,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"},
 null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),800)
 	person.inventory._wear_the_weapon(Item.new({"name" : "sword_is_rusty","description" : "An ordinary sword for suckers", "price" : 500, "slote" : "right_hand", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"damage" : 10}, null))
 	person.inventory._wear_the_weapon(Item.new({"name" : "tattered_mail","description" : "Regular armor for suckers", "price" : 500,"slote" : "body", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"armor" : 5, "hp" : 100}, null))
@@ -57,7 +57,8 @@ func _process(delta):
 	person.person_stats["time"] += delta
 	
 	if person.attack_bool:
-		if not person.attack(self, person.target["target_person"], "simple"):
+		var sceen = get_node("/root/Spatial")
+		if not person.attack(self, person.target["target_person"], "simple", sceen):
 			is_move = false
 	
 	var cgp = global_transform.origin
@@ -119,7 +120,8 @@ func _input(event):
 				if object.person.person_const["team"] != person.person_const["team"]:
 					person.target["target_person"] = object
 					is_move = false
-					if person.attack(self, object, "simple"):
+					var sceen = get_node("/root/Spatial")
+					if person.attack(self, object, "simple", sceen):
 						person.target["target"] = object.global_transform.origin
 						is_move = true
 					return
