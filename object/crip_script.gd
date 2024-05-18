@@ -7,17 +7,27 @@ var giv_money = 50
 var is_move = false
 var for_win_def = null
 var is_attack = false
+var tim_at = 0
 
 func _ready():
 	person.person_const["team"] = "right"
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
-	if is_move:
+	if is_move :
 		$melee_crip/AnimationPlayer.play("Размещённое действие]")
 		$melee_crip/AnimationPlayer.set_speed_scale(2)
+		tim_at = 0
 		
-	
+	if person.attack_bool:
+		$melee_crip/AnimationPlayer.play("attack1")
+		$melee_crip/AnimationPlayer.set_speed_scale(person.person_stats["attack_speed"]/1.55)
+		var sceen = get_node("/root/Spatial")
+		tim_at+=delta
+		if not person.attack(self, person.target["target_person"], "simple", sceen):
+			is_move = false
+	if tim_at >= person.person_stats["attack_speed"]/2:
+		is_attack = true
 	
 	
 	person.effect()

@@ -142,7 +142,7 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.y)
 	var dist = obj1_position.distance_to(obj2_position)
 	
-	attack_bool = true
+	
 	
 	if skill != null:
 		if dist <= skill.dist:
@@ -157,6 +157,7 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 			return 5
 	else:
 		if dist <= person_stats["attack_radius"]:
+			attack_bool = true
 			if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
 				if attack_object.is_attack:
 					if person_stats["t_a"] == "melee":
