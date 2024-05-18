@@ -10,12 +10,73 @@ var target = {"target" : Vector3.ZERO, "target_person" : null}
 var is_die = false
 var money = 500
 
-func _init(person_const_, person_stats_, skills_, inventory_, money_):
-	person_const = person_const_
-	person_stats = person_stats_
-	skills = skills_
-	inventory = inventory_
-	money = money_
+func _init(name):
+	if name == "paladin":
+		person_const["class"] = "paladin"
+		person_const["pers_type"] = "play_pers"
+		person_const["team"] = "left"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 80
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 1.5
+		person_stats["speed"] = 6
+		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
+		inventory.weapons["legs"] = Item.new("speed_boots")
+		inventory.weapons["body"] = Item.new("tattered_mail")
+		inventory.consumables[0] = Item.new("falakaxa")
+		inventory.consumables[1] = Item.new("pigeon")
+		inventory.consumables[2] = Item.new("fufarik")
+		
+	if name == "enemy":
+		person_const["class"] = "paladin"
+		person_const["pers_type"] = "enemy"
+		person_const["team"] = "right"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 80
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 1.5
+		person_stats["speed"] = 6
+	
+	if name == "crip":
+		person_const["class"] = "crip"
+		person_const["pers_type"] = "crip"
+		person_const["team"] = "left"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 80
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 1.5
+		person_stats["speed"] = 6
+	
+	
+	if name == "tower":
+		person_const["class"] = "tower"
+		person_const["pers_type"] = "tower_friend"
+		person_const["team"] = "left"
+		person_stats["max_hp"] = 1000
+		person_stats["max_mana"] = 200
+		person_stats["regen_hp"] = 5
+		person_stats["regen_mana"] = 1
+		person_stats["armor"] = 10
+		person_stats["magic_damage_resist"] = 30
+		person_stats["damage"] = 200
+		person_stats["attack_speed"] = 2
+		person_stats["attack_radius"] = 8
+		person_stats["speed"] = 6
 
 func taking_damage(type, damage):
 	if type == "mag":
@@ -67,6 +128,18 @@ func count_stat():
 				if inventory.weapons[key_1].item_stats["dressed"] == false:
 					person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
 					inventory.weapons[key_1].item_stats["dressed"] = true
+
+
+
+func sell_item(name_item, slot):
+	if inventory.weapons["right_hand"].skill:
+		skills[skills.find(inventory.weapons["right_hand"].skill)] == null
+	for key_2 in inventory.weapons["right_hand"].characteristic:
+		if inventory.weapons["right_hand"].item_stats["dressed"] == true:
+			person_stats[key_2] -= inventory.weapons["right_hand"].characteristic[key_2]
+	inventory.weapons["right_hand"] = Item.new(name_item)
+
+
 
 func is_die():
 	if person_stats["hp"] <= 0:

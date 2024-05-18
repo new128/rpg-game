@@ -7,9 +7,7 @@ var Person = preload("res://person.gd")
 var Item = preload("res://item.gd")
 var Inventory = preload("res://inventory.gd")
 var Skill = preload("res://ability.gd")
-var person = Person.new({"class" : "paladin", "pers_type" : "play_pers", "team" : "left"},
-{"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 2.5, "speed" : 6,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0},
-null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),500)
+var person = null
 var is_move = false
 var last_attack = null
 var giv_money = 300
@@ -21,20 +19,7 @@ func _ready():
 	file.open("res://class.txt", File.READ)
 	var info = file.get_as_text()
 	file.close()
-	if info == "shooter":
-		person = Person.new({"class" : "shooter", "pers_type" : "play_pers", "team" : "left"},
-{"max_hp" : 600, "hp": 600, "max_mana": 500, "mana": 500, "regen_hp": 4, "regen_mana" : 4, "armor":2, "magic_damage_resist" : 15, "damage": 75, "attack_speed" : 1.5, "attack_radius" : 5, "speed" : 9,"max_skills" : 4, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"},
-null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),700)
-	elif info == "wizard":
-		person = Person.new({"class" : "wizard", "pers_type" : "play_pers", "team" : "left"},
-{"max_hp" : 400, "hp": 400, "max_mana": 700, "mana": 700, "regen_hp": 5, "regen_mana" : 1, "armor": 10, "magic_damage_resist" : 30, "damage": 90, "attack_speed" : 1, "attack_radius" : 8, "speed" : 4,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"},
-null, Inventory.new({"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" : null, "legs" : null}, [0,0,0]),800)
-	person.inventory._wear_the_weapon(Item.new({"name" : "sword_is_rusty","description" : "An ordinary sword for suckers", "price" : 500, "slote" : "right_hand", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"damage" : 10}, null))
-	person.inventory._wear_the_weapon(Item.new({"name" : "tattered_mail","description" : "Regular armor for suckers", "price" : 500,"slote" : "body", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"armor" : 5, "hp" : 100}, null))
-	person.inventory._wear_the_weapon(Item.new({"name" : "speed_boots","description" : "Regular armor for suckers", "price" : 500,"slote" : "legs", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"speed" : 1}, null))
-	person.inventory.consumables[0] = Item.new({"name" : "falakaxa", "description" : "Flask from dota", "price" : 120,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_hp":30}, Skill.new("falakaxa", {"time":10,"target":"self","regen_hp":30}))
-	person.inventory.consumables[1] = Item.new({"name" : "pigeon", "description" : "Claret from dota", "price" : 90,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"regen_mana":20}, Skill.new("pigeon", {"time":10,"target":"self","regen_mana":20}))
-	person.inventory.consumables[2] = Item.new({"name" : "fufarik", "description" : "fireman from dota", "price" : 80,  "slote" : "consumables", "double_hands" : false, "rarity" : "regular", "dressed" : false}, {"hp":100}, Skill.new("fufarik", {"time":"instantly","target":"self", "hp":100}))
+	person = Person.new(info)
 func _process(delta):
 	var kin_bod = get_node("/root/Spatial/Control/Time")
 	el_t = int(kin_bod.elapsed_time)
@@ -106,6 +91,7 @@ func _input(event):
 	
 	control_node.connect("button_buy_falakaxa_pressed", self, "_on_button_buy_falakaxa_pressed")
 	control_node.connect("button_buy_pigeon_pressed", self, "_on_button_buy_pigeon_pressed")
+	control_node.connect("button_buy_weapon", self, "_on_button_buy_weapon")
 	
 	if event is InputEventMouseButton and event.pressed and Input.is_action_pressed("right_click"):
 		var mouse_position = event.position
@@ -162,12 +148,21 @@ func _on_button_C_pressed():
 
 func _on_button_Q_pressed():
 	if person.money >= 120:
-		person.inventory._add_ability("falakaxa", person)
+		person.inventory.consumables[person.inventory.consumables.find(0,0)] = Item.new("falakaxa")
 
 func _on_button_buy_falakaxa_pressed():
 	if person.money >= 120:
-		person.inventory._add_ability("falakaxa", person)
+		person.inventory.consumables[person.inventory.consumables.find(0,0)] = Item.new("falakaxa")
 
 func _on_button_buy_pigeon_pressed():
 	if person.money >= 90:
-		person.inventory._add_ability("pigeon", person)
+		person.inventory.consumables[person.inventory.consumables.find(0,0)] = Item.new("pigeon")
+		
+func _on_button_buy_weapon(name):
+	person.money += person.inventory.weapons["right_hand"].item_stats["price"] * 0.8
+	print("You Sell >> "+name)
+	if person.money >= Item.new(name).item_stats["price"]:
+		person.sell_item(name,"weapon_r")
+		person.money -= 500
+	else:
+		person.money -= person.inventory.weapon_r.price * 0.8

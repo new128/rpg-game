@@ -2,9 +2,7 @@ extends StaticBody
 
 
 var Person = preload("res://person.gd")
-var person = Person.new({"class" : "tower", "pers_type" : "tower_friend", "team" : "left"},
-{"max_hp" : 2000, "hp": 2000, "max_mana": 0, "mana": 0, "regen_hp": 0, "regen_mana" : 0, "armor":25, "magic_damage_resist" : 10, "damage": 80, "attack_speed" : 1, "attack_radius" : 5, "speed" : 0,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a":"range"},
-[], null, 0)
+var person = Person.new("tower")
 var last_attack = null
 var giv_money = 300
 var for_win_def = null

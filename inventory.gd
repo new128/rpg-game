@@ -28,3 +28,5 @@ func _use_ability(num_of_slote, person):
 
 func _wear_the_weapon(weapon):
 	weapons[weapon.item_stats["slote"]] = weapon
+func _add_w(we):
+	weapons[we.item_stats["slote"]] = we
