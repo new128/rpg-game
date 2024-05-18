@@ -41,7 +41,7 @@ func _init(name_):
 	if name_ == "slicing_bow":
 		item_stats["name"] = name_
 		item_stats["description"] = "slicing bow"
-		item_stats["price"] = 1000
+		item_stats["price"] = 200 #1000
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +20

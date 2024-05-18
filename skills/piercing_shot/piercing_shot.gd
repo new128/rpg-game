@@ -38,7 +38,7 @@ func _process(delta):
 		global_translate(direction * 40 * delta)
 		for it in pers:
 			if it:
-				if it.person.team != self_.person.team:
+				if it.person.person_const["team"] != self_.person.person_const["team"]:
 					
 					var dist_ = sqrt((translation.x-it.translation.x)*(translation.x-it.translation.x)+(translation.z-it.translation.z)*(translation.z-it.translation.z))
 					if dist_ <= 3:

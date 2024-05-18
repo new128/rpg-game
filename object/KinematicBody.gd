@@ -351,6 +351,6 @@ func _on_button_buy_weapon(name):
 	print("You Sell >> "+name)
 	if person.money >= Item.new(name).item_stats["price"]:
 		person.sell_item(name,"weapon_r")
-		person.money -= 500
+		person.money -= person.inventory.weapons["right_hand"].item_stats["price"]
 	else:
-		person.money -= person.inventory.weapon_r.price * 0.8
+		person.money -= person.inventory.weapons["right_hand"].price * 0.8

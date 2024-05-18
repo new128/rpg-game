@@ -181,6 +181,10 @@ func count_stat():
 			for key_2 in inventory.weapons[key_1].characteristic:
 				if inventory.weapons[key_1].item_stats["dressed"] == false:
 					person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
+					for i in range(6):
+						if skills[i] == null:
+							skills[i] = inventory.weapons[key_1].skill
+							break
 					inventory.weapons[key_1].item_stats["dressed"] = true
 
 
