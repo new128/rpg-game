@@ -31,6 +31,16 @@ func _ready():
 	file.close()
 	person = Person.new(info)
 func _process(delta):
+	if not is_move:
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
+	if is_move:
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]001")
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").set_speed_scale(2)
+	
+	
+	
+	
+	
 	var j = 0
 	for t_s in data_time_skill:
 		if t_s[0]:

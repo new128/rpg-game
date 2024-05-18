@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://object/Pole_play.dae" type="PackedScene" id=1]
 [ext_resource path="res://move_camera.gd" type="Script" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://tower/tower.dae" type="PackedScene" id=11]
 [ext_resource path="res://object/Enemy.gd" type="Script" id=12]
 [ext_resource path="res://object/towerStatick.gd" type="Script" id=13]
+[ext_resource path="res://person/main++_person-.glb" type="PackedScene" id=14]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50.894, 1.48172, 91.2569 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 2.55387, 7.30095, 1.18277 )
+extents = Vector3( 2.55387, 7.66093, 1.18277 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 1.11728, 0.669101, 0.602358 )
@@ -43,9 +44,11 @@ shape = SubResource( 1 )
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -40, 3.612, -80 )
 script = ExtResource( 4 )
 
-[node name="main++_person-+" parent="KinematicBody" instance=ExtResource( 3 )]
+[node name="person" parent="KinematicBody" instance=ExtResource( 14 )]
+transform = Transform( 8.793, 0, 0, 0, 8.793, 0, 0, 0, 8.793, 0.0584106, -8.0445, -0.176392 )
 
 [node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4879, 0 )
 shape = SubResource( 2 )
 
 [node name="HUD" parent="KinematicBody" instance=ExtResource( 7 )]
