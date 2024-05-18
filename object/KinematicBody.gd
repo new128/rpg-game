@@ -24,6 +24,8 @@ var time_skill6 = [false,0]
 var sphere = MeshInstance.new()
 var sphere_mesh = TorusMesh.new()
 var data_time_skill = [time_skill1,time_skill2,time_skill3,time_skill4,time_skill5,time_skill6]
+var is_attack = false
+var tim_at = 0
 
 func _ready():
 	file.open("res://class.txt", File.READ)
@@ -31,7 +33,7 @@ func _ready():
 	file.close()
 	person = Person.new(info)
 func _process(delta):
-	if not is_move:
+	if not is_move and not person.attack_bool:
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
 	if is_move:
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]001")
@@ -40,7 +42,7 @@ func _process(delta):
 	var target_position = Vector2(person.target["target"].x, person.target["target"].z)
 	var global_pos = Vector2(global_position.x, global_position.z)
 	var distance = target_position.distance_to(global_pos)
-	if distance <= 0.1:
+	if distance <= 0.5:
 		is_move = false
 	
 	
@@ -86,10 +88,14 @@ func _process(delta):
 	person.person_stats["time"] += delta
 	
 	if person.attack_bool:
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]003")
+		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").set_speed_scale(person.person_stats["attack_speed"]/1.55)
 		var sceen = get_node("/root/Spatial")
+		tim_at+=delta
 		if not person.attack(self, person.target["target_person"], "simple", sceen):
 			is_move = false
-	
+	if tim_at >= person.person_stats["attack_speed"]/2:
+		is_attack = true
 	var cgp = global_transform.origin
 	var cam: Camera = get_node("/root/Spatial/Play_camera")
 	var x_p = (cam.transform.origin.x + 9.5 - cgp.x)/18.91
@@ -174,6 +180,7 @@ func _input(event):
 		if result:
 			person.target["target"] = result.position
 			person.attack_bool = false
+			tim_at = 0
 			is_move = true
 			
 			

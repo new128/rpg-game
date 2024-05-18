@@ -7,6 +7,7 @@ var last_attack = null
 var giv_money = 500
 var is_move = false
 var for_win_def = null
+var is_attack = false
 
 func _ready():
 	person.person_const["team"] = "right"

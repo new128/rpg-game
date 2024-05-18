@@ -6,6 +6,7 @@ var person = Person.new("tower")
 var last_attack = null
 var giv_money = 300
 var for_win_def = null
+var is_attack = false
 
 func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
@@ -15,6 +16,9 @@ func _ready():
 		person.person_const["team"] = "right"
 
 func _process(delta):
+	
+	
+	
 	person.effect()
 	person.person_stats["time"] += delta
 	

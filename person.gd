@@ -24,8 +24,8 @@ func _init(name):
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 80
 		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 1.5
-		person_stats["speed"] = 6
+		person_stats["attack_radius"] = 3
+		person_stats["speed"] = 11
 		person_stats["t_a"] = "melee"
 		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
 		inventory.weapons["legs"] = Item.new("speed_boots")
@@ -158,20 +158,25 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	else:
 		if dist <= person_stats["attack_radius"]:
 			if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
-				if person_stats["t_a"] == "melee":
-					target.person.taking_damage("phis", person_stats["damage"])
-					person_stats["time"] = 0
-					target.last_attack = self
-				if person_stats["t_a"] == "range":
-					var sheel = load("res://shells/strela/Strela.tscn") 
-					sheel = sheel.instance()
-					sheel.translation = attack_object.translation
-					if person_const["class"] == "tower":
-						sheel.translation.y += 3
-					sheel.self_ = attack_object
-					sheel.target = target
-					sceen.add_child(sheel)
-					person_stats["time"] = 0
+				if attack_object.is_attack:
+					if person_stats["t_a"] == "melee":
+						target.person.taking_damage("phis", person_stats["damage"])
+						person_stats["time"] = 0
+						target.last_attack = self
+						attack_object.is_attack = false
+						attack_object.tim_at = 0
+					if person_stats["t_a"] == "range":
+						var sheel = load("res://shells/strela/Strela.tscn") 
+						sheel = sheel.instance()
+						sheel.translation = attack_object.translation
+						if person_const["class"] == "tower":
+							sheel.translation.y += 3
+						sheel.self_ = attack_object
+						sheel.target = target
+						sceen.add_child(sheel)
+						person_stats["time"] = 0
+						attack_object.is_attack = false
+						attack_object.tim_at = 0
 		else:
 			return 5
 
