@@ -97,9 +97,16 @@ func _process(delta):
 	if tim_at >= person.person_stats["attack_speed"]/2:
 		is_attack = true
 	var cgp = global_transform.origin
-	var cam: Camera = get_node("/root/Spatial/Play_camera")
-	var x_p = (cam.transform.origin.x + 9.5 - cgp.x)/18.91
-	var y_p = (33.62 - (cam.transform.origin.z + 16.81 - cgp.z))/33.62
+	var screen_size = OS.get_screen_size()
+	var cam = get_node("/root/Spatial/Play_camera")
+	var pos = cam.position
+
+	var x_pos = pos.x + 18 - cgp.x
+	var y_pos = 31.62 - (pos.z + 16.81 - cgp.z)
+	
+	var x_p = 1*x_pos/18.91
+	var y_p = 1*y_pos/33.62
+
 	
 	$HUD.anchor_left = y_p-0.05
 	$HUD.anchor_top = x_p-0.1

@@ -31,9 +31,15 @@ func _process(delta):
 	person.attack(self, person.target["target_person"], "simple", sceen)
 	
 	var cgp = global_transform.origin
+	var screen_size = OS.get_screen_size()
 	var cam = get_node("/root/Spatial/Play_camera")
-	var x_p = (cam.transform.origin.x + 9.5 - cgp.x)/18.91
-	var y_p = (33.62 - (cam.transform.origin.z + 16.81 - cgp.z))/33.62
+	var pos = cam.position
+
+	var x_pos = pos.x + 18 - cgp.x
+	var y_pos = 31.62 - (pos.z + 16.81 - cgp.z)
+	
+	var x_p = 1*x_pos/18.91
+	var y_p = 1*y_pos/33.62
 	
 	if for_win_def != person.person_const["team"]:
 		$HUD/hp.modulate = Color(1, 0, 0)
