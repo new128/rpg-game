@@ -50,17 +50,11 @@ func _ready():
 	$Shop/regular_staff.connect("pressed", self, "_on_button_buy_regular_staff")
 	$Shop/steel_sword.connect("pressed", self, "_on_button_buy_steel_sword")
 	$Shop/slicing_bow.connect("pressed", self, "_on_button_buy_slicing_bow")
-	
-	
-	#$AcceptDialog.popup()
-
 
 
 func _process(delta):
-	
-	
 	if notice:
-		time+=delta
+		time += delta
 		if time >= 3: 
 			notice = false
 			time = 0
@@ -84,7 +78,7 @@ func _process(delta):
 		$Armor.text = "armor: "+ String(kin_bod.person.person_stats["armor"])
 		$Speed.text = "speed: "+ String(kin_bod.person.person_stats["speed"])
 		$Lvl.text = "lvl: "+ String(kin_bod.person.person_stats["lvl"])
-		$Xp.text = "xp: "+ String(kin_bod.person.person_stats["xp"])
+		$Xp.text = "exp: "+ String(kin_bod.person.person_stats["xp"])
 	
 	if not $AcceptDialog.visible and ac_d2:
 		$AcceptDialog2.popup()

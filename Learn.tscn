@@ -23,10 +23,10 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 288.0
+margin_right = 300.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 1 )
-text = "Привет это обучение, мы рады, что ты зашёл 
+text = "Привет, это - обучение, мы рады, что ты зашёл 
 его пройти. Итак, ты готов?"
 
 [node name="AcceptDialog2" type="AcceptDialog" parent="."]

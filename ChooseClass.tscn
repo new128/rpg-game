@@ -2,26 +2,30 @@
 
 [ext_resource path="res://ChooseClass.gd" type="Script" id=1]
 
-[node name="ChooseClass" type="Node2D"]
+[node name="ChooseClass" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1920.0
+margin_bottom = -1080.0
 script = ExtResource( 1 )
 
 [node name="Button_Class1" type="Button" parent="."]
-margin_left = 25.0
+margin_left = 45.0
 margin_top = 392.0
-margin_right = 554.0
-margin_bottom = 573.0
+margin_right = 570.0
+margin_bottom = 592.0
 text = "Paladin"
 
 [node name="Button_Class2" type="Button" parent="."]
-margin_left = 577.0
-margin_top = 394.0
-margin_right = 1106.0
-margin_bottom = 575.0
+margin_left = 595.0
+margin_top = 392.0
+margin_right = 1120.0
+margin_bottom = 592.0
 text = "Shooter"
 
 [node name="Button_Class3" type="Button" parent="."]
-margin_left = 1129.0
-margin_top = 395.0
-margin_right = 1658.0
-margin_bottom = 576.0
+margin_left = 1145.0
+margin_top = 392.0
+margin_right = 1670.0
+margin_bottom = 592.0
 text = "Wizard"

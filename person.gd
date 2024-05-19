@@ -14,7 +14,7 @@ var money = 500
 func _init(name):
 	if name == "paladin":
 		person_const = {"class" : "paladin", "pers_type" : "play_pers", "team" : "left"}
-		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
+		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 9 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
 		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "shooter":
@@ -24,22 +24,19 @@ func _init(name):
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "wizard":
 		person_const = {"class" : "wizard", "pers_type" : "play_pers", "team" : "left"}
-		person_stats = {"max_hp" : 500, "hp": 500, "max_mana": 700, "mana": 700, "regen_hp": 3, "regen_mana" : 5, "armor":10, "magic_damage_resist" : 50, "damage": 120, "attack_speed" : 2, "attack_radius" : 11, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		person_stats = {"max_hp" : 500, "hp": 500, "max_mana": 700, "mana": 700, "regen_hp": 3, "regen_mana" : 5, "armor":10, "magic_damage_resist" : 50, "damage": 120, "attack_speed" : 2, "attack_radius" : 11, "speed" : 7 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
 		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("regular_staff"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 		skills[0] = Skill.new("fire_ball")
-	
 	if name == "enemy":
 		person_const = {"class" : "paladin", "pers_type" : "enemy", "team" : "right"}
-		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
-	
+		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 9 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
 	if name == "crip":
 		person_const = {"class" : "crip", "pers_type" : "crip", "team" : "left"}
-		person_stats = {"max_hp" : 600, "hp": 600, "max_mana": 200, "mana": 200, "regen_hp": 4, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 50, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
-	
+		person_stats = {"max_hp" : 600, "hp": 600, "max_mana": 200, "mana": 200, "regen_hp": 4, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 50, "attack_speed" : 2, "attack_radius" : 3, "speed" : 9 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
 	if name == "tower":
 		person_const = {"class" : "tower", "pers_type" : "tower_friend", "team" : "left"}
-		person_stats = {"max_hp" : 2000, "hp": 2000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 200, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		person_stats = {"max_hp" : 2000, "hp": 2000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 200, "attack_speed" : 2, "attack_radius" : 3, "speed" : 0 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
 
 func taking_damage(type, damage):
 	if type == "mag":
@@ -48,7 +45,7 @@ func taking_damage(type, damage):
 		person_stats["hp"] -= damage - person_stats["armor"]
 	if type == "clear":
 		person_stats["hp"] -= damage
-		
+
 var attack_bool = false
 
 func attack(attack_object, target, type_attack, sceen = null, skill = null):
@@ -94,7 +91,6 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 						attack_object.tim_at = 0
 		else:
 			return 5
-
 func count_stat():
 	for key_1 in inventory.weapons:
 		if inventory.weapons[key_1] != null:

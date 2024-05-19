@@ -158,13 +158,13 @@ script = ExtResource( 4 )
 [node name="Money" type="Label" parent="."]
 modulate = Color( 0.835294, 1, 0, 1 )
 anchor_left = 0.016
-anchor_top = 0.918
-anchor_right = 0.2
-anchor_bottom = 0.979
-margin_left = -0.384001
-margin_top = 0.199951
-margin_right = -116.8
-margin_bottom = -22.4
+anchor_top = 0.919
+anchor_right = 0.201
+anchor_bottom = 0.977
+margin_left = -0.720001
+margin_top = -0.52002
+margin_right = -219.92
+margin_bottom = -39.16
 rect_scale = Vector2( 2.617, 2.617 )
 text = "1"
 
@@ -342,34 +342,35 @@ text = "C"
 
 [node name="Damage" type="Label" parent="."]
 anchor_left = 0.237
-anchor_top = 0.897
+anchor_top = 0.902
 anchor_right = 0.299
-anchor_bottom = 0.92
-margin_left = 0.311981
-margin_top = -0.200012
-margin_right = -0.176025
+anchor_bottom = 0.926
+margin_left = 0.311951
+margin_top = 0.399902
+margin_right = -0.176086
+margin_bottom = -6.10352e-05
 text = "damage:"
 
 [node name="Armor" type="Label" parent="."]
-anchor_left = 0.236
-anchor_top = 0.863
-anchor_right = 0.297
-anchor_bottom = 0.887
-margin_left = 0.335983
-margin_top = 0.199951
-margin_right = -0.128021
-margin_bottom = -0.200012
+anchor_left = 0.237
+anchor_top = 0.879
+anchor_right = 0.298
+anchor_bottom = 0.903
+margin_left = 0.311951
+margin_top = -0.0800781
+margin_right = -0.151978
+margin_bottom = -0.47998
 text = "armor:"
 
 [node name="Speed" type="Label" parent="."]
-anchor_left = 0.234
-anchor_top = 0.823
-anchor_right = 0.297
-anchor_bottom = 0.847
-margin_left = 0.383987
-margin_top = 0.199982
-margin_right = -0.128021
-margin_bottom = -0.200043
+anchor_left = 0.237
+anchor_top = 0.856
+anchor_right = 0.3
+anchor_bottom = 0.879
+margin_left = 0.311951
+margin_top = -0.440063
+margin_right = -0.199951
+margin_bottom = 0.239807
 text = "speed:"
 
 [node name="Shop" type="Control" parent="."]
@@ -391,11 +392,11 @@ align = 1
 
 [node name="TextureRect" type="TextureRect" parent="Shop"]
 anchor_top = 0.073
-anchor_right = 1.928
-anchor_bottom = 1.694
-margin_top = 0.108688
-margin_right = -389.675
-margin_bottom = -512.163
+anchor_right = 1.043
+anchor_bottom = 0.973
+margin_top = 0.108681
+margin_right = -0.112213
+margin_bottom = 0.352539
 texture = ExtResource( 7 )
 
 [node name="falakaxa" type="Button" parent="Shop"]
@@ -502,11 +503,11 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 285.0
+margin_right = 300.0
 margin_bottom = 72.0
 custom_fonts/font = SubResource( 3 )
-text = "Привет это обучение, мы рады что ты зашёл 
-его пройти и так ты готов?"
+text = "Привет, это - обучение, мы рады, что ты зашёл 
+его пройти. Итак, ты готов?"
 
 [node name="AcceptDialog2" type="AcceptDialog" parent="."]
 anchor_left = 0.053
@@ -522,14 +523,13 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog2"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 287.0
+margin_right = 333.0
 margin_bottom = 147.0
 custom_fonts/font = SubResource( 3 )
-text = "Как ты видьшь твои союзники крипы уже
-побежали атаковать крипов пративник
-кстати за добивание крипов тебе даётся
-30 единиц монет. Колличество денег можно
-проследить в левом нижнем экране"
+text = "Kак ты видишь,твои крипы уже
+побежали атаковать крипов противника.
+Кстати, за добивание крипов противника тебе даётся
+30 монет. Количество денег можно"
 
 [node name="AcceptDialog3" type="AcceptDialog" parent="."]
 anchor_left = 0.01
@@ -548,8 +548,8 @@ margin_top = 8.0
 margin_right = 297.0
 margin_bottom = 117.0
 custom_fonts/font = SubResource( 3 )
-text = "Деньги один из важных ресурсов в игре
-чем больше денег тем ьольше шанс победить
+text = "Деньги - один из важных ресурсов в игре:
+чем больше денег, тем больше шанс победить
 противника"
 
 [node name="AcceptDialog4" type="AcceptDialog" parent="."]
@@ -562,11 +562,11 @@ window_title = "HI!"
 [node name="Label2" type="Label" parent="AcceptDialog4"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 462.0
+margin_right = 468.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 3 )
 text = "Внизу посеридине вся важная информация о твоём персонаже:
-количество жизни и маны также скилы которые ты можешь использовать"
+количество жизни и маны, также скилы, которые ты можешь использовать"
 
 [node name="AcceptDialog5" type="AcceptDialog" parent="."]
 margin_left = 578.0
@@ -581,42 +581,40 @@ margin_top = 8.0
 margin_right = 443.0
 margin_bottom = 175.0
 custom_fonts/font = SubResource( 3 )
-text = "Теперь ты можешь идти бить крипов и зарабатывать деньги и запомни 
-самая главная цель это победить т е убить противника или
-рахрушить его башню"
+text = "Теперь ты можешь идти бить крипов и зарабатывать деньги. Запомни, 
+самая главная цель - победить:  убить противника или
+разрушить его башню"
 
 [node name="Lvl" type="Label" parent="."]
-anchor_left = 0.185
-anchor_top = 0.828
-anchor_right = 0.22
-anchor_bottom = 0.9
-margin_left = 0.799988
-margin_top = -0.240051
-margin_right = -54.4
-margin_bottom = -64.0001
-rect_scale = Vector2( 5.571, 5.571 )
-text = "1"
+anchor_left = 0.324
+anchor_top = 0.926
+anchor_right = 0.374
+anchor_bottom = 0.939
+margin_left = -0.0800171
+margin_top = -0.0800781
+margin_right = -0.0800171
+margin_bottom = -0.120056
+text = "Lvl: "
 
 [node name="Xp" type="Label" parent="."]
-anchor_left = 0.191
+anchor_left = 0.324
 anchor_top = 0.944
-anchor_right = 0.205
-anchor_bottom = 0.982
-margin_left = -0.720032
-margin_top = -0.520081
-margin_right = -18.6
-margin_bottom = -27.5601
-rect_scale = Vector2( 2.991, 2.991 )
-text = "0"
+anchor_right = 0.374
+anchor_bottom = 0.957
+margin_left = -0.0800171
+margin_top = 0.479919
+margin_right = -0.0800171
+margin_bottom = 0.439941
+text = "Exp:"
 
 [node name="Skill2" type="Button" parent="."]
-anchor_left = 0.431
+anchor_left = 0.414
 anchor_top = 0.856
-anchor_right = 0.467
+anchor_right = 0.45
 anchor_bottom = 0.921
-margin_left = -33.52
-margin_top = 0.519958
-margin_right = -32.64
+margin_left = -0.880066
+margin_top = 0.519897
+margin_right = -6.10352e-05
 margin_bottom = 0.319946
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
@@ -628,13 +626,13 @@ margin_right = -7.02
 text = "W"
 
 [node name="Skill3" type="Button" parent="."]
-anchor_left = 0.469
+anchor_left = 0.452
 anchor_top = 0.856
-anchor_right = 0.506
+anchor_right = 0.489
 anchor_bottom = 0.921
-margin_left = -32.48
-margin_top = 0.519958
-margin_right = -33.5201
+margin_left = 0.160034
+margin_top = 0.519897
+margin_right = -0.880188
 margin_bottom = 0.319946
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
@@ -646,14 +644,14 @@ margin_right = 0.0199995
 text = "E"
 
 [node name="Skill4" type="Button" parent="."]
-anchor_left = 0.508
+anchor_left = 0.491
 anchor_top = 0.856
-anchor_right = 0.544
+anchor_right = 0.527
 anchor_bottom = 0.921
-margin_left = -33.36
-margin_top = 0.519958
-margin_right = -32.4801
-margin_bottom = 0.319946
+margin_left = -0.719971
+margin_top = 0.519897
+margin_right = 0.159973
+margin_bottom = 0.319885
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
@@ -664,13 +662,13 @@ margin_right = -0.0100002
 text = "D"
 
 [node name="Skill5" type="Button" parent="."]
-anchor_left = 0.546
+anchor_left = 0.529
 anchor_top = 0.856
-anchor_right = 0.583
+anchor_right = 0.566
 anchor_bottom = 0.921
-margin_left = -32.3201
-margin_top = 0.519958
-margin_right = -33.36
+margin_left = 0.319946
+margin_top = 0.519897
+margin_right = -0.720093
 margin_bottom = 0.319946
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
@@ -681,14 +679,14 @@ anchor_bottom = 0.2
 text = "F"
 
 [node name="Skill6" type="Button" parent="."]
-anchor_left = 0.546
+anchor_left = 0.568
 anchor_top = 0.856
-anchor_right = 0.583
+anchor_right = 0.604
 anchor_bottom = 0.921
-margin_left = 41.6799
+margin_left = -0.560059
 margin_top = 0.519958
-margin_right = 40.64
-margin_bottom = 0.319946
+margin_right = 0.319946
+margin_bottom = 0.319885
 rect_pivot_offset = Vector2( 57, 50 )
 script = ExtResource( 2 )
 
@@ -710,12 +708,8 @@ margin_right = -0.920044
 margin_bottom = 0.359924
 
 [node name="Label" type="Label" parent="Notice"]
-anchor_left = 0.018
-anchor_top = 0.059
-anchor_right = 0.988
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -0.0580001
-margin_top = 0.407
-margin_right = 0.371979
+margin_bottom = 6.10352e-05
 custom_fonts/font = SubResource( 4 )
 align = 1
