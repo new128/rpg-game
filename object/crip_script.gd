@@ -73,3 +73,4 @@ func _process(delta):
 	$HUD/hp.rect_size.y = 20
 	$HUD/hp.rect_size.x = 140
 	$HUD/mana.visible  = false
+	$HUD/level.text = ""

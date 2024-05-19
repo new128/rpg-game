@@ -16,3 +16,12 @@ margin_top = 29.0
 margin_right = 197.0
 margin_bottom = 54.0
 percent_visible = false
+
+[node name="level" type="RichTextLabel" parent="."]
+margin_left = 197.0
+margin_top = 2.0
+margin_right = 214.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2, 2 )
+text = "30"
+scroll_active = false
