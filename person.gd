@@ -13,117 +13,33 @@ var money = 500
 
 func _init(name):
 	if name == "paladin":
-		person_const["class"] = "paladin"
-		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 3
-		person_stats["speed"] = 11
-		person_stats["t_a"] = "melee"
-		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
-		inventory.weapons["legs"] = Item.new("speed_boots")
-		inventory.weapons["body"] = Item.new("tattered_mail")
-		inventory.consumables[0] = Item.new("falakaxa")
-		inventory.consumables[1] = Item.new("pigeon")
-		inventory.consumables[2] = Item.new("fufarik")
+		person_const = {"class" : "paladin", "pers_type" : "play_pers", "team" : "left"}
+		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
+		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
+		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "shooter":
-		person_const["class"] = "shooter"
-		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 7
-		person_stats["speed"] = 10
-		person_stats["t_a"] = "range"
-		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
-		inventory.weapons["legs"] = Item.new("speed_boots")
-		inventory.weapons["body"] = Item.new("tattered_mail")
-		inventory.consumables[0] = Item.new("falakaxa")
-		inventory.consumables[1] = Item.new("pigeon")
-		inventory.consumables[2] = Item.new("fufarik")
+		person_const = {"class" : "shooter", "pers_type" : "play_pers", "team" : "left"}
+		person_stats = {"max_hp" : 700, "hp": 700, "max_mana": 400, "mana": 400, "regen_hp": 4, "regen_mana" : 3, "armor":10, "magic_damage_resist" : 30, "damage": 100, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
+		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "wizard":
-		person_const["class"] = "wizard"
-		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 1000
-		person_stats["mana"] = 1000
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 10
-		person_stats["speed"] = 10
-		person_stats["t_a"] = "range"
-		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
-		inventory.weapons["legs"] = Item.new("speed_boots")
-		inventory.weapons["body"] = Item.new("tattered_mail")
-		inventory.consumables[0] = Item.new("falakaxa")
-		inventory.consumables[1] = Item.new("pigeon")
-		inventory.consumables[2] = Item.new("fufarik")
+		person_const = {"class" : "wizard", "pers_type" : "play_pers", "team" : "left"}
+		person_stats = {"max_hp" : 500, "hp": 500, "max_mana": 700, "mana": 700, "regen_hp": 3, "regen_mana" : 5, "armor":10, "magic_damage_resist" : 50, "damage": 120, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
+		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 		skills[0] = Skill.new("fire_ball")
-		
+	
 	if name == "enemy":
-		person_const["class"] = "paladin"
-		person_const["pers_type"] = "enemy"
-		person_const["team"] = "right"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 1.5
-		person_stats["speed"] = 6
+		person_const = {"class" : "paladin", "pers_type" : "enemy", "team" : "right"}
+		person_stats = {"max_hp" : 1000, "hp": 1000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 80, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
 	
 	if name == "crip":
-		person_const["class"] = "crip"
-		person_const["pers_type"] = "crip"
-		person_const["team"] = "left"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 1.5
-		person_stats["speed"] = 6
-	
+		person_const = {"class" : "crip", "pers_type" : "crip", "team" : "left"}
+		person_stats = {"max_hp" : 600, "hp": 600, "max_mana": 200, "mana": 200, "regen_hp": 4, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 50, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "melee"}
 	
 	if name == "tower":
-		person_const["class"] = "tower"
-		person_const["pers_type"] = "tower_friend"
-		person_const["team"] = "left"
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
-		person_stats["armor"] = 10
-		person_stats["magic_damage_resist"] = 30
-		person_stats["damage"] = 200
-		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 5
-		person_stats["speed"] = 6
-		person_stats["t_a"] = "range"
+		person_const = {"class" : "tower", "pers_type" : "tower_friend", "team" : "left"}
+		person_stats = {"max_hp" : 2000, "hp": 2000, "max_mana": 200, "mana": 200, "regen_hp": 5, "regen_mana" : 1, "armor":10, "magic_damage_resist" : 30, "damage": 200, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 0, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
 
 func taking_damage(type, damage):
 	if type == "mag":
@@ -141,8 +57,6 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
 	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.y)
 	var dist = obj1_position.distance_to(obj2_position)
-	
-	
 	
 	if skill != null:
 		if dist <= skill.dist:
@@ -192,25 +106,18 @@ func count_stat():
 							skills[i] = inventory.weapons[key_1].skill
 							break
 					inventory.weapons[key_1].item_stats["dressed"] = true
-
-
-
 func sell_item(name_item, slot):
 	if inventory.weapons["right_hand"].skill:
-		skills[skills.find(inventory.weapons["right_hand"].skill)] == null
+		skills[skills.find(inventory.weapons["right_hand"].skill)] = null
 	for key_2 in inventory.weapons["right_hand"].characteristic:
 		if inventory.weapons["right_hand"].item_stats["dressed"] == true:
 			person_stats[key_2] -= inventory.weapons["right_hand"].characteristic[key_2]
 	inventory.weapons["right_hand"] = Item.new(name_item)
-
-
-
 func is_die():
 	if person_stats["hp"] <= 0:
 		person_stats["hp"] = 0
 		is_die = true
 	return is_die
-
 func is_valid_stats():
 	if person_stats["mana"] < 0:
 		person_stats["mana"] = 0
@@ -218,11 +125,9 @@ func is_valid_stats():
 		person_stats["hp"] = person_stats["max_hp"]
 	if person_stats["mana"] > person_stats["max_mana"]:
 		person_stats["mana"] = person_stats["max_mana"]
-
 func effect():
 	person_stats["hp"] += (person_stats["regen_hp"] / 60.0)
 	person_stats["mana"] += (person_stats["regen_mana"] / 60.0)
-
 func level_up():
 	if person_stats["xp"] >= pow(person_stats["lvl"],2)*100:
 		person_stats["lvl"] += 1

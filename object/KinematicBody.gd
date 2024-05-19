@@ -45,9 +45,6 @@ func _process(delta):
 	if distance <= 0.5:
 		is_move = false
 	
-	
-	
-	
 	var j = 0
 	for t_s in data_time_skill:
 		if t_s[0]:
@@ -58,8 +55,6 @@ func _process(delta):
 			get_node("/root/Spatial/Control/Skill"+String(j+1)+"/Label2").text = String(int(t_s[1]))
 			t_s[1]-=delta
 		j+=1
-	
-	
 	
 	sphere.translation = self.translation
 	var kin_bod = get_node("/root/Spatial/Control/Time")
@@ -275,7 +270,7 @@ func _on_button_W_pressed():
 	if time_skill2[1] <= 0:
 		if use_scill == null:
 			if person.skills[1] != null:
-				if person.skills[1].mana <= person.mana:
+				if person.skills[1].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[1]
 					sphere_mesh.outer_radius = person.skills[1].dist
 					sphere_mesh.inner_radius = person.skills[1].dist-0.05
@@ -294,7 +289,7 @@ func _on_button_E_pressed():
 	if time_skill3[1] <= 0:
 		if use_scill == null:
 			if person.skills[2] != null:
-				if person.skills[2].mana <= person.mana:
+				if person.skills[2].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[2]
 					sphere_mesh.outer_radius = person.skills[2].dist
 					sphere_mesh.inner_radius = person.skills[2].dist-0.05
@@ -313,7 +308,7 @@ func _on_button_D_pressed():
 	if time_skill4[1] <= 0:
 		if use_scill == null:
 			if person.skills[3] != null:
-				if person.skills[3].mana <= person.mana:
+				if person.skills[3].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[3]
 					sphere_mesh.outer_radius = person.skills[3].dist
 					sphere_mesh.inner_radius = person.skills[3].dist-0.05
@@ -332,7 +327,7 @@ func _on_button_F_pressed():
 	if time_skill5[1] <= 0:
 		if use_scill == null:
 			if person.skills[4] != null:
-				if person.skills[4].mana <= person.mana:
+				if person.skills[4].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[4]
 					sphere_mesh.outer_radius = person.skills[4].dist
 					sphere_mesh.inner_radius = person.skills[4].dist-0.05
@@ -351,7 +346,7 @@ func _on_button_R_pressed():
 	if time_skill6[1] <= 0:
 		if use_scill == null:
 			if person.skills[5] != null:
-				if person.skills[5].mana <= person.mana:
+				if person.skills[5].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[5]
 					sphere_mesh.outer_radius = person.skills[5].dist
 					sphere_mesh.inner_radius = person.skills[5].dist-0.05
@@ -378,7 +373,7 @@ func _on_button_buy_pigeon_pressed():
 		
 func _on_button_buy_weapon(name):
 	person.money += person.inventory.weapons["right_hand"].item_stats["price"] * 0.8
-	print("You Sell >> "+name)
+	print("You Sell >> " + name)
 	if person.money >= Item.new(name).item_stats["price"]:
 		person.sell_item(name,"weapon_r")
 		person.money -= person.inventory.weapons["right_hand"].item_stats["price"]

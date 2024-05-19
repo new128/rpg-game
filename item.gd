@@ -8,7 +8,7 @@ var characteristic = {"damage" : 0, "armor" : 0, "max_hp" :0, "max_mana" : 0, "r
 var skill = null
 
 func _init(name_):
-	if name_ == "sword_is_rusty": #ржавый меч
+	if name_ == "sword_is_rusty":
 		item_stats["name"] = name_
 		item_stats["description"] = "An ordinary sword for suckers" # Если что это всё переводчик
 		item_stats["price"] = 500
@@ -76,9 +76,6 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["speed"] = +1.5
 		item_stats["rarity"] = "regular"
-		
-		
-		
 	
 	if name_ == "falakaxa": 
 		item_stats["name"] = name_
