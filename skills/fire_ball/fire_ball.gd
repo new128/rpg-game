@@ -1,18 +1,12 @@
 extends KinematicBody
 
 
-# Declare member variables here. Examples:
-# var a = 2
 var target = null
 var target_position = null
 var self_ = null
 var damage = null
-
 var sceen = null
 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if target != null:
 		target_position = target.global_transform.origin
@@ -20,12 +14,7 @@ func _ready():
 		self.queue_free()
 
 func _process(delta):
-	
-	
-	
 	if target != null and is_instance_valid(target):
-		
-		
 		target_position = target.global_transform.origin
 		var direction = (target_position - translation).normalized()
 		direction.y = 0
@@ -38,6 +27,5 @@ func _process(delta):
 			target.person.taking_damage("mag", damage)
 			self.queue_free()
 			target.last_attack = self_.person
-		
 	else:
 		self.queue_free()

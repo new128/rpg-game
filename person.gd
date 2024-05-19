@@ -19,13 +19,13 @@ func _init(name):
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "shooter":
 		person_const = {"class" : "shooter", "pers_type" : "play_pers", "team" : "left"}
-		person_stats = {"max_hp" : 700, "hp": 700, "max_mana": 400, "mana": 400, "regen_hp": 4, "regen_mana" : 3, "armor":10, "magic_damage_resist" : 30, "damage": 100, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
-		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
+		person_stats = {"max_hp" : 700, "hp": 700, "max_mana": 400, "mana": 400, "regen_hp": 4, "regen_mana" : 3, "armor":10, "magic_damage_resist" : 30, "damage": 100, "attack_speed" : 2, "attack_radius" : 8, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("wooden_bow"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 	if name == "wizard":
 		person_const = {"class" : "wizard", "pers_type" : "play_pers", "team" : "left"}
-		person_stats = {"max_hp" : 500, "hp": 500, "max_mana": 700, "mana": 700, "regen_hp": 3, "regen_mana" : 5, "armor":10, "magic_damage_resist" : 50, "damage": 120, "attack_speed" : 2, "attack_radius" : 3, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
-		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("sword_is_rusty"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
+		person_stats = {"max_hp" : 500, "hp": 500, "max_mana": 700, "mana": 700, "regen_hp": 3, "regen_mana" : 5, "armor":10, "magic_damage_resist" : 50, "damage": 120, "attack_speed" : 2, "attack_radius" : 11, "speed" : 11 ,"max_skills" : 3, "lvl" : 1, "xp" : 0, "time" : 0, "t_a" : "range"}
+		inventory.weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : Item.new("regular_staff"), "body" : Item.new("tattered_mail"), "legs" : Item.new("speed_boots")}
 		inventory.consumables = [Item.new("falakaxa"), Item.new("pigeon"), Item.new("fufarik")]
 		skills[0] = Skill.new("fire_ball")
 	
@@ -54,8 +54,8 @@ var attack_bool = false
 func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	if not is_instance_valid(target):
 		return
-	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
-	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.y)
+	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.z)
+	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.z)
 	var dist = obj1_position.distance_to(obj2_position)
 	
 	if skill != null:

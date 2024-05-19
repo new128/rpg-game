@@ -3,31 +3,17 @@ class_name Item
 
 
 var Skill = preload("res://ability.gd")
-var item_stats = {"name" : "", "description" : "", "price" : 0,  "slote" : "", "double_hands" : false, "rarity" : "", "dressed" : false, "type_attack" : null}
+var item_stats = {"name" : "", "description" : "", "price" : 0,  "slote" : "", "double_hands" : false, "rarity" : "", "dressed" : false}
 var characteristic = {"damage" : 0, "armor" : 0, "max_hp" :0, "max_mana" : 0, "regen_hp" : 0, "regen_mana" : 0, "magic_damage_resist" : 0, "speed" : 0, "attack_speed" : 0, "attack_radius" : 0}
 var skill = null
 
 func _init(name_):
 	if name_ == "sword_is_rusty":
-		item_stats["name"] = name_
-		item_stats["description"] = "An ordinary sword for suckers" # Если что это всё переводчик
-		item_stats["price"] = 500
-		item_stats["slot"] = "right_hand"
-		item_stats["double_hends"] = false
-		characteristic["damage"] = +10
-		item_stats["rarity"] = "regular"
-		item_stats["type_attack"] = "melee"
-		characteristic["attack_radius"] = 1.5
+		item_stats = {"name" : name_, "description" : "An ordinary sword for suckers", "price" : 500,  "slote" : "right_hand", "double_hands" : false, "rarity" : "regular", "dressed" : false}
+		characteristic["damage"] = 10
 	if name_ == "steel_sword":  
-		item_stats["name"] = name_
-		item_stats["description"] = "steel sword" # Если что это всё переводчик
-		item_stats["price"] = 200 #1000
-		item_stats["slot"] = "right_hand"
-		item_stats["double_hends"] = false
-		characteristic["damage"] = +20
-		item_stats["rarity"] = "unusual"
-		item_stats["type_attack"] = "melee"
-		characteristic["attack_radius"] = 2
+		item_stats = {"name" : name_, "description" : "steel sword", "price" : 1000,  "slote" : "right_hand", "double_hands" : false, "rarity" : "unusual", "dressed" : false}
+		characteristic = {"damage": 20, "attack_radius": 0.5}
 	if name_ == "wooden_bow":
 		item_stats["name"] = name_
 		item_stats["description"] = "An ordinary bow"
