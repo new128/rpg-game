@@ -9,6 +9,10 @@ var el_t = null
 var back_el_t = 0
 var end_game = false
 var loser = null
+var vision_left = []
+var vision_right = []
+
+
 
 func _ready():
 	var file = File.new()
@@ -19,7 +23,14 @@ func _ready():
 		file.close()
 		print("Текст успешно записан в файл.")
 	
+	
+	vision_left.append($LT1)
+	vision_left.append($RT1)
+	vision_left.append($KinematicBody)
+	
+	
 	crip = $Crip
+	vision_right.append(crip)
 	crips_and_towers.append($LT1)
 	crips_and_towers.append($RT1)
 	crips_and_towers.append($Enemy)
@@ -33,21 +44,39 @@ func _ready():
 	for i in range(3):
 		var new_crip = crip.duplicate()
 		add_child(new_crip)
+		vision_right.append(new_crip)
 		crips_and_towers.append(new_crip)
 		all_person.append(new_crip)
 		new_crip.person.person_const["team"] = "right"
 		new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
-	for j in range(4):pass
-		#var new_crip = crip.duplicate()
-		#add_child(new_crip)
-		#crips_and_towers.append(new_crip)
-		#all_person.append(new_crip)
-		#new_crip.person.person_const["team"] = "left"
-		#new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
+	for j in range(4):
+		var new_crip = crip.duplicate()
+		add_child(new_crip)
+		vision_left.append(new_crip)
+		crips_and_towers.append(new_crip)
+		all_person.append(new_crip)
+		new_crip.person.person_const["team"] = "left"
+		new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 	var el_t = int($Control/Time.elapsed_time)
 	var back_el_t = el_t
 
 func _process(delta):
+	for item in all_person:
+		for enemy in all_person:
+			if item.person.person_const["team"] != enemy.person.person_const["team"]:
+				var obj1_position = Vector2(item.global_transform.origin.x, item.global_transform.origin.z)
+				var obj2_position = Vector2(enemy.global_transform.origin.x, enemy.global_transform.origin.z)
+				var dist = obj1_position.distance_to(obj2_position)
+				if dist <= 17:
+					if item.person.person_const["team"] == "left":
+						vision_left.append(enemy)
+	
+	for vis in vision_left:
+		vis.visible = true
+		vis.get_node("HUD").visible = true
+	
+	
+	
 	if end_game:
 		get_tree().change_scene("res://object/Game_end.tscn")
 	el_t = int($Control/Time.elapsed_time)
@@ -55,6 +84,7 @@ func _process(delta):
 		for i in range(4):
 			var new_crip = crips_and_towers[3].duplicate()
 			add_child(new_crip)
+			vision_right.append(new_crip)
 			crips_and_towers.append(new_crip)
 			all_person.append(new_crip)
 			new_crip.person.person_const["team"] = "right"
@@ -62,6 +92,7 @@ func _process(delta):
 		for j in range(4):
 			var new_crip = crips_and_towers[3].duplicate()
 			add_child(new_crip)
+			vision_left.append(new_crip)
 			crips_and_towers.append(new_crip)
 			all_person.append(new_crip)
 			new_crip.person.person_const["team"] = "left"
