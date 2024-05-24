@@ -70,6 +70,8 @@ func _process(delta):
 				if dist <= 17:
 					if item.person.person_const["team"] == "left":
 						vision_left.append(enemy)
+					if item.person.person_const["team"] == "right":
+						vision_right.append(enemy)
 	
 	for vis in vision_left:
 		vis.visible = true
