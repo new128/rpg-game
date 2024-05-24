@@ -15,6 +15,8 @@ var vision_right = []
 
 
 func _ready():
+	Engine.set_target_fps(60)
+	
 	var file = File.new()
 	var file_path = "user://win.txt"
 	if file.open(file_path, File.WRITE) == OK:
@@ -62,12 +64,34 @@ func _ready():
 
 func _process(delta):
 	for item in all_person:
+		if item.person.is_die:
+			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower_friend":
+				var file = File.new()
+				var file_path = "user://win.txt"
+				if file.open(file_path, File.WRITE) == OK:
+					var text_to_write = item.person.person_const["team"]
+					file.store_string(text_to_write)
+					file.close()
+					print("Текст успешно записан в файл.")
+				end_game = true
+			item.queue_free()
+			if item in crips_and_towers: crips_and_towers.erase(item)
+			all_person.erase(item)
+	
+	
+	if end_game:
+		get_tree().change_scene("res://object/Game_end.tscn")
+		
+	
+	
+	
+	for item in all_person:
 		for enemy in all_person:
 			if item.person.person_const["team"] != enemy.person.person_const["team"]:
 				var obj1_position = Vector2(item.global_transform.origin.x, item.global_transform.origin.z)
 				var obj2_position = Vector2(enemy.global_transform.origin.x, enemy.global_transform.origin.z)
 				var dist = obj1_position.distance_to(obj2_position)
-				if dist <= 10:
+				if dist <= 5:
 					if item.person.person_const["team"] == "left":
 						if not enemy in vision_left:
 							vision_left.append(enemy)
@@ -75,14 +99,29 @@ func _process(delta):
 						if not enemy in vision_right:
 							vision_right.append(enemy)
 	
+	for en in vision_left:
+		var co = 0
+		for it in all_person:
+			if it.person.person_const["team"] != en.person.person_const["team"]:
+				var obj1_position = Vector2(it.global_transform.origin.x, it.global_transform.origin.z)
+				var obj2_position = Vector2(en.global_transform.origin.x, en.global_transform.origin.z)
+				var dist = obj1_position.distance_to(obj2_position)
+				if dist <= 5:
+					co+=1
+		if co == 0 and not(en.person.person_const["team"] == "left") and not en.name == "RT1":
+			vision_left.erase(en)
+			if is_instance_valid(en):
+				en.visible = false
+				en.get_node("HUD").visible = false
+	
 	for vis in vision_left:
-		vis.visible = true
-		vis.get_node("HUD").visible = true
+		if is_instance_valid(vis):
+			vis.visible = true
+			vis.get_node("HUD").visible = true
 	
 	
 	
-	if end_game:
-		get_tree().change_scene("res://object/Game_end.tscn")
+	
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
 		for i in range(4):
@@ -129,17 +168,3 @@ func _process(delta):
 	if time % 60 == 1 and get_node("/root/Spatial").has_node("KinematicBody"):
 		$KinematicBody.person.money += 1.5
 	
-	for item in all_person:
-		if item.person.is_die:
-			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower_friend":
-				var file = File.new()
-				var file_path = "user://win.txt"
-				if file.open(file_path, File.WRITE) == OK:
-					var text_to_write = item.person.person_const["team"]
-					file.store_string(text_to_write)
-					file.close()
-					print("Текст успешно записан в файл.")
-				end_game = true
-			item.queue_free()
-			if item in crips_and_towers: crips_and_towers.erase(item)
-			all_person.erase(item)

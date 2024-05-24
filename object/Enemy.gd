@@ -15,7 +15,6 @@ func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 
 func _process(delta):
-	print("Enemy hp --> ", person.person_stats["hp"])
 	if not is_move and not person.attack_bool:
 		get_node("/root/Spatial/Enemy/person/AnimationPlayer").play("Размещённое действие]")
 	if is_move:

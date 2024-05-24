@@ -29,7 +29,7 @@ func _process(delta):
 			prev_mouse_pos = get_viewport().get_mouse_position()
 		else:
 			var delta_mouse = get_viewport().get_mouse_position() - prev_mouse_pos
-			transform.origin += Vector3(delta_mouse.y, 0, -delta_mouse.x) * (movement_speed-1) * delta
+			transform.origin += Vector3(delta_mouse.y, 0, -delta_mouse.x) * (movement_speed-4.5) * delta #4.5
 			prev_mouse_pos = get_viewport().get_mouse_position()
 	else:
 		is_mouse_dragging = false
