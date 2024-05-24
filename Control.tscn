@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://ProgressBar.gd" type="Script" id=1]
 [ext_resource path="res://Button.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://item_img/sword_is_rusty.png" type="Texture" id=12]
 [ext_resource path="res://item_img/steel_sword.png" type="Texture" id=13]
 [ext_resource path="res://FPS.gd" type="Script" id=14]
+[ext_resource path="res://settings/settings_img.png" type="Texture" id=15]
+[ext_resource path="res://MenuButton.gd" type="Script" id=16]
 
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
@@ -22,6 +24,9 @@ font_data = ExtResource( 6 )
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 6 )
 
 [node name="Control" type="Control"]
@@ -718,10 +723,30 @@ anchor_bottom = 1.0
 margin_left = -0.0580001
 margin_top = 0.407
 margin_right = 0.371979
+rect_scale = Vector2( 1, 0.998337 )
 custom_fonts/font = SubResource( 4 )
 align = 1
 
 [node name="FPS" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+anchor_left = 0.979
+anchor_right = 1.0
+anchor_bottom = 0.013
+margin_left = 0.319946
+margin_bottom = -0.04
 script = ExtResource( 14 )
+
+[node name="MenuButton" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1.01042, 1 )
+icon = ExtResource( 15 )
+script = ExtResource( 16 )
+
+[node name="Button" type="Button" parent="MenuButton"]
+visible = false
+margin_top = 100.0
+margin_right = 147.0
+margin_bottom = 131.0
+rect_scale = Vector2( 1.19794, 1.4 )
+custom_fonts/font = SubResource( 5 )
+text = "выйти в главное меню"
