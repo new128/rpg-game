@@ -90,7 +90,7 @@ func _init(name):
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 80
 		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 1.5
+		person_stats["attack_radius"] = 2.5
 		person_stats["speed"] = 6
 	
 	if name == "crip":
