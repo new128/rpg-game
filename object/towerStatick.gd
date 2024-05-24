@@ -7,6 +7,7 @@ var last_attack = null
 var giv_money = 300
 var for_win_def = null
 var is_attack = false
+var tim_at = 0
 
 func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
@@ -16,7 +17,12 @@ func _ready():
 		person.person_const["team"] = "right"
 
 func _process(delta):
-	print(person.person_stats["hp"])
+	if person.attack_bool:
+		tim_at+=delta
+	if tim_at >= person.person_stats["attack_speed"]/2:
+		is_attack = true
+	
+	
 	
 	person.effect()
 	person.is_valid_stats()
