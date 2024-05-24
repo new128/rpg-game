@@ -16,17 +16,13 @@ func _ready():
 		person.person_const["team"] = "right"
 
 func _process(delta):
-	
-	
+	print(person.person_stats["hp"])
 	
 	person.effect()
+	person.is_valid_stats()
 	person.person_stats["time"] += delta
-	
-	if person.person_const["team"] == "right":
-		person.person_stats["hp"] -= delta
-	
-	
 	person.is_die()
+	
 	var sceen = get_node("/root/Spatial")
 	person.attack(self, person.target["target_person"], "simple", sceen)
 	

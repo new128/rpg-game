@@ -14,32 +14,7 @@ func _ready():
 	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 	
 	
-	# Найдите MeshInstance внутри Crip
-	# Найдите узел melee_crip внутри Crip
-	var mesh_instance = $melee_crip
 	
-	# Убедитесь, что узел является MeshInstance3
-	if mesh_instance is MeshInstance:
-		# Получите mesh из MeshInstance3D
-		var mesh = mesh_instance.mesh
-		
-		if mesh:
-			# Создайте ConvexPolygonShape для динамических объектов
-			var convex_shape = ConvexPolygonShape.new()
-			convex_shape.points = mesh.surface_get_arrays(Mesh.ARRAY_VERTEX)
-			
-			# Найдите или создайте CollisionShape
-			var collision_shape = $CollisionShape
-			if not collision_shape:
-				collision_shape = CollisionShape.new()
-				add_child(collision_shape)
-			
-			# Назначьте форму CollisionShape
-			collision_shape.shape = convex_shape
-		else:
-			print("Mesh is null")
-	else:
-		print("melee_crip is not a MeshInstance3D")
 	
 
 func _process(delta):

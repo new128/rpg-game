@@ -37,13 +37,13 @@ func _ready():
 		all_person.append(new_crip)
 		new_crip.person.person_const["team"] = "right"
 		new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
-	for j in range(4):
-		var new_crip = crip.duplicate()
-		add_child(new_crip)
-		crips_and_towers.append(new_crip)
-		all_person.append(new_crip)
-		new_crip.person.person_const["team"] = "left"
-		new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
+	for j in range(4):pass
+		#var new_crip = crip.duplicate()
+		#add_child(new_crip)
+		#crips_and_towers.append(new_crip)
+		#all_person.append(new_crip)
+		#new_crip.person.person_const["team"] = "left"
+		#new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 	var el_t = int($Control/Time.elapsed_time)
 	var back_el_t = el_t
 
@@ -96,7 +96,7 @@ func _process(delta):
 	
 	for item in all_person:
 		if item.person.is_die:
-			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower":
+			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower_friend":
 				var file = File.new()
 				var file_path = "user://win.txt"
 				if file.open(file_path, File.WRITE) == OK:
