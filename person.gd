@@ -105,7 +105,7 @@ func _init(name):
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 80
 		person_stats["attack_speed"] = 2
-		person_stats["attack_radius"] = 1.5
+		person_stats["attack_radius"] = 2
 		person_stats["speed"] = 6
 	
 	
@@ -138,8 +138,8 @@ var attack_bool = false
 func attack(attack_object, target, type_attack, sceen = null, skill = null):
 	if not is_instance_valid(target):
 		return
-	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.y)
-	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.y)
+	var obj1_position = Vector2(attack_object.global_transform.origin.x, attack_object.global_transform.origin.z)
+	var obj2_position = Vector2(target.global_transform.origin.x, target.global_transform.origin.z)
 	var dist = obj1_position.distance_to(obj2_position)
 	
 	
