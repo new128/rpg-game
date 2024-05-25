@@ -232,3 +232,4 @@ remotesync func _team(t):
 		#$Play_camera.transform = Vector3(40,20,80)
 	if client.get_connection_status() == NetworkedMultiplayerENet.CONNECTION_CONNECTED:
 		rpc("_class", $KinematicBody.person.person_const["team"],$KinematicBody.person.person_const["class"])
+		rpc("_start",[$KinematicBody,$Crip])
