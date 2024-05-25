@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="hp" type="ProgressBar" parent="."]
+modulate = Color( 0.101961, 1, 0, 1 )
+margin_right = 196.0
+margin_bottom = 28.0
+percent_visible = false
+
+[node name="mana" type="ProgressBar" parent="."]
+modulate = Color( 0, 0.858824, 1, 1 )
+margin_top = 29.0
+margin_right = 197.0
+margin_bottom = 54.0
+percent_visible = false

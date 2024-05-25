@@ -162,7 +162,8 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 			if person_stats["time"] >= person_stats["attack_speed"] and type_attack == "simple":
 				if attack_object.is_attack:
 					if person_stats["t_a"] == "melee":
-						target.person.taking_damage("phis", person_stats["damage"])
+						if false:
+							target.person.taking_damage("phis", person_stats["damage"])
 						person_stats["time"] = 0
 						target.last_attack = self
 						attack_object.is_attack = false

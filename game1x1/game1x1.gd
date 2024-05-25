@@ -12,6 +12,7 @@ var loser = null
 var vision_left = []
 var vision_right = []
 var client = NetworkedMultiplayerENet.new()
+var at = false
 
 
 
@@ -49,7 +50,7 @@ func _ready():
 	vision_right.append(crip)
 	crips_and_towers.append($LT1)
 	crips_and_towers.append($RT1)
-	crips_and_towers.append($Enemy)
+	#crips_and_towers.append($Enemy)
 	crips_and_towers.append(crip)
 	all_person.append($KinematicBody)
 	all_person.append($Enemy)
@@ -77,7 +78,8 @@ func _ready():
 	var back_el_t = el_t
 
 func _process(delta):
-	print($KinematicBody.person.person_const["team"])
+	#print("/n",all_person,"/n")
+	#print($KinematicBody.person.person_const["team"])
 	if client.get_connection_status() == NetworkedMultiplayerENet.CONNECTION_CONNECTED:
 		rpc("server_function", "hi")
 	
@@ -218,7 +220,18 @@ func server_function(data):
 	print("Received data from client: ", data)
 
 remotesync func _update_state(state):
-	$KinematicBody.person.person_stats["hp"] = state
+	for it in state:
+		if all_person[state.find(it)] == all_person[state.find($KinematicBody)]:continue
+		all_person[state.find(it)].translation.x = it[0]
+		all_person[state.find(it)].translation.z  = it[1]
+		all_person[state.find(it)].person.person_stats["hp"] = it[2]
+		all_person[state.find(it)].person.person_stats["mana"] = it[3]
+		all_person[state.find(it)].person.person_const["team"] = it[4]
+	print(all_person)
+	
+	
+	
+	
 remotesync func _team(t):
 	print(t)
 	if t == "left":

@@ -49,7 +49,7 @@ func _process(delta):
 	if person.target["target"] != Vector3.ZERO and is_move:
 			var direction = (person.target["target"] - translation).normalized()
 			direction.y = 0
-			move_and_slide(direction * person.person_stats["speed"])
+			#move_and_slide(direction * person.person_stats["speed"])
 	
 	is_move = false
 	if person.attack(self, person.target["target_person"], "simple"):

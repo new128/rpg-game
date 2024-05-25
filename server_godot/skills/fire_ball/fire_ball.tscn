@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://skills/fire_ball/fire_ball.dae" type="PackedScene" id=1]
+[ext_resource path="res://skills/fire_ball/fire_ball.gd" type="Script" id=2]
+
+[node name="Spatial" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="fire_ball" parent="." instance=ExtResource( 1 )]

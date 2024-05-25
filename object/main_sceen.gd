@@ -12,6 +12,7 @@ var loser = null
 var vision_left = []
 var vision_right = []
 var Person = preload("res://person.gd")
+var at = true
 
 
 
@@ -36,7 +37,7 @@ func _ready():
 	vision_right.append(crip)
 	crips_and_towers.append($LT1)
 	crips_and_towers.append($RT1)
-	#crips_and_towers.append($Enemy)
+	crips_and_towers.append($Enemy)
 	crips_and_towers.append(crip)
 	all_person.append($KinematicBody)
 	all_person.append($Enemy)

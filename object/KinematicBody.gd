@@ -37,8 +37,10 @@ func _ready():
 	
 	
 func _process(delta):
-	get_node("/root/Spatial").rpc("_pers_target", person.target["target"])
-	
+	if is_instance_valid(person.target["target_person"]):
+		get_node("/root/Spatial").rpc("_pers_target", person.target["target"],get_node("/root/Spatial").all_person.find(person.target["target_person"]))
+	else:
+		get_node("/root/Spatial").rpc("_pers_target", person.target["target"],-1)
 	
 	
 	
@@ -109,6 +111,7 @@ func _process(delta):
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").set_speed_scale(person.person_stats["attack_speed"]/1.55)
 		var sceen = get_node("/root/Spatial")
 		tim_at+=delta
+		get_node("/root/Spatial").rpc("_attack", person.target["target_person"])
 		if not person.attack(self, person.target["target_person"], "simple", sceen):
 			is_move = false
 	if tim_at >= person.person_stats["attack_speed"]/2:
