@@ -12,6 +12,7 @@ func _process(delta):
 	if search:
 		$Button.text = "Найдена"
 		t = true
+		get_tree().change_scene("res://Game1x1.tscn")
 		
 	if t:
 		time+=delta
