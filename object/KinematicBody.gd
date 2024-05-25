@@ -37,6 +37,19 @@ func _ready():
 	
 	
 func _process(delta):
+	get_node("/root/Spatial").rpc("_pers_target", person.target["target"])
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	if not is_move and not person.attack_bool:
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
 	if is_move:

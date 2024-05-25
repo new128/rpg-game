@@ -36,7 +36,7 @@ func _ready():
 	vision_right.append(crip)
 	crips_and_towers.append($LT1)
 	crips_and_towers.append($RT1)
-	crips_and_towers.append($Enemy)
+	#crips_and_towers.append($Enemy)
 	crips_and_towers.append(crip)
 	all_person.append($KinematicBody)
 	all_person.append($Enemy)
@@ -152,8 +152,8 @@ func _process(delta):
 			var min_dist = INF
 			var object_d = null
 			if item.person.is_die() and item.person.person_const["team"] == "right" and item.person.person_const["class"] == "crip":
-				all_person[0].person.money += 50
-				all_person[0].person.person_stats["xp"] += 100
+				$KinematicBody.person.money += 50
+				$KinematicBody.person.person_stats["xp"] += 100
 			elif item.person.is_die() and item.person.person_const["team"] == "right" and item.person.person_const["class"] == "tower":
 				all_person[0].person.money += 500
 				all_person[0].person.person_stats["xp"] += 1000
