@@ -11,13 +11,24 @@ var end_game = false
 var loser = null
 var vision_left = []
 var vision_right = []
+var client = NetworkedMultiplayerENet.new()
 
 
 
 func _ready():
+	print("-_-")
+	client.create_client("127.0.0.1", 4242)
+	get_tree().set_network_peer(client)
+	print("Connected to server")
+	var file = File.new()
+	file.open("res://class.txt", File.READ)
+	var info = file.get_as_text()
+	file.close()
+	
+	
 	Engine.set_target_fps(60)
 	
-	var file = File.new()
+	
 	var file_path = "user://win.txt"
 	if file.open(file_path, File.WRITE) == OK:
 		var text_to_write = "win"
@@ -63,6 +74,11 @@ func _ready():
 	var back_el_t = el_t
 
 func _process(delta):
+	
+	if client.get_connection_status() == NetworkedMultiplayerENet.CONNECTION_CONNECTED:
+		rpc("server_function", "hi")
+	
+	
 	for item in all_person:
 		if item.person.is_die:
 			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower_friend":
@@ -170,3 +186,15 @@ func _process(delta):
 	if time % 60 == 1 and get_node("/root/Spatial").has_node("KinematicBody"):
 		$KinematicBody.person.money += 1.5
 	
+func _network_peer_connected(id):
+	print("Connected with peer: ", id)
+
+func _network_peer_disconnected(id):
+	print("Disconnected from peer: ", id)
+
+func server_function(data):
+	print("Received data from client: ", data)
+
+remotesync func _update_state(state):
+	# Обнови состояние объекта на клиенте
+	$KinematicBody.person.person_stats["hp"] = state

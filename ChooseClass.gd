@@ -1,6 +1,7 @@
 extends Node2D
 
 var fileSave = File.new()
+var file = File.new()
 var info = ""
 
 func _ready():
@@ -13,7 +14,13 @@ func _write_info():
 	fileSave.open("res://class.txt", File.WRITE)
 	fileSave.store_string(info)
 	fileSave.close()
-	get_tree().change_scene("res://object/main_sceen.tscn")
+	file.open("res://static/type_g.txt", File.READ)
+	var t_g = file.get_as_text()
+	file.close()
+	if t_g == "1":
+		get_tree().change_scene("res://object/main_sceen.tscn")
+	if t_g == "2":
+		get_tree().change_scene("res://game1x1/Game1x1.tscn")
 
 func _on_button1_pressed():
 	info = "paladin"

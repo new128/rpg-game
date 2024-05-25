@@ -21,3 +21,10 @@ rect_scale = Vector2( 3.61062, 2.77083 )
 custom_fonts/font = SubResource( 1 )
 text = "Найти игру"
 script = ExtResource( 4 )
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 823.0
+margin_top = 759.0
+margin_right = 969.0
+margin_bottom = 788.0
+text = "PLAY GAME(TEST)"

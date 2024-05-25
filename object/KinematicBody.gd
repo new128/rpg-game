@@ -32,6 +32,10 @@ func _ready():
 	var info = file.get_as_text()
 	file.close()
 	person = Person.new(info)
+	
+	
+	
+	
 func _process(delta):
 	if not is_move and not person.attack_bool:
 		get_node("/root/Spatial/KinematicBody/person/AnimationPlayer").play("Размещённое действие]")
