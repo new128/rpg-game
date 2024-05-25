@@ -351,9 +351,10 @@ anchor_left = 0.237
 anchor_top = 0.897
 anchor_right = 0.299
 anchor_bottom = 0.92
-margin_left = 0.311981
-margin_top = -0.200012
-margin_right = -0.176025
+margin_left = 121.96
+margin_top = -3.75995
+margin_right = 121.472
+margin_bottom = -3.55994
 text = "damage:"
 
 [node name="Armor" type="Label" parent="."]
@@ -361,10 +362,10 @@ anchor_left = 0.236
 anchor_top = 0.863
 anchor_right = 0.297
 anchor_bottom = 0.887
-margin_left = 0.335983
-margin_top = 0.199951
-margin_right = -0.128021
-margin_bottom = -0.200012
+margin_left = 125.88
+margin_top = 13.9601
+margin_right = 125.416
+margin_bottom = 13.5601
 text = "armor:"
 
 [node name="Speed" type="Label" parent="."]
@@ -372,10 +373,10 @@ anchor_left = 0.234
 anchor_top = 0.823
 anchor_right = 0.297
 anchor_bottom = 0.847
-margin_left = 0.383987
-margin_top = 0.199982
-margin_right = -0.128021
-margin_bottom = -0.200043
+margin_left = 132.72
+margin_top = 37.16
+margin_right = 132.208
+margin_bottom = 36.7599
 text = "speed:"
 
 [node name="Shop" type="Control" parent="."]
@@ -596,11 +597,11 @@ anchor_left = 0.185
 anchor_top = 0.828
 anchor_right = 0.22
 anchor_bottom = 0.9
-margin_left = 0.799988
-margin_top = -0.240051
-margin_right = -54.4
-margin_bottom = -64.0001
-rect_scale = Vector2( 5.571, 5.571 )
+margin_left = 116.8
+margin_top = 33.7599
+margin_right = 61.6
+margin_bottom = -30.0001
+rect_scale = Vector2( 3.011, 3.011 )
 text = "1"
 
 [node name="Xp" type="Label" parent="."]
@@ -608,11 +609,10 @@ anchor_left = 0.191
 anchor_top = 0.944
 anchor_right = 0.205
 anchor_bottom = 0.982
-margin_left = -0.720032
-margin_top = -0.520081
-margin_right = -18.6
-margin_bottom = -27.5601
-rect_scale = Vector2( 2.991, 2.991 )
+margin_left = 215.28
+margin_top = -33.52
+margin_right = 197.4
+margin_bottom = -60.5599
 text = "0"
 
 [node name="Skill2" type="Button" parent="."]
