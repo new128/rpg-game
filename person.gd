@@ -15,7 +15,7 @@ func _init(name):
 	if name == "paladin":
 		person_const["class"] = "paladin"
 		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
+		person_const["team"] = ""
 		person_stats["max_hp"] = 1000
 		person_stats["max_mana"] = 200
 		person_stats["regen_hp"] = 5
@@ -36,7 +36,7 @@ func _init(name):
 	if name == "shooter":
 		person_const["class"] = "shooter"
 		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
+		person_const["team"] = ""
 		person_stats["max_hp"] = 1000
 		person_stats["max_mana"] = 200
 		person_stats["regen_hp"] = 5
@@ -57,7 +57,7 @@ func _init(name):
 	if name == "wizard":
 		person_const["class"] = "wizard"
 		person_const["pers_type"] = "play_pers"
-		person_const["team"] = "left"
+		person_const["team"] = ""
 		person_stats["max_hp"] = 1000
 		person_stats["max_mana"] = 1000
 		person_stats["mana"] = 1000

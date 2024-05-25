@@ -7,8 +7,8 @@ var mes = ""
 func _ready():
 	connect("pressed", self, "_on_button_pressed")
 	var error = client.connect_to_host("127.0.0.1", 12345)
-	if error == OK:
-		print("Connected to server")
+	if error == OK:pass
+		#print("Connected to server")
 	else:
 		print("Failed to connect to server")
 

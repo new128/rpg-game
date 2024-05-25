@@ -38,8 +38,11 @@ func _ready():
 	
 	
 	vision_left.append($LT1)
+	vision_right.append($LT1)
 	vision_left.append($RT1)
+	vision_right.append($RT1)
 	vision_left.append($KinematicBody)
+	vision_right.append($KinematicBody)
 	
 	
 	crip = $Crip
@@ -74,7 +77,7 @@ func _ready():
 	var back_el_t = el_t
 
 func _process(delta):
-	
+	print($KinematicBody.person.person_const["team"])
 	if client.get_connection_status() == NetworkedMultiplayerENet.CONNECTION_CONNECTED:
 		rpc("server_function", "hi")
 	
@@ -116,29 +119,48 @@ func _process(delta):
 					if item.person.person_const["team"] == "right":
 						if not enemy in vision_right:
 							vision_right.append(enemy)
+							
+	if $KinematicBody.person.person_const["team"] == "left":
+		for en in vision_left:
+			var co = 0
+			for it in all_person:
+				if it.person.person_const["team"] != en.person.person_const["team"]:
+					var obj1_position = Vector2(it.global_transform.origin.x, it.global_transform.origin.z)
+					var obj2_position = Vector2(en.global_transform.origin.x, en.global_transform.origin.z)
+					var dist = obj1_position.distance_to(obj2_position)
+					if dist <= 5:
+						co+=1
+			if co == 0 and not(en.person.person_const["team"] == "left") and not en.name == "RT1":
+				vision_left.erase(en)
+				if is_instance_valid(en):
+					en.visible = false
+					en.get_node("HUD").visible = false
+		
+		for vis in vision_left:
+			if is_instance_valid(vis):
+				vis.visible = true
+				vis.get_node("HUD").visible = true
 	
-	for en in vision_left:
-		var co = 0
-		for it in all_person:
-			if it.person.person_const["team"] != en.person.person_const["team"]:
-				var obj1_position = Vector2(it.global_transform.origin.x, it.global_transform.origin.z)
-				var obj2_position = Vector2(en.global_transform.origin.x, en.global_transform.origin.z)
-				var dist = obj1_position.distance_to(obj2_position)
-				if dist <= 5:
-					co+=1
-		if co == 0 and not(en.person.person_const["team"] == "left") and not en.name == "RT1":
-			vision_left.erase(en)
-			if is_instance_valid(en):
-				en.visible = false
-				en.get_node("HUD").visible = false
-	
-	for vis in vision_left:
-		if is_instance_valid(vis):
-			vis.visible = true
-			vis.get_node("HUD").visible = true
-	
-	
-	
+	if $KinematicBody.person.person_const["team"] == "right":
+		for en in vision_right:
+			var co = 0
+			for it in all_person:
+				if it.person.person_const["team"] != en.person.person_const["team"]:
+					var obj1_position = Vector2(it.global_transform.origin.x, it.global_transform.origin.z)
+					var obj2_position = Vector2(en.global_transform.origin.x, en.global_transform.origin.z)
+					var dist = obj1_position.distance_to(obj2_position)
+					if dist <= 5:
+						co+=1
+			if co == 0 and not(en.person.person_const["team"] == "right") and not en.name == "LT1":
+				vision_right.erase(en)
+				if is_instance_valid(en):
+					en.visible = false
+					en.get_node("HUD").visible = false
+		
+		for vis in vision_right:
+			if is_instance_valid(vis):
+				vis.visible = true
+				vis.get_node("HUD").visible = true
 	
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
@@ -196,5 +218,15 @@ func server_function(data):
 	print("Received data from client: ", data)
 
 remotesync func _update_state(state):
-	# Обнови состояние объекта на клиенте
 	$KinematicBody.person.person_stats["hp"] = state
+remotesync func _team(t):
+	print(t)
+	if t == "left":
+		$KinematicBody.person.person_const["team"] = "left"
+	if t == "right":
+		$KinematicBody.person.person_const["team"] = "right"
+		$Enemy.person.person_const["team"] = "left"
+		var xyz = $KinematicBody.transform
+		$KinematicBody.transform = $Enemy.transform
+		$Enemy.transform = xyz
+		#$Play_camera.transform = Vector3(40,20,80)
