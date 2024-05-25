@@ -13,15 +13,15 @@ margin_bottom = 573.0
 text = "Paladin"
 
 [node name="Button_Class2" type="Button" parent="."]
-margin_left = 577.0
+margin_left = 700.0
 margin_top = 394.0
-margin_right = 1106.0
+margin_right = 1229.0
 margin_bottom = 575.0
 text = "Shooter"
 
 [node name="Button_Class3" type="Button" parent="."]
-margin_left = 1129.0
+margin_left = 1360.0
 margin_top = 395.0
-margin_right = 1658.0
+margin_right = 1889.0
 margin_bottom = 576.0
 text = "Wizard"
