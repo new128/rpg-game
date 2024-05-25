@@ -11,6 +11,7 @@ var end_game = false
 var loser = null
 var vision_left = []
 var vision_right = []
+var Person = preload("res://person.gd")
 
 
 
@@ -61,6 +62,7 @@ func _ready():
 		new_crip.translation = Vector3(-20-5*(j+1), 1.47, -70+5*(j+1))
 	var el_t = int($Control/Time.elapsed_time)
 	var back_el_t = el_t
+	$KinematicBody.person.person_const["team"] = "left"
 
 func _process(delta):
 	for item in all_person:

@@ -18,6 +18,7 @@ func _ready():
 	
 
 func _process(delta):
+	for_win_def = get_node("/root/Spatial/KinematicBody").person.person_const["team"]
 	if is_move :
 		$melee_crip/AnimationPlayer.play("Размещённое действие]")
 		$melee_crip/AnimationPlayer.set_speed_scale(2)
