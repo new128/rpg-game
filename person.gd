@@ -25,7 +25,7 @@ func _init(name):
 		person_stats["damage"] = 80
 		person_stats["attack_speed"] = 2
 		person_stats["attack_radius"] = 3
-		person_stats["speed"] = 11
+		person_stats["speed"] = 10
 		person_stats["t_a"] = "melee"
 		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
 		inventory.weapons["legs"] = Item.new("speed_boots")
@@ -44,9 +44,9 @@ func _init(name):
 		person_stats["armor"] = 10
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 80
-		person_stats["attack_speed"] = 0.1
+		person_stats["attack_speed"] = 1.5
 		person_stats["attack_radius"] = 7
-		person_stats["speed"] = 25
+		person_stats["speed"] = 12
 		person_stats["t_a"] = "range"
 		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
 		inventory.weapons["legs"] = Item.new("speed_boots")

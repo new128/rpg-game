@@ -96,7 +96,7 @@ func _process(delta):
 				var obj1_position = Vector2(item.global_transform.origin.x, item.global_transform.origin.z)
 				var obj2_position = Vector2(enemy.global_transform.origin.x, enemy.global_transform.origin.z)
 				var dist = obj1_position.distance_to(obj2_position)
-				if dist <= 5:
+				if dist <= 15:
 					if item.person.person_const["team"] == "left":
 						if not enemy in vision_left:
 							vision_left.append(enemy)
@@ -111,7 +111,7 @@ func _process(delta):
 				var obj1_position = Vector2(it.global_transform.origin.x, it.global_transform.origin.z)
 				var obj2_position = Vector2(en.global_transform.origin.x, en.global_transform.origin.z)
 				var dist = obj1_position.distance_to(obj2_position)
-				if dist <= 5:
+				if dist <= 15:
 					co+=1
 		if co == 0 and not(en.person.person_const["team"] == "left") and not en.name == "RT1":
 			vision_left.erase(en)
