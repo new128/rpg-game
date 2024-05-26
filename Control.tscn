@@ -633,6 +633,15 @@ anchor_bottom = 0.2
 margin_right = -7.02
 text = "W"
 
+[node name="Label2" type="Label" parent="Skill2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
+
 [node name="Skill3" type="Button" parent="."]
 anchor_left = 0.469
 anchor_top = 0.856
@@ -650,6 +659,15 @@ anchor_right = 0.114
 anchor_bottom = 0.2
 margin_right = 0.0199995
 text = "E"
+
+[node name="Label2" type="Label" parent="Skill3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
 
 [node name="Skill4" type="Button" parent="."]
 anchor_left = 0.508
@@ -669,6 +687,15 @@ anchor_bottom = 0.2
 margin_right = -0.0100002
 text = "D"
 
+[node name="Label2" type="Label" parent="Skill4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
+
 [node name="Skill5" type="Button" parent="."]
 anchor_left = 0.546
 anchor_top = 0.856
@@ -686,6 +713,15 @@ anchor_right = 0.1
 anchor_bottom = 0.2
 text = "F"
 
+[node name="Label2" type="Label" parent="Skill5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
+
 [node name="Skill6" type="Button" parent="."]
 anchor_left = 0.546
 anchor_top = 0.856
@@ -702,6 +738,15 @@ script = ExtResource( 2 )
 anchor_right = 0.1
 anchor_bottom = 0.2
 text = "R"
+
+[node name="Label2" type="Label" parent="Skill6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_right = -57.0
+margin_bottom = -56.0
+rect_scale = Vector2( 2.9, 5 )
+align = 1
 
 [node name="Notice" type="Panel" parent="."]
 modulate = Color( 1, 0, 0, 1 )

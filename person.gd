@@ -58,11 +58,11 @@ func _init(name):
 		person_const["class"] = "wizard"
 		person_const["pers_type"] = "play_pers"
 		person_const["team"] = ""
-		person_stats["max_hp"] = 1000
-		person_stats["max_mana"] = 1000
-		person_stats["mana"] = 1000
+		person_stats["max_hp"] = 500
+		person_stats["max_mana"] = 1500
+		person_stats["mana"] = 500
 		person_stats["regen_hp"] = 5
-		person_stats["regen_mana"] = 1
+		person_stats["regen_mana"] = 20
 		person_stats["armor"] = 10
 		person_stats["magic_damage_resist"] = 30
 		person_stats["damage"] = 80
@@ -190,7 +190,11 @@ func count_stat():
 			for key_2 in inventory.weapons[key_1].characteristic:
 				if inventory.weapons[key_1].item_stats["dressed"] == false:
 					if key_1 == "right_hand" and key_2 == "damage":
-						person_stats["damage"] = inventory.weapons[key_1].characteristic["damage"]
+						var d = 0
+						for k in inventory.weapons:
+							if inventory.weapons[k] != null:
+								d += inventory.weapons[k].characteristic["damage"]
+						person_stats["damage"] = d
 					else:
 						if key_2 == "type_attack" and inventory.weapons[key_1].characteristic["type_attack"] != null:
 							print("YES")

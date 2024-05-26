@@ -26,6 +26,7 @@ var sphere_mesh = TorusMesh.new()
 var data_time_skill = [time_skill1,time_skill2,time_skill3,time_skill4,time_skill5,time_skill6]
 var is_attack = false
 var tim_at = 0
+var num_sc = null
 
 func _ready():
 	file.open("res://class.txt", File.READ)
@@ -234,8 +235,8 @@ func _input(event):
 							rotation_degrees.y = angle * 180 / PI
 						if person.attack(self ,object, "skill",sceen, use_scill):
 							person.person_stats["mana"] -= use_scill.mana
-							time_skill1[0] = true
-							time_skill1[1] = use_scill.cd
+							data_time_skill[num_sc][0] = true
+							data_time_skill[num_sc][1] = use_scill.cd
 							get_node("/root/Spatial/Control/Skill1/Label2").visible = true
 						else:get_node("/root/Spatial/Control").change_notice("Не в радиусе действия")
 						use_scill = null
@@ -277,6 +278,7 @@ func _on_button_Q_pressed():
 			if person.skills[0] != null:
 				if person.skills[0].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[0]
+					num_sc = 0
 					sphere_mesh.outer_radius = person.skills[0].dist
 					sphere_mesh.inner_radius = person.skills[0].dist-0.05
 					sphere.mesh = sphere_mesh
@@ -295,8 +297,9 @@ func _on_button_W_pressed():
 	if time_skill2[1] <= 0:
 		if use_scill == null:
 			if person.skills[1] != null:
-				if person.skills[1].mana <= person.mana:
+				if person.skills[1].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[1]
+					num_sc = 1
 					sphere_mesh.outer_radius = person.skills[1].dist
 					sphere_mesh.inner_radius = person.skills[1].dist-0.05
 					sphere.mesh = sphere_mesh
@@ -314,8 +317,9 @@ func _on_button_E_pressed():
 	if time_skill3[1] <= 0:
 		if use_scill == null:
 			if person.skills[2] != null:
-				if person.skills[2].mana <= person.mana:
+				if person.skills[2].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[2]
+					num_sc = 2
 					sphere_mesh.outer_radius = person.skills[2].dist
 					sphere_mesh.inner_radius = person.skills[2].dist-0.05
 					sphere.mesh = sphere_mesh
@@ -333,8 +337,9 @@ func _on_button_D_pressed():
 	if time_skill4[1] <= 0:
 		if use_scill == null:
 			if person.skills[3] != null:
-				if person.skills[3].mana <= person.mana:
+				if person.skills[3].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[3]
+					num_sc = 3
 					sphere_mesh.outer_radius = person.skills[3].dist
 					sphere_mesh.inner_radius = person.skills[3].dist-0.05
 					sphere.mesh = sphere_mesh
@@ -352,8 +357,9 @@ func _on_button_F_pressed():
 	if time_skill5[1] <= 0:
 		if use_scill == null:
 			if person.skills[4] != null:
-				if person.skills[4].mana <= person.mana:
+				if person.skills[4].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[4]
+					num_sc = 4
 					sphere_mesh.outer_radius = person.skills[4].dist
 					sphere_mesh.inner_radius = person.skills[4].dist-0.05
 					sphere.mesh = sphere_mesh
@@ -371,8 +377,9 @@ func _on_button_R_pressed():
 	if time_skill6[1] <= 0:
 		if use_scill == null:
 			if person.skills[5] != null:
-				if person.skills[5].mana <= person.mana:
+				if person.skills[5].mana <= person.person_stats["mana"]:
 					use_scill = person.skills[5]
+					num_sc = 5
 					sphere_mesh.outer_radius = person.skills[5].dist
 					sphere_mesh.inner_radius = person.skills[5].dist-0.05
 					sphere.mesh = sphere_mesh

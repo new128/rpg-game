@@ -2,7 +2,7 @@ class_name Inventory
 
 var Item = preload("res://item.gd")
 var Skill = preload("res://ability.gd")
-var weapons = {"head" : null, "shoulders" : null, "left_hand" : null, "right_hand" : null, "body" :  null, "legs" : null}
+var weapons = {"right_hand" : null, "head" : null, "shoulders" : null, "left_hand" : null,  "body" :  null, "legs" : null}
 var consumables = [0,0,0]
 
 func _init(weapons_, consumables_):

@@ -67,6 +67,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["armor"] = +5
 		characteristic["max_hp"] = +100
+		characteristic["damage"] = +10
 		item_stats["rarity"] = "regular"
 	if name_ == "speed_boots": 
 		item_stats["name"] = name_
