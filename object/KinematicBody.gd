@@ -248,7 +248,8 @@ func effects():
 	for it in effects_p:
 		if effects_time[effects_p.find(it.skill.skill)]+10 <= el_t:
 			for key in it.characteristic:
-				person.person_stats[key] -= it.characteristic[key]
+				if key != "type_attack":
+					person.person_stats[key] -= it.characteristic[key]
 			effects_p.erase(it)
 			effects_time.erase(it)
 

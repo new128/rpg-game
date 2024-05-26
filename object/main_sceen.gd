@@ -13,6 +13,7 @@ var vision_left = []
 var vision_right = []
 var Person = preload("res://person.gd")
 var at = true
+var Crip = null
 
 
 
@@ -34,6 +35,8 @@ func _ready():
 	
 	
 	crip = $Crip
+	Crip = $Crip
+	$Crip.translation = Vector3(100,100,100)
 	vision_right.append(crip)
 	crips_and_towers.append($LT1)
 	crips_and_towers.append($RT1)
@@ -45,7 +48,7 @@ func _ready():
 	all_person.append($RT1)
 	all_person.append(crip)
 	
-	for i in range(3):
+	for i in range(4):
 		var new_crip = crip.duplicate()
 		add_child(new_crip)
 		vision_right.append(new_crip)
@@ -66,6 +69,7 @@ func _ready():
 	$KinematicBody.person.person_const["team"] = "left"
 
 func _process(delta):
+	$Crip.translation = Vector3(100,100,100)
 	for item in all_person:
 		if item.person.is_die:
 			if item.person.person_const["pers_type"] == "play_pers" or item.person.person_const["pers_type"] == "enemy" or item.person.person_const["pers_type"] == "tower_friend":
@@ -130,7 +134,7 @@ func _process(delta):
 	el_t = int($Control/Time.elapsed_time)
 	if el_t % 60 == 0 and el_t - back_el_t > 1:
 		for i in range(4):
-			var new_crip = crips_and_towers[3].duplicate()
+			var new_crip = Crip.duplicate()
 			add_child(new_crip)
 			vision_right.append(new_crip)
 			crips_and_towers.append(new_crip)
@@ -138,7 +142,7 @@ func _process(delta):
 			new_crip.person.person_const["team"] = "right"
 			new_crip.translation = Vector3(30+5*(i+1), 1.47, 60-5*(i+1))
 		for j in range(4):
-			var new_crip = crips_and_towers[3].duplicate()
+			var new_crip = Crip.duplicate()
 			add_child(new_crip)
 			vision_left.append(new_crip)
 			crips_and_towers.append(new_crip)
