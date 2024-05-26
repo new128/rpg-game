@@ -197,7 +197,7 @@ func count_stat():
 						person_stats["damage"] = d
 					else:
 						if key_2 == "type_attack" and inventory.weapons[key_1].characteristic["type_attack"] != null:
-							print("YES")
+							#print("YES")
 							person_stats["t_a"] = inventory.weapons[key_1].characteristic["type_attack"]
 						elif key_2 != "type_attack":person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
 					if not s_d:
@@ -212,7 +212,9 @@ func count_stat():
 
 func sell_item(name_item, slot):
 	if inventory.weapons["right_hand"].skill:
-		skills[skills.find(inventory.weapons["right_hand"].skill)] == null
+		print("YES")
+		skills[skills.find(inventory.weapons["right_hand"].skill)] = null
+		print(skills)
 	for key_2 in inventory.weapons["right_hand"].characteristic:
 		if inventory.weapons["right_hand"].item_stats["dressed"] == true:
 			if key_2!="type_attack": person_stats[key_2] -= inventory.weapons["right_hand"].characteristic[key_2]
