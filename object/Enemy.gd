@@ -80,3 +80,4 @@ func _process(delta):
 	$HUD/hp.value = person.person_stats["hp"]
 	$HUD/mana.max_value = person.person_stats["max_mana"]
 	$HUD/mana.value = person.person_stats["mana"]
+	$HUD/level.text = String(person.person_stats["lvl"])
