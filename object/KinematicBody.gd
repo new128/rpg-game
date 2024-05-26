@@ -403,4 +403,4 @@ func _on_button_buy_weapon(name):
 		person.sell_item(name,"weapon_r")
 		person.money -= person.inventory.weapons["right_hand"].item_stats["price"]
 	else:
-		person.money -= person.inventory.weapons["right_hand"].price * 0.8
+		person.money -= person.inventory.weapons["right_hand"].item_stats["price"] * 0.8

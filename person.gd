@@ -48,7 +48,7 @@ func _init(name):
 		person_stats["attack_radius"] = 7
 		person_stats["speed"] = 12
 		person_stats["t_a"] = "range"
-		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
+		inventory.weapons["right_hand"] = Item.new("wooden_bow")
 		inventory.weapons["legs"] = Item.new("speed_boots")
 		inventory.weapons["body"] = Item.new("tattered_mail")
 		inventory.consumables[0] = Item.new("falakaxa")
@@ -70,7 +70,7 @@ func _init(name):
 		person_stats["attack_radius"] = 10
 		person_stats["speed"] = 10
 		person_stats["t_a"] = "range"
-		inventory.weapons["right_hand"] = Item.new("sword_is_rusty")
+		inventory.weapons["right_hand"] = Item.new("regular_staff")
 		inventory.weapons["legs"] = Item.new("speed_boots")
 		inventory.weapons["body"] = Item.new("tattered_mail")
 		inventory.consumables[0] = Item.new("falakaxa")
@@ -188,12 +188,15 @@ func count_stat():
 		if inventory.weapons[key_1] != null:
 			for key_2 in inventory.weapons[key_1].characteristic:
 				if inventory.weapons[key_1].item_stats["dressed"] == false:
-					person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
+					if key_2 == "type_attack" and inventory.weapons[key_1].characteristic["type_attack"] != null:
+						print("YES")
+						person_stats["t_a"] = inventory.weapons[key_1].characteristic["type_attack"]
+					elif key_2 != "type_attack":person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
 					for i in range(6):
 						if skills[i] == null:
 							skills[i] = inventory.weapons[key_1].skill
 							break
-					inventory.weapons[key_1].item_stats["dressed"] = true
+			inventory.weapons[key_1].item_stats["dressed"] = true
 
 
 
@@ -202,7 +205,7 @@ func sell_item(name_item, slot):
 		skills[skills.find(inventory.weapons["right_hand"].skill)] == null
 	for key_2 in inventory.weapons["right_hand"].characteristic:
 		if inventory.weapons["right_hand"].item_stats["dressed"] == true:
-			person_stats[key_2] -= inventory.weapons["right_hand"].characteristic[key_2]
+			if key_2!="type_attack": person_stats[key_2] -= inventory.weapons["right_hand"].characteristic[key_2]
 	inventory.weapons["right_hand"] = Item.new(name_item)
 
 

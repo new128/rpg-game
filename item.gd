@@ -4,7 +4,7 @@ class_name Item
 
 var Skill = preload("res://ability.gd")
 var item_stats = {"name" : "", "description" : "", "price" : 0,  "slote" : "", "double_hands" : false, "rarity" : "", "dressed" : false, "type_attack" : null}
-var characteristic = {"damage" : 0, "armor" : 0, "max_hp" :0, "max_mana" : 0, "regen_hp" : 0, "regen_mana" : 0, "magic_damage_resist" : 0, "speed" : 0, "attack_speed" : 0, "attack_radius" : 0}
+var characteristic = {"damage" : 0, "armor" : 0, "max_hp" :0, "max_mana" : 0, "regen_hp" : 0, "regen_mana" : 0, "magic_damage_resist" : 0, "speed" : 0, "attack_speed" : 0, "attack_radius" : 0, "type_attack":null}
 var skill = null
 
 func _init(name_):
@@ -16,7 +16,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +10
 		item_stats["rarity"] = "regular"
-		item_stats["type_attack"] = "melee"
+		characteristic["type_attack"] = "melee"
 		characteristic["attack_radius"] = 1.5
 	if name_ == "steel_sword":  
 		item_stats["name"] = name_
@@ -26,7 +26,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +20
 		item_stats["rarity"] = "unusual"
-		item_stats["type_attack"] = "melee"
+		characteristic["type_attack"] = "melee"
 		characteristic["attack_radius"] = 2
 	if name_ == "wooden_bow":
 		item_stats["name"] = name_
@@ -36,7 +36,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +10
 		item_stats["rarity"] = "regular"
-		item_stats["type_attack"] = "range"
+		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 7
 	if name_ == "slicing_bow":
 		item_stats["name"] = name_
@@ -46,7 +46,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +20
 		item_stats["rarity"] = "unusual"
-		item_stats["type_attack"] = "range"
+		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 10
 		skill = Skill.new("piercing_shot")
 	if name_ == "regular_staff":
@@ -57,7 +57,7 @@ func _init(name_):
 		item_stats["double_hends"] = false
 		characteristic["damage"] = +10
 		item_stats["rarity"] = "regular"
-		item_stats["type_attack"] = "range"
+		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 10
 	if name_ == "tattered_mail": 
 		item_stats["name"] = name_
