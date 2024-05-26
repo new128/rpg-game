@@ -184,18 +184,24 @@ func attack(attack_object, target, type_attack, sceen = null, skill = null):
 			return 5
 
 func count_stat():
+	var s_d = false
 	for key_1 in inventory.weapons:
 		if inventory.weapons[key_1] != null:
 			for key_2 in inventory.weapons[key_1].characteristic:
 				if inventory.weapons[key_1].item_stats["dressed"] == false:
-					if key_2 == "type_attack" and inventory.weapons[key_1].characteristic["type_attack"] != null:
-						print("YES")
-						person_stats["t_a"] = inventory.weapons[key_1].characteristic["type_attack"]
-					elif key_2 != "type_attack":person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
-					for i in range(6):
-						if skills[i] == null:
-							skills[i] = inventory.weapons[key_1].skill
-							break
+					if key_1 == "right_hand" and key_2 == "damage":
+						person_stats["damage"] = inventory.weapons[key_1].characteristic["damage"]
+					else:
+						if key_2 == "type_attack" and inventory.weapons[key_1].characteristic["type_attack"] != null:
+							print("YES")
+							person_stats["t_a"] = inventory.weapons[key_1].characteristic["type_attack"]
+						elif key_2 != "type_attack":person_stats[key_2] += inventory.weapons[key_1].characteristic[key_2]
+					if not s_d:
+						for i in range(6):
+							if skills[i] == null:
+								skills[i] = inventory.weapons[key_1].skill
+								s_d = true
+								break
 			inventory.weapons[key_1].item_stats["dressed"] = true
 
 

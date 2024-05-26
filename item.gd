@@ -14,7 +14,7 @@ func _init(name_):
 		item_stats["price"] = 500
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
-		characteristic["damage"] = +10
+		characteristic["damage"] = 80
 		item_stats["rarity"] = "regular"
 		characteristic["type_attack"] = "melee"
 		characteristic["attack_radius"] = 1.5
@@ -24,7 +24,7 @@ func _init(name_):
 		item_stats["price"] = 200 #1000
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
-		characteristic["damage"] = +20
+		characteristic["damage"] = 100
 		item_stats["rarity"] = "unusual"
 		characteristic["type_attack"] = "melee"
 		characteristic["attack_radius"] = 2
@@ -34,7 +34,7 @@ func _init(name_):
 		item_stats["price"] = 500
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
-		characteristic["damage"] = +10
+		characteristic["damage"] = 60
 		item_stats["rarity"] = "regular"
 		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 7
@@ -44,7 +44,7 @@ func _init(name_):
 		item_stats["price"] = 200 #1000
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
-		characteristic["damage"] = +20
+		characteristic["damage"] = 110
 		item_stats["rarity"] = "unusual"
 		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 10
@@ -55,7 +55,7 @@ func _init(name_):
 		item_stats["price"] = 500
 		item_stats["slot"] = "right_hand"
 		item_stats["double_hends"] = false
-		characteristic["damage"] = +10
+		characteristic["damage"] = 150
 		item_stats["rarity"] = "regular"
 		characteristic["type_attack"] = "range"
 		characteristic["attack_radius"] = 10
