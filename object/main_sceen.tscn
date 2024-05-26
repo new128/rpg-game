@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://object/Pole_play.dae" type="PackedScene" id=1]
 [ext_resource path="res://move_camera.gd" type="Script" id=2]
 [ext_resource path="res://crip/melee_crip.glb" type="PackedScene" id=3]
 [ext_resource path="res://object/KinematicBody.gd" type="Script" id=4]
 [ext_resource path="res://Control.tscn" type="PackedScene" id=5]
+[ext_resource path="res://3D_object/main_pole.glb" type="PackedScene" id=6]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://object/crip_script.gd" type="Script" id=8]
 [ext_resource path="res://object/main_sceen.gd" type="Script" id=9]
@@ -13,6 +14,13 @@
 [ext_resource path="res://object/Enemy.gd" type="Script" id=12]
 [ext_resource path="res://object/towerStatick.gd" type="Script" id=13]
 [ext_resource path="res://person/main++_person-.glb" type="PackedScene" id=14]
+[ext_resource path="res://3D_object/rock.dae" type="PackedScene" id=15]
+[ext_resource path="res://3D_object/tree01.glb" type="PackedScene" id=16]
+[ext_resource path="res://3D_object/grib.glb" type="PackedScene" id=17]
+
+[sub_resource type="CylinderShape" id=6]
+height = 3.95207
+radius = 0.806665
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 50.894, 1.48172, 91.2569 )
@@ -31,13 +39,132 @@ script = ExtResource( 9 )
 
 [node name="ProximityGroup" type="ProximityGroup" parent="."]
 
+[node name="rock7" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 0.99841, 0, 0.0563617, 0, 1, 0, -0.0563617, 0, 0.99841, -41.4989, 0.682438, -46.094 )
+
+[node name="rock2" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 0.586203, 0, -0.810164, 0, 1, 0, 0.810164, 0, 0.586203, 36.8457, 2.0499, 74.8266 )
+
+[node name="rock3" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 0.666012, 0, -0.745941, 0, 1, 0, 0.745941, 0, 0.666012, 42.1056, 1.48173, 2.18439 )
+
+[node name="rock4" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2352, 0.240611, -25.095 )
+
+[node name="rock5" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.3035, 0.461891, 16.2771 )
+
+[node name="rock6" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 0.984417, 0, -0.175848, 0, 1, 0, 0.175848, 0, 0.984417, -40.2816, 1.14238, 40.1017 )
+
+[node name="rock" parent="ProximityGroup" instance=ExtResource( 15 )]
+transform = Transform( 0.144892, 0, -0.989448, 0, 1, 0, 0.989448, 0, 0.144892, 39.9476, 1.48174, -76.8142 )
+
+[node name="main_pole" parent="ProximityGroup" instance=ExtResource( 6 )]
+transform = Transform( 15.579, 0, 0, 0, 16.496, 0, 0, 0, 18.336, -0.756801, 0.0866051, 0.501711 )
+
 [node name="StaticBody" type="StaticBody" parent="ProximityGroup"]
 script = ExtResource( 10 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3057, 2.75254, 63.8531 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="ProximityGroup/StaticBody"]
 shape = SubResource( 1 )
 
+[node name="CollisionShape2" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89447, 3.18151, -60.4902 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0471, 2.4254, -27.7813 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0719, 2.29983, 8.73925 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4364, 2.51771, 38.2016 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8092, 2.63339, -1.69268 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="ProximityGroup/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.1618, 2.23042, -33.001 )
+shape = SubResource( 6 )
+
 [node name="Pole_play" parent="ProximityGroup" instance=ExtResource( 1 )]
+visible = false
+
+[node name="tree01" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89447, 0.919276, -60.4902 )
+
+[node name="tree02" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0471, 0.163166, -27.7813 )
+
+[node name="tree03" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0719, 0.0376034, 8.73925 )
+
+[node name="tree04" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3057, 0.490307, 63.8531 )
+
+[node name="tree05" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4364, 0.255486, 38.2016 )
+
+[node name="tree06" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.8092, 0.371161, -1.69268 )
+
+[node name="tree07" parent="ProximityGroup" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.1618, -0.031805, -33.001 )
+
+[node name="grib" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6202, 1.48191, -27.4096 )
+
+[node name="grib2" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32644, 1.65542, -50.7946 )
+
+[node name="grib3" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99078, 1.17964, -70.712 )
+
+[node name="grib4" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.0857, 1.48315, 55.0906 )
+
+[node name="grib5" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5887, 1.48828, 51.172 )
+
+[node name="grib6" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0934, 1.48753, 51.5106 )
+
+[node name="grib7" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0908, 1.48968, 55.486 )
+
+[node name="grib8" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5051, 1.48176, 22.3773 )
+
+[node name="grib9" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.2052, 1.48176, 25.7435 )
+
+[node name="grib10" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9944, 1.48176, 18.2019 )
+
+[node name="grib11" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.8511, 1.48176, 25.0387 )
+
+[node name="grib12" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9698, 1.48176, -37.7723 )
+
+[node name="grib13" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5864, 1.48176, -34.1626 )
+
+[node name="grib14" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5717, 1.48176, -34.0117 )
+
+[node name="grib15" parent="ProximityGroup" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.2146, 1.48176, -31.6269 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -40, 3.612, -80 )
