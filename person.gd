@@ -18,7 +18,7 @@ func _init(name):
 		person_const["team"] = ""
 		person_stats["max_hp"] = 1200
 		person_stats["max_mana"] = 200
-		person_stats["regen_hp"] = 10
+		person_stats["regen_hp"] = 300
 		person_stats["regen_mana"] = 2
 		person_stats["armor"] = 10
 		person_stats["magic_damage_resist"] = 20
@@ -83,6 +83,7 @@ func _init(name):
 		person_const["pers_type"] = "enemy"
 		person_const["team"] = "right"
 		person_stats["max_hp"] = 2000
+		person_stats["hp"] = 2000
 		person_stats["max_mana"] = 0
 		person_stats["regen_hp"] = 20
 		person_stats["regen_mana"] = 0

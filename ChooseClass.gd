@@ -22,13 +22,13 @@ func _write_info():
 	fileSave.open("res://class.txt", File.WRITE)
 	fileSave.store_string(info)
 	fileSave.close()
-	file.open("res://static/type_g.txt", File.READ)
-	var t_g = file.get_as_text()
-	file.close()
-	if t_g == "1":
-		get_tree().change_scene("res://object/main_sceen.tscn")
-	if t_g == "2":
-		get_tree().change_scene("res://game1x1/Game1x1.tscn")
+	#file.open("res://static/type_g.txt", File.READ)
+	#var t_g = file.get_as_text()
+	#file.close()
+	#if t_g == "1":
+	get_tree().change_scene("res://object/main_sceen.tscn")
+	#if t_g == "2":
+		#get_tree().change_scene("res://game1x1/Game1x1.tscn")
 
 		
 
